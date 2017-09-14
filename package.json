@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "start": "node ./server/bin/www",
     "server": "nodemon ./server/bin/www",
     "test": "yarn lint && mocha --recursive server/test",
     "lint": "eslint .",
