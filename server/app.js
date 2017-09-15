@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', express.static('build'));
 app.use('/users', users);
 
-// catch 404 and forward to error handler
+// catch 404 and forward to error handler - test
 app.use((req, res, next) => {
   const err = new Error('Not Found');
   err.status = 404;
