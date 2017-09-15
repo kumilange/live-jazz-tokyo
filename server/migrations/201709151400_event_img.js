@@ -1,7 +1,7 @@
 const setup = knex =>
   knex.schema.createTable('event_img', (t) => {
     t.increments().index();
-    t.text('image').notNullable();;
+    t.text('image').notNullable();
   });
 
 const rollback = knex =>

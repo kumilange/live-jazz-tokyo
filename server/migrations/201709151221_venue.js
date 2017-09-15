@@ -12,7 +12,7 @@ const setup = knex =>
   });
 
 const rollback = knex =>
-knex.schema.dropTable('venue');
+  knex.schema.dropTable('venue');
 
 exports.up = setup;
 exports.down = rollback;
