@@ -41,7 +41,7 @@ const venues = [
   { lat: rndLat(), lng: rndLng(), name: '9th Chord' },
   { lat: rndLat(), lng: rndLng(), name: '橋の下' },
   { lat: rndLat(), lng: rndLng(), name: 'チャーリーズ・クラブ' },
-  { lat: rndLat(), lng: rndLng(), name: 'november eleventh' }
+  { lat: rndLat(), lng: rndLng(), name: 'november eleventh' },
 ];
 
 const rndInt = num => Math.floor(Math.random() * num);
