@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 
-const eventNames = [
+const events = [
   'ヴォーカル・セッション',
   'ビューティフルナイト',
   'スプレンディッドナイト',
@@ -15,7 +15,7 @@ const eventNames = [
   'スタンダードナイト',
 ];
 
-const artistNames = [
+const artists = [
   'ジョー蒲池',
   'KAORU',
   '宮崎カポネ信義',
@@ -28,32 +28,37 @@ const artistNames = [
   '八木秀樹',
 ];
 
-const venueNames = [
-  '杜のうた',
-  'ジャズピアノクラブJOE',
-  'Blue Note Tokyo',
-  '六本木サテンドール',
-  'Billboard Live TOKYO',
-  'Red Pepper',
-  '9th Chord',
-  '橋の下',
-  'チャーリーズ・クラブ',
-  'november eleventh',
+const rndLat = () => (Math.random() * (35.704248 - 35.661167)) + 35.661167;
+const rndLng = () => (Math.random() * (139.769388 - 139.716144)) + 139.716144;
+
+const venues = [
+  { lat: rndLat(), lng: rndLng(), name: '杜のうた' },
+  { lat: rndLat(), lng: rndLng(), name: 'ジャズピアノクラブJOE' },
+  { lat: rndLat(), lng: rndLng(), name: 'Blue Note Tokyo' },
+  { lat: rndLat(), lng: rndLng(), name: '六本木サテンドール' },
+  { lat: rndLat(), lng: rndLng(), name: 'Billboard Live TOKYO' },
+  { lat: rndLat(), lng: rndLng(), name: 'Red Pepper' },
+  { lat: rndLat(), lng: rndLng(), name: '9th Chord' },
+  { lat: rndLat(), lng: rndLng(), name: '橋の下' },
+  { lat: rndLat(), lng: rndLng(), name: 'チャーリーズ・クラブ' },
+  { lat: rndLat(), lng: rndLng(), name: 'november eleventh' }
 ];
 
 const rndInt = num => Math.floor(Math.random() * num);
 
 const list = [];
 
-eventNames.forEach((event) => {
-  artistNames.forEach((artist) => {
-    venueNames.forEach((venue) => {
+events.forEach((event) => {
+  artists.forEach((artist) => {
+    venues.forEach((venue) => {
       const start = new Date(2017, 8 + rndInt(2), 1 + rndInt(31), 17 + rndInt(3), rndInt(2) * 30);
       const end = new Date(2017, start.getMonth(), start.getDate(), 20 + rndInt(3), rndInt(2) * 30);
       list.push({
         event,
         artist,
-        venue,
+        venue: venue.name,
+        lat: venue.lat,
+        lng: venue.lng,
         price: (rndInt(7) * 500) + 2000,
         start,
         end,
