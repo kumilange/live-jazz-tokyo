@@ -20,3 +20,6 @@ yarn-error.log*
 
 # vim
 *.sw*
+
+# IntelliJ
+.idea/
