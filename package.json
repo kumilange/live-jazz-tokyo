@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "start": "node ./server/bin/www",
-    
     "test": "yarn lint && mocha --recursive server/test && CI=true react-scripts test --env=jsdom",
     "test:backend": "mocha --recursive server/test",
     "test:frontend": "react-scripts test --env=jsdom",
