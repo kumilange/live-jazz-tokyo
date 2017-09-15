@@ -13,7 +13,9 @@
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "lintfix": "eslint . --fix",
-    "postinstall": "yarn build"
+    "postinstall": "yarn build",
+    "migrate": "knex migrate:latest --knexfile server/knexfile.js",
+    "rollback": "knex migrate:rollback --knexfile server/knexfile.js"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
@@ -22,6 +24,7 @@
     "express": "~4.15.2",
     "knex": "^0.13.0",
     "morgan": "~1.8.1",
+    "pg": "^7.3.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-google-maps": "^8.1.0",
