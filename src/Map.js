@@ -2,24 +2,30 @@ import React, { Component } from 'react';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 import PropTypes from 'prop-types';
 
-const MyMap = withGoogleMap(props =>(
+const MyMap = withGoogleMap(props => (
   <GoogleMap
-    defaultZoom={11}
-    defaultCenter={{ lat: 35.652832, lng: 139.839478 }}
+    defaultZoom={14}
+    defaultCenter={{ lat: 35.6857933, lng: 139.7501793 }}
     onClick={props.onMapClick}
   >
-    {props.markers.map(marker => (
-      <Marker
-        {...marker}
-      />
-    ))}
+    {props.markers.map((marker) => {
+      const position = {
+        lat: marker.lat,
+        lng: marker.lng,
+      };
+      return (<Marker
+        position={position}
+        key={position.lat + position.lng}
+        title={marker.event}
+      />);
+    })}
   </GoogleMap>
 ));
 
 class Map extends Component {
   render() {
     return process.env.npm_lifecycle_event === 'test' ? <div /> : <MyMap
-      markers= { this.props.markers }
+      markers={this.props.markers}
       className="test"
       containerElement={
         <div style={{ height: '100%' }} />
@@ -32,7 +38,7 @@ class Map extends Component {
 }
 
 Map.propTypes = {
-  markers: PropTypes.array.isRequired
+  markers: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Map;
