@@ -1,6 +1,19 @@
 {
   "extends": "airbnb",
   "rules": {
-    "func-names": ["error", "never"]
+    "react/prefer-stateless-function": "off",
+    "react/jsx-filename-extension": "off",
+    "func-names": ["error", "never"],
+    "no-console": "off",
+  },
+
+  "globals": {
+    "document": true,
+    "it": true,
+    "window": true,
+    "describe": true,
+    "navigator": true,
+    "URL": true,
+    "fetch": true,
   }
 }
