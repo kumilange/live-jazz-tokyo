@@ -15,7 +15,7 @@ const MyMap = withGoogleMap(props => (
       };
       return (<Marker
         position={position}
-        key={position.lat + position.lng}
+        key={String(position.lat) + String(position.lng)}
         title={marker.event}
       />);
     })}
