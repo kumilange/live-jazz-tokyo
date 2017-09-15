@@ -23,6 +23,7 @@
     "morgan": "~1.8.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-google-maps": "^8.1.0",
     "react-scripts": "1.0.13"
   },
   "devDependencies": {
