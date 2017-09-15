@@ -19,11 +19,14 @@ const artists = [
 ];
 
 const promises = artists.map(async (artist) => {
-  const id = await db('artist')
-    .insert({ name: artist })
-    .returning('id')
-    .then(() => console.log(`${artist} inserted with id ${id}`))
-    .catch(err => console.error(`Inserting ${artist} failed!\n${err}`));
+  try {
+    const id = await db('artist')
+      .insert({ name: artist })
+      .returning('id');
+    console.log(`${artist} inserted with id ${id}`);
+  } catch (err) {
+    console.error(`Inserting ${artist} failed!\n${err}`);
+  }
 });
 
 Promise.all(promises)
