@@ -1,21 +1,30 @@
 {
   "name": "live-jazz",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "node ./server/bin/www",
-    "server": "nodemon ./server/bin/www",
-    "test": "yarn lint && mocha --recursive server/test",
+    "test": "yarn lint && mocha --recursive server/test && CI=true react-scripts test --env=jsdom",
+    "test:backend": "mocha --recursive server/test",
+    "test:frontend": "react-scripts test --env=jsdom",
+    "backend": "nodemon ./server/bin/www",
+    "frontend": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
     "lint": "eslint .",
-    "lintfix": "eslint . --fix"
+    "lintfix": "eslint . --fix",
+    "postinstall": "yarn build"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
-    "ejs": "~2.5.6",
     "express": "~4.15.2",
-    "morgan": "~1.8.1"
+    "morgan": "~1.8.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-google-maps": "^8.1.0",
+    "react-scripts": "1.0.13"
   },
   "devDependencies": {
     "chai": "^4.1.2",
