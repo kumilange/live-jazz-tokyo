@@ -20,10 +20,22 @@ const MyMap = withGoogleMap(props => {
         };
         return <Marker
           position={position}
-          key={String(position.lat) + String(position.lng)}
+          key={event.id}
           title={event.event}
           onClick={ () => props.props.onMarkerClick(event)}
         >
+          { props.props.selectedEvent === event ?
+          <InfoWindow>
+            <div>
+              <h2>{ event.event }</h2>
+              <h3>{ event.artist }</h3>
+              <p>{ event.venue }</p>
+              <p>¥{ event.price }</p>
+              <p>{ (new Date(event.start)).getMonth() } / { (new Date(event.start)).getDate() } </p>
+              <p>{ (new Date(event.start)).getHours() } ~ { (new Date(event.end)).getHours() }</p>
+            </div>
+          </InfoWindow>
+          : null }
         </Marker>
       })
     }

@@ -5,7 +5,8 @@ import { setSelectedEvent } from '../actions';
 
 const mapStateToProps = (state) => {
   return {
-    events: state.events
+    events: state.events,
+    selectedEvent: state.selectedEvent
   }
 }
 
