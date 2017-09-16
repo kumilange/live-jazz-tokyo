@@ -6,3 +6,10 @@ export function initializeEvents() {
     data,
   };
 }
+
+export function setSelectedEvent(event) {
+  return {
+    type: 'SET_SELECTED_EVENT',
+    event
+  }
+}

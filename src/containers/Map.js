@@ -1,8 +1,21 @@
 import { connect } from 'react-redux';
 import Map from '../Map';
 
-const mapStateToProps = state => ({
-  events: state.events,
-});
+import { setSelectedEvent } from '../actions';
 
-export default connect(mapStateToProps, null)(Map);
+const mapStateToProps = (state) => {
+  return {
+    events: state.events
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onMarkerClick: (event) => {
+      dispatch(setSelectedEvent(event));
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Map);
+

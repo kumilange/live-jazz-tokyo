@@ -1,6 +1,6 @@
 const initialState = {
   events: [],
-  openInfoWindow: undefined,
+  selectedEvent: undefined,
 };
 
 const reducer = (state = initialState, action) => {
@@ -8,7 +8,9 @@ const reducer = (state = initialState, action) => {
     case '@@redux/INIT':
       return state;
     case 'INITIALIZE_EVENT_DATA':
-      const newState = Object.assign({}, state, { events: action.data });
+      return Object.assign({}, state, { events: action.data });
+    case 'SET_SELECTED_EVENT':
+      const newState = Object.assign({}, state, { selectedEvent: action.event });
       return newState;
     default:
       return state;
