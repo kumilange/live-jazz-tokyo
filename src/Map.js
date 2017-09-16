@@ -3,28 +3,16 @@ import { InfoWindow, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 import PropTypes from 'prop-types';
 
 class MyMarker extends Component {
-  state = {
-    isOpen: false
-  }
-
   render() {
     const position = {
-      lat: this.props.marker.lat,
-      lng: this.props.marker.lng,
+      lat: this.props.event.lat,
+      lng: this.props.event.lng,
     };
     
     return <Marker
-      id='marker'
       position={position}
       key={String(position.lat) + String(position.lng)}
-      title={this.props.marker.event}
-      onClick={ () => {
-        if(!this.state.isOpen) {
-          this.setState({
-            isOpen: true
-          });
-        }
-      }}
+      title={this.props.event.event}
     >
       { this.state.isOpen &&
         <InfoWindow
@@ -43,20 +31,19 @@ class MyMarker extends Component {
   }
 }
 
-const MyMap = withGoogleMap(props => (
-  <GoogleMap
+const MyMap = withGoogleMap(props => {
+  return (<GoogleMap
     defaultZoom={14}
     defaultCenter={{ lat: 35.6857933, lng: 139.7501793 }}
   >
-    { props.markers.map( (marker) => <MyMarker marker={ marker } /> ) }
+    { props.events.map( (event) => <MyMarker event={ event } /> ) }
   </GoogleMap>
-));
+)});
 
 class Map extends Component {
   render() {
-    console.log('MAP');
     return process.env.npm_lifecycle_event === 'test' ? <div /> : <MyMap
-      markers={this.props.markers}
+      events={this.props.events}
       className="test"
       containerElement={
         <div style={{ height: '100%' }} />
@@ -69,7 +56,7 @@ class Map extends Component {
 }
 
 Map.propTypes = {
-  markers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  events: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Map;

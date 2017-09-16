@@ -1,16 +1,25 @@
 import React, { Component } from 'react';
-import Map from './Map';
+import PropTypes from 'prop-types';
+import Map from './containers/Map';
 import './App.css';
-import data from './data/events.json';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.initializeEvents();
+  }
+
   render() {
     return (
       <div className="App">
-        <Map markers={data} />
+        <Map />
       </div>
     );
   }
 }
 
+App.propTypes = {
+  initializeEvents: PropTypes.func.isRequired,
+};
+
 export default App;
+
