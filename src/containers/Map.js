@@ -3,20 +3,16 @@ import Map from '../Map';
 
 import { setSelectedEvent } from '../actions';
 
-const mapStateToProps = (state) => {
-  return {
-    events: state.events,
-    selectedEvent: state.selectedEvent
-  }
-}
+const mapStateToProps = state => ({
+  events: state.events,
+  selectedEvent: state.selectedEvent,
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onMarkerClick: (event) => {
-      dispatch(setSelectedEvent(event));
-    }
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  onMarkerClick: (event) => {
+    dispatch(setSelectedEvent(event));
+  },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Map);
 

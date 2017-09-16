@@ -10,8 +10,7 @@ const reducer = (state = initialState, action) => {
     case 'INITIALIZE_EVENT_DATA':
       return Object.assign({}, state, { events: action.data });
     case 'SET_SELECTED_EVENT':
-      const newState = Object.assign({}, state, { selectedEvent: action.event });
-      return newState;
+      return Object.assign({}, state, { selectedEvent: action.event });
     default:
       return state;
   }

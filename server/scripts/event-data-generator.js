@@ -52,12 +52,13 @@ let index = 0;
 events.forEach((event) => {
   artists.forEach((artist) => {
     venues.forEach((venue) => {
+      index += 1;
       let start = new Date(2017, 8 + rndInt(2), 1 + rndInt(31), 17 + rndInt(3), rndInt(2) * 30);
       let end = new Date(2017, start.getMonth(), start.getDate(), 20 + rndInt(3), rndInt(2) * 30);
       start = Date.parse(start);
       end = Date.parse(end);
       list.push({
-        id: ++index,
+        id: index,
         event,
         artist,
         venue: venue.name,
