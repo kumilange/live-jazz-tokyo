@@ -1,5 +1,6 @@
 const initialState = {
   events: [],
+  openInfoWindow: undefined,
 };
 
 const reducer = (state = initialState, action) => {
