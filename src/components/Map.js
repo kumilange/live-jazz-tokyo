@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { InfoWindow, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const MyMap = withGoogleMap((props) => {
@@ -27,9 +28,9 @@ const MyMap = withGoogleMap((props) => {
           { props.selectedEvent === event ?
             <InfoWindow>
               <div>
-                <a href={`/event/${event.id}`}>
+                <Link to={`/event/${event.id}`}>
                   <h2>{ event.event }</h2>
-                </a>
+                </Link>
                 <h3>{ event.artist }</h3>
                 <p>{ event.venue }</p>
                 <p>¥{ event.price }</p>
