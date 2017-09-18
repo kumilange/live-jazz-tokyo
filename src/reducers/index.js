@@ -1,6 +1,7 @@
 const initialState = {
   events: [],
-  selectedEvent: undefined,
+  selectedEvent: {},
+  eventDetails: {},
   userLocation: {},
 };
 
@@ -12,6 +13,8 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, { events: action.data });
     case 'SET_SELECTED_EVENT':
       return Object.assign({}, state, { selectedEvent: action.event });
+    case 'SET_EVENT_DETAILS':
+      return Object.assign({}, state, { eventDetails: action.event });
     case 'SET_USER_LOCATION':
       return Object.assign({}, state, { userLocation: action.position });
     default:

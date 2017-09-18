@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { InfoWindow, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import canUseDOM from 'can-use-dom';
 
@@ -41,7 +42,9 @@ const MyMap = withGoogleMap((props) => {
           { props.selectedEvent === event ?
             <InfoWindow>
               <div>
-                <h2>{ event.event }</h2>
+                <Link to={`/event/${event.id}`}>
+                  <h2>{ event.event }</h2>
+                </Link>
                 <h3>{ event.artist }</h3>
                 <p>{ event.venue }</p>
                 <p>¥{ event.price }</p>
@@ -86,7 +89,7 @@ class Map extends Component {
 
 Map.propTypes = {
   events: PropTypes.arrayOf(PropTypes.object).isRequired,
-  selectedEvent: PropTypes.objectOf(PropTypes.object).isRequired,
+  selectedEvent: PropTypes.shape().isRequired,
   userLocation: PropTypes.shape().isRequired,
   onMarkerClick: PropTypes.func.isRequired,
   onReceivedUserLocation: PropTypes.func.isRequired,
