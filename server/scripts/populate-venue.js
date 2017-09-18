@@ -2,7 +2,6 @@
 
 const knex = require('knex');
 const knexConfig = require('../knexfile');
-
 const db = knex(knexConfig);
 
 const rndLat = () => (Math.random() * (35.704248 - 35.661167)) + 35.661167;

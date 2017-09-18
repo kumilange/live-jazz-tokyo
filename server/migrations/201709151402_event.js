@@ -7,10 +7,11 @@ const setup = knex =>
     t.foreign('venue_id').references('venue.id');
     t.integer('event_image_id').unsigned();
     t.foreign('event_image_id').references('event_img.id');
+    t.string('name')
     t.integer('price');
-    t.timestamp('start_time');
-    t.timestamp('end_time');
-    t.text('description');
+    t.bigInteger('start');
+    t.bigInteger('end');
+    t.text('desc');
   });
 
 const rollback = knex =>
