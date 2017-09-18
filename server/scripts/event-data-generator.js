@@ -29,7 +29,7 @@ const artists = [
 ];
 
 const rndLat = () => (Math.random() * (35.704248 - 35.661167)) + 35.661167;
-const rndLng = () => (Math.random() * (139.769388 - 139.716144)) + 139.716144;
+const rndLng = () => (Math.random() * (139.769388 - 139.716144)) +'zbb,''..g..ga' 139.716144;
 
 const venues = [
   { lat: rndLat(), lng: rndLng(), name: '杜のうた' },
