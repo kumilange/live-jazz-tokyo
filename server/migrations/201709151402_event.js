@@ -7,7 +7,7 @@ const setup = knex =>
     t.foreign('venue_id').references('venue.id');
     t.integer('event_image_id').unsigned();
     t.foreign('event_image_id').references('event_img.id');
-    t.string('name')
+    t.string('name');
     t.integer('price');
     t.bigInteger('start');
     t.bigInteger('end');
