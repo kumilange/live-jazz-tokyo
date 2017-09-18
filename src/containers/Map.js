@@ -1,16 +1,20 @@
 import { connect } from 'react-redux';
 import Map from '../Map';
 
-import { setSelectedEvent } from '../actions';
+import { setSelectedEvent, setUserLocation } from '../actions';
 
 const mapStateToProps = state => ({
   events: state.events,
   selectedEvent: state.selectedEvent,
+  userLocation: state.userLocation,
 });
 
 const mapDispatchToProps = dispatch => ({
   onMarkerClick: (event) => {
     dispatch(setSelectedEvent(event));
+  },
+  onReceivedUserLocation: (position) => {
+    dispatch(setUserLocation(position));
   },
 });
 
