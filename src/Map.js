@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { InfoWindow, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 import PropTypes from 'prop-types';
 import canUseDOM from 'can-use-dom';
@@ -7,12 +7,12 @@ const DEFAULT_CENTER = { lat: 35.6857933, lng: 139.7501793 };
 
 const geolocation = (
   canUseDOM && navigator.geolocation ?
-  navigator.geolocation :
-  ({
-    getCurrentPosition(success, failure) {
-      failure(`Your browser doesn't support geolocation.`);
-    },
-  })
+    navigator.geolocation :
+    ({
+      getCurrentPosition(success, failure) {
+        failure('Your browser doesn\'t support geolocation.');
+      },
+    })
 );
 
 const MyMap = withGoogleMap((props) => {
@@ -23,8 +23,8 @@ const MyMap = withGoogleMap((props) => {
   });
   return (<GoogleMap
     defaultZoom={14}
-    defaultCenter={ DEFAULT_CENTER }
-    center={ props.userLocation.lat === undefined ? DEFAULT_CENTER : props.userLocation }
+    defaultCenter={DEFAULT_CENTER}
+    center={props.userLocation.lat === undefined ? DEFAULT_CENTER : props.userLocation}
   >
     {
       currentEvents.map((event) => {
@@ -60,10 +60,10 @@ const MyMap = withGoogleMap((props) => {
 
 class Map extends Component {
   componentWillMount() {
-    geolocation.getCurrentPosition(position => {
+    geolocation.getCurrentPosition((position) => {
       this.props.onReceivedUserLocation({
         lat: position.coords.latitude,
-        lng: position.coords.longitude
+        lng: position.coords.longitude,
       });
     });
   }
