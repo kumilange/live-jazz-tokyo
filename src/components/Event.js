@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 class Event extends Component {
   componentWillMount() {
     const event = {
-      name: "SUMER JAZE LYFE PARTE",
-      artist: "SWAG MC G",
-      price: "ONE BILLION DOLLARS",
-      venueName: "JAZZ TOWN",
-      venueAddress: "123 NEW ORLEANS AVE",
-      startTime: "6pm",
-      endTime: "9pm",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    }
+      name: 'SUMER JAZE LYFE PARTE',
+      artist: 'SWAG MC G',
+      price: 'ONE BILLION DOLLARS',
+      venueName: 'JAZZ TOWN',
+      venueAddress: '123 NEW ORLEANS AVE',
+      startTime: '6pm',
+      endTime: '9pm',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    };
 
     this.props.receivedEventDetails(event);
   }
@@ -36,6 +36,7 @@ class Event extends Component {
 
 Event.propTypes = {
   event: PropTypes.shape().isRequired,
+  match: PropTypes.shape().isRequired,
   receivedEventDetails: PropTypes.func.isRequired,
 };
 

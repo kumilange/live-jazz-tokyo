@@ -27,7 +27,7 @@ const MyMap = withGoogleMap((props) => {
           { props.selectedEvent === event ?
             <InfoWindow>
               <div>
-                <a href={ "/event/" + event.id }>
+                <a href={`/event/${event.id}`}>
                   <h2>{ event.event }</h2>
                 </a>
                 <h3>{ event.artist }</h3>
