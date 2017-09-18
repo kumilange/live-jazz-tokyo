@@ -1,6 +1,6 @@
 const initialState = {
   events: [],
-  selectedEvent: undefined,
+  selectedEvent: {},
 };
 
 const reducer = (state = initialState, action) => {
