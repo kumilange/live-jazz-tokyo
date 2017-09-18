@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Map from './containers/Map';
-import './App.css';
+import Map from '../containers/Map';
+import '../App.css';
 
 class App extends Component {
   componentDidMount() {

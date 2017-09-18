@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Map from '../Map';
+import Map from '../components/Map';
 
 import { setSelectedEvent } from '../actions';
 
