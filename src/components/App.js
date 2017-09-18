@@ -16,5 +16,9 @@ class App extends Component {
   }
 }
 
+App.propTypes = {
+  initializeEvents: PropTypes.func.isRequired,
+};
+
 export default App;
 

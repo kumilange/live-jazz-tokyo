@@ -7,13 +7,15 @@ import { BrowserRouter, Route, Link } from 'react-router-dom'
 import './styles/index.css';
 import reducer from './reducers';
 import App from './containers/App';
+import Event from './components/Event';
 
 const store = createStore(reducer);
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <div id="router">
-        <Route path="/" component={App} />
+        <Route exact path="/" component={App} />
+        <Route exact path="/event/:id" component={Event} />
       </div>
     </BrowserRouter>
   </Provider>,
