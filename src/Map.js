@@ -3,10 +3,10 @@ import { InfoWindow, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 import PropTypes from 'prop-types';
 
 const MyMap = withGoogleMap((props) => {
-  const DAY_IN_MILLISECONDS = 86400000;
+  const NUMBER_OF_MILLISECONDS_IN_ONE_DAY = 86400000;
   const now = Date.now();
   const currentEvents = props.events.filter((event) => {
-    return event.end > now && event.start < now + DAY_IN_MILLISECONDS;
+    return event.end > now && event.start < now + NUMBER_OF_MILLISECONDS_IN_ONE_DAY;
   });
   return (<GoogleMap
     defaultZoom={14}
