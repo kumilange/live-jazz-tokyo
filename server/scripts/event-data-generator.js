@@ -2,6 +2,10 @@
 
 const fs = require('fs');
 
+const rndLat = () => (Math.random() * (35.704248 - 35.661167)) + 35.661167;
+const rndLng = () => (Math.random() * (139.769388 - 139.716144)) + 139.716144;
+const rndInt = num => Math.floor(Math.random() * num);
+
 const events = [
   'ヴォーカル・セッション',
   'ビューティフルナイト',
@@ -28,9 +32,6 @@ const artists = [
   '八木秀樹',
 ];
 
-const rndLat = () => (Math.random() * (35.704248 - 35.661167)) + 35.661167;
-const rndLng = () => (Math.random() * (139.769388 - 139.716144)) + 139.716144;
-
 const venues = [
   { lat: rndLat(), lng: rndLng(), name: '杜のうた' },
   { lat: rndLat(), lng: rndLng(), name: 'ジャズピアノクラブJOE' },
@@ -44,7 +45,6 @@ const venues = [
   { lat: rndLat(), lng: rndLng(), name: 'november eleventh' },
 ];
 
-const rndInt = num => Math.floor(Math.random() * num);
 
 const list = [];
 let index = 0;
