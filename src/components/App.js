@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Map from '../containers/Map';
-import '../styles/App.css';
 
 class App extends Component {
   componentDidMount() {
@@ -16,10 +15,6 @@ class App extends Component {
     );
   }
 }
-
-App.propTypes = {
-  initializeEvents: PropTypes.func.isRequired,
-};
 
 export default App;
 
