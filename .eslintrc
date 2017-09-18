@@ -5,6 +5,7 @@
     "react/jsx-filename-extension": "off",
     "func-names": ["error", "never"],
     "no-console": "off",
+    "arrow-body-style": "off",
   },
 
   "globals": {

@@ -23,3 +23,6 @@ yarn-error.log*
 
 # IntelliJ
 .idea/
+
+# vscode
+.vscode/

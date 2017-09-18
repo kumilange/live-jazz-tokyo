@@ -47,13 +47,18 @@ const venues = [
 const rndInt = num => Math.floor(Math.random() * num);
 
 const list = [];
+let index = 0;
 
 events.forEach((event) => {
   artists.forEach((artist) => {
     venues.forEach((venue) => {
-      const start = new Date(2017, 8 + rndInt(2), 1 + rndInt(31), 17 + rndInt(3), rndInt(2) * 30);
-      const end = new Date(2017, start.getMonth(), start.getDate(), 20 + rndInt(3), rndInt(2) * 30);
+      index += 1;
+      let start = new Date(2017, 8 + rndInt(2), 1 + rndInt(31), 17 + rndInt(3), rndInt(2) * 30);
+      let end = new Date(2017, start.getMonth(), start.getDate(), 20 + rndInt(3), rndInt(2) * 30);
+      start = Date.parse(start);
+      end = Date.parse(end);
       list.push({
+        id: index,
         event,
         artist,
         venue: venue.name,
@@ -67,6 +72,6 @@ events.forEach((event) => {
   });
 });
 
-fs.writeFileSync('../data/events.json', JSON.stringify(list));
+fs.writeFileSync('../../src/data/events.json', JSON.stringify(list));
 console.log('All done!');
 process.exit();
