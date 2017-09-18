@@ -62,7 +62,7 @@ class Map extends Component {
 
 Map.propTypes = {
   events: PropTypes.arrayOf(PropTypes.object).isRequired,
-  selectedEvent: PropTypes.objectOf(PropTypes.object).isRequired,
+  selectedEvent: PropTypes.shape().isRequired,
   onMarkerClick: PropTypes.func.isRequired,
 };
 
