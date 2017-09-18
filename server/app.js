@@ -15,12 +15,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', express.static('build'));
-
-// TODO: Define all URIs same as frontend
-app.use('/event/:id', express.static('build'));
-
-// FIXME: /users => /api/users
-app.use('/users', users);
+app.use('/*', express.static('build'));
 
 // catch 404 and forward to error handler - test
 app.use((req, res, next) => {
