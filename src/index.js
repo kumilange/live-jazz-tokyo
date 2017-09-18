@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Link } from 'react-router-dom'
 import './styles/index.css';
 import reducer from './reducers';
 import App from './containers/App';
-import Event from './components/Event';
+import Event from './containers/Event';
 
 const store = createStore(reducer);
 ReactDOM.render(

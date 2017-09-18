@@ -13,3 +13,10 @@ export function setSelectedEvent(event) {
     event,
   };
 }
+
+export function setEventDetails(event) {
+  return {
+    type: 'SET_EVENT_DETAILS',
+    event,
+  };
+}
