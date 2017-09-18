@@ -72,6 +72,6 @@ events.forEach((event) => {
   });
 });
 
-fs.writeFileSync('../data/events.json', JSON.stringify(list));
+fs.writeFileSync('../../src/data/events.json', JSON.stringify(list));
 console.log('All done!');
 process.exit();

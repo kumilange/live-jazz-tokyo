@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
-import Map from './Map';
+import PropTypes from 'prop-types';
+import Map from './containers/Map';
 import './App.css';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.initializeEvents();
+  }
+
   render() {
     return (
       <div className="App">
@@ -12,4 +17,9 @@ class App extends Component {
   }
 }
 
+App.propTypes = {
+  initializeEvents: PropTypes.func.isRequired,
+};
+
 export default App;
+
