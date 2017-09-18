@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 
 const knex = require('knex');
-const knexConfig = require('../knexfile');
+const knexConfig = require('../../knexfile');
 
 const db = knex(knexConfig);
 
