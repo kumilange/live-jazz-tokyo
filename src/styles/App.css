@@ -1,4 +1,4 @@
-body, .App, #root {
+body, #router, .App, #root {
   height: 100%;
 }
 
