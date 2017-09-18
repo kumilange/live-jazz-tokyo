@@ -2,6 +2,7 @@ const initialState = {
   events: [],
   selectedEvent: {},
   eventDetails: {},
+  userLocation: {},
 };
 
 const reducer = (state = initialState, action) => {
@@ -14,6 +15,8 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, { selectedEvent: action.event });
     case 'SET_EVENT_DETAILS':
       return Object.assign({}, state, { eventDetails: action.event });
+    case 'SET_USER_LOCATION':
+      return Object.assign({}, state, { userLocation: action.position });
     default:
       console.log('UNKNOWN STATE!');
       return state;
