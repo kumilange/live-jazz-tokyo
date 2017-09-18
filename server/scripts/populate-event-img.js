@@ -3,6 +3,7 @@
 const fs = require('fs');
 const knex = require('knex');
 const knexConfig = require('../knexfile');
+
 const db = knex(knexConfig);
 
 const filenames = fs.readdirSync('../data/img');
