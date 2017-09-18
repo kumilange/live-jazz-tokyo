@@ -31,7 +31,7 @@ const MyMap = withGoogleMap((props) => {
                 <h3>{ event.artist }</h3>
                 <p>{ event.venue }</p>
                 <p>¥{ event.price }</p>
-                <p>{ (new Date(event.start)).getMonth() } /
+                <p>{ (new Date(event.start)).getMonth() + 1 } /
                   { (new Date(event.start)).getDate() } </p>
                 <p>{ (new Date(event.start)).getHours() } ~ { (new Date(event.end)).getHours() }</p>
               </div>
