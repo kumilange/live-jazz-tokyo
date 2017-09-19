@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node ./server/bin/www",
-    "test": "yarn lint && mocha --recursive server/test && CI=true react-scripts test --env=jsdom",
+    "start": "yarn build && node ./server/bin/www",
+    "test": "yarn build && yarn lint && mocha --recursive server/test && CI=true react-scripts test --env=jsdom",
     "test:backend": "mocha --recursive server/test",
     "test:frontend": "react-scripts test --env=jsdom",
     "backend": "nodemon ./server/bin/www",
@@ -13,7 +13,6 @@
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "lintfix": "eslint . --fix",
-    "postinstall": "yarn build",
     "migrate": "knex migrate:latest --knexfile knexfile.js",
     "rollback": "knex migrate:rollback --knexfile knexfile.js"
   },
