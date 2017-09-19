@@ -12,11 +12,12 @@ router.get('/events', async (req, res) => {
 
   const events = (await db('event')
     .leftJoin('venue', 'event.venue_id', 'venue.id')
+    .leftJoin('artist', 'event.artist_id', 'artist.id')
     .whereBetween('end', [req.query.start, req.query.end])
     .select(
       'event.id as id',
       'event.name as name',
-      'event.artist_id as artist',
+      'artist.name as artist',
       'venue.name as venue',
       'venue.lat',
       'venue.lng',
@@ -24,18 +25,19 @@ router.get('/events', async (req, res) => {
       'event.start',
       'event.end',
     )).map((event) => {
-        return {
-          id: event.id,
-          name: event.name,
-          artist: event.artist,
-          venue: event.venue,
-          lat: parseFloat(event.lat),
-          lng: parseFloat(event.lng),
-          price: event.price,
-          start: parseInt(event.start),
-          end: parseInt(event.end),
-        }
-      });
+      return {
+        id: event.id,
+        name: event.name,
+        artist: event.artist,
+        venue: event.venue,
+        lat: parseFloat(event.lat),
+        lng: parseFloat(event.lng),
+        price: event.price,
+        start: parseInt(event.start),
+        end: parseInt(event.end),
+      }
+    }
+  );
 
   console.log('events', events);
 

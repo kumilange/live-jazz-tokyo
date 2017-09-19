@@ -23,7 +23,6 @@ const MyMap = withGoogleMap((props) => {
     center={props.userLocation.lat === undefined ? DEFAULT_CENTER : props.userLocation}
   >
     {
-
       props.events.map((event) => {
         const position = {
           lat: event.lat,
