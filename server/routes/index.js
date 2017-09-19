@@ -55,6 +55,7 @@ router.get('/eventdetails', async (req, res) => {
       'event.price',
       'event.start',
       'event.end',
+      'event.desc',
     )).map((event) => {
       return {
         id: event.id,
@@ -65,12 +66,11 @@ router.get('/eventdetails', async (req, res) => {
         price: event.price,
         start: parseInt(event.start),
         end: parseInt(event.end),
+        description: event.desc,
       }
     }
   );
-
-  console.log('event', event);
-  res.status(200).json(event);
+  res.status(200).json(event[0]);
 });
 
 module.exports = router;

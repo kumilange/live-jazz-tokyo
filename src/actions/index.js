@@ -23,16 +23,29 @@ export function initializeEvents() {
   }
 }
 
+export function getEventDetails(eventID) {
+  return async dispatch => {
+    try {
+      const params = {
+        id: eventID
+      }
+
+      const query = querystring.stringify(params);
+      const event = await (await fetch(`/api/eventdetails?${query}`)).json();
+
+      dispatch({
+        type: 'SET_EVENT_DETAILS',
+        event,
+      });
+    } catch (err) {
+      console.log("err", err)
+    }
+  }
+}
+
 export function setSelectedEvent(event) {
   return {
     type: 'SET_SELECTED_EVENT',
-    event,
-  };
-}
-
-export function setEventDetails(event) {
-  return {
-    type: 'SET_EVENT_DETAILS',
     event,
   };
 }

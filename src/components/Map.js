@@ -71,6 +71,7 @@ class Map extends Component {
       events={this.props.events}
       selectedEvent={this.props.selectedEvent}
       onMarkerClick={this.props.onMarkerClick}
+      onReceivedEventDetails={this.props.onReceivedEventDetails}
       userLocation={this.props.userLocation}
       containerElement={
         <div style={{ height: '100%' }} />
