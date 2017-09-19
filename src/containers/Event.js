@@ -11,6 +11,9 @@ const mapDispatchToProps = dispatch => ({
   receivedEventDetails: (event) => {
     dispatch(setEventDetails(event));
   },
+  onReserveClicked: () => {
+
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Event);

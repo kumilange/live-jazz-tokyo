@@ -29,7 +29,7 @@ class Event extends Component {
         <div>STARTTIME { this.props.event.startTime }</div>
         <div>ENDTIME { this.props.event.endTime }</div>
         <div>DESCRIPTION { this.props.event.description }</div>
-        <button id='reserve'>Reserve</button>
+        <button id="reserve" onClick={this.props.onReserveClicked}>Reserve</button>
       </div>
     );
   }
@@ -39,6 +39,7 @@ Event.propTypes = {
   event: PropTypes.shape().isRequired,
   match: PropTypes.shape().isRequired,
   receivedEventDetails: PropTypes.func.isRequired,
+  onReserveClicked: PropTypes.func.isRequired,
 };
 
 export default Event;
