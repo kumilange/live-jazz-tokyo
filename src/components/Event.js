@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class Event extends Component {
   componentWillMount() {
@@ -29,7 +30,9 @@ class Event extends Component {
         <div>STARTTIME { this.props.event.startTime }</div>
         <div>ENDTIME { this.props.event.endTime }</div>
         <div>DESCRIPTION { this.props.event.description }</div>
-        <button id="reserve" onClick={this.props.onReserveClicked}>Reserve</button>
+        <Link to={`/reserve/${this.props.match.params.id}`}>
+          <button id="reserve" >Reserve</button>
+        </Link>
       </div>
     );
   }
@@ -39,7 +42,6 @@ Event.propTypes = {
   event: PropTypes.shape().isRequired,
   match: PropTypes.shape().isRequired,
   receivedEventDetails: PropTypes.func.isRequired,
-  onReserveClicked: PropTypes.func.isRequired,
 };
 
 export default Event;
