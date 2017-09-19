@@ -8,6 +8,10 @@ const config = {
   seeds: {
     directory: `${__dirname}/seeds`,
   },
+  pool: {
+    max: 2,
+    min: 1,
+  },
 };
 
 module.exports = config;
