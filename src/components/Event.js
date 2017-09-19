@@ -29,6 +29,7 @@ class Event extends Component {
         <div>STARTTIME { this.props.event.startTime }</div>
         <div>ENDTIME { this.props.event.endTime }</div>
         <div>DESCRIPTION { this.props.event.description }</div>
+        <button id='reserve'>Reserve</button>
       </div>
     );
   }
