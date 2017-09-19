@@ -13,11 +13,10 @@ export function initializeEvents() {
       const query = querystring.stringify(params);
       const data = await (await fetch(`/api/events?${query}`)).json();
 
-      console.log(data);
-      return {
+      dispatch({
         type: 'INITIALIZE_EVENT_DATA',
         data,
-      };
+      });
     } catch (err) {
       console.log("err", err)
     }
