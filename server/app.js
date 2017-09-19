@@ -14,8 +14,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', express.static('build'));
-//app.use('/*', express.static('build'));
 app.use('/api', routes);
+//app.use('/*', express.static('build'));
 
 // catch 404 and forward to error handler - test
 app.use((req, res, next) => {
