@@ -23,25 +23,25 @@ router.get('/events', async (req, res) => {
       'event.start',
       'event.end',
     )).map((event) => {
-      return {
-        id: event.id,
-        name: event.name,
-        artist: event.artist,
-        venue: event.venue,
-        lat: parseFloat(event.lat),
-        lng: parseFloat(event.lng),
-        price: event.price,
-        start: parseInt(event.start),
-        end: parseInt(event.end),
-      }
-    }
+    return {
+      id: event.id,
+      name: event.name,
+      artist: event.artist,
+      venue: event.venue,
+      lat: parseFloat(event.lat),
+      lng: parseFloat(event.lng),
+      price: event.price,
+      start: parseInt(event.start, 10),
+      end: parseInt(event.end, 10),
+    };
+  },
   );
 
   res.status(200).json(events);
 });
 
 router.get('/eventdetails', async (req, res) => {
-  const event = (await db('event')
+  const result = (await db('event')
     .leftJoin('venue', 'event.venue_id', 'venue.id')
     .leftJoin('artist', 'event.artist_id', 'artist.id')
     .leftJoin('event_img', 'event.event_image_id', 'event_img.id')
@@ -57,20 +57,20 @@ router.get('/eventdetails', async (req, res) => {
       'event.end',
       'event.desc',
     )).map((event) => {
-      return {
-        id: event.id,
-        name: event.name,
-        artist: event.artist,
-        venue: event.venue,
-        image: event.image,
-        price: event.price,
-        start: parseInt(event.start),
-        end: parseInt(event.end),
-        description: event.desc,
-      }
-    }
+    return {
+      id: event.id,
+      name: event.name,
+      artist: event.artist,
+      venue: event.venue,
+      image: event.image,
+      price: event.price,
+      start: parseInt(event.start, 10),
+      end: parseInt(event.end, 10),
+      description: event.desc,
+    };
+  },
   );
-  res.status(200).json(event[0]);
+  res.status(200).json(result[0]);
 });
 
 module.exports = router;
