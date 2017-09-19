@@ -1,13 +1,11 @@
 import { connect } from 'react-redux';
 import Reserve from '../components/Reserve';
 
-import { setEventDetails } from '../actions';
-
-const mapStateToProps = state => ({
+const mapStateToProps = () => ({
 
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = () => ({
 
 });
 
