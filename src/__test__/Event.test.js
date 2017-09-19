@@ -1,7 +1,6 @@
 import React from 'react';
 import { expect } from 'chai';
 import { render } from 'enzyme';
-import sinon from 'sinon';
 
 import Event from '../components/Event';
 
