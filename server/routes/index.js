@@ -6,10 +6,8 @@ const knexConfig = require('../../knexfile');
 
 const db = knex(knexConfig);
 
-/* GET home page. */
+/* GET events. */
 router.get('/events', async (req, res) => {
-  console.log("query", req.query);
-
   const events = (await db('event')
     .leftJoin('venue', 'event.venue_id', 'venue.id')
     .leftJoin('artist', 'event.artist_id', 'artist.id')
@@ -39,9 +37,40 @@ router.get('/events', async (req, res) => {
     }
   );
 
-  console.log('events', events);
-
   res.status(200).json(events);
+});
+
+router.get('/eventdetails', async (req, res) => {
+  const event = (await db('event')
+    .leftJoin('venue', 'event.venue_id', 'venue.id')
+    .leftJoin('artist', 'event.artist_id', 'artist.id')
+    .leftJoin('event_img', 'event.event_image_id', 'event_img.id')
+    .where('event.id', req.query.id)
+    .select(
+      'event.id as id',
+      'event.name as name',
+      'artist.name as artist',
+      'venue.name as venue',
+      'event_img.image as image',
+      'event.price',
+      'event.start',
+      'event.end',
+    )).map((event) => {
+      return {
+        id: event.id,
+        name: event.name,
+        artist: event.artist,
+        venue: event.venue,
+        image: event.image,
+        price: event.price,
+        start: parseInt(event.start),
+        end: parseInt(event.end),
+      }
+    }
+  );
+
+  console.log('event', event);
+  res.status(200).json(event);
 });
 
 module.exports = router;
