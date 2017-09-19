@@ -1,11 +1,45 @@
 const express = require('express');
 
 const router = express.Router();
+const knex = require('knex');
+const knexConfig = require('../../knexfile');
+
+const db = knex(knexConfig);
 
 /* GET home page. */
-router.get('/events', (req, res) => {
-console.log("query", req.query)
-  res.status(200).json([{"id":1,"event":"ヴォーカル・セッション","artist":"ジョー蒲池","venue":"杜のうた","lat":35.66400358859232,"lng":139.7168344729012,"price":5000,"start":1507105800000,"end":1507116600000}]);
+router.get('/events', async (req, res) => {
+  console.log("query", req.query);
+
+  const events = (await db('event')
+    .leftJoin('venue', 'event.venue_id', 'venue.id')
+    .whereBetween('end', [req.query.start, req.query.end])
+    .select(
+      'event.id as id',
+      'event.name as name',
+      'event.artist_id as artist',
+      'venue.name as venue',
+      'venue.lat',
+      'venue.lng',
+      'event.price',
+      'event.start',
+      'event.end',
+    )).map((event) => {
+        return {
+          id: event.id,
+          name: event.name,
+          artist: event.artist,
+          venue: event.venue,
+          lat: parseFloat(event.lat),
+          lng: parseFloat(event.lng),
+          price: event.price,
+          start: parseInt(event.start),
+          end: parseInt(event.end),
+        }
+      });
+
+  console.log('events', events);
+
+  res.status(200).json(events);
 });
 
 module.exports = router;

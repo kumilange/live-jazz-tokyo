@@ -17,7 +17,6 @@ const geolocation = (
 );
 
 const MyMap = withGoogleMap((props) => {
-    console.log('props.events', props.events)
   return (<GoogleMap
     defaultZoom={14}
     defaultCenter={DEFAULT_CENTER}
@@ -40,7 +39,7 @@ const MyMap = withGoogleMap((props) => {
             <InfoWindow>
               <div>
                 <Link to={`/event/${event.id}`}>
-                  <h2>{ event.event }</h2>
+                  <h2>{ event.name }</h2>
                 </Link>
                 <h3>{ event.artist }</h3>
                 <p>{ event.venue }</p>
