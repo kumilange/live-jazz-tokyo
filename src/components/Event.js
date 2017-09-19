@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class Event extends Component {
   componentWillMount() {
@@ -29,6 +30,9 @@ class Event extends Component {
         <div>STARTTIME { this.props.event.startTime }</div>
         <div>ENDTIME { this.props.event.endTime }</div>
         <div>DESCRIPTION { this.props.event.description }</div>
+        <Link to={`/reserve/${this.props.match.params.id}`}>
+          <button id="reserve" >Reserve</button>
+        </Link>
       </div>
     );
   }
