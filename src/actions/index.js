@@ -13,3 +13,17 @@ export function setSelectedEvent(event) {
     event,
   };
 }
+
+export function setEventDetails(event) {
+  return {
+    type: 'SET_EVENT_DETAILS',
+    event,
+  };
+}
+
+export function setUserLocation(position) {
+  return {
+    type: 'SET_USER_LOCATION',
+    position,
+  };
+}
