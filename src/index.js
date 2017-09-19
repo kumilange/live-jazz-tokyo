@@ -8,7 +8,6 @@ import './styles/index.css';
 import reducer from './reducers';
 import App from './containers/App';
 import Event from './containers/Event';
-import Reserve from './containers/Reserve';
 
 const store = createStore(reducer);
 ReactDOM.render(
@@ -17,7 +16,6 @@ ReactDOM.render(
       <div id="router">
         <Route exact path="/" component={App} />
         <Route exact path="/event/:id" component={Event} />
-        <Route exact path="/reserve/:id" component={Reserve} />
       </div>
     </BrowserRouter>
   </Provider>,

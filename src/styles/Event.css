@@ -1,0 +1,9 @@
+.StripeCheckout {
+  border-radius: 3px !important;
+  background: brown !important;
+}
+
+.StripeCheckout span {
+  background: brown !important;
+  box-shadow: 0 0 0 0 !important;
+}
