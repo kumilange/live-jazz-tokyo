@@ -1,6 +1,8 @@
 import data from '../data/events.json';
 
 export function initializeEvents() {
+  // fetch /api/events?(time range), frontend requests 24h by default
+
   return {
     type: 'INITIALIZE_EVENT_DATA',
     data,
