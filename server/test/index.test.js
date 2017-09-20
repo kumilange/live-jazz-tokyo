@@ -25,10 +25,11 @@ describe('Events route /events', () => {
 
   it('should get events data within date range', async () => {
     // setup artist, venue, event_img tables
-    const artist = { name: 'Kumiko Haraguchi' };
-    const venue = { lat: '1', lng: '1', name: '杜のうた' };
+    const artist = { name: 'Name1' };
+    const venue = { lat: '1', lng: '1', name: 'Venue1' };
     const image = fs.readFileSync(path.join(__dirname, '../data/img/event_0.jpg')).toString('base64');
     const eventImg = { image };
+    const eventName = ['eventBefore', 'eventInRange', 'eventAfter'];
 
     // insert data to artist, venue, event_img tables
     const artistId = (await db('artist').insert(artist).returning('id'))[0];
@@ -40,7 +41,7 @@ describe('Events route /events', () => {
       artist_id: artistId,
       venue_id: venueId,
       event_image_id: eventImageId,
-      name: 'event1',
+      name: eventName[0],
       price: 1,
       start: new Date('2017-01-01 19:00').getTime(),
       end: new Date('2017-01-01 21:00').getTime(),
@@ -50,7 +51,7 @@ describe('Events route /events', () => {
       artist_id: artistId,
       venue_id: venueId,
       event_image_id: eventImageId,
-      name: 'event2',
+      name: eventName[1],
       price: 2,
       start: new Date('2017-01-02 19:00').getTime(),
       end: new Date('2017-01-02 21:00').getTime(),
@@ -60,7 +61,7 @@ describe('Events route /events', () => {
       artist_id: artistId,
       venue_id: venueId,
       event_image_id: eventImageId,
-      name: 'event3',
+      name: eventName[2],
       price: 3,
       start: new Date('2017-01-03 19:00').getTime(),
       end: new Date('2017-01-03 21:00').getTime(),
@@ -72,9 +73,9 @@ describe('Events route /events', () => {
 
     const expected = [
       { id: eventIdList[1],
-        name: 'event2',
-        artist: 'Kumiko Haraguchi',
-        venue: '杜のうた',
+        name: eventName[1],
+        artist: artist.name,
+        venue: venue.name,
         lat: 1,
         lng: 1,
         price: 2,
@@ -142,10 +143,12 @@ describe('EventDetails route /eventdetails', () => {
 
   it('should get event detail', async () => {
     // setup artist, venue, event_img tables
-    const artist = { name: 'Kumiko Haraguchi' };
-    const venue = { lat: '1', lng: '1', name: '杜のうた' };
+    const artist = { name: 'Name1' };
+    const venue = { lat: '1', lng: '1', name: 'Venue1' };
     const image = fs.readFileSync(path.join(__dirname, '../data/img/event_0.jpg')).toString('base64');
     const eventImg = { image };
+    const eventName = ['eventBefore', 'eventInRange', 'eventAfter'];
+    const desc = ['desc1', 'desc2', 'desc3'];
 
     // insert data to artist, venue, event_img tables
     const artistId = (await db('artist').insert(artist).returning('id'))[0];
@@ -157,46 +160,45 @@ describe('EventDetails route /eventdetails', () => {
       artist_id: artistId,
       venue_id: venueId,
       event_image_id: eventImageId,
-      name: 'event1',
+      name: eventName[0],
       price: 1,
       start: new Date('2017-01-01 19:00').getTime(),
       end: new Date('2017-01-01 21:00').getTime(),
-      desc: 'desc1',
+      desc: desc[0],
     },
     {
       artist_id: artistId,
       venue_id: venueId,
       event_image_id: eventImageId,
-      name: 'event2',
+      name: eventName[1],
       price: 2,
       start: new Date('2017-01-02 19:00').getTime(),
       end: new Date('2017-01-02 21:00').getTime(),
-      desc: 'desc2',
+      desc: desc[1],
     },
     {
       artist_id: artistId,
       venue_id: venueId,
       event_image_id: eventImageId,
-      name: 'event3',
+      name: eventName[2],
       price: 3,
       start: new Date('2017-01-03 19:00').getTime(),
       end: new Date('2017-01-03 21:00').getTime(),
-      desc: 'desc3',
+      desc: desc[2],
     }];
-
     // insert event table
     const eventIdList = await db.batchInsert('event', events).returning('id');
 
     const expected =
       { id: eventIdList[1],
-        name: 'event2',
-        artist: 'Kumiko Haraguchi',
-        venue: '杜のうた',
+        name: eventName[1],
+        artist: artist.name,
+        venue: venue.name,
         image,
         price: 2,
         start: parseInt(parseFloat(new Date('2017-01-02 19:00').getTime()), 10),
         end: parseInt(parseFloat(new Date('2017-01-02 21:00').getTime()), 10),
-        description: 'desc2',
+        description: desc[1],
       };
 
     // exercise
