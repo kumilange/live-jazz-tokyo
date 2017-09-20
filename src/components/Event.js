@@ -33,7 +33,7 @@ class Event extends Component {
     if (res.OK) {
       history.push('/confirmation');
     } else {
-      alert('u dum u duum');
+      window.alert('u dum u duum');
     }
   }
 
@@ -63,6 +63,11 @@ Event.propTypes = {
   event: PropTypes.shape().isRequired,
   match: PropTypes.shape().isRequired,
   receivedEventDetails: PropTypes.func.isRequired,
+  history: PropTypes.shape(),
+};
+
+Event.defaultProps = {
+  history: undefined,
 };
 
 export default Event;

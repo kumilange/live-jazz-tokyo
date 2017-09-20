@@ -7,7 +7,6 @@ const router = express.Router();
 router.post('/charge', (req, res) => {
   console.log('body', req.body);
   const tokenID = req.body.stripeToken.id;
-  const eventID = req.body.eventID;
 
   // Charge the user's card:
   stripe.charges.create({
@@ -24,6 +23,7 @@ router.post('/charge', (req, res) => {
     } else {
       response = {
         OK: true,
+        message: charge,
       };
     }
     res.status(200).json(response);
