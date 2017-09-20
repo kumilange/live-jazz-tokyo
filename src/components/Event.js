@@ -20,7 +20,8 @@ class Event extends Component {
     this.props.receivedEventDetails(event);
   }
 
-  onReceiveChargeResponse = (res) => {
+  eject = (res) => {
+    this.props.onReceiveChargeResponse(res.message);
     if (res.OK) {
       this.props.history.push('/confirmation');
     } else {
@@ -39,7 +40,7 @@ class Event extends Component {
       },
     })).json();
 
-    this.onReceiveChargeResponse(res);
+    this.eject(res);
   }
 
   render() {
@@ -69,6 +70,7 @@ Event.propTypes = {
   match: PropTypes.shape().isRequired,
   receivedEventDetails: PropTypes.func.isRequired,
   history: PropTypes.shape(),
+  onReceiveChargeResponse: PropTypes.func.isRequired,
 };
 
 Event.defaultProps = {

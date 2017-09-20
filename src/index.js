@@ -8,7 +8,7 @@ import './styles/index.css';
 import reducer from './reducers';
 import App from './containers/App';
 import Event from './containers/Event';
-import Confirmation from './components/Confirmation';
+import Confirmation from './containers/Confirmation';
 
 const store = createStore(reducer);
 ReactDOM.render(
