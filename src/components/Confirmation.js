@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Confirmation extends Component {
   render() {
-    return(
+    return (
       <div>
         Your reservation is complete
       </div>
