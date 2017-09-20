@@ -3,6 +3,7 @@ const initialState = {
   selectedEvent: {},
   eventDetails: {},
   userLocation: {},
+  paymentStatus: undefined,
 };
 
 const reducer = (state = initialState, action) => {

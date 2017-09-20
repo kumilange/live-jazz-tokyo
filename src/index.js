@@ -8,6 +8,7 @@ import './styles/index.css';
 import reducer from './reducers';
 import App from './containers/App';
 import Event from './containers/Event';
+import Confirmation from './components/Confirmation';
 
 const store = createStore(reducer);
 ReactDOM.render(
@@ -16,6 +17,7 @@ ReactDOM.render(
       <div id="router">
         <Route exact path="/" component={App} />
         <Route exact path="/event/:id" component={Event} />
+        <Route exact path="/confirmation" component={Confirmation} />
       </div>
     </BrowserRouter>
   </Provider>,

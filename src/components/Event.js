@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Stripe from 'react-stripe-checkout';
+import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import '../styles/Event.css';
+
+let paymentStatus = undefined;
 
 class Event extends Component {
   componentWillMount() {
@@ -20,7 +24,7 @@ class Event extends Component {
     this.props.receivedEventDetails(event);
   }
 
-  async onToken(stripeToken) {
+  async onToken(stripeToken, history) {
     const res = await (await fetch('/api/charge', {
       method: "POST",
       body: JSON.stringify({
@@ -32,9 +36,13 @@ class Event extends Component {
     })).json();
     console.log(res);
     if(res.OK) {
+      history.push('/confirmation');
+      console.log('history', history);
       console.log('IT WORKS');
+      paymentStatus = 'OK';
     } else {
       console.log('IT\'S BUSTED!');
+      paymentStatus = 'FAILED';
     }
   }
 
@@ -52,7 +60,7 @@ class Event extends Component {
         <div>DESCRIPTION { this.props.event.description }</div>
         <Stripe
           label={'Reserve'}
-          token={this.onToken}
+          token={ (token) => { this.onToken(token, this.props.history) } }
           stripeKey="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
         />
       </div>
