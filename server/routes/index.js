@@ -1,10 +1,34 @@
 const express = require('express');
 
+const stripe = require("stripe")("sk_test_BQokikJOvBiI2HlWgH4olfQ2");
 const router = express.Router();
 
-/* GET home page. */
-router.get('/', (req, res) => {
-  res.render('index', { title: 'Live Jazz' });
+router.post('/charge', (req, res) => {
+ 
+  console.log('body', req.body);
+  const token = req.body.stripeToken;
+  const eventID = req.body.eventID;
+
+  // Charge the user's card:
+  stripe.charges.create({
+    amount: 1000,
+    currency: "usd",
+    description: "Example charge",
+    source: token,
+  }, function(err, charge) {
+    let response;
+    if(err) {
+      response = {
+        OK: false
+      }
+    } else {
+      response = {
+        OK: true
+      }
+    }
+    res.status(200).json(response);
+  });
+
 });
 
 module.exports = router;
