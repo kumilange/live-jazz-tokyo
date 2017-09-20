@@ -20,6 +20,14 @@ class Event extends Component {
     this.props.receivedEventDetails(event);
   }
 
+  onReceiveChargeResponse = (res) => {
+    if (res.OK) {
+      this.props.history.push('/confirmation');
+    } else {
+      window.alert('u dum u duum');
+    }
+  }
+
   async onToken(stripeToken, history) {
     const res = await (await fetch('/api/charge', {
       method: 'POST',
@@ -30,11 +38,8 @@ class Event extends Component {
         'Content-Type': 'application/json',
       },
     })).json();
-    if (res.OK) {
-      history.push('/confirmation');
-    } else {
-      window.alert('u dum u duum');
-    }
+
+    this.onReceiveChargeResponse(res);
   }
 
   render() {
@@ -51,7 +56,7 @@ class Event extends Component {
         <div>DESCRIPTION { this.props.event.description }</div>
         <Stripe
           label={'Reserve'}
-          token={(token) => { this.onToken(token, this.props.history); }}
+          token={(token) => { this.onToken(token); }}
           stripeKey="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
         />
       </div>
