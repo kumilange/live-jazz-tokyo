@@ -10,6 +10,7 @@ import Header from './components/Header';
 import App from './containers/App';
 import Event from './containers/Event';
 import Footer from './components/Footer';
+import Confirmation from './containers/Confirmation';
 
 const store = createStore(reducer);
 ReactDOM.render(
@@ -17,10 +18,9 @@ ReactDOM.render(
     <BrowserRouter>
       <div id="router" className="flex column">
         <Header />
-        <main className="grow">
-          <Route exact path="/" component={App} />
-          <Route exact path="/event/:id" component={Event} />
-        </main>
+        <Route exact path="/" component={App} />
+        <Route exact path="/event/:id" component={Event} />
+        <Route exact path="/confirmation" component={Confirmation} />
         <Footer />
       </div>
     </BrowserRouter>

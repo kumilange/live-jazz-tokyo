@@ -27,3 +27,10 @@ export function setUserLocation(position) {
     position,
   };
 }
+
+export function setChargeResponse(message) {
+  return {
+    type: 'SET_CHARGE_RESPONSE',
+    message,
+  };
+}
