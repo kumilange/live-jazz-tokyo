@@ -59,6 +59,11 @@ class Event extends Component {
           label={'Reserve'}
           token={(token) => { this.onToken(token); }}
           stripeKey="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+          currency="JPY"
+          name="Live Jazz Co."
+          image="../logo.png"
+          description={`1 ticket for ${this.props.event.name}`}
+          amount={2000}
         />
       </div>
     );
