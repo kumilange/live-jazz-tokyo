@@ -31,43 +31,41 @@ describe('Events route', () => {
     const venue = { lat: '1', lng: '1', name: '杜のうた' }
     const image = fs.readFileSync(path.join(__dirname, `../data/img/event_0.jpg`)).toString('base64');
     const event_img = { image }
+
+    const artist_id = (await db('artist').insert(artist).returning('id'))[0];
+    const venue_id = (await db('venue').insert(venue).returning('id'))[0];
+    const event_image_id = (await db('event_img').insert(event_img).returning('id'))[0];
+    console.log("artist id", artist_id)
+    console.log("venue_id id", venue_id)
+    console.log("event_image_id id", event_image_id)
     const events = [{
-      id: 1,
-      name: 'before event',
-      artist: 'artist1',
-      venue: 'venue1',
-      lat: '1',
-      lng: '1',
+      artist_id,
+      venue_id,
+      event_image_id,
+      name: 'event1',
       price: 1,
       start: new Date('2017-01-01 19:00').getTime(),
       end: new Date('2017-01-01 21:00').getTime()
     },
     {
-      id: 2,
-      name: 'during event',
-      artist: 'artist2',
-      venue: 'venue2',
-      lat: '2',
-      lng: '2',
+      artist_id,
+      venue_id,
+      event_image_id,
+      name: 'event2',
       price: 2,
       start: new Date('2017-01-02 19:00').getTime(),
       end: new Date('2017-01-02 21:00').getTime()
     },
     {
-      id: 3,
-      name: 'after event',
-      artist: 'artist3',
-      venue: 'venue3',
-      lat: '3',
-      lng: '3',
+      artist_id,
+      venue_id,
+      event_image_id,
+      name: 'event3',
       price: 3,
       start: new Date('2017-01-03 19:00').getTime(),
       end: new Date('2017-01-03 21:00').getTime()
     }];
 
-    await db('artist').insert(artist)
-    await db('venue').insert(venue)
-    await db('event_img').insert(event_img)
     const expected = await db.batchInsert('event', events).returning('*');
 
     // exercise
