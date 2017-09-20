@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "yarn build && node ./server/bin/www",
-    "test": "yarn build && yarn lint && NODE_ENV=test mocha --recursive server/test && yarn test:frontend",
-    "test:backend": "cd server && mocha --recursive test",
+    "start": "yarn build && NODE_ENV=production node ./server/bin/www",
+    "test": "yarn lint && NODE_ENV=test mocha --recursive server/test --opts server/test/mocha.opts && yarn test:frontend",
+    "test:backend": "NODE_ENV=test mocha --recursive server/test --opts server/test/mocha.opts",
     "test:frontend": "react-scripts test --env=jsdom",
     "backend": "nodemon ./server/bin/www",
     "frontend": "react-scripts start",
