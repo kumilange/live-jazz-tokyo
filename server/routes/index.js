@@ -5,7 +5,6 @@ const stripe = require('stripe')('sk_test_BQokikJOvBiI2HlWgH4olfQ2');
 const router = express.Router();
 
 router.post('/charge', (req, res) => {
-  console.log('body', req.body);
   const tokenID = req.body.stripeToken.id;
 
   // Charge the user's card:

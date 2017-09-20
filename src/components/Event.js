@@ -20,16 +20,7 @@ class Event extends Component {
     this.props.receivedEventDetails(event);
   }
 
-  eject = (res) => {
-    this.props.onReceiveChargeResponse(res.message);
-    if (res.OK) {
-      this.props.history.push('/confirmation');
-    } else {
-      window.alert('u dum u duum');
-    }
-  }
-
-  async onToken(stripeToken, history) {
+  async onToken(stripeToken) {
     const res = await (await fetch('/api/charge', {
       method: 'POST',
       body: JSON.stringify({
@@ -41,6 +32,15 @@ class Event extends Component {
     })).json();
 
     this.eject(res);
+  }
+
+  eject(res) {
+    this.props.onReceiveChargeResponse(res.message);
+    if (res.OK) {
+      this.props.history.push('/confirmation');
+    } else {
+      window.alert('u dum u duum');
+    }
   }
 
   render() {

@@ -4,7 +4,7 @@ const initialState = {
   eventDetails: {},
   userLocation: {},
   chargeResponse: undefined,
-}
+};
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {

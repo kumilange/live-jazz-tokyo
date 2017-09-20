@@ -21,10 +21,10 @@ class Confirmation extends Component {
 
 Confirmation.propTypes = {
   chargeResponse: PropTypes.shape(),
-}
+};
 
 Confirmation.defaultProps = {
   chargeResponse: undefined,
-}
+};
 
 export default Confirmation;
