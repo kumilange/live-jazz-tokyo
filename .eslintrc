@@ -6,6 +6,7 @@
     "func-names": ["error", "never"],
     "no-console": "off",
     "arrow-body-style": "off",
+    "class-methods-use-this": "off"
   },
 
   "globals": {
@@ -15,6 +16,6 @@
     "describe": true,
     "navigator": true,
     "URL": true,
-    "fetch": true,
+    "fetch": true
   }
 }
