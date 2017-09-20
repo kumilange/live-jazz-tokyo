@@ -2,71 +2,86 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const knex = require('knex');
-const assert = chai.assert;
-const expect = chai.expect;
 const path = require('path');
 const fs = require('fs');
 const querystring = require('querystring');
 
+const expect = chai.expect;
+
 const app = require('../app');
 const config = require('../../knexfile');
+
 const db = knex(config);
 
 chai.use(chaiHttp);
 
-describe('Events route', () => {
-  beforeEach(async ()=> {
+describe('Events route /events', () => {
+  beforeEach(async () => {
+    await db('event').del();
     await db('artist').del();
     await db('venue').del();
     await db('event_img').del();
-    await db('event').del();
-  })
+  });
 
   it('should get events data within date range', async () => {
+    // setup artist, venue, event_img tables
+    const artist = { name: 'Kumiko Haraguchi' };
+    const venue = { lat: '1', lng: '1', name: '杜のうた' };
+    const image = fs.readFileSync(path.join(__dirname, '../data/img/event_0.jpg')).toString('base64');
+    const eventImg = { image };
 
-    // setup
-    // insert the simplest data possible to satisfy later assertion
-    //            ^^^^^^^^^^^^^^^^^^^^^^ (not random production data)
-    const artist = { name: 'Kumiko Haraguchi'}
-    const venue = { lat: '1', lng: '1', name: '杜のうた' }
-    const image = fs.readFileSync(path.join(__dirname, `../data/img/event_0.jpg`)).toString('base64');
-    const event_img = { image }
+    // insert data to artist, venue, event_img tables
+    const artistId = (await db('artist').insert(artist).returning('id'))[0];
+    const venueId = (await db('venue').insert(venue).returning('id'))[0];
+    const eventImageId = (await db('event_img').insert(eventImg).returning('id'))[0];
 
-    const artist_id = (await db('artist').insert(artist).returning('id'))[0];
-    const venue_id = (await db('venue').insert(venue).returning('id'))[0];
-    const event_image_id = (await db('event_img').insert(event_img).returning('id'))[0];
-    console.log("artist id", artist_id)
-    console.log("venue_id id", venue_id)
-    console.log("event_image_id id", event_image_id)
+    // setup event table
     const events = [{
-      artist_id,
-      venue_id,
-      event_image_id,
+      artist_id: artistId,
+      venue_id: venueId,
+      event_image_id: eventImageId,
       name: 'event1',
       price: 1,
       start: new Date('2017-01-01 19:00').getTime(),
-      end: new Date('2017-01-01 21:00').getTime()
+      end: new Date('2017-01-01 21:00').getTime(),
+      desc: 'desc1',
     },
     {
-      artist_id,
-      venue_id,
-      event_image_id,
+      artist_id: artistId,
+      venue_id: venueId,
+      event_image_id: eventImageId,
       name: 'event2',
       price: 2,
       start: new Date('2017-01-02 19:00').getTime(),
-      end: new Date('2017-01-02 21:00').getTime()
+      end: new Date('2017-01-02 21:00').getTime(),
+      desc: 'desc2',
     },
     {
-      artist_id,
-      venue_id,
-      event_image_id,
+      artist_id: artistId,
+      venue_id: venueId,
+      event_image_id: eventImageId,
       name: 'event3',
       price: 3,
       start: new Date('2017-01-03 19:00').getTime(),
-      end: new Date('2017-01-03 21:00').getTime()
+      end: new Date('2017-01-03 21:00').getTime(),
+      desc: 'desc3',
     }];
 
-    const expected = await db.batchInsert('event', events).returning('*');
+    // insert event table
+    const eventIdList = await db.batchInsert('event', events).returning('id');
+
+    const expected = [
+      { id: eventIdList[1],
+        name: 'event2',
+        artist: 'Kumiko Haraguchi',
+        venue: '杜のうた',
+        lat: 1,
+        lng: 1,
+        price: 2,
+        start: parseFloat(new Date('2017-01-02 19:00').getTime()),
+        end: parseFloat(new Date('2017-01-02 21:00').getTime()),
+      },
+    ];
 
     // exercise
     const now = new Date('2017-01-02 00:00').getTime();
@@ -78,13 +93,145 @@ describe('Events route', () => {
     const query = querystring.stringify(params);
 
     const result = await chai.request(app)
-      .get(`/events?${query}`)
+      .get('/api/events')
+      .query(query)
       .send();
 
     // assert
     expect(result.body).to.deep.equal(expected);
+  });
 
-    // teardown
+  it('should return empty array when there is no data', async () => {
+    const expected = [];
+
+    // exercise
+    const now = new Date('2017-01-02 00:00').getTime();
+    const MS_24_HOUR = 1000 * 60 * 60 * 24;
+    const params = {
+      start: now,
+      end: now + MS_24_HOUR,
+    };
+    const query = querystring.stringify(params);
+
+    const result = await chai.request(app)
+      .get('/api/events')
+      .query(query)
+      .send();
+
+    // assert
+    expect(result.body).to.deep.equal(expected);
+  });
+
+  // teardown
+  afterEach(async () => {
+    await db('event').del();
+    await db('artist').del();
+    await db('venue').del();
+    await db('event_img').del();
+  });
+});
+
+
+describe('EventDetails route /eventdetails', () => {
+  beforeEach(async () => {
+    await db('event').del();
+    await db('artist').del();
+    await db('venue').del();
+    await db('event_img').del();
+  });
+
+  it('should get event detail', async () => {
+    // setup artist, venue, event_img tables
+    const artist = { name: 'Kumiko Haraguchi' };
+    const venue = { lat: '1', lng: '1', name: '杜のうた' };
+    const image = fs.readFileSync(path.join(__dirname, '../data/img/event_0.jpg')).toString('base64');
+    const eventImg = { image };
+
+    // insert data to artist, venue, event_img tables
+    const artistId = (await db('artist').insert(artist).returning('id'))[0];
+    const venueId = (await db('venue').insert(venue).returning('id'))[0];
+    const eventImageId = (await db('event_img').insert(eventImg).returning('id'))[0];
+
+    // setup event table
+    const events = [{
+      artist_id: artistId,
+      venue_id: venueId,
+      event_image_id: eventImageId,
+      name: 'event1',
+      price: 1,
+      start: new Date('2017-01-01 19:00').getTime(),
+      end: new Date('2017-01-01 21:00').getTime(),
+      desc: 'desc1',
+    },
+    {
+      artist_id: artistId,
+      venue_id: venueId,
+      event_image_id: eventImageId,
+      name: 'event2',
+      price: 2,
+      start: new Date('2017-01-02 19:00').getTime(),
+      end: new Date('2017-01-02 21:00').getTime(),
+      desc: 'desc2',
+    },
+    {
+      artist_id: artistId,
+      venue_id: venueId,
+      event_image_id: eventImageId,
+      name: 'event3',
+      price: 3,
+      start: new Date('2017-01-03 19:00').getTime(),
+      end: new Date('2017-01-03 21:00').getTime(),
+      desc: 'desc3',
+    }];
+
+    // insert event table
+    const eventIdList = await db.batchInsert('event', events).returning('id');
+
+    const expected =
+      { id: eventIdList[1],
+        name: 'event2',
+        artist: 'Kumiko Haraguchi',
+        venue: '杜のうた',
+        image,
+        price: 2,
+        start: parseInt(parseFloat(new Date('2017-01-02 19:00').getTime()), 10),
+        end: parseInt(parseFloat(new Date('2017-01-02 21:00').getTime()), 10),
+        description: 'desc2',
+      };
+
+    // exercise
+    const query = querystring.stringify({ id: eventIdList[1] });
+
+    const result = await chai.request(app)
+      .get('/api/eventdetails')
+      .query(query)
+      .send();
+
+    // assert
+    expect(result.body).to.deep.equal(expected);
+  });
+
+  it('should return empty object when there is no data', async () => {
+    const expected = {};
+
+    // exercise
+    const query = querystring.stringify({ id: 1 });
+
+    const result = await chai.request(app)
+      .get('/api/eventdetails')
+      .query(query)
+      .send();
+
+    // assert
+    expect(result.body).to.deep.equal(expected);
+  });
+
+  // teardown
+  afterEach(async () => {
+    await db('event').del();
+    await db('artist').del();
+    await db('venue').del();
+    await db('event_img').del();
   });
 });
 
