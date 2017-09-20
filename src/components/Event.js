@@ -20,8 +20,22 @@ class Event extends Component {
     this.props.receivedEventDetails(event);
   }
 
-  onToken(token) {
-    console.log(token);
+  async onToken(stripeToken) {
+    const res = await (await fetch('/api/charge', {
+      method: "POST",
+      body: JSON.stringify({
+        stripeToken
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })).json();
+    console.log(res);
+    if(res.OK) {
+      console.log('IT WORKS');
+    } else {
+      console.log('IT\'S BUSTED!');
+    }
   }
 
   render() {

@@ -6,15 +6,15 @@ const router = express.Router();
 router.post('/charge', (req, res) => {
  
   console.log('body', req.body);
-  const token = req.body.stripeToken;
+  const tokenID = req.body.stripeToken.id;
   const eventID = req.body.eventID;
 
   // Charge the user's card:
   stripe.charges.create({
     amount: 1000,
-    currency: "usd",
+    currency: "jpy",
     description: "Example charge",
-    source: token,
+    source: tokenID,
   }, function(err, charge) {
     let response;
     if(err) {
