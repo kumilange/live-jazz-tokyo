@@ -20,8 +20,27 @@ class Event extends Component {
     this.props.receivedEventDetails(event);
   }
 
-  onToken(token) {
-    console.log(token);
+  async onToken(stripeToken) {
+    const res = await (await fetch('/api/charge', {
+      method: 'POST',
+      body: JSON.stringify({
+        stripeToken,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })).json();
+
+    this.eject(res);
+  }
+
+  eject(res) {
+    this.props.onReceiveChargeResponse(res.message);
+    if (res.OK) {
+      this.props.history.push('/confirmation');
+    } else {
+      window.alert('u dum u duum');
+    }
   }
 
   render() {
@@ -38,7 +57,7 @@ class Event extends Component {
         <div>DESCRIPTION { this.props.event.description }</div>
         <Stripe
           label={'Reserve'}
-          token={this.onToken}
+          token={(token) => { this.onToken(token); }}
           stripeKey="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
           currency="JPY"
           name="Live Jazz Co."
@@ -55,6 +74,12 @@ Event.propTypes = {
   event: PropTypes.shape().isRequired,
   match: PropTypes.shape().isRequired,
   receivedEventDetails: PropTypes.func.isRequired,
+  history: PropTypes.shape(),
+  onReceiveChargeResponse: PropTypes.func.isRequired,
+};
+
+Event.defaultProps = {
+  history: undefined,
 };
 
 export default Event;

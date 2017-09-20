@@ -3,6 +3,7 @@ const initialState = {
   selectedEvent: {},
   eventDetails: {},
   userLocation: {},
+  chargeResponse: undefined,
 };
 
 const reducer = (state = initialState, action) => {
@@ -17,6 +18,8 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, { eventDetails: action.event });
     case 'SET_USER_LOCATION':
       return Object.assign({}, state, { userLocation: action.position });
+    case 'SET_CHARGE_RESPONSE':
+      return Object.assign({}, state, { chargeResponse: action.message });
     default:
       console.log('UNKNOWN STATE!');
       return state;
