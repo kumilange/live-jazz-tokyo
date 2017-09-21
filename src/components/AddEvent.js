@@ -6,7 +6,7 @@ class AddEvent extends Component {
     const failed = !this.props.addEventResponse.addSuccess && this.props.addEventResponse.addSuccess !== undefined;
     return (
       <div>
-        <form onSubmit={event => this.props.onFormSubmit(event, this.props.addEventFields)}>
+        <form onSubmit={event => this.props.onFormSubmit(event, this.props.addEventFields, this.props.history)}>
           <div>
             <label htmlFor="eventName">Name:</label>
             <input

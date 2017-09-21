@@ -113,7 +113,7 @@ export function setEndTimeField(event) {
   };
 }
 
-export function addNewEvent(event) {
+export function addNewEvent(event, history) {
   return async (dispatch) => {
     try {
       const res = await (await fetch('/api/addevent', {
@@ -127,6 +127,8 @@ export function addNewEvent(event) {
         type: 'SET_ADD_EVENT_RESPONSE',
         addEventResponse: res,
       });
+      history.push('/event/' + res.eventID)
+      console.log(res);
     } catch (err) {
       console.error(err);
     }

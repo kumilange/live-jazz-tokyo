@@ -39,9 +39,9 @@ const mapDispatchToProps = dispatch => ({
   onEndTimeInput: (event) => {
     dispatch(setEndTimeField(event));
   },
-  onFormSubmit: (event, addEventFields) => {
+  onFormSubmit: (event, addEventFields, history) => {
     event.preventDefault();
-    dispatch(addNewEvent(addEventFields));
+    dispatch(addNewEvent(addEventFields, history));
   },
 });
 

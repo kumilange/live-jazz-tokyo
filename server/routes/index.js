@@ -113,8 +113,8 @@ router.post('/addevent', async (req, res) => {
         end: req.body.endTime
       }])
       .returning('id');
-    console.log("eventid", eventID)
-    res.status(200).json({ addSuccess: true, message: 'YAY', eventID });
+    console.log("eventid", eventID[0] )
+    res.status(200).json({ addSuccess: true, message: 'YAY', eventID: eventID[0] });
   } catch (err) {
     console.log(err);
     res.status(400).json({ addSuccess: false, message: 'Insert failed' });
