@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "yarn build && node ./server/bin/www",
-    "test": "yarn build && yarn lint && mocha --recursive server/test && CI=true react-scripts test --env=jsdom",
-    "test:backend": "mocha --recursive server/test",
+    "start": "yarn build && NODE_ENV=production node ./server/bin/www",
+    "test": "yarn lint && yarn test:backend && yarn test:frontend",
+    "test:backend": "NODE_ENV=test mocha --recursive server/test --opts server/test/mocha.opts",
     "test:frontend": "react-scripts test --env=jsdom",
     "backend": "nodemon ./server/bin/www",
     "frontend": "react-scripts start",
@@ -14,7 +14,8 @@
     "lint": "eslint .",
     "lintfix": "eslint . --fix",
     "migrate": "knex migrate:latest --knexfile knexfile.js",
-    "rollback": "knex migrate:rollback --knexfile knexfile.js"
+    "rollback": "knex migrate:rollback --knexfile knexfile.js",
+    "seed": "knex seed:run --knexfile knexfile.js"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
@@ -33,9 +34,9 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.13",
-    "react-stripe-checkout": "^2.6.3",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
+    "react-stripe-checkout": "^2.6.3",
     "stripe": "^5.0.0"
   },
   "devDependencies": {
@@ -47,8 +48,9 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.3.0",
-    "mocha": "^3.5.3",
+    "mocha": "3.5.0",
     "nodemon": "^1.12.0",
+    "querystring": "^0.2.0",
     "react-test-renderer": "^15.6.1",
     "sinon": "^3.3.0"
   },

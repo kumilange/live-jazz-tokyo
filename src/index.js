@@ -12,7 +12,11 @@ import Event from './containers/Event';
 import Confirmation from './containers/Confirmation';
 import AddEvent from './containers/AddEvent';
 
-const store = createStore(reducer, applyMiddleware(thunk));
+const store = createStore(
+  reducer,
+  applyMiddleware(thunk),
+);
+
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>

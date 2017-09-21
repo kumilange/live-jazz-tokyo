@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 
 const knex = require('knex');
-const knexConfig = require('../../knexfile');
+const knexConfig = require('../knexfile');
 
 const db = knex(knexConfig);
 
@@ -21,19 +21,12 @@ const venues = [
   { lat: rndLat(), lng: rndLng(), name: 'november eleventh' },
 ];
 
-const promises = venues.map(async (venue) => {
-  try {
-    const id = await db('venue')
+exports.seed = () => {
+  const promises = venues.map((venue) => {
+    return db('venue')
       .insert(venue)
       .returning('id');
-    console.log(`${venue.name} inserted with id ${id}`);
-  } catch (err) {
-    console.error(`Inserting ${venue.name} failed!\n${err}`);
-  }
-});
-
-Promise.all(promises)
-  .then(() => {
-    console.log('All done!');
-    process.exit();
   });
+
+  return Promise.all(promises);
+};
