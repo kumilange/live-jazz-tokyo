@@ -1,6 +1,9 @@
 const knex = require('knex');
 const config = require('../../knexfile');
 
+console.log('DATABASE_URL=', process.env.DATABASE_URL);
+console.log('config=', config);
+
 const db = knex(config);
 
 (async () => {
