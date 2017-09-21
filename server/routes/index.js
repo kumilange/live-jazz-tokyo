@@ -30,8 +30,12 @@ router.post('/charge', (req, res) => {
 });
 
 router.post('/addevent', (req, res) => {
-  console.log('body', req.body);
-  res.status(200).json({ message: 'YAY' });
-})
+  const databaseInsertSuccess = true;
+  if (databaseInsertSuccess) {
+    res.status(200).json({ addSuccess: true, message: 'YAY' });
+  } else {
+    res.status(200).json({ addSuccess: false, message: 'WOMP WOMP' });
+  }
+});
 
 module.exports = router;

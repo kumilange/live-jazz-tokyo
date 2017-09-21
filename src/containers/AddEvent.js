@@ -9,7 +9,7 @@ import {
   setAddressField,
   setPriceField,
   setStartTimeField,
-  setEndTimeField
+  setEndTimeField,
 } from '../actions';
 
 const mapStateToProps = state => ({
@@ -41,7 +41,6 @@ const mapDispatchToProps = dispatch => ({
   },
   onFormSubmit: (event, addEventFields) => {
     event.preventDefault();
-    console.log(addEventFields);
     dispatch(addNewEvent(addEventFields));
   },
 });
