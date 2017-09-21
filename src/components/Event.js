@@ -25,7 +25,7 @@ class Event extends Component {
   }
 
   eject(res) {
-    this.props.onReceiveChargeResponse(res.message);
+    this.props.onReceiveChargeResponse(res);
     if (res.OK) {
       this.props.history.push('/confirmation');
     } else {
