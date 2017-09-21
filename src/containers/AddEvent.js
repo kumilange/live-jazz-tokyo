@@ -12,6 +12,11 @@ import {
   setEndTimeField
 } from '../actions';
 
+const mapStateToProps = state => ({
+  addEventResponse: state.addEventResponse,
+  addEventFields: state.addEventFields,
+});
+
 const mapDispatchToProps = dispatch => ({
   onEventNameInput: (event) => {
     dispatch(setEventNameField(event));
@@ -34,9 +39,11 @@ const mapDispatchToProps = dispatch => ({
   onEndTimeInput: (event) => {
     dispatch(setEndTimeField(event));
   },
-  onFormSubmit: (event) => {
-    dispatch(addNewEvent(event));
+  onFormSubmit: (event, addEventFields) => {
+    event.preventDefault();
+    console.log(addEventFields);
+    dispatch(addNewEvent(addEventFields));
   },
 });
 
-export default connect(null, mapDispatchToProps)(AddEvent);
+export default connect(mapStateToProps, mapDispatchToProps)(AddEvent);

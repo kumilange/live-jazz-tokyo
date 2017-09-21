@@ -30,8 +30,8 @@ router.post('/charge', (req, res) => {
 });
 
 router.post('/addevent', (req, res) => {
-  console.log(req.body);
-  res.status(200).json('YAY');
+  console.log('body', req.body);
+  res.status(200).json({ message: 'YAY' });
 })
 
 module.exports = router;

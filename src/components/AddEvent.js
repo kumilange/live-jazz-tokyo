@@ -2,15 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class AddEvent extends Component {
-  handleSubmit(event) {
-    event.preventDefault();
-    console.log(event.target.value);
-  }
 
   render() {
     return (
       <div>
-        <form onSubmit={this.props.onFormSubmit}>
+        <form onSubmit={(event) => this.props.onFormSubmit(event, this.props.addEventFields)}>
           <div>
               <label htmlFor="eventName">Name:</label>
               <input type="text" id="eventName" name="event_name" onChange={this.props.onEventNameInput} />
@@ -49,7 +45,20 @@ class AddEvent extends Component {
 }
 
 AddEvent.propTypes = {
-  // onSubmitNewEvent: PropTypes.func.isRequired(),
+  onFormSubmit: PropTypes.func.isRequired,
+  onEventNameInput: PropTypes.func.isRequired,
+  onArtistInput: PropTypes.func.isRequired,
+  onVenueInput: PropTypes.func.isRequired,
+  onAddressInput: PropTypes.func.isRequired,
+  onPriceInput: PropTypes.func.isRequired,
+  onStartTimeInput: PropTypes.func.isRequired,
+  onEndTimeInput: PropTypes.func.isRequired,
+  addEventResponse: PropTypes.string,
+  addEventFields: PropTypes.shape().isRequired,
 };
+
+AddEvent.defaultProps = {
+  addEventResponse: undefined,
+}
 
 export default AddEvent;

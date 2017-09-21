@@ -88,15 +88,15 @@ export function addNewEvent(event) {
   return async (dispatch) => {
     try {
       const res = await (await fetch('/api/addevent', {
-        body: {
-          event: JSON.stringify(event),
-        },
+        method: "POST",
+        body: JSON.stringify(event),
         headers: {
           "Content-Type": "application/json",
         }
       })).json();
+      console.log(res)
       dispatch({
-        type: 'SET_ADD_EVENT_RESULT',
+        type: 'SET_ADD_EVENT_RESPONSE',
         addEventResponse: res.result
       });
     } catch (err) {

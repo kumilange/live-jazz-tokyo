@@ -66,12 +66,14 @@ const reducer = (state = initialState, action) => {
       newAddEventFields = Object.assign({}, state.addEventFields, { endTime: action.value });
       newState = Object.assign({}, state, { addEventFields: newAddEventFields });
       break;
+    case 'SET_ADD_EVENT_RESPONSE':
+      newState = Object.assign({}, state, { addEventResponse: action.addEventResponse });
+      break;
     default:
-      console.log('UNKNOWN STATE!');
+      console.log('UNKNOWN ACTION', action.type);
       newState = state;
       break;
   }
-  console.log(newState.addEventFields);
   return newState;
 };
 
