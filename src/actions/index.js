@@ -57,10 +57,10 @@ export function setUserLocation(position) {
   };
 }
 
-export function setChargeResponse(message) {
+export function setChargeResponse(result) {
   return {
     type: 'SET_CHARGE_RESPONSE',
-    message,
+    result,
   };
 }
 

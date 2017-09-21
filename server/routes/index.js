@@ -77,6 +77,7 @@ router.get('/eventdetails', async (req, res) => {
 
 router.post('/charge', (req, res) => {
   const tokenID = req.body.stripeToken.id;
+  const eventID = req.body.eventID;
 
   // Charge the user's card:
   stripe.charges.create({
@@ -84,16 +85,23 @@ router.post('/charge', (req, res) => {
     currency: 'jpy',
     description: 'Example charge',
     source: tokenID,
-  }, (err, charge) => {
+  }, async (err, charge) => {
     let response;
     if (err) {
       response = {
         OK: false,
       };
     } else {
+      const result = await db('transaction')
+        .returning('id')
+        .insert({
+          event_id: eventID,
+          total: charge.amount,
+          charge_id: charge.id,
+        });
       response = {
         OK: true,
-        message: charge,
+        order_id: result[0],
       };
     }
     res.status(200).json(response);

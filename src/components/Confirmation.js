@@ -8,12 +8,11 @@ class Confirmation extends Component {
         <h3>
           Your reservation is complete!
         </h3>
-        <div>
-          Please save your confirmation details:
-        </div>
-        <div>
-          { JSON.stringify(this.props.chargeResponse) }
-        </div>
+        {this.props.chargeResponse ?
+          <div>
+            {`Please save your order number: ${this.props.chargeResponse.order_id}`}
+          </div> :
+          <div />}
       </div>
     );
   }
