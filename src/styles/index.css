@@ -1,8 +1,10 @@
 * { margin: 0; padding: 0; font-family: sans-serif; }
-.App, #router, #root { height: 100%; }
+#router, #root { height: 100%; }
 body { height: 0; min-height: 100%; }
 
 .flex { display: flex; }
 .grow { flex-grow: 1; }
 .column { flex-direction: column; }
 .center { justify-content: center; align-items: center; }
+
+#app { height: 0; }

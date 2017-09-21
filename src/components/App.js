@@ -9,7 +9,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div id="app" className="grow">
         <Map />
       </div>
     );
