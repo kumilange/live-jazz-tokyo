@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 
 const knex = require('knex');
-const knexConfig = require('../../knexfile');
+const knexConfig = require('../knexfile');
 
 const db = knex(knexConfig);
 
@@ -18,19 +18,12 @@ const artists = [
   '八木秀樹',
 ];
 
-const promises = artists.map(async (artist) => {
-  try {
-    const id = await db('artist')
+exports.seed = () => {
+  const promises = artists.map((artist) => {
+    return db('artist')
       .insert({ name: artist })
       .returning('id');
-    console.log(`${artist} inserted with id ${id}`);
-  } catch (err) {
-    console.error(`Inserting ${artist} failed!\n${err}`);
-  }
-});
-
-Promise.all(promises)
-  .then(() => {
-    console.log('All done!');
-    process.exit();
   });
+
+  return Promise.all(promises);
+};
