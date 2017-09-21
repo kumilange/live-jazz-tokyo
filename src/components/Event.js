@@ -14,6 +14,7 @@ class Event extends Component {
       method: 'POST',
       body: JSON.stringify({
         stripeToken,
+        eventID: this.props.match.params.id,
       }),
       headers: {
         'Content-Type': 'application/json',
