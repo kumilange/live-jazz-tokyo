@@ -9,6 +9,7 @@ import reducer from './reducers';
 import App from './containers/App';
 import Event from './containers/Event';
 import Confirmation from './containers/Confirmation';
+import AddEvent from './containers/AddEvent';
 
 const store = createStore(reducer);
 ReactDOM.render(
@@ -18,6 +19,7 @@ ReactDOM.render(
         <Route exact path="/" component={App} />
         <Route exact path="/event/:id" component={Event} />
         <Route exact path="/confirmation" component={Confirmation} />
+        <Route exact path="/addevent" component={AddEvent} />
       </div>
     </BrowserRouter>
   </Provider>,

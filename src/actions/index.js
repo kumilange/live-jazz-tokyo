@@ -34,3 +34,73 @@ export function setChargeResponse(message) {
     message,
   };
 }
+
+export function setEventNameField(event) {
+  return {
+    type: 'SET_EVENT_NAME_FIELD',
+    value: event.target.value,
+  };
+}
+
+export function setArtistField(event) {
+  return {
+    type: 'SET_ARTIST_FIELD',
+    value: event.target.value,
+  };
+}
+
+export function setVenueField(event) {
+  return {
+    type: 'SET_VENUE_FIELD',
+    value: event.target.value,
+  };
+}
+
+export function setAddressField(event) {
+  return {
+    type: 'SET_ADDRESS_FIELD',
+    value: event.target.value,
+  };
+}
+
+export function setPriceField(event) {
+  return {
+    type: 'SET_PRICE_FIELD',
+    value: event.target.value,
+  };
+}
+
+export function setStartTimeField(event) {
+  return {
+    type: 'SET_START_TIME_FIELD',
+    value: event.target.value,
+  };
+}
+
+export function setEndTimeField(event) {
+  return {
+    type: 'SET_END_TIME_FIELD',
+    value: event.target.value,
+  };
+}
+
+export function addNewEvent(event) {
+  return async (dispatch) => {
+    try {
+      const res = await (await fetch('/api/addevent', {
+        body: {
+          event: JSON.stringify(event),
+        },
+        headers: {
+          "Content-Type": "application/json",
+        }
+      })).json();
+      dispatch({
+        type: 'SET_ADD_EVENT_RESULT',
+        addEventResponse: res.result
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  }
+}
