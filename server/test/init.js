@@ -2,10 +2,13 @@ const knex = require('knex');
 const config = require('../../knexfile');
 
 // HACK - work around for heroku being broken
+console.log(`DATABASE_URL=`, DATABASE_URL);
 Object.keys(process.env).forEach((key) => {
   if (key.startsWith('HEROKU_POSTGRESQL')) {
-    console.log(`Replacing DATABASE_URL with ${key} because Heroku CI is broken`);
-    process.env.DATABASE_URL = process.env[key];
+    const NEWURL = process.env[key];
+    console.log(`${key}=`, NEWURL);
+    process.env.DATABASE_URL = NEWURL;
+    console.log(`new DATABASE_URL=`, process.env.DATABASE_URL);
   }
 });
 // END HACK
