@@ -1,18 +1,18 @@
 import { connect } from 'react-redux';
 import Event from '../components/Event';
 
-import { setEventDetails, setChargeResponse } from '../actions';
+import { getEventDetails, setChargeResponse } from '../actions';
 
 const mapStateToProps = state => ({
   event: state.eventDetails,
 });
 
 const mapDispatchToProps = dispatch => ({
+  onComponentDidMount: (eventID) => {
+    dispatch(getEventDetails(eventID));
+  },
   onReceiveChargeResponse: (message) => {
     dispatch(setChargeResponse(message));
-  },
-  receivedEventDetails: (event) => {
-    dispatch(setEventDetails(event));
   },
 });
 

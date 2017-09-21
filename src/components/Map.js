@@ -17,18 +17,13 @@ const geolocation = (
 );
 
 const MyMap = withGoogleMap((props) => {
-  const NUMBER_OF_MILLISECONDS_IN_ONE_DAY = 86400000;
-  const now = Date.now();
-  const currentEvents = props.events.filter((event) => {
-    return event.end > now && event.start < now + NUMBER_OF_MILLISECONDS_IN_ONE_DAY;
-  });
   return (<GoogleMap
     defaultZoom={14}
     defaultCenter={DEFAULT_CENTER}
     center={props.userLocation.lat === undefined ? DEFAULT_CENTER : props.userLocation}
   >
     {
-      currentEvents.map((event) => {
+      props.events.map((event) => {
         const position = {
           lat: event.lat,
           lng: event.lng,
@@ -43,7 +38,7 @@ const MyMap = withGoogleMap((props) => {
             <InfoWindow>
               <div>
                 <Link to={`/event/${event.id}`}>
-                  <h2>{ event.event }</h2>
+                  <h2>{ event.name }</h2>
                 </Link>
                 <h3>{ event.artist }</h3>
                 <p>{ event.venue }</p>
