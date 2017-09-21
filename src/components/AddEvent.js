@@ -3,10 +3,15 @@ import PropTypes from 'prop-types';
 
 class AddEvent extends Component {
   render() {
-    const failed = !this.props.addEventResponse.addSuccess && this.props.addEventResponse.addSuccess !== undefined;
+    const failed = !this.props.addEventResponse.addSuccess
+      && this.props.addEventResponse.addSuccess !== undefined;
     return (
       <div>
-        <form onSubmit={event => this.props.onFormSubmit(event, this.props.addEventFields, this.props.history)}>
+        <form onSubmit={(event) => {
+          this.props.onFormSubmit(event, this.props.addEventFields, this.props.history);
+        }
+        }
+        >
           <div>
             <label htmlFor="eventName">Name:</label>
             <input
@@ -73,7 +78,7 @@ class AddEvent extends Component {
           <div className="button">
             <button type="submit" >Create</button>
           </div>
-          { failed ? <p>WOMP!</p> : <div /> }
+          { failed ? <p>Submit failed!  Check data and try again.</p> : <div /> }
         </form>
       </div>
     );
@@ -91,9 +96,11 @@ AddEvent.propTypes = {
   onEndTimeInput: PropTypes.func.isRequired,
   addEventResponse: PropTypes.shape(),
   addEventFields: PropTypes.shape().isRequired,
+  history: PropTypes.shape(),
 };
 
 AddEvent.defaultProps = {
+  history: undefined,
   addEventResponse: {},
 };
 

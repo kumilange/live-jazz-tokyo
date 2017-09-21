@@ -110,10 +110,10 @@ router.post('/addevent', async (req, res) => {
         venue_id: req.body.venueID,
         price: req.body.price,
         start: req.body.startTime,
-        end: req.body.endTime
+        end: req.body.endTime,
       }])
       .returning('id');
-    console.log("eventid", eventID[0] )
+    console.log('eventid', eventID[0]);
     res.status(200).json({ addSuccess: true, message: 'YAY', eventID: eventID[0] });
   } catch (err) {
     console.log(err);

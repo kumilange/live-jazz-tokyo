@@ -127,7 +127,7 @@ export function addNewEvent(event, history) {
         type: 'SET_ADD_EVENT_RESPONSE',
         addEventResponse: res,
       });
-      history.push('/event/' + res.eventID)
+      history.push(`/event/${res.eventID}`);
       console.log(res);
     } catch (err) {
       console.error(err);
