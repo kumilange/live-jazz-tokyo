@@ -6,7 +6,6 @@ import '../styles/Event.css';
 
 class Event extends Component {
   componentDidMount() {
-    this.props.onComponentDidMount(this.props.match.params.id);
   }
 
   async onToken(stripeToken) {
@@ -63,9 +62,7 @@ class Event extends Component {
 Event.propTypes = {
   event: PropTypes.shape().isRequired,
   match: PropTypes.shape().isRequired,
-  onComponentDidMount: PropTypes.func.isRequired,
   history: PropTypes.shape(),
-  onReceiveChargeResponse: PropTypes.func.isRequired,
 };
 
 Event.defaultProps = {
