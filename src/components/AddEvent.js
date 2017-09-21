@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class AddEvent extends Component {
   render() {
     if (this.props.addEventResponse) {
-      window.alert('womp womp');
+      window.alert(this.props.addEventResponse);
     }
     return (
       <div>
