@@ -11,8 +11,8 @@ const mapDispatchToProps = dispatch => ({
   onComponentDidMount: (eventID) => {
     dispatch(getEventDetails(eventID));
   },
-  onReceiveChargeResponse: (message) => {
-    dispatch(setChargeResponse(message));
+  onReceiveChargeResponse: (result) => {
+    dispatch(setChargeResponse(result));
   },
 });
 

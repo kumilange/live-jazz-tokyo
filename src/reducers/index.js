@@ -19,7 +19,7 @@ const reducer = (state = initialState, action) => {
     case 'SET_USER_LOCATION':
       return Object.assign({}, state, { userLocation: action.position });
     case 'SET_CHARGE_RESPONSE':
-      return Object.assign({}, state, { chargeResponse: action.message });
+      return Object.assign({}, state, { chargeResponse: action.result });
     default:
       console.log('UNKNOWN STATE!');
       return state;
