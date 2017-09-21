@@ -12,5 +12,12 @@
   ],
   "buildpacks": [
 
-  ]
+  ],
+  "environments": {
+    "test": {
+      "addons":[
+        "heroku-postgresql:hobby-dev"
+      ]
+    }
+  }
 }

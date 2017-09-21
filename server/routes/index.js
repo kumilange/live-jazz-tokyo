@@ -36,10 +36,10 @@ router.get('/events', async (req, res) => {
     };
   },
   );
-
-  res.status(200).json(events);
+  res.status(200).json(events.length === 0 ? [] : events);
 });
 
+/* GET eventDetails. */
 router.get('/eventdetails', async (req, res) => {
   const result = (await db('event')
     .leftJoin('venue', 'event.venue_id', 'venue.id')
@@ -70,7 +70,7 @@ router.get('/eventdetails', async (req, res) => {
     };
   },
   );
-  res.status(200).json(result[0]);
+  res.status(200).json(result.length === 0 ? {} : result[0]);
 });
 
 module.exports = router;
