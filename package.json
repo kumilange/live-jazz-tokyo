@@ -54,7 +54,6 @@
     "react-test-renderer": "^15.6.1",
     "sinon": "^3.3.0"
   },
-  "proxy": "http://localhost:3001",
   "engines": {
     "node": ">=8.2.1"
   },
