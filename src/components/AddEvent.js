@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 
 class AddEvent extends Component {
   render() {
-    if (this.props.addEventResponse) {
-      window.alert(this.props.addEventResponse);
-    }
+    const failed = !this.props.addEventResponse.addSuccess && this.props.addEventResponse.addSuccess !== undefined;
     return (
       <div>
         <form onSubmit={event => this.props.onFormSubmit(event, this.props.addEventFields)}>
@@ -75,6 +73,7 @@ class AddEvent extends Component {
           <div className="button">
             <button type="submit" >Create</button>
           </div>
+          { failed ? <p>WOMP!</p> : <div /> }
         </form>
       </div>
     );
@@ -90,12 +89,12 @@ AddEvent.propTypes = {
   onPriceInput: PropTypes.func.isRequired,
   onStartTimeInput: PropTypes.func.isRequired,
   onEndTimeInput: PropTypes.func.isRequired,
-  addEventResponse: PropTypes.string,
+  addEventResponse: PropTypes.shape(),
   addEventFields: PropTypes.shape().isRequired,
 };
 
 AddEvent.defaultProps = {
-  addEventResponse: undefined,
+  addEventResponse: {},
 };
 
 export default AddEvent;

@@ -96,7 +96,7 @@ export function addNewEvent(event) {
       })).json();
       dispatch({
         type: 'SET_ADD_EVENT_RESPONSE',
-        addEventResponse: res.result,
+        addEventResponse: res,
       });
     } catch (err) {
       console.error(err);
