@@ -17,7 +17,7 @@ class AddEvent extends Component {
             />
           </div>
           <div>
-            <label htmlFor="artist">Artist</label>
+            <label htmlFor="artist">ArtistID</label>
             <input
               type="text"
               id="artist"
@@ -26,7 +26,7 @@ class AddEvent extends Component {
             />
           </div>
           <div>
-            <label htmlFor="venue">Venue</label>
+            <label htmlFor="venue">VenueID</label>
             <input
               type="text"
               id="venue"

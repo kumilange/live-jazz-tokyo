@@ -100,12 +100,24 @@ router.post('/charge', (req, res) => {
   });
 });
 
-router.post('/addevent', (req, res) => {
-  const databaseInsertSuccess = true;
-  if (databaseInsertSuccess) {
-    res.status(200).json({ addSuccess: true, message: 'YAY' });
-  } else {
-    res.status(200).json({ addSuccess: false, message: 'WOMP WOMP' });
+router.post('/addevent', async (req, res) => {
+  console.log(req.body);
+  try {
+    const eventID = await db('event')
+      .insert([{
+        name: req.body.eventName,
+        artist_id: req.body.artistID,
+        venue_id: req.body.venueID,
+        price: req.body.price,
+        start: req.body.startTime,
+        end: req.body.endTime
+      }])
+      .returning('id');
+    console.log("eventid", eventID)
+    res.status(200).json({ addSuccess: true, message: 'YAY', eventID });
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({ addSuccess: false, message: 'Insert failed' });
   }
 });
 

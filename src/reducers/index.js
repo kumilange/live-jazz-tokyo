@@ -7,8 +7,8 @@ const initialState = {
   addEventResponse: undefined,
   addEventFields: {
     eventName: '',
-    artist: '',
-    venue: '',
+    artistID: '',
+    venueID: '',
     address: '',
     price: '',
     startTime: '',
@@ -43,11 +43,11 @@ const reducer = (state = initialState, action) => {
       newState = Object.assign({}, state, { addEventFields: newAddEventFields });
       break;
     case 'SET_ARTIST_FIELD':
-      newAddEventFields = Object.assign({}, state.addEventFields, { artist: action.value });
+      newAddEventFields = Object.assign({}, state.addEventFields, { artistID: action.value });
       newState = Object.assign({}, state, { addEventFields: newAddEventFields });
       break;
     case 'SET_VENUE_FIELD':
-      newAddEventFields = Object.assign({}, state.addEventFields, { venue: action.value });
+      newAddEventFields = Object.assign({}, state.addEventFields, { venueID: action.value });
       newState = Object.assign({}, state, { addEventFields: newAddEventFields });
       break;
     case 'SET_ADDRESS_FIELD':
