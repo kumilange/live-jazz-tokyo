@@ -25,6 +25,7 @@
     "express": "~4.15.2",
     "isomorphic-fetch": "^2.2.1",
     "knex": "^0.13.0",
+    "material-ui": "^0.19.2",
     "morgan": "~1.8.1",
     "pg": "^7.3.0",
     "prop-types": "^15.5.10",

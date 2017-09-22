@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import DatePicker from 'material-ui/DatePicker';
+import TimePicker from 'material-ui/TimePicker';
+
+const DateTimeFormat = global.Intl.DateTimeFormat;
 
 class AddEvent extends Component {
+  
   render() {
     const failed = !this.props.addEventResponse.addSuccess
       && this.props.addEventResponse.addSuccess !== undefined;
@@ -56,24 +61,30 @@ class AddEvent extends Component {
               onChange={this.props.onPriceInput}
             />
           </div>
-          <div>
-            <label htmlFor="start">Opening Time:</label>
-            <input
-              type="text"
-              id="start"
-              name="opening_time"
-              onChange={this.props.onStartTimeInput}
-            />
-          </div>
-          <div>
-            <label htmlFor="end">Closing Time</label>
-            <input
-              type="text"
-              id="end"
-              name="closing_time"
-              onChange={this.props.onEndTimeInput}
-            />
-          </div>
+          <DatePicker
+            floatingLabelText="Date"
+            hintText="Event date"
+            formatDate={new DateTimeFormat('en-US', {
+              day: 'numeric',
+              month: 'long',
+              year: 'numeric',
+            }).format}
+            onChange={this.props.onDateInput}
+          />
+          <TimePicker
+            floatingLabelText="Opening Time"
+            hintText="Opening Time"
+            okLabel="OK"
+            cancelLabel="Cancel"
+            onChange={this.props.onStartTimeInput}
+          />
+          <TimePicker
+            floatingLabelText="Closing Time"
+            hintText="Closing Time"
+            okLabel="OK"
+            cancelLabel="Cancel"
+            onChange={this.props.onEndTimeInput}
+          />
           <div className="button">
             <button type="submit" >Create</button>
           </div>
@@ -91,6 +102,7 @@ AddEvent.propTypes = {
   onVenueInput: PropTypes.func.isRequired,
   onAddressInput: PropTypes.func.isRequired,
   onPriceInput: PropTypes.func.isRequired,
+  onDateInput: PropTypes.func.isRequired,
   onStartTimeInput: PropTypes.func.isRequired,
   onEndTimeInput: PropTypes.func.isRequired,
   addEventResponse: PropTypes.shape(),

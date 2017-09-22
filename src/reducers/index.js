@@ -11,6 +11,7 @@ const initialState = {
     venue: '',
     address: '',
     price: '',
+    date: '',
     startTime: '',
     endTime: '',
   },
@@ -52,6 +53,10 @@ const reducer = (state = initialState, action) => {
       break;
     case 'SET_ADDRESS_FIELD':
       newAddEventFields = Object.assign({}, state.addEventFields, { address: action.value });
+      newState = Object.assign({}, state, { addEventFields: newAddEventFields });
+      break;
+    case 'SET_DATE_FIELD':
+      newAddEventFields = Object.assign({}, state.addEventFields, { date: action.value });
       newState = Object.assign({}, state, { addEventFields: newAddEventFields });
       break;
     case 'SET_PRICE_FIELD':

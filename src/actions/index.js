@@ -99,17 +99,24 @@ export function setPriceField(event) {
   };
 }
 
-export function setStartTimeField(event) {
+export function setDateField(date) {
   return {
-    type: 'SET_START_TIME_FIELD',
-    value: event.target.value,
+    type: 'SET_DATE_FIELD',
+    value: date,
   };
 }
 
-export function setEndTimeField(event) {
+export function setStartTimeField(time) {
+  return {
+    type: 'SET_START_TIME_FIELD',
+    value: time,
+  };
+}
+
+export function setEndTimeField(time) {
   return {
     type: 'SET_END_TIME_FIELD',
-    value: event.target.value,
+    value: time,
   };
 }
 
