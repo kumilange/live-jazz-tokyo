@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Map from '../components/Map';
 
-import { setSelectedEvent, setUserLocation } from '../actions';
+import { setSelectedEvent, clearSelectedEvent, setUserLocation } from '../actions';
 
 const mapStateToProps = state => ({
   events: state.events,
@@ -12,6 +12,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   onMarkerClick: (event) => {
     dispatch(setSelectedEvent(event));
+  },
+  onInfoWindowClose: () => {
+    dispatch(clearSelectedEvent());
   },
   onReceivedUserLocation: (position) => {
     dispatch(setUserLocation(position));

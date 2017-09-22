@@ -30,6 +30,9 @@ const reducer = (state = initialState, action) => {
     case 'SET_SELECTED_EVENT':
       newState = Object.assign({}, state, { selectedEvent: action.event });
       break;
+    case 'CLEAR_SELECTED_EVENT':
+      newState = Object.assign({}, state, { selectedEvent: {} });
+      break;
     case 'SET_EVENT_DETAILS':
       newState = Object.assign({}, state, { eventDetails: action.event });
       console.log('event details', newState);

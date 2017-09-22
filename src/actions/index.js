@@ -53,6 +53,12 @@ export function setSelectedEvent(event) {
   };
 }
 
+export function clearSelectedEvent() {
+  return {
+    type: 'CLEAR_SELECTED_EVENT',
+  };
+}
+
 export function setUserLocation(position) {
   return {
     type: 'SET_USER_LOCATION',

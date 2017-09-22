@@ -35,7 +35,9 @@ const MyMap = withGoogleMap((props) => {
           onClick={() => props.onMarkerClick(event)}
         >
           { props.selectedEvent === event ?
-            <InfoWindow>
+            <InfoWindow
+              onCloseClick={props.onInfoWindowClose}
+            >
               <div>
                 <Link to={`/event/${event.id}`}>
                   <h2>{ event.name }</h2>
@@ -75,6 +77,7 @@ class Map extends Component {
       events={this.props.events}
       selectedEvent={this.props.selectedEvent}
       onMarkerClick={this.props.onMarkerClick}
+      onInfoWindowClose={this.props.onInfoWindowClose}
       userLocation={this.props.userLocation}
       containerElement={
         <div style={{ height: '100%' }} />
@@ -91,6 +94,7 @@ Map.propTypes = {
   selectedEvent: PropTypes.shape().isRequired,
   userLocation: PropTypes.shape().isRequired,
   onMarkerClick: PropTypes.func.isRequired,
+  onInfoWindowClose: PropTypes.func.isRequired,
   onReceivedUserLocation: PropTypes.func.isRequired,
 };
 
