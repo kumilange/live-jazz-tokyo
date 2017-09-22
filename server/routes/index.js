@@ -110,8 +110,6 @@ router.post('/charge', (req, res) => {
 });
 
 router.post('/addevent', async (req, res) => {
-  console.log('Request:', req.body);
-
   const artistName = req.body.artist;
   const venueName = req.body.venue;
   const address = req.body.address;
@@ -123,44 +121,53 @@ router.post('/addevent', async (req, res) => {
   };
 
   try {
-    let [venueId] = await db('venue')
+    let venueId;
+    const [venue] = await db('venue')
       .select('id')
       .where('name', venueName);
-    if (!venueId) {
+    if (!venue) {
       const response = await (await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}`)).json();
       if (response.status === 'OK') {
         const lat = response.results[0].geometry.location.lat;
         const lng = response.results[0].geometry.location.lng;
-        const venue = {
+        const newVenue = {
           name: venueName,
           address,
           lat,
           lng,
         };
-        venueId = await db('venue')
-          .insert(venue)
+        [venueId] = await db('venue')
+          .insert(newVenue)
           .returning('id');
       } else {
         res.status(200).json({ status: 'error', message: 'Address not found.' });
       }
+    } else {
+      venueId = venue.id;
     }
-    event.venue_id = venueId.id;
+    console.log('venueId', venueId);
+    event.venue_id = venueId;
 
-    let [artistId] = await db('artist')
+    let artistId;
+    const [artist] = await db('artist')
       .select('id')
       .where('name', artistName);
-    if (!artistId) {
+    if (!artist) {
       [artistId] = await db('artist')
         .insert({ name: artistName })
         .returning('id');
+    } else {
+      artistId = artist.id;
     }
-    event.artist_id = artistId.id;
+    console.log('artistId', artistId);
+    event.artist_id = artistId;
 
+    console.log('event', event);
     const [eventID] = await db('event')
       .insert(event)
       .returning('id');
     console.log('eventid', eventID);
-    res.status(200).json({ addSuccess: true, message: 'YAY' });
+    res.status(200).json({ addSuccess: true, message: 'YAY', eventID });
   } catch (err) {
     console.log(err);
     res.status(400).json({ addSuccess: false, message: 'Insert failed' });
