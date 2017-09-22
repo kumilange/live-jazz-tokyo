@@ -9,8 +9,6 @@ const knexConfig = require('../../knexfile');
 
 const db = knex(knexConfig);
 
-const GOOGLE_APIKEY = '';
-
 /* GET events. */
 router.get('/events', async (req, res) => {
   const events = (await db('event')
@@ -117,33 +115,28 @@ router.post('/addevent', async (req, res) => {
   const artistName = req.body.artist;
   const venueName = req.body.venue;
   const address = req.body.address;
-  let event = {
+  const event = {
     name: req.body.eventName,
-    price: parseInt(req.body.price),
+    price: parseInt(req.body.price, 10),
     start: parseInt(req.body.startTime, 10),
     end: parseInt(req.body.endTime, 10),
-  }
+  };
 
   try {
-    // check if venue existts
-      // if venue exists, get id
-      // if not, get lat and lng from google api and insert venue name && lat, lng
     let [venueId] = await db('venue')
       .select('id')
       .where('name', venueName);
-    console.log(venueId)
-    if(!venueId) {
-      // &key=${GOOGLE_APIKEY}
-      const res = await (await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}`)).json();
-      if(res.status === 'OK') {
-        const lat = res.results[0].geometry.location.lat;
-        const lng = res.results[0].geometry.location.lng;
+    if (!venueId) {
+      const response = await (await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}`)).json();
+      if (response.status === 'OK') {
+        const lat = response.results[0].geometry.location.lat;
+        const lng = response.results[0].geometry.location.lng;
         const venue = {
           name: venueName,
           address,
           lat,
           lng,
-        }
+        };
         venueId = await db('venue')
           .insert(venue)
           .returning('id');
@@ -153,20 +146,16 @@ router.post('/addevent', async (req, res) => {
     }
     event.venue_id = venueId.id;
 
-    // check if artist exists
-      // if artist exists, get id
-      // if not, insert artist name
     let [artistId] = await db('artist')
       .select('id')
       .where('name', artistName);
-    if(!artistId) {
+    if (!artistId) {
       [artistId] = await db('artist')
         .insert({ name: artistName })
         .returning('id');
     }
     event.artist_id = artistId.id;
 
-    console.log('event', event)
     const [eventID] = await db('event')
       .insert(event)
       .returning('id');
