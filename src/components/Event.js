@@ -34,34 +34,39 @@ class Event extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <div>EVENT { this.props.match.params.id }</div>
-        <div>NAME { this.props.event.name }</div>
-        <div>ARTIST { this.props.event.artist }</div>
-        <div>PRICE { this.props.event.price }</div>
-        <div>VENUENAME { this.props.event.venue }</div>
-        <div>VENUEADDRESS { this.props.event.address }</div>
-        <div>STARTTIME { this.props.event.start }</div>
-        <div>ENDTIME { this.props.event.end }</div>
-        <div>DESCRIPTION { this.props.event.description }</div>
-        <Stripe
-          label={'Reserve'}
-          token={(token) => { this.onToken(token); }}
-          stripeKey="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-          currency="JPY"
-          name="Live Jazz Co."
-          image="../logo.png"
-          description={`1 ticket for ${this.props.event.name}`}
-          amount={2000}
-        />
-      </div>
-    );
+    if(this.props.event) {
+      return (
+        <div>
+          <div>EVENT { this.props.match.params.id }</div>
+          <div>NAME { this.props.event.name }</div>
+          <div>ARTIST { this.props.event.artist }</div>
+          <div>PRICE { this.props.event.price }</div>
+          <div>VENUENAME { this.props.event.venue }</div>
+          <div>VENUEADDRESS { this.props.event.address }</div>
+          <div>Date: { this.props.event.start.toDateString() }</div>
+          <div>STARTTIME { this.props.event.start.toLocaleTimeString() }</div>
+          <div>ENDTIME { this.props.event.end.toLocaleTimeString() }</div>
+          <div>DESCRIPTION { this.props.event.description }</div>
+          <Stripe
+            label={'Reserve'}
+            token={(token) => { this.onToken(token); }}
+            stripeKey="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+            currency="JPY"
+            name="Live Jazz Co."
+            image="../logo.png"
+            description={`1 ticket for ${this.props.event.name}`}
+            amount={2000}
+          />
+        </div>
+      );
+    } else {
+      return <div />;
+    }
   }
 }
 
 Event.propTypes = {
-  event: PropTypes.shape().isRequired,
+  event: PropTypes.shape(),
   match: PropTypes.shape().isRequired,
   onComponentDidMount: PropTypes.func,
   history: PropTypes.shape(),
@@ -69,6 +74,7 @@ Event.propTypes = {
 };
 
 Event.defaultProps = {
+  event: undefined,
   history: undefined,
   onComponentDidMount: undefined,
   onReceiveChargeResponse: undefined,

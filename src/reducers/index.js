@@ -1,7 +1,7 @@
 const initialState = {
   events: [],
   selectedEvent: {},
-  eventDetails: {},
+  eventDetails: undefined,
   userLocation: {},
   chargeResponse: undefined,
   addEventResponse: undefined,
@@ -32,6 +32,7 @@ const reducer = (state = initialState, action) => {
       break;
     case 'SET_EVENT_DETAILS':
       newState = Object.assign({}, state, { eventDetails: action.event });
+    console.log("event details", newState)    
       break;
     case 'SET_USER_LOCATION':
       newState = Object.assign({}, state, { userLocation: action.position });

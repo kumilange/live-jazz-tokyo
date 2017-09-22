@@ -33,6 +33,9 @@ export function getEventDetails(eventID) {
       const query = querystring.stringify(params);
       const event = await (await fetch(`/api/eventdetails?${query}`)).json();
 
+      event.start = new Date(event.start);
+      event.end = new Date(event.end);
+
       dispatch({
         type: 'SET_EVENT_DETAILS',
         event,
