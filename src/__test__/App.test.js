@@ -6,5 +6,5 @@ import App from '../components/App';
 
 it('renders without crashing', () => {
   const wrapper = shallow(<App initializeEvents={() => {}} />);
-  expect(wrapper.find('.App')).to.have.length(1); // 0
+  expect(wrapper.find('#app')).to.have.length(1); // 0
 });

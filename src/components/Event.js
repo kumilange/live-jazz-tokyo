@@ -63,13 +63,15 @@ class Event extends Component {
 Event.propTypes = {
   event: PropTypes.shape().isRequired,
   match: PropTypes.shape().isRequired,
-  onComponentDidMount: PropTypes.func.isRequired,
+  onComponentDidMount: PropTypes.func,
   history: PropTypes.shape(),
-  onReceiveChargeResponse: PropTypes.func.isRequired,
+  onReceiveChargeResponse: PropTypes.func,
 };
 
 Event.defaultProps = {
   history: undefined,
+  onComponentDidMount: undefined,
+  onReceiveChargeResponse: undefined,
 };
 
 export default Event;
