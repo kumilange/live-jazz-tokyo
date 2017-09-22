@@ -110,14 +110,26 @@ router.post('/charge', (req, res) => {
 });
 
 router.post('/addevent', async (req, res) => {
+  console.log(req.body);
+
+  const date = new Date(req.body.date);
+  const start = new Date(req.body.startTime);
+  start.setFullYear(date.getFullYear());
+  start.setMonth(date.getMonth());
+  start.setDate(date.getDate());
+  const end = new Date(req.body.endTime);
+  end.setFullYear(date.getFullYear());
+  end.setMonth(date.getMonth());
+  end.setDate(date.getDate());
+
   const artistName = req.body.artist;
   const venueName = req.body.venue;
   const address = req.body.address;
   const event = {
     name: req.body.eventName,
     price: parseInt(req.body.price, 10),
-    start: parseInt(req.body.startTime, 10),
-    end: parseInt(req.body.endTime, 10),
+    start: start.getTime(),
+    end: end.getTime(),
   };
 
   try {
