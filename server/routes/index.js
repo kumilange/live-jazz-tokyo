@@ -140,7 +140,7 @@ router.post('/addevent', async (req, res) => {
           .insert(newVenue)
           .returning('id');
       } else {
-        res.status(200).json({ status: 'error', message: 'Address not found.' });
+        res.status(400).json({ status: 'error', message: 'Address not found.' });
       }
     } else {
       venueId = venue.id;
@@ -169,8 +169,8 @@ router.post('/addevent', async (req, res) => {
     console.log('eventid', eventID);
     res.status(200).json({ addSuccess: true, message: 'YAY', eventID });
   } catch (err) {
-    console.log(err);
-    res.status(400).json({ addSuccess: false, message: 'Insert failed' });
+    console.error(err);
+    res.status(500).json({ addSuccess: false, message: 'Insert failed' });
   }
 });
 
