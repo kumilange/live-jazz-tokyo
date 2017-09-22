@@ -7,8 +7,10 @@ import thunk from 'redux-thunk';
 
 import './styles/index.css';
 import reducer from './reducers';
+import Header from './components/Header';
 import App from './containers/App';
 import Event from './containers/Event';
+import Footer from './components/Footer';
 import Confirmation from './containers/Confirmation';
 import AddEvent from './containers/AddEvent';
 
@@ -20,11 +22,13 @@ const store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <div id="router">
+      <div id="router" className="flex column">
+        <Header />
         <Route exact path="/" component={App} />
         <Route exact path="/event/:id" component={Event} />
         <Route exact path="/confirmation" component={Confirmation} />
         <Route exact path="/addevent" component={AddEvent} />
+        <Footer />
       </div>
     </BrowserRouter>
   </Provider>,
