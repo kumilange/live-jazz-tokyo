@@ -1,12 +1,15 @@
 const express = require('express');
 
 const stripe = require('stripe')('sk_test_BQokikJOvBiI2HlWgH4olfQ2');
+const fetch = require('isomorphic-fetch');
 
 const router = express.Router();
 const knex = require('knex');
 const knexConfig = require('../../knexfile');
 
 const db = knex(knexConfig);
+
+const GOOGLE_APIKEY = '';
 
 /* GET events. */
 router.get('/events', async (req, res) => {
@@ -109,20 +112,66 @@ router.post('/charge', (req, res) => {
 });
 
 router.post('/addevent', async (req, res) => {
-  console.log(req.body);
+  console.log('Request:', req.body);
+
+  const artistName = req.body.artist;
+  const venueName = req.body.venue;
+  const address = req.body.address;
+  let event = {
+    name: req.body.eventName,
+    price: parseInt(req.body.price),
+    start: parseInt(req.body.startTime, 10),
+    end: parseInt(req.body.endTime, 10),
+  }
+
   try {
-    const eventID = await db('event')
-      .insert([{
-        name: req.body.eventName,
-        artist_id: req.body.artistID,
-        venue_id: req.body.venueID,
-        price: req.body.price,
-        start: req.body.startTime,
-        end: req.body.endTime,
-      }])
+    // check if venue existts
+      // if venue exists, get id
+      // if not, get lat and lng from google api and insert venue name && lat, lng
+    let [venueId] = await db('venue')
+      .select('id')
+      .where('name', venueName);
+    console.log(venueId)
+    if(!venueId) {
+      // &key=${GOOGLE_APIKEY}
+      const res = await (await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}`)).json();
+      if(res.status === 'OK') {
+        const lat = res.results[0].geometry.location.lat;
+        const lng = res.results[0].geometry.location.lng;
+        const venue = {
+          name: venueName,
+          address,
+          lat,
+          lng,
+        }
+        venueId = await db('venue')
+          .insert(venue)
+          .returning('id');
+      } else {
+        res.status(200).json({ status: 'error', message: 'Address not found.' });
+      }
+    }
+    event.venue_id = venueId.id;
+
+    // check if artist exists
+      // if artist exists, get id
+      // if not, insert artist name
+    let [artistId] = await db('artist')
+      .select('id')
+      .where('name', artistName);
+    if(!artistId) {
+      [artistId] = await db('artist')
+        .insert({ name: artistName })
+        .returning('id');
+    }
+    event.artist_id = artistId.id;
+
+    console.log('event', event)
+    const [eventID] = await db('event')
+      .insert(event)
       .returning('id');
-    console.log('eventid', eventID[0]);
-    res.status(200).json({ addSuccess: true, message: 'YAY', eventID: eventID[0] });
+    console.log('eventid', eventID);
+    res.status(200).json({ addSuccess: true, message: 'YAY' });
   } catch (err) {
     console.log(err);
     res.status(400).json({ addSuccess: false, message: 'Insert failed' });
