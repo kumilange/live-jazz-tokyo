@@ -45,10 +45,10 @@ const MyMap = withGoogleMap((props) => {
                 <p>¥{ event.price }</p>
                 <p>{ (new Date(event.start)).toDateString() }</p>
                 <p>{
-                  (new Date(event.start)).getHours() + ':' +
-                  (new Date(event.start)).getMinutes() + ' ~ ' +
-                  (new Date(event.end)).getHours() + ':' +
-                  (new Date(event.end)).getMinutes()}
+                  `${(new Date(event.start)).getHours()}:${
+                    (new Date(event.start)).getMinutes()} ~ ${
+                    (new Date(event.end)).getHours()}:${
+                    (new Date(event.end)).getMinutes()}`}
                 </p>
               </div>
             </InfoWindow>

@@ -6,7 +6,6 @@ import TimePicker from 'material-ui/TimePicker';
 const DateTimeFormat = global.Intl.DateTimeFormat;
 
 class AddEvent extends Component {
-  
   render() {
     const failed = !this.props.addEventResponse.addSuccess
       && this.props.addEventResponse.addSuccess !== undefined;

@@ -34,7 +34,7 @@ class Event extends Component {
   }
 
   render() {
-    if(this.props.event) {
+    if (this.props.event) {
       return (
         <div>
           <div>EVENT { this.props.match.params.id }</div>
@@ -59,9 +59,8 @@ class Event extends Component {
           />
         </div>
       );
-    } else {
-      return <div />;
     }
+    return <div />;
   }
 }
 
