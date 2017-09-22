@@ -113,6 +113,13 @@ export function setEndTimeField(event) {
   };
 }
 
+export function _hello(token) {
+  return {
+    type: 'HELLO',
+    token
+  };
+}
+
 export function addNewEvent(event, history) {
   return async (dispatch) => {
     try {
@@ -134,3 +141,4 @@ export function addNewEvent(event, history) {
     }
   };
 }
+
