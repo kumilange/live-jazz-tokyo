@@ -1,6 +1,7 @@
 const express = require('express');
 
 const stripe = require('stripe')('sk_test_BQokikJOvBiI2HlWgH4olfQ2');
+const fetch = require('isomorphic-fetch');
 
 const router = express.Router();
 const knex = require('knex');
@@ -109,23 +110,67 @@ router.post('/charge', (req, res) => {
 });
 
 router.post('/addevent', async (req, res) => {
-  console.log(req.body);
+  const artistName = req.body.artist;
+  const venueName = req.body.venue;
+  const address = req.body.address;
+  const event = {
+    name: req.body.eventName,
+    price: parseInt(req.body.price, 10),
+    start: parseInt(req.body.startTime, 10),
+    end: parseInt(req.body.endTime, 10),
+  };
+
   try {
-    const eventID = await db('event')
-      .insert([{
-        name: req.body.eventName,
-        artist_id: req.body.artistID,
-        venue_id: req.body.venueID,
-        price: req.body.price,
-        start: req.body.startTime,
-        end: req.body.endTime,
-      }])
+    let venueId;
+    const [venue] = await db('venue')
+      .select('id')
+      .where('name', venueName);
+    if (!venue) {
+      const response = await (await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}`)).json();
+      if (response.status === 'OK') {
+        const lat = response.results[0].geometry.location.lat;
+        const lng = response.results[0].geometry.location.lng;
+        const newVenue = {
+          name: venueName,
+          address,
+          lat,
+          lng,
+        };
+        [venueId] = await db('venue')
+          .insert(newVenue)
+          .returning('id');
+      } else {
+        res.status(400).json({ status: 'error', message: 'Address not found.' });
+      }
+    } else {
+      venueId = venue.id;
+    }
+    console.log('venueId', venueId);
+    event.venue_id = venueId;
+
+    let artistId;
+    const [artist] = await db('artist')
+      .select('id')
+      .where('name', artistName);
+    if (!artist) {
+      [artistId] = await db('artist')
+        .insert({ name: artistName })
+        .returning('id');
+    } else {
+      artistId = artist.id;
+    }
+    console.log('artistId', artistId);
+    event.artist_id = artistId;
+
+    console.log('event', event);
+    const [eventID] = await db('event')
+      .insert(event)
       .returning('id');
-    console.log('eventid', eventID[0]);
-    res.status(200).json({ addSuccess: true, message: 'YAY', eventID: eventID[0] });
+    console.log('eventid', eventID);
+    res.status(200).json({ addSuccess: true, message: 'YAY', eventID });
   } catch (err) {
-    console.log(err);
-    res.status(400).json({ addSuccess: false, message: 'Insert failed' });
+    console.error(err);
+    res.status(500).json({ addSuccess: false, message: 'Insert failed' });
   }
 });
 

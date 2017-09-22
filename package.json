@@ -23,6 +23,7 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "express": "~4.15.2",
+    "isomorphic-fetch": "^2.2.1",
     "knex": "^0.13.0",
     "morgan": "~1.8.1",
     "pg": "^7.3.0",
@@ -34,9 +35,9 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.13",
+    "react-stripe-checkout": "^2.6.3",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "react-stripe-checkout": "^2.6.3",
     "stripe": "^5.0.0"
   },
   "devDependencies": {

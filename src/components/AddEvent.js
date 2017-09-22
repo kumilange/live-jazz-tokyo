@@ -9,8 +9,7 @@ class AddEvent extends Component {
       <div>
         <form onSubmit={(event) => {
           this.props.onFormSubmit(event, this.props.addEventFields, this.props.history);
-        }
-        }
+        }}
         >
           <div>
             <label htmlFor="eventName">Name:</label>
@@ -22,7 +21,7 @@ class AddEvent extends Component {
             />
           </div>
           <div>
-            <label htmlFor="artist">ArtistID</label>
+            <label htmlFor="artist">Artist</label>
             <input
               type="text"
               id="artist"
@@ -31,7 +30,7 @@ class AddEvent extends Component {
             />
           </div>
           <div>
-            <label htmlFor="venue">VenueID</label>
+            <label htmlFor="venue">Venue</label>
             <input
               type="text"
               id="venue"
