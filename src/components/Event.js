@@ -78,14 +78,12 @@ class Event extends Component {
                 <p>{ this.props.event.address }</p>
               </div>
               <div className="grow" />
-              <RaisedButton label="View Map" />
+              <RaisedButton label="View Map" onClick={this.props.toggleMap} />
             </div>
 
-            <div>
-              <div style={{ width: '100%;', height: '100px;' }}>
-                <Map />
-              </div>
-            </div>
+            { this.props.showMap ?
+              <div className="event-map"><Map /></div> : <div />
+            }
 
             <div className="flex center row">
               <div className="icon"><DollarIcon /></div>
@@ -135,6 +133,7 @@ Event.propTypes = {
   match: PropTypes.shape().isRequired,
   onComponentDidMount: PropTypes.func,
   history: PropTypes.shape(),
+  showMap: PropTypes.bool.isRequired,
   onReceiveChargeResponse: PropTypes.func,
 };
 

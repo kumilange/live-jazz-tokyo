@@ -21,6 +21,11 @@
   width: 1px;
 }
 
+.event-map {
+  margin-top: 20px;
+  height: 300px;
+}
+
 .icon {
   margin-right: 20px;
 }
