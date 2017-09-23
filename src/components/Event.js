@@ -78,7 +78,11 @@ class Event extends Component {
                 <p>{ this.props.event.address }</p>
               </div>
               <div className="grow" />
-              <RaisedButton className="mui-button" label="View Map" onClick={this.props.toggleMap} />
+              <RaisedButton
+                className="mui-button"
+                label="View Map"
+                onClick={this.props.toggleMap}
+              />
             </div>
 
             { this.props.showMap ?
