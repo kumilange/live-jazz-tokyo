@@ -57,10 +57,3 @@ body {
   background-position: 0 0;
 }
 a{ color: beige; }
-/*-------------------------------------------------------------------------------
- COMMON
- -------------------------------------------------------------------------------*/
-.blue { color: #2AABC2; }
-.white { color: #E7E7B9; }
-.dark { background-color: #252525; color: beige; }
-.black { background-color: black; color: beige; }
