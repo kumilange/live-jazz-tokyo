@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "yarn build && NODE_ENV=production node ./server/bin/www",
-    "test": "yarn lint && yarn test:backend && yarn test:frontend",
+    "test": "yarn lint && yarn test:backend && CI=true yarn test:frontend",
     "test:backend": "NODE_ENV=test mocha --recursive server/test --opts server/test/mocha.opts",
     "test:frontend": "react-scripts test --env=jsdom",
     "backend": "nodemon ./server/bin/www",
