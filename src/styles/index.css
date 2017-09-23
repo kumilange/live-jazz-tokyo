@@ -7,4 +7,7 @@ body { height: 0; min-height: 100%; }
 .column { flex-direction: column; }
 .center { justify-content: center; align-items: center; }
 
-#app { height: 0; }
+#app {
+  height: calc(100% - 160px);
+  margin-top: 80px;
+}
