@@ -12,6 +12,7 @@
   "globals": {
     "document": true,
     "it": true,
+    "xit": true,
     "beforeEach": true,
     "afterEach": true,
     "window": true,

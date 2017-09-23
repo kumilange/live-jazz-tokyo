@@ -82,11 +82,11 @@ class Event extends Component {
             </div>
 
             <div>
-              <div style={{ width: "100%;", height: "100px;" }}>
+              <div style={{ width: '100%;', height: '100px;' }}>
                 <Map />
               </div>
             </div>
-            
+
             <div className="flex center row">
               <div className="icon"><DollarIcon /></div>
               <p>{ `${this.props.event.price} Yen`}</p>
@@ -103,7 +103,7 @@ class Event extends Component {
               />
             </div>
           </div>
-          
+
           <Paper className="pane">
             <div className="block">
               <h3>Details</h3>
@@ -113,7 +113,7 @@ class Event extends Component {
               <div>{ this.props.event.description }</div>
             </div>
           </Paper>
-          
+
           <Paper className="pane">
             <div className="block">
               <h3>Artist</h3>
