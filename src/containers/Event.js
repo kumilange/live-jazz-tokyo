@@ -17,7 +17,7 @@ const mapDispatchToProps = dispatch => ({
   },
   toggleMap: () => {
     dispatch({ type: 'SHOW_MAP' });
-  }
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Event);

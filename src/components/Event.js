@@ -134,6 +134,7 @@ Event.propTypes = {
   onComponentDidMount: PropTypes.func,
   history: PropTypes.shape(),
   showMap: PropTypes.bool.isRequired,
+  toggleMap: PropTypes.func.isRequired,
   onReceiveChargeResponse: PropTypes.func,
 };
 
