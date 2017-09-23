@@ -1,6 +1,5 @@
 import React from 'react';
 import SvgIcon from 'material-ui/SvgIcon';
-import { GoogleMap } from 'react-google-maps';
 
 const ClockIcon = () =>
   <SvgIcon>
