@@ -7,6 +7,7 @@ import thunk from 'redux-thunk';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
+import './styles/reset.css';
 import './styles/index.css';
 import reducer from './reducers';
 import Header from './components/Header';
@@ -31,7 +32,7 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <MuiThemeProvider muiTheme={muiTheme}>
-        <div id="router" className="flex column">
+        <div id="router" className="flex column center">
           <Header />
           <Route exact path="/" component={App} />
           <Route exact path="/event/:id" component={Event} />

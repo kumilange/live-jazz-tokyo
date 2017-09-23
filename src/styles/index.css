@@ -1,4 +1,4 @@
-* { margin: 0; padding: 0; font-family: sans-serif; }
+* { margin: 0; padding: 0; font-family: sans-serif; box-sizing: border-box; }
 #router, #root { height: 100%; }
 body { height: 0; min-height: 100%; }
 
@@ -6,5 +6,17 @@ body { height: 0; min-height: 100%; }
 .grow { flex-grow: 1; }
 .column { flex-direction: column; }
 .center { justify-content: center; align-items: center; }
+.restrict-width {
+  width: 800px;
+  min-width: 50%;
+  max-width: 95%;
+}
 
-#app { height: 0; }
+#app {
+  height: calc(100% - 160px);
+  margin-top: 80px;
+}
+
+.mui-button span {
+  text-transform: none !important;
+}

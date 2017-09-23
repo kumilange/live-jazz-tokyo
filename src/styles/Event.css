@@ -1,3 +1,59 @@
+.image-box {
+  height: 300px;
+  width: 100%;
+  overflow-y: hidden;
+}
+
+.event-image {
+  width: 100%;
+}
+
+.event-details-table {
+  width: 100%;
+  padding: 20px;
+}
+
+.event-details-table .row {
+  margin-top: 20px;
+}
+
+.event-details-table td:nth-child(1) {
+  width: 1px;
+}
+
+.event-map {
+  margin-top: 20px;
+  height: 300px;
+}
+
+.icon {
+  margin-right: 20px;
+}
+
+.event-details-table td {
+  padding: 10px;
+}
+
+.event-details-table p {
+  line-height: 1.5em;
+}
+
+#event-details .row {
+  display: flex;
+}
+
+.date {
+  padding: 30px;
+}
+
+#event-details .month {
+  font-size: 20px;
+}
+
+#event-details .day {
+  font-size: 30px;
+}
+
 .StripeCheckout {
   border-radius: 3px !important;
   background: brown !important;
@@ -6,4 +62,12 @@
 .StripeCheckout span {
   background: brown !important;
   box-shadow: 0 0 0 0 !important;
+}
+
+.pane {
+  margin-bottom: 30px;
+}
+
+.pane .block {
+  padding: 15px;
 }

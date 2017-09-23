@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import canUseDOM from 'can-use-dom';
 
+import fancyMapStyles from '../resources/fancyMapStyles.json';
+
 const DEFAULT_CENTER = { lat: 35.6857933, lng: 139.7501793 };
 
 const geolocation = (
@@ -20,6 +22,7 @@ const MyMap = withGoogleMap((props) => {
   return (<GoogleMap
     defaultZoom={14}
     defaultCenter={DEFAULT_CENTER}
+    defaultOptions={{ styles: fancyMapStyles }}
     center={props.userLocation.lat === undefined ? DEFAULT_CENTER : props.userLocation}
   >
     {

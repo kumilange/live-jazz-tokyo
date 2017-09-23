@@ -2,6 +2,7 @@ const initialState = {
   events: [],
   selectedEvent: {},
   eventDetails: undefined,
+  showMap: false,
   userLocation: {},
   chargeResponse: undefined,
   addEventResponse: undefined,
@@ -77,6 +78,9 @@ const reducer = (state = initialState, action) => {
       break;
     case 'SET_ADD_EVENT_RESPONSE':
       newState = Object.assign({}, state, { addEventResponse: action.addEventResponse });
+      break;
+    case 'SHOW_MAP':
+      newState = Object.assign({}, state, { showMap: !state.showMap });
       break;
     default:
       console.log('UNKNOWN ACTION', action.type);
