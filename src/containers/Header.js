@@ -9,9 +9,24 @@ const mapStateToProps = state => ({
 
 // -------- hello
 
-const mapDispatchToProps = (dispatch) => {
-  console.log('Register callback!');
+// Simplify JSON posting
+const postJson = async (url, objToPost) => {
+  const serializedJson = JSON.stringify(objToPost);
+  const headers = {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  };
+  const options = {
+    headers,
+    method: 'POST',
+    body: serializedJson,
+  };
+  const readableStream = await fetch(url, options);
+  const parsedResponseObject = await (readableStream).json();
+  return parsedResponseObject;
+};
 
+const mapDispatchToProps = (dispatch) => {
   window.hello.init({
     facebook: '120884018612158',
   }, {
@@ -21,10 +36,6 @@ const mapDispatchToProps = (dispatch) => {
   console.log('mapdispatchtoprops');
 
   window.hello.on('auth.login', async (auth) => {
-    console.log('logged in', auth);
-    const thing = window.hello('facebook');
-    const userInfo = await thing.api('/me');
-    console.log('userinfo', userInfo);
     const socialToken = auth.authResponse.access_token;
 
     const userProfile = await postJson('/api/auth', {
@@ -43,22 +54,6 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(logout());
     },
   };
-};
-
-const postJson = async (url, objToPost) => {
-  const serializedJson = JSON.stringify(objToPost);
-  const headers = {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-  };
-  const options = {
-    headers,
-    method: 'POST',
-    body: serializedJson,
-  };
-  const readableStream = await fetch(url, options);
-  const parsedResponseObject = await (readableStream).json();
-  return parsedResponseObject;
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
