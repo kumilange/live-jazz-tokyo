@@ -7,6 +7,7 @@ import thunk from 'redux-thunk';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
+import './styles/reset.css';
 import './styles/index.css';
 import reducer from './reducers';
 import Header from './components/Header';
