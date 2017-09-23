@@ -1,7 +1,6 @@
 const express = require('express');
 
 const stripe = require('stripe')('sk_test_BQokikJOvBiI2HlWgH4olfQ2');
-const fetch = require('isomorphic-fetch');
 
 const router = express.Router();
 const knex = require('knex');

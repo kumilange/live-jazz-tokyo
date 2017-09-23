@@ -111,7 +111,7 @@ export function setEndTimeField(event) {
 export function setUserProfile(userProfile) {
   return {
     type: 'SET_USER_PROFILE',
-    userProfile
+    userProfile,
   };
 }
 

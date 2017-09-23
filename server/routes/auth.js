@@ -1,37 +1,42 @@
 const express = require('express');
-const jwt = require('jsonwebtoken');
+const JsonWebToken = require('jsonwebtoken');
 
 const router = express.Router();
 
-router.post('/', async (req, res) => {
-  const network = req.body.network;
-  const socialToken = req.body.socialToken;
-
-  const url = `https://graph.facebook.com/me?access_token=${socialToken}`;
-  const profile = await (await fetch(url)).json();
-  console.log('profile', profile);
-  const jwt = createJwt(profile);
-  console.log('jwt', jwt);
-  res.json({
-    jwt,
-    name: profile.name,
-    id: profile.id
-  });
-});
+// TODO: Parameterize
+const KEY = 'jazz was meant to be live!';
+const APP = 'livejazz';
 
 function createJwt(profile) {
-	return jwt.sign(profile, 'MY_PRIVATE_KEY', {
-		expiresIn: '2d',
-		issuer: 'MY_APP'
-	});
+  return JsonWebToken.sign(profile, KEY, {
+    expiresIn: '2d',
+    issuer: APP,
+  });
 }
 
 function verifyJwt(jwtString) {
-	return jwt.verify(jwtString, 'MY_PRIVATE_KEY', {
-		issuer: 'MY_APP'
-	});
+  return JsonWebToken.verify(jwtString, KEY, {
+    issuer: APP,
+  });
 }
 
+router.post('/', async (req, res) => {
+  try {
+    const socialToken = req.body.socialToken;
 
+    const url = `https://graph.facebook.com/me?access_token=${socialToken}`;
+    const profile = await (await fetch(url)).json();
+    console.log('profile', profile);
+    const jwt = createJwt(profile);
+    console.log('jwt', jwt);
+    res.json({
+      jwt,
+      name: profile.name,
+      id: profile.id,
+    });
+  } catch (err) {
+    console.error('Error retrieving user info from FaceBook', err);
+  }
+});
 
 module.exports = router;
