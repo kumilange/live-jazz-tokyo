@@ -26,12 +26,7 @@ export function initializeEvents() {
 export function getEventDetails(eventID) {
   return async (dispatch) => {
     try {
-      const params = {
-        id: eventID,
-      };
-
-      const query = querystring.stringify(params);
-      const event = await (await fetch(`/api/eventdetails?${query}`)).json();
+      const event = await (await fetch(`/api/events/${eventID}`)).json();
 
       dispatch({
         type: 'SET_EVENT_DETAILS',
@@ -113,10 +108,23 @@ export function setEndTimeField(event) {
   };
 }
 
+export function setUserProfile(userProfile) {
+  return {
+    type: 'SET_USER_PROFILE',
+    userProfile,
+  };
+}
+
+export function logout() {
+  return {
+    type: 'CLEAR_USER_PROFILE',
+  };
+}
+
 export function addNewEvent(event, history) {
   return async (dispatch) => {
     try {
-      const res = await (await fetch('/api/addevent', {
+      const res = await (await fetch('/api/events', {
         method: 'POST',
         body: JSON.stringify(event),
         headers: {
@@ -134,3 +142,4 @@ export function addNewEvent(event, history) {
     }
   };
 }
+

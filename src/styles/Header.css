@@ -1,3 +1,11 @@
 header {
   height: 10%;
 }
+
+#title {
+  float: left;
+}
+
+#facebook-login {
+  float: right;
+}

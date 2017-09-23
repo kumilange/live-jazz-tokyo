@@ -5,7 +5,9 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
 const app = express();
-const routes = require('./routes');
+const events = require('./routes/events');
+const charge = require('./routes/charge');
+const auth = require('./routes/auth');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -14,7 +16,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', express.static('build'));
-app.use('/api', routes); // API calls
+app.use('/api/events', events);
+app.use('/api/charge', charge);
+app.use('/api/auth', auth);
 app.use('/*', express.static('build'));
 
 // catch 404 and forward to error handler - test
