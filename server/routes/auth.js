@@ -14,12 +14,6 @@ function createJwt(profile) {
   });
 }
 
-function verifyJwt(jwtString) {
-  return JsonWebToken.verify(jwtString, KEY, {
-    issuer: APP,
-  });
-}
-
 router.post('/', async (req, res) => {
   try {
     const socialToken = req.body.socialToken;

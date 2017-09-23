@@ -27,6 +27,7 @@ const postJson = async (url, objToPost) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
+  // Initialize hello with facebook app_id
   window.hello.init({
     facebook: '120884018612158',
   }, {
