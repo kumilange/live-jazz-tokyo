@@ -1,3 +1,42 @@
+.image-box {
+  height: 300px;
+  width: 100%;
+  overflow-y: hidden;
+}
+
+.event-image {
+  width: 100%;
+}
+
+.event-details-table {
+  width: 100%;
+  padding: 20px;
+}
+
+.event-details-table td {
+  padding: 10px;
+}
+
+.event-details-table p {
+  line-height: 1.75em;
+}
+
+#event-details .row {
+  display: flex;
+}
+
+.date {
+  padding: 30px;
+}
+
+#event-details .month {
+  font-size: 20px;
+}
+
+#event-details .day {
+  font-size: 30px;
+}
+
 .StripeCheckout {
   border-radius: 3px !important;
   background: brown !important;

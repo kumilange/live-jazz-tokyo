@@ -31,7 +31,7 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <MuiThemeProvider muiTheme={muiTheme}>
-        <div id="router" className="flex column">
+        <div id="router" className="flex column center">
           <Header />
           <Route exact path="/" component={App} />
           <Route exact path="/event/:id" component={Event} />
