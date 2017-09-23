@@ -1,4 +1,4 @@
-* { margin: 0; padding: 0; font-family: sans-serif; }
+* { margin: 0; padding: 0; font-family: sans-serif; box-sizing: border-box; }
 #router, #root { height: 100%; }
 body { height: 0; min-height: 100%; }
 
