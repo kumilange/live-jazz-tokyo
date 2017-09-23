@@ -26,10 +26,6 @@
 
 /* gnav
  -------------------------------------------------------------------------------*/
-.gnav-list {
-  display: flex;
-}
-
 .gnav-list li {
   position: relative;
   margin-left: 10px;
