@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import canUseDOM from 'can-use-dom';
 
 import fancyMapStyles from '../resources/fancyMapStyles.json';
+import { MarkerIcon } from '../styles/Icons';
 
 const DEFAULT_CENTER = { lat: 35.6857933, lng: 139.7501793 };
 
@@ -35,6 +36,7 @@ const MyMap = withGoogleMap((props) => {
           position={position}
           key={event.id}
           title={event.event}
+          icon={MarkerIcon}
           onClick={() => props.onMarkerClick(event)}
         >
           { props.selectedEvent === event ?
