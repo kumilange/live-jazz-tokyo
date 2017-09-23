@@ -108,10 +108,16 @@ export function setEndTimeField(event) {
   };
 }
 
-export function _hello(token) {
+export function setUserProfile(userProfile) {
   return {
-    type: 'HELLO',
-    token
+    type: 'SET_USER_PROFILE',
+    userProfile
+  };
+}
+
+export function logout() {
+  return {
+    type: 'CLEAR_USER_PROFILE',
   };
 }
 
