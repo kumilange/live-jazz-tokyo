@@ -48,12 +48,13 @@ const MyMap = withGoogleMap((props) => {
                 <h3>{ event.artist }</h3>
                 <p>{ event.venue }</p>
                 <p>¥{ event.price }</p>
-                <p>{ (new Date(event.start)).toDateString() }</p>
+                <p>{ (new Date(event.start)).toDateString().split(' ').slice(1, 3)
+                  .join('. ') }</p>
                 <p>{
-                  `${(new Date(event.start)).getHours()}:${
-                    (new Date(event.start)).getMinutes()} ~ ${
-                    (new Date(event.end)).getHours()}:${
-                    (new Date(event.end)).getMinutes()}`}
+                  `${(new Date(event.start)).toTimeString().split(':').slice(0, 2)
+                    .join(':')} ~ ${
+                    (new Date(event.end)).toTimeString().split(':').slice(0, 2)
+                      .join(':')}`}
                 </p>
               </div>
             </InfoWindow>
