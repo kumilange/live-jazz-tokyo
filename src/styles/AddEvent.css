@@ -1,0 +1,19 @@
+.addEventButton {
+  margin-top: 40px;
+}
+
+/* colPriceDate */
+.colPriceDate,
+.colTime {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.colPriceDate .inputShort,
+.colTime > div {
+  width: 47% !important;
+}
+.colPriceDate .inputShort > div,
+.colTime > div .inputShort {
+  width: 100% !important;
+}

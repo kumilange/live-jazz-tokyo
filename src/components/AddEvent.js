@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import DatePicker from 'material-ui/DatePicker';
 import TimePicker from 'material-ui/TimePicker';
@@ -15,56 +15,63 @@ const AddEvent = (props) => {
   return (
     <main className="flex column restrict-width grow">
       <TextField
-        className="name"
+        className="inputShort name"
         floatingLabelText="Name"
         onChange={props.onEventNameInput}
       />
       <TextField
-        className="venue"
-        floatingLabelText="Venue"
-        onChange={props.onVenueInput}
-      />
-      <TextField
-        className="artist"
+        className="inputShort artist"
         floatingLabelText="Artist"
         onChange={props.onArtistInput}
       />
       <TextField
-        className="address"
+        className="inputShort venue"
+        floatingLabelText="Venue"
+        onChange={props.onVenueInput}
+      />
+      <TextField
+        className="inputFull address"
         floatingLabelText="Address"
         onChange={props.onAddressInput}
       />
-      <TextField
-        className="price"
-        floatingLabelText="Price"
-        value={props.addEventFields.price}
-        onChange={(event, val) =>
-          props.onPriceInput(event, val, props.addEventFields.price)
-        }
-      />
-      <DatePicker
-        floatingLabelText="Date"
-        formatDate={new DateTimeFormat('en-US', {
-          day: 'numeric',
-          month: 'long',
-          year: 'numeric',
-        }).format}
-        onChange={props.onDateInput}
-      />
-      <TimePicker
-        floatingLabelText="Opening Time"
-        okLabel="OK"
-        cancelLabel="Cancel"
-        onChange={props.onStartTimeInput}
-      />
-      <TimePicker
-        floatingLabelText="Closing Time"
-        okLabel="OK"
-        cancelLabel="Cancel"
-        onChange={props.onEndTimeInput}
-      />
+      <div className="colPriceDate">
+        <TextField
+          className="inputShort price"
+          floatingLabelText="Price"
+          value={props.addEventFields.price}
+          onChange={(event, val) =>
+            props.onPriceInput(event, val, props.addEventFields.price)
+          }
+        />
+        <DatePicker
+          className="inputShort"
+          floatingLabelText="Date"
+          formatDate={new DateTimeFormat('en-US', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+          }).format}
+          onChange={props.onDateInput}
+        />
+      </div>
+      <div className="colTime">
+        <TimePicker
+          className="inputShort"
+          floatingLabelText="Opening Time"
+          okLabel="OK"
+          cancelLabel="Cancel"
+          onChange={props.onStartTimeInput}
+        />
+        <TimePicker
+          className="inputShort"
+          floatingLabelText="Closing Time"
+          okLabel="OK"
+          cancelLabel="Cancel"
+          onChange={props.onEndTimeInput}
+        />
+      </div>
       <RaisedButton
-        className="addSubmitBtn"
+        className="addEventButton primaryButton"
         label="Submit"
         onClick={event =>
           props.onFormSubmit(event, props.addEventFields, props.history)
