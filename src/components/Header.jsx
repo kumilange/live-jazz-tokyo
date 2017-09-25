@@ -7,7 +7,7 @@ const Header = () => (
   <header id="header" className="flex dark">
     <h1><Link to="/" className="logo">Live Jazz</Link></h1>
     <nav className="gnav">
-      <ul className="gnav-list">
+      <ul className="gnav-list flex">
         <li><a href="" className="gnav-list-link">Log In</a></li>
         <li><a href="" className="gnav-list-link">Sign Up</a></li>
       </ul>
