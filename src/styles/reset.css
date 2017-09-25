@@ -28,6 +28,7 @@ label			{ vertical-align: middle; }
 *,
 *:before,
 *:after		 	{ word-break: break-all;}
+* { box-sizing: border-box; }
 /*-------------------------------------------------------------------------------
  BASE
  -------------------------------------------------------------------------------*/
@@ -61,5 +62,4 @@ body {
   background-position: 0 0;
   background: beige;
 }
-* { box-sizing: border-box; }
 a{ color: beige; }

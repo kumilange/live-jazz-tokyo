@@ -1,78 +1,86 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import DatePicker from 'material-ui/DatePicker';
 import TimePicker from 'material-ui/TimePicker';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
+import '../styles/AddEvent.css';
+
 const DateTimeFormat = global.Intl.DateTimeFormat;
 
-class AddEvent extends Component {
-  render() {
-    const failed = !this.props.addEventResponse.addSuccess
-      && this.props.addEventResponse.addSuccess !== undefined;
-    return (
-      <div className="flex column restrict-width grow">
+const AddEvent = (props) => {
+  const failed = !props.addEventResponse.addSuccess
+    && props.addEventResponse.addSuccess !== undefined;
+  return (
+    <main className="flex column restrict-width grow">
+      <TextField
+        className="inputShort name"
+        floatingLabelText="Name"
+        onChange={props.onEventNameInput}
+      />
+      <TextField
+        className="inputShort artist"
+        floatingLabelText="Artist"
+        onChange={props.onArtistInput}
+      />
+      <TextField
+        className="inputShort venue"
+        floatingLabelText="Venue"
+        onChange={props.onVenueInput}
+      />
+      <TextField
+        className="inputFull address"
+        floatingLabelText="Address"
+        onChange={props.onAddressInput}
+      />
+      <div className="colPriceDate">
         <TextField
-          className="name"
-          floatingLabelText="Name"
-          onChange={this.props.onEventNameInput}
-        />
-        <TextField
-          className="venue"
-          floatingLabelText="Venue"
-          onChange={this.props.onVenueInput}
-        />
-        <TextField
-          className="artist"
-          floatingLabelText="Artist"
-          onChange={this.props.onArtistInput}
-        />
-        <TextField
-          className="address"
-          floatingLabelText="Address"
-          onChange={this.props.onAddressInput}
-        />
-        <TextField
-          className="price"
+          className="inputShort price"
           floatingLabelText="Price"
-          value={this.props.addEventFields.price}
+          value={props.addEventFields.price}
           onChange={(event, val) =>
-            this.props.onPriceInput(event, val, this.props.addEventFields.price)
+            props.onPriceInput(event, val, props.addEventFields.price)
           }
         />
         <DatePicker
+          className="inputShort"
           floatingLabelText="Date"
           formatDate={new DateTimeFormat('en-US', {
             day: 'numeric',
             month: 'long',
             year: 'numeric',
           }).format}
-          onChange={this.props.onDateInput}
+          onChange={props.onDateInput}
         />
+      </div>
+      <div className="colTime">
         <TimePicker
+          className="inputShort"
           floatingLabelText="Opening Time"
           okLabel="OK"
           cancelLabel="Cancel"
-          onChange={this.props.onStartTimeInput}
+          onChange={props.onStartTimeInput}
         />
         <TimePicker
+          className="inputShort"
           floatingLabelText="Closing Time"
           okLabel="OK"
           cancelLabel="Cancel"
-          onChange={this.props.onEndTimeInput}
+          onChange={props.onEndTimeInput}
         />
-        <RaisedButton
-          label="Submit"
-          onClick={event =>
-            this.props.onFormSubmit(event, this.props.addEventFields, this.props.history)
-          }
-        />
-        { failed ? <p>Submit failed!  Check data and try again.</p> : <div /> }
       </div>
-    );
-  }
-}
+      <RaisedButton
+        className="addEventButton primaryButton"
+        label="Submit"
+        onClick={event =>
+          props.onFormSubmit(event, props.addEventFields, props.history)
+        }
+      />
+      { failed ? <p>Submit failed!  Check data and try again.</p> : <div /> }
+    </main>
+  );
+};
 
 AddEvent.propTypes = {
   onFormSubmit: PropTypes.func.isRequired,
