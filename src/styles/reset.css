@@ -1,0 +1,65 @@
+@charset "utf-8";
+
+/*-------------------------------------------------------------------------------
+ RESET
+ -------------------------------------------------------------------------------*/
+body, div, p,  ul, ol, li, dl, dt, dd, table, th ,td, img, figure,
+h1, h2, h3 ,h4 ,h5, h6, form, select {
+  margin: 0;
+  padding: 0;
+}
+main, article, aside, figcaption, figure,
+footer, header, nav, section, details, summary {
+  display: block;
+}
+h1, h2, h3 ,h4 ,h5, h6, th, em, strong {
+  font-weight: normal;
+}
+ul,ol			{ list-style: none; }
+img				{ border: 0; vertical-align: middle; }
+a				{ text-decoration: none; }
+table			{ border-collapse: collapse; }
+pre				{ white-space: pre-wrap;}
+svg,
+input,
+select,
+textarea,
+label			{ vertical-align: middle; }
+*,
+*:before,
+*:after		 	{ word-break: break-all;}
+/*-------------------------------------------------------------------------------
+ BASE
+ -------------------------------------------------------------------------------*/
+@font-face {
+  font-family: 'Chelsea';
+  src: url('../fonts/Chelsea.ttf');
+}
+
+@font-face {
+  font-family: 'Gothic';
+  src: url('../fonts/ITC Avant Garde Gothic LT Extra Light.ttf');
+}
+
+@font-face {
+  font-family: 'LogoTypeGothicCondense';
+  src: url('../fonts/LogoTypeGothicCondense.otf');
+}
+
+html {
+  color: #666666;
+  font-family: LogoTypeGothicCondense, "メイリオ",Meiryo,"ヒラギノ角ゴ Pro","Hiragino Kaku Gothic Pro",Osaka,"ＭＳ Ｐゴシック","MS PGothic","MS Gothic","ＭＳ ゴシック","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 100%;
+  line-height: 1.7;
+}
+html, body {
+  width: 100%;
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  background-position: 0 0;
+  background: beige;
+}
+* { box-sizing: border-box; }
+a{ color: beige; }

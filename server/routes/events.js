@@ -53,6 +53,7 @@ router.get('/:id', async (req, res) => {
       'event.name as name',
       'artist.name as artist',
       'venue.name as venue',
+      'venue.address',
       'event_img.image as image',
       'event.price',
       'event.start',
@@ -64,6 +65,7 @@ router.get('/:id', async (req, res) => {
       name: event.name,
       artist: event.artist,
       venue: event.venue,
+      address: event.address,
       image: event.image,
       price: event.price,
       start: parseInt(event.start, 10),
@@ -76,14 +78,26 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
+  console.log(req.body);
+
+  const date = new Date(req.body.date);
+  const start = new Date(req.body.startTime);
+  start.setFullYear(date.getFullYear());
+  start.setMonth(date.getMonth());
+  start.setDate(date.getDate());
+  const end = new Date(req.body.endTime);
+  end.setFullYear(date.getFullYear());
+  end.setMonth(date.getMonth());
+  end.setDate(date.getDate());
+
   const artistName = req.body.artist;
   const venueName = req.body.venue;
   const address = req.body.address;
   const event = {
     name: req.body.eventName,
     price: parseInt(req.body.price, 10),
-    start: parseInt(req.body.startTime, 10),
-    end: parseInt(req.body.endTime, 10),
+    start: start.getTime(),
+    end: end.getTime(),
   };
 
   try {
