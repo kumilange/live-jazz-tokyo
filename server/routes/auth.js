@@ -11,8 +11,6 @@ const router = express.Router();
 
 const JWT_KEY = process.env.JWT_KEY || 'TEST_KEY';
 const JWT_APP = process.env.JWT_APP || 'TEST_APP';
-console.log('jwt key', JWT_KEY);
-console.log('jwt app', JWT_APP);
 
 function createJwt(profile) {
   return JsonWebToken.sign(profile, JWT_KEY, {
@@ -43,7 +41,8 @@ router.post('/', async (req, res) => {
     if (user) {
       console.log('EXISTING USER', user);
     } else {
-      await db('user')
+      user = await db('user')
+        .returning()
         .insert({
           name: profile.name,
           email: profile.email,
@@ -53,9 +52,9 @@ router.post('/', async (req, res) => {
 
     res.json({
       jwt,
-      name: profile.name,
-      email: profile.email,
-      id: profile.id,
+      name: user.name,
+      email: user.email,
+      id: user.id,
     });
   } catch (err) {
     console.error('Error retrieving user info from FaceBook', err);
