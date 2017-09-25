@@ -13,7 +13,7 @@ const setup = knex =>
       .notNullable();
     t.integer('user_id')
       .references('user.id')
-      .notNullable;
+      .notNullable();
   });
 
 const rollback = knex =>

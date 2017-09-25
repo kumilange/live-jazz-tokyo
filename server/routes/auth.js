@@ -4,6 +4,7 @@ const knex = require('knex');
 const querystring = require('querystring');
 
 const knexConfig = require('../../knexfile');
+
 const db = knex(knexConfig);
 
 const router = express.Router();
@@ -27,7 +28,7 @@ router.post('/', async (req, res) => {
     const params = {
       access_token: socialToken,
       fields: 'name, email',
-    }
+    };
     const query = querystring.stringify(params);
 
     const url = `https://graph.facebook.com/me?${query}`;
@@ -36,16 +37,16 @@ router.post('/', async (req, res) => {
     const jwt = createJwt(profile);
     console.log('jwt', jwt);
     const user = await db('user')
-      .where({'email': profile.email})
+      .where({ email: profile.email })
       .first();
 
-    if(user) {
+    if (user) {
       console.log('EXISTING USER', user);
     } else {
       await db('user')
         .insert({
           name: profile.name,
-          email: profile.email
+          email: profile.email,
         });
       console.log('NEW USER', user);
     }

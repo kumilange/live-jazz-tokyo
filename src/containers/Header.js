@@ -41,15 +41,15 @@ const mapDispatchToProps = (dispatch) => {
   window.hello.on('auth.login', async (auth) => {
     const socialToken = auth.authResponse.access_token;
     console.log('authResponse', auth.authResponse);
-    let facebook = window.hello('facebook');
+    const facebook = window.hello('facebook');
     facebook.login(
       {
         scope: 'email',
-        force: true
-      }
-    ).then( () => {
+        force: true,
+      },
+    ).then(() => {
       return facebook.api('me');
-    }).then( (profile) => {
+    }).then((profile) => {
       console.log('profile', profile);
       dispatch(setUserProfile(profile));
     });
@@ -64,15 +64,15 @@ const mapDispatchToProps = (dispatch) => {
   });
   return {
     onLoginButtonClick: () => {
-      let facebook = window.hello('facebook');
+      const facebook = window.hello('facebook');
       facebook.login(
         {
           scope: 'email',
-          force: true
-        }
-      ).then( () => {
+          force: true,
+        },
+      ).then(() => {
         return facebook.api('me');
-      }).then( (result) => {
+      }).then((result) => {
         console.log(result);
       });
     },
