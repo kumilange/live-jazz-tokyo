@@ -11,7 +11,7 @@ const Header = (props) => (
       ? <nav className="gnav">
         <ul className="gnav-list flex">
           <li><Link to={'/user'} className="gnav-list-link">{ props.userProfile.name }</Link></li>
-          <li><span className="gnav-list-link" onClick={props.onLogoutButtonClick}>Logout</span></li>
+          <li><Link to={'/'}  className="gnav-list-link" onClick={props.onLogoutButtonClick}>Logout</Link></li>
         </ul>
         </nav>
       : <nav className="gnav">
