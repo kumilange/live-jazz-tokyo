@@ -39,6 +39,7 @@ const mapDispatchToProps = (dispatch) => {
   // When hello attempts to log in after login button click, this callback is executed.
   window.hello.on('auth.login', async (auth) => {
     const socialToken = auth.authResponse.access_token;
+    console.log(auth.authResponse);
 
     const userProfile = await postJson('/api/auth', {
       network: 'facebook',
@@ -48,7 +49,17 @@ const mapDispatchToProps = (dispatch) => {
   });
   return {
     onLoginButtonClick: () => {
-      window.hello('facebook').login();
+      let facebook = window.hello('facebook');
+      facebook.login(
+        {
+          scope: 'email',
+          force: true
+        }
+      ).then( () => {
+        return facebook.api('me');
+      }).then( (result) => {
+        console.log(result);
+      });
     },
     onLogoutButtonClick: () => {
       window.hello.logout('facebook');
