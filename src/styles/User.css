@@ -1,0 +1,7 @@
+#user-info-table td:nth-child(1) {
+  text-align: right;
+}
+
+#user-info-table td {
+  padding: 10px;
+}

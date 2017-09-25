@@ -6,12 +6,30 @@ import '../styles/User.css';
 class User extends Component {
   render() {
     return (
-      <div>
-        <div id="profile-picture">
-          <img src="/default-user.jpg" />
+      <main className="flex column center">
+        <div className="flex center restrict-width">
+          <div id="profile-picture">
+            <img src="/default-user.jpg" />
+          </div>
+          <table id="user-info-table">
+            <tbody>
+              <tr>
+                <td>Name:</td>
+                <td>Code Chrysalis</td>
+              </tr>
+              <tr>
+                <td>Username:</td>
+                <td>{ this.props.match.params.id }</td>
+              </tr>
+              <tr>
+                <td>Email:</td>
+                <td>code@chrysalis.io</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div>ID { this.props.match.params.id }</div>
-      </div>
+        <div className="flex grow" />
+      </main>
     );
   }
 }
