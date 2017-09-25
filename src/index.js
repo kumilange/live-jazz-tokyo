@@ -13,6 +13,7 @@ import reducer from './reducers';
 import Header from './containers/Header';
 import App from './containers/App';
 import Event from './containers/Event';
+import User from './containers/User';
 import Footer from './components/Footer';
 import Confirmation from './containers/Confirmation';
 import AddEvent from './containers/AddEvent';
@@ -34,6 +35,7 @@ ReactDOM.render(
           <Header />
           <Route exact path="/" component={App} />
           <Route exact path="/event/:id" component={Event} />
+          <Route exact path="/user/:id" component={User} />
           <Route exact path="/confirmation" component={Confirmation} />
           <Route exact path="/addevent" component={AddEvent} />
           <Footer />
