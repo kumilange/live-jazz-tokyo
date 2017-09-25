@@ -4,7 +4,7 @@
   transition: opacity .2s;
 }
 .infoWindowInner:hover {
-  opacity: .8;
+  opacity: .7;
 }
 .infoItemWrapper {
   margin-top: 5px;
