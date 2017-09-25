@@ -98,7 +98,6 @@ const reducer = (state = initialState, action) => {
       newState = state;
       break;
   }
-  console.log('newstate', newState);
   return newState;
 };
 
