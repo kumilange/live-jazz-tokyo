@@ -21,7 +21,7 @@ const geolocation = (
 );
 
 const formatPrice = (price) => {
-  return price.toString().replace(/(\d)(?=(\d{3})+$)/g,'$1,');
+  return price.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,');
 };
 
 const MyMap = withGoogleMap((props) => {

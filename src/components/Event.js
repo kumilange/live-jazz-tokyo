@@ -8,7 +8,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Map from '../containers/Map';
 
 import '../styles/Event.css';
-import { CalendarIcon, ClockIcon, DollarIcon, PinIcon } from '../styles/Icons';
+import { ClockIcon, DollarIcon, PinIcon } from '../styles/Icons';
 
 class Event extends Component {
   componentDidMount() {
