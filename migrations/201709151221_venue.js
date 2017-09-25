@@ -9,7 +9,6 @@ const setup = knex =>
     t.integer('capacity');
     t.text('description');
     t.text('image');
-    t.integer('user_id').references('user.id');
   });
 
 const rollback = knex =>

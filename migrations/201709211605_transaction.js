@@ -11,9 +11,6 @@ const setup = knex =>
       .notNullable();
     t.string('charge_id')
       .notNullable();
-    t.integer('user_id')
-      .references('user.id')
-      .notNullable();
   });
 
 const rollback = knex =>
