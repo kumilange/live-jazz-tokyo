@@ -3,6 +3,7 @@ const setup = knex =>
     t.increments().index();
     t.string('name').notNullable().unique();
     t.text('image');
+    t.integer('user_id').references('user.id');
   });
 
 const rollback = knex =>

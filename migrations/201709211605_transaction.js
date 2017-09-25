@@ -1,10 +1,19 @@
 const setup = knex =>
   knex.schema.createTable('transaction', (t) => {
-    t.increments().index();
-    t.integer('event_id').unsigned().notNullable();
-    t.foreign('event_id').references('event.id');
-    t.integer('total').notNullable();
-    t.string('charge_id').notNullable();
+    t.increments()
+      .index();
+    t.integer('event_id')
+      .unsigned()
+      .notNullable();
+    t.foreign('event_id')
+      .references('event.id');
+    t.integer('total')
+      .notNullable();
+    t.string('charge_id')
+      .notNullable();
+    t.integer('user_id')
+      .references('user.id')
+      .notNullable;
   });
 
 const rollback = knex =>
