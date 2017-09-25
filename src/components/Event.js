@@ -80,7 +80,7 @@ class Event extends Component {
               />
             </div>
 
-            <div className={ this.props.showMap ? "map-container expanded" : "map-container" }>
+            <div className={this.props.showMap ? 'map-container expanded' : 'map-container'}>
               <div className="event-map"><Map /></div>
             </div>
 
