@@ -34,7 +34,7 @@ router.post('/', async (req, res) => {
     console.log('profile', profile);
     const jwt = createJwt(profile);
     console.log('jwt', jwt);
-    const user = await db('user')
+    let user = await db('user')
       .where({ email: profile.email })
       .first();
 
