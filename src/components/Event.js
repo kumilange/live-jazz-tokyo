@@ -88,16 +88,22 @@ class Event extends Component {
               <div className="icon"><DollarIcon /></div>
               <p>{ `${this.props.event.price} Yen`}</p>
               <div className="grow" />
-              <Stripe
-                label={'Reserve'}
-                token={(token) => { this.onToken(token); }}
-                stripeKey="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-                currency="JPY"
-                name="Live Jazz Co."
-                image="../logo.png"
-                description={`1 ticket for ${this.props.event.name}`}
-                amount={2000}
-              />
+              { this.props.userProfile ?
+                <Stripe
+                  label={'Reserve'}
+                  token={(token) => { this.onToken(token); }}
+                  stripeKey="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+                  currency="JPY"
+                  name="Live Jazz Co."
+                  image="../logo.png"
+                  description={`1 ticket for ${this.props.event.name}`}
+                  amount={2000}
+                />
+                :
+                <button>
+                  Please log in!
+                </button>
+              }
             </div>
           </div>
 
@@ -135,9 +141,11 @@ Event.propTypes = {
   showMap: PropTypes.bool.isRequired,
   toggleMap: PropTypes.func.isRequired,
   onReceiveChargeResponse: PropTypes.func,
+  userProfile: PropTypes.shape(),
 };
 
 Event.defaultProps = {
+  userProfile: undefined,
   event: undefined,
   history: undefined,
   onComponentDidMount: undefined,
