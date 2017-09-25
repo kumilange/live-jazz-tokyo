@@ -133,7 +133,7 @@ describe('Events route /events', () => {
 });
 
 
-describe('EventDetails route /eventdetails', () => {
+describe('EventDetails route /events', () => {
   beforeEach(async () => {
     await db('event').del();
     await db('artist').del();
@@ -203,11 +203,8 @@ describe('EventDetails route /eventdetails', () => {
       };
 
     // exercise
-    const query = querystring.stringify({ id: eventIdList[1] });
-
     const result = await chai.request(app)
-      .get('/api/eventdetails')
-      .query(query)
+      .get(`/api/events/${expected.id}`)
       .send();
 
     // assert
@@ -216,13 +213,11 @@ describe('EventDetails route /eventdetails', () => {
 
   it('should return empty object when there is no data', async () => {
     const expected = {};
+    const id = 1;
 
     // exercise
-    const query = querystring.stringify({ id: 1 });
-
     const result = await chai.request(app)
-      .get('/api/eventdetails')
-      .query(query)
+      .get(`/api/events/${id}`)
       .send();
 
     // assert

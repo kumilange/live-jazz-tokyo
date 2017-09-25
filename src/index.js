@@ -10,7 +10,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import './styles/reset.css';
 import './styles/index.css';
 import reducer from './reducers';
-import Header from './components/Header';
+import Header from './containers/Header';
 import App from './containers/App';
 import Event from './containers/Event';
 import Footer from './components/Footer';

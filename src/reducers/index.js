@@ -6,6 +6,7 @@ const initialState = {
   userLocation: {},
   chargeResponse: undefined,
   addEventResponse: undefined,
+  userProfile: undefined,
   addEventFields: {
     eventName: '',
     artist: '',
@@ -81,6 +82,12 @@ const reducer = (state = initialState, action) => {
       break;
     case 'SHOW_MAP':
       newState = Object.assign({}, state, { showMap: !state.showMap });
+      break;
+    case 'SET_USER_PROFILE':
+      newState = Object.assign({}, state, { userProfile: action.userProfile });
+      break;
+    case 'CLEAR_USER_PROFILE':
+      newState = Object.assign({}, state, { userProfile: undefined });
       break;
     default:
       console.log('UNKNOWN ACTION', action.type);
