@@ -17,6 +17,7 @@ const initialState = {
     startTime: '',
     endTime: '',
   },
+  selectedTab: 'profile',
 };
 
 const reducer = (state = initialState, action) => {
@@ -88,6 +89,9 @@ const reducer = (state = initialState, action) => {
       break;
     case 'CLEAR_USER_PROFILE':
       newState = Object.assign({}, state, { userProfile: undefined });
+      break;
+    case 'SET_SELECTED_TAB':
+      newState = Object.assign({}, state, { selectedTab: action.selectedTab });
       break;
     default:
       console.log('UNKNOWN ACTION', action.type);
