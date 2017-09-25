@@ -41,18 +41,7 @@ const mapDispatchToProps = (dispatch) => {
   window.hello.on('auth.login', async (auth) => {
     const socialToken = auth.authResponse.access_token;
     console.log('authResponse', auth.authResponse);
-    const facebook = window.hello('facebook');
-    facebook.login(
-      {
-        scope: 'email',
-      },
-    ).then(() => {
-      return facebook.api('me');
-    }).then((profile) => {
-      console.log('profile', profile);
-      dispatch(setUserProfile(profile));
-    });
-
+    window.hello('facebook');
     // TODO: stop relying on the server to send user's name and email
     // should only receive JWT
     const userProfile = await postJson('/api/auth', {
@@ -70,6 +59,8 @@ const mapDispatchToProps = (dispatch) => {
         },
       ).then(() => {
         return facebook.api('me');
+      }).then((profile) => {
+        dispatch(profile);
       });
     },
     onLogoutButtonClick: () => {
