@@ -5,6 +5,8 @@
 .grow { flex-grow: 1; }
 .column { flex-direction: column; }
 .center { justify-content: center; align-items: center; }
+.horiCenter { justify-content: center}
+.vertCenter { align-items: center}
 .restrict-width {
   width: 800px;
   min-width: 50%;

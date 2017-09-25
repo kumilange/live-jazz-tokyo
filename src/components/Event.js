@@ -8,7 +8,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Map from '../containers/Map';
 
 import '../styles/Event.css';
-import { ClockIcon, DollarIcon, PinIcon } from '../styles/Icons';
+import { CalendarIcon, ClockIcon, DollarIcon, PinIcon } from '../styles/Icons';
 
 class Event extends Component {
   componentDidMount() {
@@ -60,23 +60,18 @@ class Event extends Component {
           <div className="event-details-table">
             <div className="flex center row">
               <div className="icon"><ClockIcon /></div>
-              <div>
-                <p>{ this.props.event.start.toDateString() }</p>
-                <p>{
-                  `${this.props.event.start.toTimeString().split(':').slice(0, 2).join(':')
-                  } to ${
-                    this.props.event.end.toTimeString().split(':').slice(0, 2).join(':')}`}
-                </p>
-              </div>
+              <p>{
+                `${this.props.event.start.toTimeString().split(':').slice(0, 2).join(':')
+                } to ${
+                  this.props.event.end.toTimeString().split(':').slice(0, 2).join(':')}`}
+              </p>
               <div className="grow" />
             </div>
 
             <div className="flex center row">
               <div className="icon"><PinIcon /></div>
-              <div>
-                <p>{ this.props.event.venue }</p>
-                <p>{ this.props.event.address }</p>
-              </div>
+              <p>{ this.props.event.venue }</p>
+              <p>{ this.props.event.address }</p>
               <div className="grow" />
               <RaisedButton
                 className="mui-button"
