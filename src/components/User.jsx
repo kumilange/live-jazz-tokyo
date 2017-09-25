@@ -13,8 +13,8 @@ class User extends Component {
         <div className="flex restrict-width">
           { this.props.userProfile ?
             [
-              <img id="profile-picture" src="/default-user.jpg" />,
-              <div className="grow">
+              <img key='1' id="profile-picture" src="/default-user.jpg" />,
+              <div key='2' className="grow">
                 <div id="tabs" className="flex">
                   <div className={ this.props.selectedTab === 'profile' ? 'tab selected' : 'tab' }
                     onClick={() => this.props.setSelectedTab('profile')}>
