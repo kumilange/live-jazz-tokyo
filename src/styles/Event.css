@@ -68,6 +68,7 @@
   font-weight: normal !important;
   font-size: 15px !important;
   font-family: LogoTypeGothicCondense !important;
+  text-transform: uppercase;
   transition: opacity .4s;
 }
 
