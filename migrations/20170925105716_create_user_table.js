@@ -1,4 +1,4 @@
-const setup = knex => {
+const setup = (knex) => {
   knex.schema.createTable('user', (table) => {
     table.increments().index();
     table.string('name');
@@ -20,9 +20,9 @@ const setup = knex => {
     table.integer('user_id')
       .references('user.id');
   });
-}
+};
 
-const rollback = knex => {
+const rollback = (knex) => {
   knex.schema.dropTable('user');
   knex.schema.table('artist', (table) => {
     table.dropColumn('user_id');
@@ -33,7 +33,7 @@ const rollback = knex => {
   knex.schema.table('venue', (table) => {
     table.dropColumn('user_id');
   });
-}
+};
 
 exports.up = setup;
 exports.down = rollback;
