@@ -26,6 +26,16 @@
   height: 300px;
 }
 
+.map-container {
+  height: 0px;
+  overflow: hidden;
+  transition: all 200ms ease;
+}
+
+.expanded {
+  height: 300px;
+}
+
 .icon {
   margin-right: 20px;
 }
