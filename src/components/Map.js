@@ -6,7 +6,7 @@ import canUseDOM from 'can-use-dom';
 
 import fancyMapStyles from '../resources/fancyMapStyles.json';
 import { CalendarIcon, ClockIcon, DollarIcon, PinIcon, UserIcon, MarkerIcon } from '../styles/Icons';
-import '../styles/Map.css';
+import '../styles/InfoWindow.css';
 
 const DEFAULT_CENTER = { lat: 35.6857933, lng: 139.7501793 };
 
@@ -54,7 +54,7 @@ const MyMap = withGoogleMap((props) => {
               <div className="infoWindowInner">
                 <Link to={`/event/${event.id}`}>
                   <h2 className="infoWindowHeading2">{ event.name }</h2>
-                  <div className="flex vertCenter">
+                  <div className="flex vertCenter infoItemWrapper">
                     <UserIcon style={svgIconSizeL} />
                     <h3 className="infoWindowHeading3">{ event.artist }</h3>
                   </div>
