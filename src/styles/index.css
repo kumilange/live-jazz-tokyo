@@ -5,6 +5,8 @@
 .grow { flex-grow: 1; }
 .column { flex-direction: column; }
 .center { justify-content: center; align-items: center; }
+.horiCenter { justify-content: center}
+.vertCenter { align-items: center}
 .restrict-width {
   width: 800px;
   min-width: 50%;
@@ -25,14 +27,13 @@
  -------------------------------------------------------------------------------*/
 #router, #root {
   height: 100%;
-  background: #b9b98f;
 }
 
 /*-------------------------------------------------------------------------------
  App.js
  -------------------------------------------------------------------------------*/
 #app {
-  /* 80px: header & footer width*/
-  height: calc(100% - 80px - 80px);
+  /* 80px: footer width*/
+  height: calc(100% - 80px);
   padding-top: 80px;
 }

@@ -55,13 +55,24 @@
 }
 
 .StripeCheckout {
-  border-radius: 3px !important;
-  background: brown !important;
+  width: 97px;
+  height: 40px;
+  border-radius: 2px !important;
+  background: #a67b04 !important;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
 }
 
 .StripeCheckout span {
-  background: brown !important;
+  background: #a67b04 !important;
   box-shadow: 0 0 0 0 !important;
+  font-weight: normal !important;
+  font-size: 15px !important;
+  font-family: LogoTypeGothicCondense !important;
+  transition: opacity .4s;
+}
+
+.StripeCheckout span:hover {
+  opacity: .7;
 }
 
 .pane {
