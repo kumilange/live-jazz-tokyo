@@ -6,10 +6,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setSelectedTab: selectedTab => {
+  setSelectedTab: (selectedTab) => {
     dispatch({
       type: 'SET_SELECTED_TAB',
-      selectedTab
+      selectedTab,
     });
   },
 });
