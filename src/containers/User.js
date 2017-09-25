@@ -3,6 +3,7 @@ import User from '../components/User';
 
 const mapStateToProps = state => ({
   selectedTab: state.selectedTab,
+  userProfile: state.userProfile,
 });
 
 const mapDispatchToProps = dispatch => ({

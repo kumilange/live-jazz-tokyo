@@ -22,6 +22,7 @@
     "can-use-dom": "^0.1.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
+    "dotenv": "^4.0.0",
     "express": "~4.15.2",
     "isomorphic-fetch": "^2.2.1",
     "jsonwebtoken": "^8.0.1",

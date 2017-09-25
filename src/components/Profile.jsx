@@ -5,15 +5,15 @@ export default (props) => (
     <tbody>
       <tr>
         <td>Name:</td>
-        <td>Code Chrysalis</td>
+        <td> { props.userProfile.name } </td>
       </tr>
       <tr>
-        <td>Username:</td>
-        <td>{ props.id }</td>
+        <td>User ID:</td>
+        <td> { props.userProfile.id }</td>
       </tr>
       <tr>
         <td>Email:</td>
-        <td>code@chrysalis.io</td>
+        <td> { props.userProfile.email } </td>
       </tr>
     </tbody>
   </table>
