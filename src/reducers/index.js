@@ -1,7 +1,8 @@
 const initialState = {
   events: [],
   selectedEvent: {},
-  eventDetails: {},
+  eventDetails: undefined,
+  showMap: false,
   userLocation: {},
   chargeResponse: undefined,
   addEventResponse: undefined,
@@ -12,6 +13,7 @@ const initialState = {
     venue: '',
     address: '',
     price: '',
+    date: '',
     startTime: '',
     endTime: '',
   },
@@ -30,14 +32,18 @@ const reducer = (state = initialState, action) => {
     case 'SET_SELECTED_EVENT':
       newState = Object.assign({}, state, { selectedEvent: action.event });
       break;
+    case 'CLEAR_SELECTED_EVENT':
+      newState = Object.assign({}, state, { selectedEvent: {} });
+      break;
     case 'SET_EVENT_DETAILS':
       newState = Object.assign({}, state, { eventDetails: action.event });
+      console.log('event details', newState);
       break;
     case 'SET_USER_LOCATION':
       newState = Object.assign({}, state, { userLocation: action.position });
       break;
     case 'SET_CHARGE_RESPONSE':
-      newState = Object.assign({}, state, { chargeResponse: action.message });
+      newState = Object.assign({}, state, { chargeResponse: action.result });
       break;
     case 'SET_EVENT_NAME_FIELD':
       newAddEventFields = Object.assign({}, state.addEventFields, { eventName: action.value });
@@ -55,6 +61,10 @@ const reducer = (state = initialState, action) => {
       newAddEventFields = Object.assign({}, state.addEventFields, { address: action.value });
       newState = Object.assign({}, state, { addEventFields: newAddEventFields });
       break;
+    case 'SET_DATE_FIELD':
+      newAddEventFields = Object.assign({}, state.addEventFields, { date: action.value });
+      newState = Object.assign({}, state, { addEventFields: newAddEventFields });
+      break;
     case 'SET_PRICE_FIELD':
       newAddEventFields = Object.assign({}, state.addEventFields, { price: action.value });
       newState = Object.assign({}, state, { addEventFields: newAddEventFields });
@@ -69,6 +79,9 @@ const reducer = (state = initialState, action) => {
       break;
     case 'SET_ADD_EVENT_RESPONSE':
       newState = Object.assign({}, state, { addEventResponse: action.addEventResponse });
+      break;
+    case 'SHOW_MAP':
+      newState = Object.assign({}, state, { showMap: !state.showMap });
       break;
     case 'SET_USER_PROFILE':
       newState = Object.assign({}, state, { userProfile: action.userProfile });

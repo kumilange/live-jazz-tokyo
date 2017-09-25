@@ -1,84 +1,74 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import DatePicker from 'material-ui/DatePicker';
+import TimePicker from 'material-ui/TimePicker';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+
+const DateTimeFormat = global.Intl.DateTimeFormat;
 
 class AddEvent extends Component {
   render() {
     const failed = !this.props.addEventResponse.addSuccess
       && this.props.addEventResponse.addSuccess !== undefined;
     return (
-      <div>
-        <form onSubmit={(event) => {
-          this.props.onFormSubmit(event, this.props.addEventFields, this.props.history);
-        }}
-        >
-          <div>
-            <label htmlFor="eventName">Name:</label>
-            <input
-              type="text"
-              id="eventName"
-              name="event_name"
-              onChange={this.props.onEventNameInput}
-            />
-          </div>
-          <div>
-            <label htmlFor="artist">Artist</label>
-            <input
-              type="text"
-              id="artist"
-              name="artist_name"
-              onChange={this.props.onArtistInput}
-            />
-          </div>
-          <div>
-            <label htmlFor="venue">Venue</label>
-            <input
-              type="text"
-              id="venue"
-              name="venue_name"
-              onChange={this.props.onVenueInput}
-            />
-          </div>
-          <div>
-            <label htmlFor="address">Address</label>
-            <input
-              type="text"
-              id="address"
-              name="address"
-              onChange={this.props.onAddressInput}
-            />
-          </div>
-          <div>
-            <label htmlFor="price">Price</label>
-            <input
-              type="text"
-              id="price"
-              name="price"
-              onChange={this.props.onPriceInput}
-            />
-          </div>
-          <div>
-            <label htmlFor="start">Opening Time:</label>
-            <input
-              type="text"
-              id="start"
-              name="opening_time"
-              onChange={this.props.onStartTimeInput}
-            />
-          </div>
-          <div>
-            <label htmlFor="end">Closing Time</label>
-            <input
-              type="text"
-              id="end"
-              name="closing_time"
-              onChange={this.props.onEndTimeInput}
-            />
-          </div>
-          <div className="button">
-            <button type="submit" >Create</button>
-          </div>
-          { failed ? <p>Submit failed!  Check data and try again.</p> : <div /> }
-        </form>
+      <div className="flex column restrict-width grow">
+        <TextField
+          className="name"
+          floatingLabelText="Name"
+          onChange={this.props.onEventNameInput}
+        />
+        <TextField
+          className="venue"
+          floatingLabelText="Venue"
+          onChange={this.props.onVenueInput}
+        />
+        <TextField
+          className="artist"
+          floatingLabelText="Artist"
+          onChange={this.props.onArtistInput}
+        />
+        <TextField
+          className="address"
+          floatingLabelText="Address"
+          onChange={this.props.onAddressInput}
+        />
+        <TextField
+          className="price"
+          floatingLabelText="Price"
+          value={this.props.addEventFields.price}
+          onChange={(event, val) =>
+            this.props.onPriceInput(event, val, this.props.addEventFields.price)
+          }
+        />
+        <DatePicker
+          floatingLabelText="Date"
+          formatDate={new DateTimeFormat('en-US', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+          }).format}
+          onChange={this.props.onDateInput}
+        />
+        <TimePicker
+          floatingLabelText="Opening Time"
+          okLabel="OK"
+          cancelLabel="Cancel"
+          onChange={this.props.onStartTimeInput}
+        />
+        <TimePicker
+          floatingLabelText="Closing Time"
+          okLabel="OK"
+          cancelLabel="Cancel"
+          onChange={this.props.onEndTimeInput}
+        />
+        <RaisedButton
+          label="Submit"
+          onClick={event =>
+            this.props.onFormSubmit(event, this.props.addEventFields, this.props.history)
+          }
+        />
+        { failed ? <p>Submit failed!  Check data and try again.</p> : <div /> }
       </div>
     );
   }
@@ -91,6 +81,7 @@ AddEvent.propTypes = {
   onVenueInput: PropTypes.func.isRequired,
   onAddressInput: PropTypes.func.isRequired,
   onPriceInput: PropTypes.func.isRequired,
+  onDateInput: PropTypes.func.isRequired,
   onStartTimeInput: PropTypes.func.isRequired,
   onEndTimeInput: PropTypes.func.isRequired,
   addEventResponse: PropTypes.shape(),

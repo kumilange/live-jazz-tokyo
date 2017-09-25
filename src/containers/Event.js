@@ -5,6 +5,7 @@ import { getEventDetails, setChargeResponse } from '../actions';
 
 const mapStateToProps = state => ({
   event: state.eventDetails,
+  showMap: state.showMap,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -13,6 +14,9 @@ const mapDispatchToProps = dispatch => ({
   },
   onReceiveChargeResponse: (result) => {
     dispatch(setChargeResponse(result));
+  },
+  toggleMap: () => {
+    dispatch({ type: 'SHOW_MAP' });
   },
 });
 

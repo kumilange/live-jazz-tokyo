@@ -28,6 +28,9 @@ export function getEventDetails(eventID) {
     try {
       const event = await (await fetch(`/api/events/${eventID}`)).json();
 
+      event.start = new Date(event.start);
+      event.end = new Date(event.end);
+
       dispatch({
         type: 'SET_EVENT_DETAILS',
         event,
@@ -42,6 +45,12 @@ export function setSelectedEvent(event) {
   return {
     type: 'SET_SELECTED_EVENT',
     event,
+  };
+}
+
+export function clearSelectedEvent() {
+  return {
+    type: 'CLEAR_SELECTED_EVENT',
   };
 }
 
@@ -87,24 +96,31 @@ export function setAddressField(event) {
   };
 }
 
-export function setPriceField(event) {
+export function setPriceField(value) {
   return {
     type: 'SET_PRICE_FIELD',
-    value: event.target.value,
+    value,
   };
 }
 
-export function setStartTimeField(event) {
+export function setDateField(date) {
+  return {
+    type: 'SET_DATE_FIELD',
+    value: date,
+  };
+}
+
+export function setStartTimeField(time) {
   return {
     type: 'SET_START_TIME_FIELD',
-    value: event.target.value,
+    value: time,
   };
 }
 
-export function setEndTimeField(event) {
+export function setEndTimeField(time) {
   return {
     type: 'SET_END_TIME_FIELD',
-    value: event.target.value,
+    value: time,
   };
 }
 
