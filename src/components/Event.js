@@ -80,9 +80,9 @@ class Event extends Component {
               />
             </div>
 
-            { this.props.showMap ?
-              <div className="event-map"><Map /></div> : <div />
-            }
+            <div className={ this.props.showMap ? "map-container expanded" : "map-container" }>
+              <div className="event-map"><Map /></div>
+            </div>
 
             <div className="flex center row">
               <div className="icon"><DollarIcon /></div>
