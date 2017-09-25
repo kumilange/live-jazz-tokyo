@@ -5,3 +5,30 @@
 #user-info-table td {
   padding: 10px;
 }
+
+#profile-picture {
+  height: 200px;
+  margin-right: 20px;
+}
+
+.tab {
+  padding: 20px;
+  cursor: pointer;
+}
+
+.tab.selected {
+  border-bottom: 1px solid black;
+}
+
+#divider {
+  margin-bottom: 20px;
+}
+
+#order-history-table {
+  width: 100%;
+}
+
+#order-history-table td {
+  padding: 20px;
+  text-align: center;
+}

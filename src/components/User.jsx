@@ -1,32 +1,32 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import Profile from './Profile';
+import OrderHistory from './OrderHistory';
+
 import '../styles/User.css';
 
 class User extends Component {
   render() {
     return (
       <main className="flex column center">
-        <div className="flex center restrict-width">
-          <div id="profile-picture">
-            <img src="/default-user.jpg" />
+        <div className="flex restrict-width">
+          <img id="profile-picture" src="/default-user.jpg" />
+          <div className="grow">
+            <div id="tabs" className="flex">
+              <div className={ this.props.selectedTab === 'profile' ? 'tab selected' : 'tab' }
+                onClick={() => this.props.setSelectedTab('profile')}
+              >Profile</div>
+              <div className={ this.props.selectedTab === 'orderHistory' ? 'tab selected' : 'tab' }
+                onClick={() => this.props.setSelectedTab('orderHistory')}
+              >Order History</div>
+            </div>
+            <hr id='divider' />
+            { this.props.selectedTab === 'profile' ?
+              <Profile id={this.props.match.params.id} /> :
+              <OrderHistory />
+            }
           </div>
-          <table id="user-info-table">
-            <tbody>
-              <tr>
-                <td>Name:</td>
-                <td>Code Chrysalis</td>
-              </tr>
-              <tr>
-                <td>Username:</td>
-                <td>{ this.props.match.params.id }</td>
-              </tr>
-              <tr>
-                <td>Email:</td>
-                <td>code@chrysalis.io</td>
-              </tr>
-            </tbody>
-          </table>
         </div>
         <div className="flex grow" />
       </main>
