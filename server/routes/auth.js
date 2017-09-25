@@ -9,8 +9,8 @@ const db = knex(knexConfig);
 const router = express.Router();
 
 // TODO: Parameterize
-const JWT_KEY = process.env.JWT_KEY;
-const JWT_APP = process.env.JWT_APP;
+const JWT_KEY = process.env.JWT_KEY || 'TEST_KEY';
+const JWT_APP = process.env.JWT_APP || 'TEST_APP';
 console.log('jwt key', JWT_KEY);
 console.log('jwt app', JWT_APP);
 
