@@ -33,7 +33,7 @@
  App.js
  -------------------------------------------------------------------------------*/
 #app {
-  /* 80px: header & footer width*/
-  height: calc(100% - 80px - 80px);
+  /* 80px: footer width*/
+  height: calc(100% - 80px);
   padding-top: 80px;
 }
