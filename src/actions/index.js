@@ -101,10 +101,10 @@ export function setAddressField(event) {
   };
 }
 
-export function setPriceField(event) {
+export function setPriceField(value) {
   return {
     type: 'SET_PRICE_FIELD',
-    value: event.target.value,
+    value,
   };
 }
 
