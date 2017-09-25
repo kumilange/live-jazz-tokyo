@@ -11,22 +11,31 @@ class User extends Component {
     return (
       <main className="flex column center">
         <div className="flex restrict-width">
-          <img id="profile-picture" src="/default-user.jpg" />
-          <div className="grow">
-            <div id="tabs" className="flex">
-              <div className={ this.props.selectedTab === 'profile' ? 'tab selected' : 'tab' }
-                onClick={() => this.props.setSelectedTab('profile')}
-              >Profile</div>
-              <div className={ this.props.selectedTab === 'orderHistory' ? 'tab selected' : 'tab' }
-                onClick={() => this.props.setSelectedTab('orderHistory')}
-              >Order History</div>
+          { this.props.userProfile ?
+            [
+              <img id="profile-picture" src="/default-user.jpg" />,
+              <div className="grow">
+                <div id="tabs" className="flex">
+                  <div className={ this.props.selectedTab === 'profile' ? 'tab selected' : 'tab' }
+                    onClick={() => this.props.setSelectedTab('profile')}>
+                    Profile
+                  </div>
+                  <div className={ this.props.selectedTab === 'orderHistory' ? 'tab selected' : 'tab' }
+                    onClick={() => this.props.setSelectedTab('orderHistory')}>
+                    Order History
+                  </div>
+                </div>
+                <hr id='divider' />
+                { this.props.selectedTab === 'profile' ?
+                  <Profile userProfile={ this.props.userProfile } /> :
+                  <OrderHistory />
+                }
+              </div>
+            ] :
+            <div>
+              Please log in!
             </div>
-            <hr id='divider' />
-            { this.props.selectedTab === 'profile' ?
-              <Profile id={this.props.match.params.id} /> :
-              <OrderHistory />
-            }
-          </div>
+          }
         </div>
         <div className="flex grow" />
       </main>
@@ -35,11 +44,11 @@ class User extends Component {
 }
 
 User.propTypes = {
-  
+  userProfile: PropTypes.shape(),
 };
 
 User.defaultProps = {
-  
+  userProfile: undefined,
 };
 
 export default User;

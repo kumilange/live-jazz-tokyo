@@ -45,7 +45,6 @@ const mapDispatchToProps = (dispatch) => {
     facebook.login(
       {
         scope: 'email',
-        force: true,
       },
     ).then(() => {
       return facebook.api('me');
