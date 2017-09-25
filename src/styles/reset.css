@@ -41,6 +41,11 @@ label			{ vertical-align: middle; }
   src: url('../fonts/ITC Avant Garde Gothic LT Extra Light.ttf');
 }
 
+@font-face {
+  font-family: 'LogoTypeGothicCondense';
+  src: url('../fonts/LogoTypeGothicCondense.otf');
+}
+
 html {
   color: #666666;
   font-family: "メイリオ",Meiryo,"ヒラギノ角ゴ Pro","Hiragino Kaku Gothic Pro",Osaka,"ＭＳ Ｐゴシック","MS PGothic","MS Gothic","ＭＳ ゴシック","Helvetica Neue",Helvetica,Arial,sans-serif;
