@@ -29,6 +29,7 @@ const postJson = async (url, objToPost) => {
 
 const mapDispatchToProps = (dispatch) => {
   // Initialize hello with facebook app_id
+
   window.hello.init({
     facebook: '120884018612158',
   }, {
@@ -39,8 +40,22 @@ const mapDispatchToProps = (dispatch) => {
   // When hello attempts to log in after login button click, this callback is executed.
   window.hello.on('auth.login', async (auth) => {
     const socialToken = auth.authResponse.access_token;
-    console.log(auth.authResponse);
+    console.log('authResponse', auth.authResponse);
+    let facebook = window.hello('facebook');
+    facebook.login(
+      {
+        scope: 'email',
+        force: true
+      }
+    ).then( () => {
+      return facebook.api('me');
+    }).then( (profile) => {
+      console.log('profile', profile);
+      dispatch(setUserProfile(profile));
+    });
 
+    // TODO: stop relying on the server to send user's name and email
+    // should only receive JWT
     const userProfile = await postJson('/api/auth', {
       network: 'facebook',
       socialToken,
