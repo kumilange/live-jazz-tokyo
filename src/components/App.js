@@ -9,7 +9,7 @@ class App extends Component {
 
   render() {
     return (
-      <div id="app" className="grow">
+      <div id="app" className="restrict-width">
         <Map />
       </div>
     );
