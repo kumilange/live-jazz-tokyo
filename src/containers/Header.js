@@ -40,7 +40,6 @@ const mapDispatchToProps = (dispatch) => {
   // When hello attempts to log in after login button click, this callback is executed.
   window.hello.on('auth.login', async (auth) => {
     const socialToken = auth.authResponse.access_token;
-    console.log('authResponse', auth.authResponse);
     window.hello('facebook');
     // TODO: stop relying on the server to send user's name and email
     // should only receive JWT
