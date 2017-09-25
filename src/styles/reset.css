@@ -48,7 +48,7 @@ label			{ vertical-align: middle; }
 
 html {
   color: #666666;
-  font-family: "メイリオ",Meiryo,"ヒラギノ角ゴ Pro","Hiragino Kaku Gothic Pro",Osaka,"ＭＳ Ｐゴシック","MS PGothic","MS Gothic","ＭＳ ゴシック","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: LogoTypeGothicCondense, "メイリオ",Meiryo,"ヒラギノ角ゴ Pro","Hiragino Kaku Gothic Pro",Osaka,"ＭＳ Ｐゴシック","MS PGothic","MS Gothic","ＭＳ ゴシック","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 100%;
   line-height: 1.7;
 }
