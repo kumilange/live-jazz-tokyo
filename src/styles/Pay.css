@@ -1,0 +1,13 @@
+#payment-info-table {
+  width: 100%;
+  margin-top: 40px;
+}
+
+#payment-info-table td {
+  padding: 10px;
+}
+
+#payment-info-table td:nth-child(1) {
+  width: 30%;
+  text-align: right;
+}
