@@ -5,7 +5,7 @@ import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 
-import Map from '../containers/Map';
+import EventMap from './EventMap';
 
 import formatPrice from '../utils/format';
 import '../styles/Event.css';
@@ -83,7 +83,10 @@ class Event extends Component {
             </div>
 
             <div className={this.props.showMap ? 'map-container expanded' : 'map-container'}>
-              <div className="event-map"><Map /></div>
+              <div className="event-map"><EventMap
+                position={{ lat: this.props.event.lat, lng: this.props.event.lng }}
+              />
+              </div>
             </div>
 
             <div className="flex center row">

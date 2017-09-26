@@ -28,12 +28,12 @@
 }
 
 .event-map {
-  margin-top: 20px;
   height: 300px;
 }
 
 .map-container {
   height: 0px;
+  margin-top: 20px;
   overflow: hidden;
   transition: all 200ms ease;
 }
