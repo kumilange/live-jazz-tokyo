@@ -43,7 +43,7 @@ class Event extends Component {
     if (this.props.event) {
       return (
         <main className="restrict-width grow" id="event-details">
-          <div className="image-box">
+          <div className="image-box flex center">
             <img className="event-image" src={`data:image/png;base64,${this.props.event.image}`} alt="pic" />
           </div>
 

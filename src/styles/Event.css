@@ -1,7 +1,6 @@
 .image-box {
-  display: flex;
-  justify-content: center;
-  overflow-y: hidden;
+  width: 100%;
+  max-height: 500px;
 }
 .image-box img {
   width: auto;
