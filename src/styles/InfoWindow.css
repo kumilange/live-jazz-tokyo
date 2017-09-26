@@ -1,7 +1,7 @@
 /* InfoWindow*/
 .infoWindowInner {
   min-width: 150px;
-  font-family: LogoTypeGothicCondense;
+  font-family: LogoTypeGothic;
   transition: opacity .2s;
 }
 .infoWindowInner:hover {
