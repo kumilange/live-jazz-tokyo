@@ -1,6 +1,20 @@
-#payment-info-table td {
-  padding: 10px;
+#payment-info-table li {
+  align-items: center;
   height: 68px;
+}
+
+#payment-info-table .listTtl,
+#payment-info-table .listItem {
+  padding: 10px;
+}
+
+#payment-info-table .listTtl {
+  min-width: 150px;
+  text-align: right;
+}
+
+#payment-info-table .listItem {
+  width: calc(100% - 150px);
 }
 
 #payment-info-table td:nth-child(1) {
@@ -18,4 +32,41 @@
 
 #cvc {
   width: 60px;
+  white-space: nowrap;
+  padding: 10px;
+}
+
+.orderButton {
+  margin-top: 20px;
+}
+
+/*
+* MEDIA QUERY SP
+*/
+@media screen and (max-width:600px) {
+  #payment-info-table li {
+    flex-direction: column;
+    text-align: left;
+    height: auto;
+    margin-top: 5px;
+  }
+  #payment-info-table .listTtl,
+  #payment-info-table .listItem,
+  #cvc {
+    width: 100%;
+    text-align: left;
+    padding: 0 8px;
+  }
+  #payment-info-table .listTtl.adjustment {
+    margin-top: 5px;
+  }
+  #payment-info-table .listItem > div {
+    height: 36px !important;
+  }
+  #payment-info-table .listItem > div.underline {
+    height: 28px !important;
+  }
+  #cvc {
+    margin-top: 10px;
+  }
 }
