@@ -1,22 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-class Confirmation extends Component {
-  render() {
-    return (
-      <div>
-        <h3>
-          Your reservation is complete!
-        </h3>
-        {this.props.chargeResponse ?
-          <div>
-            {`Please save your order number: ${this.props.chargeResponse.order_id}`}
-          </div> :
-          <div />}
-      </div>
-    );
-  }
-}
+const Confirmation = props => (
+  <main className="restrict-width">
+    <h2>
+      Your reservation is complete!
+    </h2>
+    {props.chargeResponse ?
+      <p>
+        {`Please save your order number: ${props.chargeResponse.order_id}`}
+      </p> :
+      null}
+  </main>
+);
 
 Confirmation.propTypes = {
   chargeResponse: PropTypes.shape(),

@@ -40,7 +40,7 @@ exports.seed = () => {
         price: (rndInt(7) * 500) + 2000,
         start,
         end,
-        desc: `desc${name}`,
+        desc: `${name}Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`,
       };
       const promise = db('event').insert(event).returning('id');
       promises.push(promise);

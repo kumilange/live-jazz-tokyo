@@ -20,16 +20,15 @@
 .dark { background-color: #252525; color: beige; }
 .black { background-color: black; color: beige; }
 
-/* Button */
+/***** Button *****/
 /* primaryButton */
 .primaryButton {
   transition: opacity .4s;
 }
 .primaryButton > button {
   height: 40px !important;
-  background: #a67b04 !important;
+  background: #daa520 !important;
   color: #ffffff !important;
-  text-transform: uppercase !important;
 }
 .primaryButton > button:hover {
   opacity: .7;
@@ -44,7 +43,7 @@
 }
 
 /* TextField - material ui */
-.inputShort {
+.inputHalf {
   width: 50% !important;
 }
 .inputFull {
@@ -62,6 +61,7 @@ main {
   width: 100%;
   height: auto;
   padding-top: 120px;
+  padding-bottom: 40px;
   min-height: calc(100% - 80px);
 }
 

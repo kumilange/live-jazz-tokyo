@@ -9,11 +9,11 @@
   justify-content: space-between;
   width: 100%;
 }
-.colPriceDate .inputShort,
+.colPriceDate .inputHalf,
 .colTime > div {
   width: 47% !important;
 }
-.colPriceDate .inputShort > div,
-.colTime > div .inputShort {
+.colPriceDate .inputHalf > div,
+.colTime > div .inputHalf {
   width: 100% !important;
 }
