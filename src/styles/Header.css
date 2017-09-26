@@ -14,7 +14,7 @@ header {
   z-index: 1;
 }
 
-#header {
+#header-inner {
   height: 100%;
   justify-content: space-between;
   align-items: center;

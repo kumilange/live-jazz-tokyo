@@ -6,7 +6,7 @@ import '../styles/Header.css';
 
 const Header = (props) => (
   <header className="dark">
-    <div id="header" className="flex restrict-width">
+    <div id="header-inner" className="flex restrict-width">
       <h1><Link to="/" className="logo">Live Jazz</Link></h1>
       { props.userProfile
         ? <nav className="gnav">
