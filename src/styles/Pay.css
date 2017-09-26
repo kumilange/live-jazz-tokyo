@@ -15,3 +15,11 @@
 .underline {
   border-bottom: 1px solid #E0E0E0;
 }
+
+#expiry-date {
+  width: 100px;
+}
+
+#cvc {
+  width: 60px;
+}

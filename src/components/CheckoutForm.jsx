@@ -19,7 +19,7 @@ const styleProps = {
   }
 };
 
-class CheckoutForm extends React.Component {
+class CheckoutForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
@@ -36,8 +36,20 @@ class CheckoutForm extends React.Component {
         <table id="payment-info-table">
           <tbody>
             <tr>
+              <td>Card Holder:</td>
+              <td colSpan="3"><TextField hintText="John Smith" /></td>
+            </tr>
+            <tr>
+              <td>Billing Address:</td>
+              <td colSpan="3"><TextField hintText="123 New Orleans" /></td>
+            </tr>
+            <tr>
+              <td>E-mail:</td>
+              <td colSpan="3"><TextField hintText="test@example.com" /></td>
+            </tr>
+            <tr>
               <td>Card Number:</td>
-              <td>
+              <td colSpan="3">
                 <div className="underline">
                   <CardNumberElement style={styleProps} />
                 </div>
@@ -45,23 +57,17 @@ class CheckoutForm extends React.Component {
             </tr>
             <tr>
               <td>Expiry Date:</td>
-              <td>
+              <td id="expiry-date">
                 <div className="underline">
                   <CardExpiryElement style={styleProps} />
                 </div>
               </td>
-            </tr>
-            <tr>
-              <td>CVC:</td>
+              <td id="cvc">CVC:</td>
               <td>
                 <div className="underline">
                   <CardCVCElement style={styleProps} />
                 </div>
               </td>
-            </tr>
-            <tr>
-              <td>Email:</td>
-              <td><TextField hintText="test@example.com" /></td>
             </tr>
           </tbody>
         </table>
