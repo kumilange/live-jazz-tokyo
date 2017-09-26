@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import '../styles/Header.css';
 
 const Header = (props) => (
-  <header className="dark">
+  <header className="dark flex">
     <div id="header-inner" className="flex restrict-width">
       <h1><Link to="/" className="logo">Live Jazz</Link></h1>
       { props.userProfile
