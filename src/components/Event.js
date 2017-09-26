@@ -7,6 +7,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import Map from '../containers/Map';
 
+import { formatPrice } from '../utils/format';
 import '../styles/Event.css';
 import { ClockIcon, DollarIcon, PinIcon } from '../styles/Icons';
 
@@ -86,7 +87,7 @@ class Event extends Component {
 
             <div className="flex center row">
               <div className="icon"><DollarIcon /></div>
-              <p>{ `${this.props.event.price} Yen`}</p>
+              <p>{ formatPrice(this.props.event.price)} Yen</p>
               <div className="grow" />
               { this.props.userProfile ?
                 <Stripe
