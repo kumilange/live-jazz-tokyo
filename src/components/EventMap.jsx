@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { InfoWindow, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
