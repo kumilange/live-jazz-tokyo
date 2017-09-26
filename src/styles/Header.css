@@ -11,11 +11,6 @@ header {
   box-sizing: border-box;
   z-index: 1;
 }
-.headerInner {
-  justify-content: space-between;
-  align-items: center;
-}
-
 
 #header-inner {
   justify-content: space-between;
