@@ -61,8 +61,7 @@
 main {
   width: 100%;
   height: auto;
-  padding-top: 85px;
-  padding-bottom: 80px;
+  padding-top: 120px;
   min-height: calc(100% - 80px);
 }
 

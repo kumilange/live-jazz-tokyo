@@ -2,13 +2,16 @@
   text-align: right;
 }
 
-#user-info-table td {
+table {
+  margin-top: 20px;
+}
+
+th, td {
   padding: 10px;
 }
 
 #profile-picture {
   height: 200px;
-  margin-top: 20px;
   margin-right: 20px;
 }
 
@@ -19,10 +22,6 @@
 
 .tab.selected {
   border-bottom: 1px solid black;
-}
-
-#divider {
-  margin-bottom: 20px;
 }
 
 #order-history-table {
