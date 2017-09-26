@@ -28,7 +28,12 @@ const MyMap = withGoogleMap((props) => {
   return (<GoogleMap
     defaultZoom={14}
     defaultCenter={DEFAULT_CENTER}
-    defaultOptions={{ styles: fancyMapStyles }}
+    defaultOptions={{
+      streetViewControl: false,
+      fullscreenControl: false,
+      mapTypeControl: false,
+      styles: fancyMapStyles
+    }}
     center={props.userLocation.lat === undefined ? DEFAULT_CENTER : props.userLocation}
   >
     {
