@@ -147,14 +147,12 @@ export function setSelectedTab(selectedTab) {
 export function getTransactionHistory(jwtString) {
   return async (dispatch) => {
     try {
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      headers.append('Bearer', jwtString);
       const res = await (await fetch('/api/charge', {
         method: 'GET',
-        body: JSON.stringify({
-          jwtString,
-        }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers,
       })).json();
       dispatch({
         type: 'SET_TRANSACTION_HISTORY',

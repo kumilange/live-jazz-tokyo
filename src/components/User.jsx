@@ -8,6 +8,12 @@ import OrderHistory from './OrderHistory';
 import '../styles/User.css';
 
 class User extends Component {
+  componentDidMount() {
+    if(this.props.userProfile) {
+      this.props.onComponentDidMount(this.props.userProfile.jwt);
+    }
+  }
+
   render() {
     return (
       <main className="flex column center">
@@ -29,7 +35,7 @@ class User extends Component {
                 <Divider />
                 { this.props.selectedTab === 'profile' ?
                   <Profile userProfile={ this.props.userProfile } /> :
-                  <OrderHistory orders={ this.props.userOrders } />
+                  <OrderHistory orders={ this.props.transactionHistory } />
                 }
               </div>
             ] :
@@ -46,9 +52,11 @@ class User extends Component {
 
 User.propTypes = {
   userProfile: PropTypes.shape(),
+  transactionHistory: PropTypes.shape(),
 };
 
 User.defaultProps = {
+  transactionHistory: undefined,
   userProfile: undefined,
 };
 

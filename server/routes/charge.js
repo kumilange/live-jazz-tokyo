@@ -19,14 +19,17 @@ function verifyJwt(jwtString) {
 
 router.get('/', async (req, res) => {
   try {
-    const decodedJWT = verifyJwt(req.query.jwtString);
-    console.log('jwt', req.query.jwtString);
-    console.log('userID', req.query.user_id);
-    console.log('verified jwt', verifyJwt(req.query.jwtString));
+    const decodedJWT = verifyJwt(req.headers.bearer);
+    console.log('verified jwt', verifyJwt(req.headers.bearer));
     const result = await db('transaction')
       .leftJoin('user', 'transaction.user_id', 'user.id')
       .leftJoin('event', 'transaction.event_id', 'event.id')
-      .where({email: decodedJWT.email});
+      .where({email: decodedJWT.email})
+      .select(
+        'transaction.id as id',
+        'event.name as title',
+        'transaction.total as amount',
+      );
 
     console.log(result);
 

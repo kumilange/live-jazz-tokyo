@@ -9,12 +9,14 @@ export default (props) => (
         <th>Amount</th>
       </tr>
       {
-        this.props.orders.map((order) => {
-          <tr>
-            <td> { order.id } </td>
-            <td> { order.eventName }</td>
-            <td> { order.price } </td>
-          </tr>
+        props.orders.map((order) => {
+          return (
+            <tr>
+              <td>ASDF</td>
+              <td> { order.title }</td>
+              <td> { order.amount } </td>
+            </tr>
+          );
         })
       }
     </tbody>

@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onUserPageLoad: (jwt) => {
+  onComponentDidMount: (jwt) => {
     dispatch(getTransactionHistory(jwt));
   },
   onTabClick: (selectedTab) => {

@@ -7,7 +7,7 @@ const initialState = {
   chargeResponse: undefined,
   addEventResponse: undefined,
   userProfile: undefined,
-  transactionHistory: undefined,
+  transactionHistory: [],
   addEventFields: {
     eventName: '',
     artist: '',
