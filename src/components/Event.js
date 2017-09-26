@@ -107,17 +107,6 @@ class Event extends Component {
               }
             </div>
           </div>
-
-          <Paper className="pane">
-            <div className="block">
-              <h3>Details</h3>
-            </div>
-            <Divider />
-            <div className="block">
-              <div>{ this.props.event.description }</div>
-            </div>
-          </Paper>
-
           <Paper className="pane">
             <div className="block">
               <h3>Artist</h3>
@@ -125,6 +114,15 @@ class Event extends Component {
             <Divider />
             <div className="block">
               <p>{ this.props.event.artist }</p>
+            </div>
+          </Paper>
+          <Paper className="pane">
+            <div className="block">
+              <h3>Details</h3>
+            </div>
+            <Divider />
+            <div className="block">
+              <div>{ this.props.event.description }</div>
             </div>
           </Paper>
         </main>
