@@ -45,7 +45,7 @@ router.post('/', async (req, res) => {
   const eventID = req.body.eventID;
   const decodedJWT = verifyJwt(req.headers.bearer);
 
-  const userID = await db('user')
+  const user = await db('user')
     .where({ email: decodedJWT.email })
     .select('id')
     .first();
@@ -69,7 +69,7 @@ router.post('/', async (req, res) => {
           event_id: eventID,
           total: charge.amount,
           charge_id: charge.id,
-          user_id: userID,
+          user_id: user.id,
         });
       response = {
         OK: true,

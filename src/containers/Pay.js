@@ -3,6 +3,7 @@ import Pay from '../components/Pay';
 
 const mapStateToProps = state => ({
   event: state.eventDetails,
+  userProfile: state.userProfile,
 });
 
 const mapDispatchToProps = () => ({

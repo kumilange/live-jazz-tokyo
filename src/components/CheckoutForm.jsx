@@ -30,15 +30,19 @@ class CheckoutForm extends Component {
     this.props.stripe.createToken({name: 'Jenny Rosen'}).then(async (response) => {
       const stripeToken = response.token;
       console.log(stripeToken)
+      console.log('props', this.props);
+
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      headers.append('Bearer', this.props.userProfile.jwt);
+
       const res = await (await fetch('/api/charge', {
         method: 'POST',
         body: JSON.stringify({
           stripeToken,
           eventID: this.props.eventID,
         }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers,
       })).json();
 
       console.log(res)
