@@ -16,30 +16,6 @@ class Event extends Component {
     this.props.onComponentDidMount(this.props.match.params.id);
   }
 
-  async onToken(stripeToken) {
-    const res = await (await fetch('/api/charge', {
-      method: 'POST',
-      body: JSON.stringify({
-        stripeToken,
-        eventID: this.props.match.params.id,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })).json();
-
-    this.eject(res);
-  }
-
-  eject(res) {
-    this.props.onReceiveChargeResponse(res);
-    if (res.OK) {
-      this.props.history.push('/confirmation');
-    } else {
-      window.alert('u dum u duum');
-    }
-  }
-
   render() {
     if (this.props.event) {
       return (
