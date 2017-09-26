@@ -27,7 +27,8 @@ class CheckoutForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    this.props.stripe.createToken({name: 'Jenny Rosen'}).then(async (stripeToken) => {
+    this.props.stripe.createToken({name: 'Jenny Rosen'}).then(async (response) => {
+      const stripeToken = response.token;
       console.log(stripeToken)
       const res = await (await fetch('/api/charge', {
         method: 'POST',
