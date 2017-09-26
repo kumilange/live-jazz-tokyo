@@ -1,3 +1,5 @@
+/* image-box
+ -------------------------------------------------------------------------------*/
 .image-box {
   width: 100%;
   max-height: 500px;
@@ -8,22 +10,27 @@
   max-width: 100%;
   max-height: 500px;
 }
-
 .event-image {
   width: 100%;
 }
 
+/* event-details-table
+ -------------------------------------------------------------------------------*/
 .event-details-table {
   width: 100%;
   padding-top: 20px;
 }
-
 .event-details-table .row {
   margin-top: 10px;
 }
-
 .event-details-table td:nth-child(1) {
   width: 1px;
+}
+.event-details-table td {
+  padding: 10px;
+}
+.event-details-table p {
+  line-height: 1.5em;
 }
 
 .event-map {
@@ -41,24 +48,16 @@
   height: 320px;
 }
 
-.icon {
-  margin-right: 20px;
-}
-
-.event-details-table td {
-  padding: 10px;
-}
-
-.event-details-table p {
-  line-height: 1.5em;
+#event-details .icon {
+  margin-right: 10px;
 }
 
 #event-details .row {
   display: flex;
 }
 
-.date {
-  padding: 30px 20px 30px 0;
+#event-details .date {
+  padding: 30px 30px 30px 0;
 }
 
 #event-details .month {
@@ -69,31 +68,29 @@
   font-size: 30px;
 }
 
-.StripeCheckout {
-  width: 97px;
-  height: 40px;
-  border-radius: 2px !important;
-  background: #daa520 !important;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
-}
-
-.StripeCheckout span {
-  background: #daa520 !important;
-  box-shadow: 0 0 0 0 !important;
-  font-weight: normal !important;
-  font-size: 16px !important;
-  font-family: LogoTypeGothic !important;
-  transition: opacity .4s;
-}
-
-.StripeCheckout span:hover {
-  opacity: .7;
-}
-
-.pane {
+#event-details .pane {
   margin-top: 30px;
 }
 
-.pane .block {
+#event-details .pane .block {
   padding: 15px;
+}
+
+#event-details .venue {
+  padding-right: 10px;
+}
+
+/*
+* SP max-width:600px
+*/
+@media screen and (max-width:600px){
+  .event-details-table {
+    padding-top: 6px;
+  }
+  #event-details .date {
+    padding: 16px 16px 16px 0px;
+  }
+  #event-details .pane {
+    margin-top: 16px;
+  }
 }

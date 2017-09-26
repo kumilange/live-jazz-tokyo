@@ -76,3 +76,14 @@ main {
 }
 
 .gm-style-cc { display:none; }
+
+/*
+* SP max-width:600px
+*/
+@media screen and (max-width:600px){
+  main {
+    padding-top: 90px;
+    padding-bottom: 20px;
+  }
+}
+

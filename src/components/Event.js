@@ -59,7 +59,7 @@ class Event extends Component {
           <Divider />
 
           <div className="event-details-table">
-            <div className="flex center row">
+            <div className="flex vertCenter row">
               <div className="icon"><ClockIcon /></div>
               <p>{
                 `${this.props.event.start.toTimeString().split(':').slice(0, 2).join(':')
@@ -69,27 +69,30 @@ class Event extends Component {
               <div className="grow" />
             </div>
 
-            <div className="flex center row">
+            <div className="flex vertCenter row">
               <div className="icon"><PinIcon /></div>
-              <p>{ this.props.event.venue }</p>
-              <p>{ this.props.event.address }</p>
+              <p className="venue">
+                <span>{ this.props.event.venue }：</span>
+                <span>{ this.props.event.address }</span>
+              </p>
               <div className="grow" />
-              <RaisedButton
-                className="mui-button"
-                label="View Map"
-                onClick={this.props.toggleMap}
-                style={{ width: '100px' }}
-              />
-            </div>
-
-            <div className={this.props.showMap ? 'map-container expanded' : 'map-container'}>
-              <div className="event-map"><EventMap
-                position={{ lat: this.props.event.lat, lng: this.props.event.lng }}
-              />
+              <div>
+                <RaisedButton
+                  className="mui-button"
+                  label="View Map"
+                  onClick={this.props.toggleMap}
+                  style={{ width: '100px' }}
+                />
               </div>
             </div>
 
-            <div className="flex center row">
+            <div className={this.props.showMap ? 'map-container expanded' : 'map-container'}>
+              <div className="event-map">
+                <EventMap position={{ lat: this.props.event.lat, lng: this.props.event.lng }} />
+              </div>
+            </div>
+
+            <div className="flex vertCenter row">
               <div className="icon"><DollarIcon /></div>
               <p>{ formatPrice(this.props.event.price)} Yen</p>
               <div className="grow" />
