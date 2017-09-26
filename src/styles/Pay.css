@@ -1,0 +1,21 @@
+#payment-info-table td {
+  padding: 10px;
+  height: 68px;
+}
+
+#payment-info-table td:nth-child(1) {
+  width: 150px;
+  text-align: right;
+}
+
+.underline {
+  border-bottom: 1px solid #E0E0E0;
+}
+
+#expiry-date {
+  width: 100px;
+}
+
+#cvc {
+  width: 60px;
+}

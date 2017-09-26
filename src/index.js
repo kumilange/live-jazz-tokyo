@@ -4,6 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import thunk from 'redux-thunk';
+import { StripeProvider } from 'react-stripe-elements';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
@@ -14,6 +15,7 @@ import Header from './containers/Header';
 import App from './containers/App';
 import Event from './containers/Event';
 import User from './containers/User';
+import Pay from './containers/Pay';
 import Footer from './components/Footer';
 import Confirmation from './containers/Confirmation';
 import AddEvent from './containers/AddEvent';
@@ -25,21 +27,27 @@ const store = createStore(
 
 const muiTheme = getMuiTheme({
   fontFamily: 'LogoTypeGothic',
+  palette: {
+    primary1Color: '#DAA520',
+  },
 });
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <MuiThemeProvider muiTheme={muiTheme}>
-        <div id="router">
-          <Header />
-          <Route exact path="/" component={App} />
-          <Route exact path="/event/:id" component={Event} />
-          <Route exact path="/user" component={User} />
-          <Route exact path="/confirmation" component={Confirmation} />
-          <Route exact path="/addevent" component={AddEvent} />
-          <Footer />
-        </div>
+        <StripeProvider apiKey="pk_test_6pRNASCoBOKtIshFeQd4XMUh">
+          <div id="router">
+            <Header />
+            <Route exact path="/" component={App} />
+            <Route exact path="/event/:id" component={Event} />
+            <Route exact path="/user" component={User} />
+            <Route exact path="/pay" component={Pay} />
+            <Route exact path="/confirmation" component={Confirmation} />
+            <Route exact path="/addevent" component={AddEvent} />
+            <Footer />
+          </div>
+        </StripeProvider>
       </MuiThemeProvider>
     </BrowserRouter>
   </Provider>,

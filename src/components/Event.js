@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Stripe from 'react-stripe-checkout';
+import { Link } from 'react-router-dom';
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -78,6 +78,7 @@ class Event extends Component {
                 className="mui-button"
                 label="View Map"
                 onClick={this.props.toggleMap}
+                style={{ width: '100px' }}
               />
             </div>
 
@@ -89,22 +90,14 @@ class Event extends Component {
               <div className="icon"><DollarIcon /></div>
               <p>{ formatPrice(this.props.event.price)} Yen</p>
               <div className="grow" />
-              { this.props.userProfile ?
-                <Stripe
-                  label={'Reserve'}
-                  token={(token) => { this.onToken(token); }}
-                  stripeKey="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-                  currency="JPY"
-                  name="Live Jazz Co."
-                  image="../logo.png"
-                  description={`1 ticket for ${this.props.event.name}`}
-                  amount={2000}
+              <Link to={'/pay'}>
+                <RaisedButton
+                  primary
+                  className="mui-button"
+                  label="Reserve"
+                  style={{ width: '100px' }}
                 />
-                :
-                <button>
-                  Please log in!
-                </button>
-              }
+              </Link>
             </div>
           </div>
           <Paper className="pane">
@@ -140,7 +133,6 @@ Event.propTypes = {
   showMap: PropTypes.bool.isRequired,
   toggleMap: PropTypes.func.isRequired,
   onReceiveChargeResponse: PropTypes.func,
-  userProfile: PropTypes.shape(),
 };
 
 Event.defaultProps = {
