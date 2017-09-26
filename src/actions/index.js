@@ -137,6 +137,35 @@ export function logout() {
   };
 }
 
+export function setSelectedTab(selectedTab) {
+  return {
+    type: 'SET_SELECTED_TAB',
+    selectedTab,
+  }
+}
+
+export function getTransactionHistory(jwtString) {
+  return async (dispatch) => {
+    try {
+      const res = await (await fetch('/api/charge', {
+        method: 'GET',
+        body: JSON.stringify({
+          jwtString,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })).json();
+      dispatch({
+        type: 'SET_TRANSACTION_HISTORY',
+        transactions: res,
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  }
+}
+
 export function addNewEvent(event, history) {
   return async (dispatch) => {
     try {

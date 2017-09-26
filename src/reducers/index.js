@@ -7,6 +7,7 @@ const initialState = {
   chargeResponse: undefined,
   addEventResponse: undefined,
   userProfile: undefined,
+  transactionHistory: undefined,
   addEventFields: {
     eventName: '',
     artist: '',
@@ -93,11 +94,15 @@ const reducer = (state = initialState, action) => {
     case 'SET_SELECTED_TAB':
       newState = Object.assign({}, state, { selectedTab: action.selectedTab });
       break;
+    case 'SET_TRANSACTION_HISTORY':
+      newState = Object.assign({}, state, { transactionHistory: action.transactions });
+      break;
     default:
       console.log('UNKNOWN ACTION', action.type);
       newState = state;
       break;
   }
+  console.log('NEW STATE', newState);
   return newState;
 };
 

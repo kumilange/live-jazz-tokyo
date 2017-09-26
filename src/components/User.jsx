@@ -18,11 +18,11 @@ class User extends Component {
               <div key='2' className="grow">
                 <div id="tabs" className="flex">
                   <div className={ this.props.selectedTab === 'profile' ? 'tab selected' : 'tab' }
-                    onClick={() => this.props.setSelectedTab('profile')}>
+                    onClick={() => this.props.onTabClick('profile')}>
                     Profile
                   </div>
                   <div className={ this.props.selectedTab === 'orderHistory' ? 'tab selected' : 'tab' }
-                    onClick={() => this.props.setSelectedTab('orderHistory')}>
+                    onClick={() => this.props.onTabClick('orderHistory')}>
                     Order History
                   </div>
                 </div>
