@@ -144,7 +144,7 @@ describe('EventDetails route /events', () => {
   it('should get event detail', async () => {
     // setup artist, venue, event_img tables
     const artist = { name: 'Name1' };
-    const venue = { lat: '1', lng: '1', name: 'Venue1', address: 'testaddress' };
+    const venue = { name: 'Venue1', address: 'testaddress', lat: 0.0, lng: 0.0 };
     const image = fs.readFileSync(path.join(__dirname, '../data/img/event_0.jpg')).toString('base64');
     const eventImg = { image };
     const eventName = ['eventBefore', 'eventInRange', 'eventAfter'];
@@ -195,6 +195,8 @@ describe('EventDetails route /events', () => {
         artist: artist.name,
         venue: venue.name,
         address: venue.address,
+        lat: venue.lat,
+        lng: venue.lng,
         image,
         price: 2,
         start: parseInt(parseFloat(new Date('2017-01-02 19:00').getTime()), 10),
