@@ -53,7 +53,7 @@ class Event extends Component {
               <p className="month">{this.props.event.start.toDateString().split(' ')[1]}</p>
               <p className="day">{this.props.event.start.getDate()}</p>
             </div>
-            <h1 className="title flex center">{ this.props.event.name }</h1>
+            <h2 className="title flex center">{ this.props.event.name }</h2>
           </div>
 
           <Divider />
