@@ -23,7 +23,7 @@ class Event extends Component {
         eventID: this.props.match.params.id,
       }),
       headers: {
-        'bearer': this.props.userProfile.jwt,
+        bearer: this.props.userProfile.jwt,
         'Content-Type': 'application/json',
       },
     })).json();

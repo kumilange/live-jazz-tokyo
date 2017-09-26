@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
     const result = await db('transaction')
       .leftJoin('user', 'transaction.user_id', 'user.id')
       .leftJoin('event', 'transaction.event_id', 'event.id')
-      .where({email: decodedJWT.email})
+      .where({ email: decodedJWT.email })
       .select(
         'transaction.id as id',
         'event.name as title',
@@ -33,8 +33,8 @@ router.get('/', async (req, res) => {
 
     console.log(result);
 
-  res.status(200).json(result);
-  } catch (err){
+    res.status(200).json(result);
+  } catch (err) {
     res.status(500);
     console.log(err);
   }
@@ -46,7 +46,7 @@ router.post('/', async (req, res) => {
   const decodedJWT = verifyJwt(req.headers.bearer);
 
   const userID = await db('user')
-    .where({email: decodedJWT.email})
+    .where({ email: decodedJWT.email })
     .select('id')
     .first();
 

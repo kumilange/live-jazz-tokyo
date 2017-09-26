@@ -141,13 +141,13 @@ export function setSelectedTab(selectedTab) {
   return {
     type: 'SET_SELECTED_TAB',
     selectedTab,
-  }
+  };
 }
 
 export function getTransactionHistory(jwtString) {
   return async (dispatch) => {
     try {
-      let headers = new Headers();
+      const headers = new Headers();
       headers.append('Content-Type', 'application/json');
       headers.append('Bearer', jwtString);
       const res = await (await fetch('/api/charge', {
@@ -161,7 +161,7 @@ export function getTransactionHistory(jwtString) {
     } catch (err) {
       console.error(err);
     }
-  }
+  };
 }
 
 export function addNewEvent(event, history) {
