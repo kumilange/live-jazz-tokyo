@@ -31,6 +31,11 @@ header {
   background: url("/logo-solid.png") center no-repeat;
   background-size: 40px 40px;
   z-index: 1;
+  transition: all .2s;
+}
+
+.logo:hover {
+  opacity: .8;
 }
 
 /* gnav
