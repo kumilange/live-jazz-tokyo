@@ -11,7 +11,7 @@ class User extends Component {
   render() {
     return (
       <main className="flex column center">
-        <div className="flex restrict-width">
+        <div id="user" className="flex restrict-width">
           { this.props.userProfile ?
             [
               <img key='1' id="profile-picture" src="/default-user.jpg" />,

@@ -1,5 +1,10 @@
+#user-info-table {
+  width: 100%;
+}
+
 #user-info-table td:nth-child(1) {
-  text-align: right;
+  width: 30%;
+  padding: 0 15px 0 30px;
 }
 
 #user-info-table, #order-history-table {
@@ -15,8 +20,13 @@ th, td {
   margin-right: 20px;
 }
 
+#tabs {
+  width: 100%;
+}
 .tab {
+  width: 50%;
   padding: 20px;
+  text-align: center;
   cursor: pointer;
 }
 
@@ -31,4 +41,45 @@ th, td {
 #order-history-table td {
   padding: 20px;
   text-align: center;
+}
+
+
+/*
+* MEDIA QUERY SP
+*/
+@media screen and (max-width:600px){
+  #user {
+    flex-direction: column;
+  }
+  #profile-picture {
+    width: 100%;
+    height: auto;
+    margin-right: 0;
+  }
+  .tab {
+    padding: 10px;
+  }
+  #user-info-table,
+  #order-history-table {
+    font-size: 14px;
+  }
+  #user-info-table th,
+  #user-info-table td,
+  #order-history-table th,
+  #order-history-table td {
+    padding: 5px;
+  }
+  #user-info-table td:nth-child(1) {
+    width: 25%;
+    padding: 0 8px;
+    text-align: left;
+  }
+  #user-info-table th,
+  #user-info-table td {
+    text-align: left;
+  }
+  #order-history-table th,
+  #order-history-table td {
+    text-align: center;
+  }
 }
