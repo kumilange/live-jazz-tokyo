@@ -77,6 +77,7 @@ class Event extends Component {
                 className="mui-button"
                 label="View Map"
                 onClick={this.props.toggleMap}
+                style={{ width: '100px' }}
               />
             </div>
 
@@ -90,8 +91,10 @@ class Event extends Component {
               <div className="grow" />
               <Link to={'/pay'}>
                 <RaisedButton
+                  primary
                   className="mui-button"
                   label="Reserve"
+                  style={{ width: '100px' }}
                 />
               </Link>
             </div>

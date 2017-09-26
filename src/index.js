@@ -27,6 +27,9 @@ const store = createStore(
 
 const muiTheme = getMuiTheme({
   fontFamily: 'LogoTypeGothicCondense',
+  palette: {
+    primary1Color: "#DAA520",
+  }
 });
 
 ReactDOM.render(
