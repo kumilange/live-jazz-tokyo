@@ -8,6 +8,9 @@ import RaisedButton from 'material-ui/RaisedButton';
 const styleProps = {
   base: {
     color: 'black',
+    '::placeholder': {
+      color: '#ABAB9A',
+    },
     fontSize: '16px',
     lineHeight: '24px',
   },
