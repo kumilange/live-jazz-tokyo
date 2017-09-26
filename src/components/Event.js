@@ -131,7 +131,6 @@ Event.propTypes = {
   showMap: PropTypes.bool.isRequired,
   toggleMap: PropTypes.func.isRequired,
   onReceiveChargeResponse: PropTypes.func,
-  userProfile: PropTypes.shape(),
 };
 
 Event.defaultProps = {

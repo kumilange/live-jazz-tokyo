@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import Pay from '../components/Pay';
 
-const mapStateToProps = state => ({
-  
+const mapStateToProps = () => ({
+
 });
 
-const mapDispatchToProps = dispatch => ({
-  
+const mapDispatchToProps = () => ({
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pay);
