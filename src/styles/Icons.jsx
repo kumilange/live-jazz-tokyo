@@ -38,4 +38,12 @@ const MarkerIcon = {
   scale: 0.06,
 };
 
-export { CalendarIcon, ClockIcon, DollarIcon, PinIcon, UserIcon, MarkerIcon };
+const UserLocationIcon = {
+  path: 'M476.811,492.379L268.639,8.332c-2.172-5.047-7.141-8.328-12.641-8.328s-10.469,3.281-12.641,8.328L35.186,492.379c-2.656,5.625-1.203,12.344,3.547,16.359c4.766,4.016,11.625,4.359,16.734,0.813l200.531-139.032l200.547,139.032c5.109,3.547,11.969,3.203,16.734-0.813C478.029,504.723,479.467,498.004,476.811,492.379z',
+  anchor: { x: 0, y: 0 },
+  fillColor: '#D72D00',
+  fillOpacity: 1.0,
+  scale: 0.06,
+};
+
+export { CalendarIcon, ClockIcon, DollarIcon, PinIcon, UserIcon, MarkerIcon, UserLocationIcon };

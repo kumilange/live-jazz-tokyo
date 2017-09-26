@@ -6,7 +6,7 @@ import canUseDOM from 'can-use-dom';
 
 import { formatPrice } from '../utils/format';
 import fancyMapStyles from '../resources/fancyMapStyles.json';
-import { CalendarIcon, ClockIcon, DollarIcon, PinIcon, UserIcon, MarkerIcon } from '../styles/Icons';
+import { CalendarIcon, ClockIcon, DollarIcon, PinIcon, UserIcon, MarkerIcon, UserLocationIcon } from '../styles/Icons';
 import '../styles/InfoWindow.css';
 
 const DEFAULT_CENTER = { lat: 35.6857933, lng: 139.7501793 };
@@ -91,6 +91,10 @@ const MyMap = withGoogleMap((props) => {
         </Marker>);
       })
     }
+    <Marker
+      position={props.userLocation}
+      icon={UserLocationIcon}
+    />
   </GoogleMap>
   );
 });
