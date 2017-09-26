@@ -81,7 +81,7 @@
 }
 
 /*
-* SP max-width:600px
+* MEDIA QUERY SP
 */
 @media screen and (max-width:600px){
   .event-details-table {
