@@ -32,7 +32,7 @@ const MyMap = withGoogleMap((props) => {
       streetViewControl: false,
       fullscreenControl: false,
       mapTypeControl: false,
-      styles: fancyMapStyles
+      styles: fancyMapStyles,
     }}
     center={props.userLocation.lat === undefined ? DEFAULT_CENTER : props.userLocation}
   >
