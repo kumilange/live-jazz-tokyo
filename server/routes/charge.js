@@ -40,10 +40,15 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   const tokenID = req.body.stripeToken.id;
   const eventID = req.body.eventID;
-  // const jwt = req.header
+  const decodedJWT = verifyJwt(req.headers.bearer);
+
+  const userID = await db('user')
+    .where({email: decodedJWT.email})
+    .select('id')
+    .first();
 
   // Charge the user's card:
   stripe.charges.create({
@@ -64,7 +69,7 @@ router.post('/', (req, res) => {
           event_id: eventID,
           total: charge.amount,
           charge_id: charge.id,
-          // user_id: 
+          user_id: userID,
         });
       response = {
         OK: true,

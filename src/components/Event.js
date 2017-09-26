@@ -23,6 +23,7 @@ class Event extends Component {
         eventID: this.props.match.params.id,
       }),
       headers: {
+        'bearer': this.props.userProfile.jwt,
         'Content-Type': 'application/json',
       },
     })).json();
@@ -127,6 +128,7 @@ class Event extends Component {
 }
 
 Event.propTypes = {
+  userProfile: PropTypes.shape(),
   event: PropTypes.shape(),
   match: PropTypes.shape().isRequired,
   onComponentDidMount: PropTypes.func,
