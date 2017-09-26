@@ -48,7 +48,7 @@ class Event extends Component {
             <img className="event-image" src={`data:image/png;base64,${this.props.event.image}`} alt="pic" />
           </div>
 
-          <div className="row">
+          <div className="row horiCenter">
             <div className="date flex column center">
               <p className="month">{this.props.event.start.toDateString().split(' ')[1]}</p>
               <p className="day">{this.props.event.start.getDate()}</p>
