@@ -33,7 +33,7 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <MuiThemeProvider muiTheme={muiTheme}>
-        <StripeProvider apiKey="pk_test_12345">
+        <StripeProvider apiKey="pk_test_6pRNASCoBOKtIshFeQd4XMUh">
           <div id="router">
             <Header />
             <Route exact path="/" component={App} />
