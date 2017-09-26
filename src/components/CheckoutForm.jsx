@@ -29,8 +29,6 @@ class CheckoutForm extends Component {
 
     this.props.stripe.createToken({name: 'Jenny Rosen'}).then(async (response) => {
       const stripeToken = response.token;
-      console.log(stripeToken)
-      console.log('props', this.props);
 
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
@@ -44,14 +42,6 @@ class CheckoutForm extends Component {
         }),
         headers,
       })).json();
-
-      console.log(res)
-      // this.props.onReceiveChargeResponse(res);
-      // if (res.OK) {
-      //   this.props.history.push('/confirmation');
-      // } else {
-      //   window.alert('u dum u duum');
-      // }
     });
   }
 
