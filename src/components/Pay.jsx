@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { Elements, CardElement } from 'react-stripe-elements';
 import TextField from 'material-ui/TextField';
 
 import '../styles/Pay.css';
@@ -9,9 +10,9 @@ class Pay extends Component {
   render() {
     return (
       <main className="restrict-width">
-        <TextField 
-          floatingLabelText="Email"
-        />
+        <Elements>
+          <CardElement style={{base: {fontSize: '18px'}}} />
+        </Elements>
       </main>
     );
   }

@@ -4,6 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import thunk from 'redux-thunk';
+import { StripeProvider } from 'react-stripe-elements';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
@@ -32,16 +33,18 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <MuiThemeProvider muiTheme={muiTheme}>
-        <div id="router">
-          <Header />
-          <Route exact path="/" component={App} />
-          <Route exact path="/event/:id" component={Event} />
-          <Route exact path="/user" component={User} />
-          <Route exact path="/pay" component={Pay} />
-          <Route exact path="/confirmation" component={Confirmation} />
-          <Route exact path="/addevent" component={AddEvent} />
-          <Footer />
-        </div>
+        <StripeProvider apiKey="pk_test_12345">
+          <div id="router">
+            <Header />
+            <Route exact path="/" component={App} />
+            <Route exact path="/event/:id" component={Event} />
+            <Route exact path="/user" component={User} />
+            <Route exact path="/pay" component={Pay} />
+            <Route exact path="/confirmation" component={Confirmation} />
+            <Route exact path="/addevent" component={AddEvent} />
+            <Footer />
+          </div>
+        </StripeProvider>
       </MuiThemeProvider>
     </BrowserRouter>
   </Provider>,
