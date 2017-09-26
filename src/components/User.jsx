@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Divider from 'material-ui/Divider';
 
 import Profile from './Profile';
 import OrderHistory from './OrderHistory';
@@ -25,7 +26,7 @@ class User extends Component {
                     Order History
                   </div>
                 </div>
-                <hr id='divider' />
+                <Divider />
                 { this.props.selectedTab === 'profile' ?
                   <Profile userProfile={ this.props.userProfile } /> :
                   <OrderHistory />
