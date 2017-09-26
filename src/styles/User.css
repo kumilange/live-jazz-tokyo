@@ -2,7 +2,7 @@
   text-align: right;
 }
 
-table {
+#user-info-table, #order-history-table {
   margin-top: 20px;
 }
 
