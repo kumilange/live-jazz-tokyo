@@ -7,6 +7,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import EventMap from './EventMap';
 
+import formatPrice from '../utils/format';
 import '../styles/Event.css';
 import { ClockIcon, DollarIcon, PinIcon } from '../styles/Icons';
 
@@ -43,7 +44,7 @@ class Event extends Component {
     if (this.props.event) {
       return (
         <main className="restrict-width grow" id="event-details">
-          <div className="image-box">
+          <div className="image-box flex center">
             <img className="event-image" src={`data:image/png;base64,${this.props.event.image}`} alt="pic" />
           </div>
 
@@ -90,7 +91,7 @@ class Event extends Component {
 
             <div className="flex center row">
               <div className="icon"><DollarIcon /></div>
-              <p>{ `${this.props.event.price} Yen`}</p>
+              <p>{ formatPrice(this.props.event.price)} Yen</p>
               <div className="grow" />
               <Link to={'/pay'}>
                 <RaisedButton
@@ -102,17 +103,6 @@ class Event extends Component {
               </Link>
             </div>
           </div>
-
-          <Paper className="pane">
-            <div className="block">
-              <h3>Details</h3>
-            </div>
-            <Divider />
-            <div className="block">
-              <div>{ this.props.event.description }</div>
-            </div>
-          </Paper>
-
           <Paper className="pane">
             <div className="block">
               <h3>Artist</h3>
@@ -120,6 +110,15 @@ class Event extends Component {
             <Divider />
             <div className="block">
               <p>{ this.props.event.artist }</p>
+            </div>
+          </Paper>
+          <Paper className="pane">
+            <div className="block">
+              <h3>Details</h3>
+            </div>
+            <Divider />
+            <div className="block">
+              <div>{ this.props.event.description }</div>
             </div>
           </Paper>
         </main>

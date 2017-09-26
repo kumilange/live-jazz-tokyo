@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import canUseDOM from 'can-use-dom';
 
+import formatPrice from '../utils/format';
 import fancyMapStyles from '../resources/fancyMapStyles.json';
-import { CalendarIcon, ClockIcon, DollarIcon, PinIcon, UserIcon, MarkerIcon } from '../styles/Icons';
+import { CalendarIcon, ClockIcon, DollarIcon, PinIcon, UserIcon, MarkerIcon, UserLocationIcon } from '../styles/Icons';
 import '../styles/InfoWindow.css';
 
 const DEFAULT_CENTER = { lat: 35.6857933, lng: 139.7501793 };
@@ -19,10 +20,6 @@ const geolocation = (
       },
     })
 );
-
-const formatPrice = (price) => {
-  return price.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,');
-};
 
 const MyMap = withGoogleMap((props) => {
   return (<GoogleMap
@@ -90,7 +87,7 @@ const MyMap = withGoogleMap((props) => {
                   <div className="flex vertCenter infoItemWrapper">
                     {/* TODO change the icon to YEN */}
                     <DollarIcon style={svgIconSize} />
-                    <p className="infoWindowSubTtl">{ formatPrice(event.price) }yen</p>
+                    <p className="infoWindowSubTtl">{ formatPrice(event.price) } Yen</p>
                   </div>
                 </Link>
               </div>
@@ -99,6 +96,10 @@ const MyMap = withGoogleMap((props) => {
         </Marker>);
       })
     }
+    <Marker
+      position={props.userLocation}
+      icon={UserLocationIcon}
+    />
   </GoogleMap>
   );
 });

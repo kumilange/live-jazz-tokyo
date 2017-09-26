@@ -38,4 +38,12 @@ const MarkerIcon = {
   scale: 0.06,
 };
 
-export { CalendarIcon, ClockIcon, DollarIcon, PinIcon, UserIcon, MarkerIcon };
+const UserLocationIcon = {
+  path: 'M-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0',
+  anchor: { x: 0, y: 0 },
+  fillColor: '#daa520',
+  fillOpacity: 1.0,
+  scale: 0.5,
+};
+
+export { CalendarIcon, ClockIcon, DollarIcon, PinIcon, UserIcon, MarkerIcon, UserLocationIcon };

@@ -7,23 +7,24 @@ import '../styles/Header.css';
 const Header = (props) => (
   <header className="dark flex">
     <div id="header-inner" className="flex restrict-width">
-      <h1><Link to="/" className="logo">Live Jazz</Link></h1>
+      <h1 className="flex"><Link to="/" className="logo"></Link></h1>
       { props.userProfile
         ? <nav className="gnav">
           <ul className="gnav-list flex">
             <li><Link to={'/user'} className="gnav-list-link">{ props.userProfile.name }</Link></li>
-            <li><Link to={'/'}  className="gnav-list-link" onClick={props.onLogoutButtonClick}>Logout</Link></li>
+            <li><Link to={'/'} className="gnav-list-link" onClick={props.onLogoutButtonClick}>Logout</Link></li>
           </ul>
-          </nav>
+        </nav>
         : <nav className="gnav">
           <ul className="gnav-list flex">
-            <li><Link to={''} className="gnav-list-link" onClick={props.onLoginButtonClick}>Log in with facebook</Link></li>
+            <li><Link to={''} className="gnav-list-link" onClick={props.onLoginButtonClick}>
+              Log in with <br /> facebook</Link></li>
           </ul>
         </nav>
       }
     </div>
   </header>
-)
+);
 
 Header.propTypes = {
   userProfile: PropTypes.shape(),
