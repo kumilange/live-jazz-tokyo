@@ -11,12 +11,12 @@ export default (props) => (
       {
         props.orders.map((order) => {
           return (
-            <tr>
-              <td>ASDF</td>
+            <tr key={ order.id }>
+              <td> { order.id } </td>
               <td> { order.title }</td>
               <td> { order.amount } </td>
             </tr>
-          );
+          )
         })
       }
     </tbody>
