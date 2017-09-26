@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import canUseDOM from 'can-use-dom';
 
-import { formatPrice } from '../utils/format';
+import formatPrice from '../utils/format';
 import fancyMapStyles from '../resources/fancyMapStyles.json';
 import { CalendarIcon, ClockIcon, DollarIcon, PinIcon, UserIcon, MarkerIcon, UserLocationIcon } from '../styles/Icons';
 import '../styles/InfoWindow.css';

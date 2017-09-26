@@ -7,7 +7,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import Map from '../containers/Map';
 
-import { formatPrice } from '../utils/format';
+import formatPrice from '../utils/format';
 import '../styles/Event.css';
 import { ClockIcon, DollarIcon, PinIcon } from '../styles/Icons';
 
