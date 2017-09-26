@@ -12,18 +12,19 @@ const Header = (props) => (
         ? <nav className="gnav">
           <ul className="gnav-list flex">
             <li><Link to={'/user'} className="gnav-list-link">{ props.userProfile.name }</Link></li>
-            <li><Link to={'/'}  className="gnav-list-link" onClick={props.onLogoutButtonClick}>Logout</Link></li>
+            <li><Link to={'/'} className="gnav-list-link" onClick={props.onLogoutButtonClick}>Logout</Link></li>
           </ul>
-          </nav>
+        </nav>
         : <nav className="gnav">
           <ul className="gnav-list flex">
-            <li><Link to={''} className="gnav-list-link" onClick={props.onLoginButtonClick}>Log in with facebook</Link></li>
+            <li><Link to={''} className="gnav-list-link" onClick={props.onLoginButtonClick}>
+              Log in with <br /> facebook</Link></li>
           </ul>
         </nav>
       }
     </div>
   </header>
-)
+);
 
 Header.propTypes = {
   userProfile: PropTypes.shape(),
