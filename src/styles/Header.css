@@ -20,9 +20,17 @@ header {
 /* logo
  -------------------------------------------------------------------------------*/
 .logo {
-  font-size: 2rem;
-  font-family: 'Chelsea';
-  color: beige;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: url("/logo-solid.png") center no-repeat;
+  background-size: 40px 40px;
+  z-index: 1;
+  transition: all .2s;
+}
+
+.logo:hover {
+  opacity: .8;
 }
 
 /* gnav
@@ -31,6 +39,7 @@ header {
   position: relative;
   margin-left: 10px;
   margin-right: 10px;
+  line-height: 1.25;
   cursor: pointer;
 }
 
@@ -60,6 +69,6 @@ header {
 .gnav-list-link,
 .gnav-list-link:hover {
   font-family: 'Gothic';
-  font-size: 1.2rem;
+  font-size: 16px;
   color: beige;
 }

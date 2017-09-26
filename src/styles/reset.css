@@ -33,23 +33,18 @@ label			{ vertical-align: middle; }
  BASE
  -------------------------------------------------------------------------------*/
 @font-face {
-  font-family: 'Chelsea';
-  src: url('../fonts/Chelsea.ttf');
-}
-
-@font-face {
   font-family: 'Gothic';
   src: url('../fonts/ITC Avant Garde Gothic LT Extra Light.ttf');
 }
 
 @font-face {
-  font-family: 'LogoTypeGothicCondense';
-  src: url('../fonts/LogoTypeGothicCondense.otf');
+  font-family: 'LogoTypeGothic';
+  src: url('../fonts/LogoTypeGothic.otf');
 }
 
 html {
-  color: #666666;
-  font-family: LogoTypeGothicCondense, "メイリオ",Meiryo,"ヒラギノ角ゴ Pro","Hiragino Kaku Gothic Pro",Osaka,"ＭＳ Ｐゴシック","MS PGothic","MS Gothic","ＭＳ ゴシック","Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: #2c2c2c;
+  font-family: LogoTypeGothic, "メイリオ",Meiryo,"ヒラギノ角ゴ Pro","Hiragino Kaku Gothic Pro",Osaka,"ＭＳ Ｐゴシック","MS PGothic","MS Gothic","ＭＳ ゴシック","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 100%;
   line-height: 1.7;
 }

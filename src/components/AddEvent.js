@@ -15,17 +15,17 @@ const AddEvent = (props) => {
   return (
     <main className="flex column restrict-width grow">
       <TextField
-        className="inputShort name"
+        className="inputHalf name"
         floatingLabelText="Name"
         onChange={props.onEventNameInput}
       />
       <TextField
-        className="inputShort artist"
+        className="inputHalf artist"
         floatingLabelText="Artist"
         onChange={props.onArtistInput}
       />
       <TextField
-        className="inputShort venue"
+        className="inputHalf venue"
         floatingLabelText="Venue"
         onChange={props.onVenueInput}
       />
@@ -36,7 +36,7 @@ const AddEvent = (props) => {
       />
       <div className="colPriceDate">
         <TextField
-          className="inputShort price"
+          className="inputHalf price"
           floatingLabelText="Price"
           value={props.addEventFields.price}
           onChange={(event, val) =>
@@ -44,7 +44,7 @@ const AddEvent = (props) => {
           }
         />
         <DatePicker
-          className="inputShort"
+          className="inputHalf"
           floatingLabelText="Date"
           formatDate={new DateTimeFormat('en-US', {
             day: 'numeric',
@@ -56,14 +56,14 @@ const AddEvent = (props) => {
       </div>
       <div className="colTime">
         <TimePicker
-          className="inputShort"
+          className="inputHalf"
           floatingLabelText="Opening Time"
           okLabel="OK"
           cancelLabel="Cancel"
           onChange={props.onStartTimeInput}
         />
         <TimePicker
-          className="inputShort"
+          className="inputHalf"
           floatingLabelText="Closing Time"
           okLabel="OK"
           cancelLabel="Cancel"
