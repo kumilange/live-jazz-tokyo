@@ -10,7 +10,6 @@ import '../styles/InfoWindow.css';
 const DEFAULT_CENTER = { lat: 35.6857933, lng: 139.7501793 };
 
 const MyMap = withGoogleMap((props) => {
-  console.log(props)
   return (<GoogleMap
     defaultZoom={14}
     defaultCenter={DEFAULT_CENTER}
@@ -22,18 +21,7 @@ const MyMap = withGoogleMap((props) => {
     }}
     center={ props.position === undefined ? DEFAULT_CENTER : props.position }
   >
-    <Marker
-      position={ props.position }
-      icon={ MarkerIcon }
-      onClick={() => props.onMarkerClick(props.event)}
-    >
-      <InfoWindow
-        className="infoWindow"
-        onCloseClick={props.onInfoWindowClose}
-      >
-        <div>HI</div>
-      </InfoWindow>
-    </Marker>);
+    <Marker position={ props.position } icon={ MarkerIcon } />
   </GoogleMap>
   );
 });

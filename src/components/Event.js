@@ -82,7 +82,9 @@ class Event extends Component {
             </div>
 
             <div className={this.props.showMap ? 'map-container expanded' : 'map-container'}>
-              <div className="event-map"><EventMap position={{ lat: this.props.event.lat, lng: this.props.event.lng }} /></div>
+              <div className="event-map"><EventMap
+                position={{ lat: this.props.event.lat, lng: this.props.event.lng }} />
+              </div>
             </div>
 
             <div className="flex center row">
