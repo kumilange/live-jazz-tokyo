@@ -52,11 +52,11 @@ class User extends Component {
 
 User.propTypes = {
   userProfile: PropTypes.shape(),
-  transactionHistory: PropTypes.shape(),
+  transactionHistory: PropTypes.arrayOf(Object),
 };
 
 User.defaultProps = {
-  transactionHistory: undefined,
+  transactionHistory: [],
   userProfile: undefined,
 };
 

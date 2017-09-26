@@ -89,7 +89,7 @@ const reducer = (state = initialState, action) => {
       newState = Object.assign({}, state, { userProfile: action.userProfile });
       break;
     case 'CLEAR_USER_PROFILE':
-      newState = Object.assign({}, state, { userProfile: undefined });
+      newState = Object.assign({}, state, { userProfile: undefined, transactionHistory: [] });
       break;
     case 'SET_SELECTED_TAB':
       newState = Object.assign({}, state, { selectedTab: action.selectedTab });
