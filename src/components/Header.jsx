@@ -5,21 +5,23 @@ import { Link } from 'react-router-dom';
 import '../styles/Header.css';
 
 const Header = (props) => (
-  <header id="header" className="flex dark">
-    <h1><Link to="/" className="logo">Live Jazz</Link></h1>
-    { props.userProfile
-      ? <nav className="gnav">
-        <ul className="gnav-list flex">
-          <li><Link to={'/user'} className="gnav-list-link">{ props.userProfile.name }</Link></li>
-          <li><Link to={'/'}  className="gnav-list-link" onClick={props.onLogoutButtonClick}>Logout</Link></li>
-        </ul>
+  <header className="dark">
+    <div id="header" className="flex restrict-width">
+      <h1><Link to="/" className="logo">Live Jazz</Link></h1>
+      { props.userProfile
+        ? <nav className="gnav">
+          <ul className="gnav-list flex">
+            <li><Link to={'/user'} className="gnav-list-link">{ props.userProfile.name }</Link></li>
+            <li><Link to={'/'}  className="gnav-list-link" onClick={props.onLogoutButtonClick}>Logout</Link></li>
+          </ul>
+          </nav>
+        : <nav className="gnav">
+          <ul className="gnav-list flex">
+            <li><Link to={''} className="gnav-list-link" onClick={props.onLoginButtonClick}>Log in with facebook</Link></li>
+          </ul>
         </nav>
-      : <nav className="gnav">
-        <ul className="gnav-list flex">
-          <li><Link to={''} className="gnav-list-link" onClick={props.onLoginButtonClick}>Log in with facebook</Link></li>
-        </ul>
-      </nav>
-    }
+      }
+    </div>
   </header>
 )
 
