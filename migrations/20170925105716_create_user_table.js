@@ -1,5 +1,5 @@
 const setup = (knex) => {
-  let transaction = [];
+  const transaction = [];
   transaction.push(knex.schema.createTable('user', (table) => {
     table.increments().index();
     table.string('name');
@@ -22,7 +22,7 @@ const setup = (knex) => {
 };
 
 const rollback = (knex) => {
-  let transaction = [];
+  const transaction = [];
   transaction.push(knex.schema.table('artist', (table) => {
     return table.dropColumn('user_id');
   }));
