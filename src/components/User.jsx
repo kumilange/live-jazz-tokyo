@@ -29,7 +29,7 @@ class User extends Component {
                 <Divider />
                 { this.props.selectedTab === 'profile' ?
                   <Profile userProfile={ this.props.userProfile } /> :
-                  <OrderHistory />
+                  <OrderHistory orders={ this.props.userOrders } />
                 }
               </div>
             ] :
