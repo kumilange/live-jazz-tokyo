@@ -12,7 +12,7 @@ class Pay extends Component {
     return (
       <main className="restrict-width">
         <Elements>
-          <CheckoutForm />
+          <CheckoutForm eventID={this.props.event.id} />
         </Elements>
       </main>
     );
