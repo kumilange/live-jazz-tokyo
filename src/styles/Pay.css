@@ -1,12 +1,17 @@
-#payment-info-table {
+/* #payment-info-table {
   width: 100%;
-}
+} */
 
 #payment-info-table td {
   padding: 10px;
+  height: 68px;
 }
 
 #payment-info-table td:nth-child(1) {
-  width: 30%;
+  width: 150px;
   text-align: right;
+}
+
+.underline {
+  border-bottom: 1px solid #E0E0E0;
 }
