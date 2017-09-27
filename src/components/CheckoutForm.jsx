@@ -23,13 +23,25 @@ const styleProps = {
 };
 
 class CheckoutForm extends Component {
+
   handleSubmit = (event) => {
     event.preventDefault();
 
+    this.props.stripe.createToken({name: 'Jenny Rosen'}).then(async (response) => {
+      const stripeToken = response.token;
 
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      headers.append('Bearer', this.props.userProfile.jwt);
 
-    this.props.stripe.createToken({name: 'Jenny Rosen'}).then(({token}) => {
-      console.log('Received Stripe token:', token);
+      const res = await (await fetch('/api/charge', {
+        method: 'POST',
+        body: JSON.stringify({
+          stripeToken,
+          eventID: this.props.eventID,
+        }),
+        headers,
+      })).json();
     });
   }
 
