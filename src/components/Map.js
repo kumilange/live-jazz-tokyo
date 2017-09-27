@@ -98,10 +98,11 @@ const MyMap = withGoogleMap((props) => {
         </Marker>);
       })
     }
-    <Marker
-      position={props.userLocation}
-      icon={UserLocationIcon}
-    />
+    { props.userLocation.lat ?
+      <Marker
+        position={props.userLocation}
+        icon={UserLocationIcon}
+      /> : null }
   </GoogleMap>
   );
 });
