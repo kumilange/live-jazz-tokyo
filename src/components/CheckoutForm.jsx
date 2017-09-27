@@ -55,7 +55,7 @@ class CheckoutForm extends Component {
 
     if(!error) {
       this.props.stripe.createToken({
-        name: document.getElementById('cardHolder').value
+        name: document.getElementById('card-holder-field').value
       }).then(async (response) => {
         const stripeToken = response.token;
   
