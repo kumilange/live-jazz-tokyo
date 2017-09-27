@@ -48,7 +48,7 @@ const reducer = (state = initialState, action) => {
       newState = Object.assign({}, state, { userLocation: action.position });
       break;
     case 'SET_CHARGE_RESPONSE':
-      newState = Object.assign({}, state, { chargeResponse: action.result });
+      newState = Object.assign({}, state, { chargeResponse: action.chargeResponse });
       break;
     case 'SET_EVENT_NAME_FIELD':
       newAddEventFields = Object.assign({}, state.addEventFields, { eventName: action.value });

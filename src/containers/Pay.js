@@ -26,6 +26,10 @@ const mapDispatchToProps = dispatch => ({
     type: 'SET_EMAIL_ERROR_TEXT',
     emailErrorText,
   }),
+  setChargeResponse: chargeResponse => dispatch({
+    type: 'SET_CHARGE_RESPONSE',
+    chargeResponse,
+  }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pay);
