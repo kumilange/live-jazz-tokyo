@@ -51,6 +51,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(setUserProfile(response.userProfile));
     }
     if (response.jwt) {
+      console.log('SETTING JWT TO', response.jwt);
       dispatch(setJWT(response.jwt));
     }
   });
@@ -68,6 +69,7 @@ const mapDispatchToProps = (dispatch) => {
           dispatch(setUserProfile(response.userProfile));
         }
         if(response.jwt) {
+          console.log('SETTING JWT TO', response.jwt);
           dispatch(setJWT(response.jwt));
         }
       });

@@ -111,8 +111,8 @@ const reducer = (state = initialState, action) => {
       newState = Object.assign({}, state, { addressErrorText: action.addressErrorText });
       break;
     case 'SET_EMAIL_ERROR_TEXT':
-      console.log('PRESTATE JWT', state.jwt);
       newState = Object.assign({}, state, { emailErrorText: action.emailErrorText });
+      break;
     case 'SET_JWT':
       newState = Object.assign({}, state, { jwt: action.jwt });
       break;
