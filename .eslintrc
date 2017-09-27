@@ -10,6 +10,7 @@
   },
 
   "globals": {
+    "Headers": true,
     "document": true,
     "it": true,
     "xit": true,
