@@ -50,11 +50,11 @@ router.post('/', async (req, res) => {
     .select('id')
     .first();
 
-  const [{price}] = await db('event')
+  const [{ price }] = await db('event')
     .select('price')
     .where('id', eventID);
-  
-  if(!price) {
+
+  if (!price) {
     res.status(400).json({ status: 'error', message: 'Event not found.' });
   }
 
