@@ -61,6 +61,38 @@ main {
 
 .gm-style-cc { display:none; }
 
+/*.toast {*/
+  /*position: fixed;*/
+  /*top: 80px;*/
+  /*width: 120px;*/
+  /*height: 30px;*/
+  /*color: #2c2c2c;*/
+  /*background-color: rgba(255, 255, 255, 0.9);*/
+  /*box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;*/
+  /*border-radius: 0px 0px 2px 2px;*/
+  /*padding-top: 1px;*/
+  /*font-weight: bold;*/
+  /*text-align: center;*/
+  /*z-index: 1;*/
+/*}*/
+
+.toast {
+  position: fixed;
+  top: 80px;
+  width: 120px;
+  height: 30px;
+  color: #2c2c2c;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+  border-radius: 0px 0px 2px 2px;
+  padding-top: 1px;
+  font-weight: bold;
+  text-align: center;
+  z-index: 1;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 
 /*
 * MEDIA QUERY SP

@@ -10,6 +10,7 @@ class App extends Component {
   render() {
     return (
       <main id="app" className="restrict-width">
+        <div className="toast">On Tonight</div>
         <Map />
       </main>
     );
