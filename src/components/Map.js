@@ -71,7 +71,7 @@ const MyMap = withGoogleMap((props) => {
                       <div className="flex vertCenter">
                         <CalendarIcon style={svgIconSize} />
                         <p className="infoWindowSubTtl">{ (new Date(event.start)).toDateString().split(' ').slice(1, 3)
-                          .join('. ') }</p>
+                          .join('-') }</p>
                       </div>
                     </div>
                     <div className="infoItemWrapper">
