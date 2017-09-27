@@ -4,6 +4,7 @@ import { injectStripe } from 'react-stripe-elements';
 import { CardNumberElement, CardExpiryElement, CardCVCElement } from 'react-stripe-elements';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import Dialog from 'material-ui/Dialog';
 
 const styleProps = {
   base: {
@@ -22,49 +23,102 @@ const styleProps = {
   }
 };
 
+const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 class CheckoutForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
 
-    this.props.stripe.createToken({name: 'Jenny Rosen'}).then(async (response) => {
-      const stripeToken = response.token;
+    let error = false;
+    if(document.getElementById('card-holder-field').value === '') {
+      this.props.setNameErrorText('Card holder name is required');
+      error = true;
+    } else {
+      this.props.setNameErrorText('');      
+    }
+    if(document.getElementById('address-field').value === '') {
+      this.props.setAddressErrorText('Billing address is required');
+      error = true;
+    } else {
+      this.props.setAddressErrorText('');      
+    }
+    if(document.getElementById('email-field').value === '') {
+      this.props.setEmailErrorText('E-mail address is required');
+      error = true;
+    } else if (!emailRegex.test(document.getElementById('email-field').value)) {
+      this.props.setEmailErrorText('E-mail address is not valid');
+      error = true;
+    } else {
+      this.props.setEmailErrorText('');
+    }
 
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      headers.append('Bearer', this.props.userProfile.jwt);
-
-      const res = await (await fetch('/api/charge', {
-        method: 'POST',
-        body: JSON.stringify({
-          stripeToken,
-          eventID: this.props.eventID,
-        }),
-        headers,
-      })).json();
-    });
+    if(!error) {
+      this.props.stripe.createToken({
+        name: document.getElementById('card-holder-field').value
+      }).then(async (response) => {
+        const stripeToken = response.token;
+  
+        if(stripeToken) {
+          let headers = new Headers();
+          headers.append('Content-Type', 'application/json');
+          headers.append('Bearer', this.props.userProfile.jwt);
+    
+          const res = await (await fetch('/api/charge', {
+            method: 'POST',
+            body: JSON.stringify({
+              stripeToken,
+              eventID: this.props.eventID,
+            }),
+            headers,
+          })).json();
+        } else {
+          this.props.setCreditCardError();
+        }
+      });
+    }
   }
 
   render() {
+    const actions = [
+      <RaisedButton
+        primary
+        label="OK"
+        onClick={this.props.setCreditCardError}
+      />,
+    ];
+
     return (
       <form onSubmit={this.handleSubmit} className="flex column center">
         <ul id="payment-info-table">
           <li className="flex">
             <p className="listTtl">Card Holder:</p>
             <div className="listItem">
-              <TextField hintText="John Smith" />
+              <TextField
+                id="card-holder-field"
+                hintText="John Smith"
+                errorText={ this.props.nameErrorText }
+              />
             </div>
           </li>
           <li className="flex">
             <p className="listTtl">Billing Address:</p>
             <div className="listItem">
-              <TextField hintText="123 New Orleans" />
+              <TextField
+                id="address-field"
+                hintText="123 New Orleans"
+                errorText={ this.props.addressErrorText }
+              />
             </div>
           </li>
           <li className="flex">
             <p className="listTtl">E-mail:</p>
             <div className="listItem">
-              <TextField hintText="test@example.com" />
+              <TextField
+                id="email-field"
+                hintText="test@example.com"
+                errorText={ this.props.emailErrorText }
+              />
             </div>
           </li>
           <li className="flex">
@@ -91,6 +145,15 @@ class CheckoutForm extends Component {
           </li>
         </ul>
         <RaisedButton primary className="orderButton" label="Confirm Order" type="submit" />
+        <Dialog
+          title="Error"
+          actions={actions}
+          modal={false}
+          open={this.props.creditCardError}
+          onRequestClose={this.props.setCreditCardError}
+        >
+          Please input a valid credit card.
+        </Dialog>
       </form>
     );
   }

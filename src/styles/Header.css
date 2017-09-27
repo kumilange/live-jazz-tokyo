@@ -17,15 +17,16 @@ header {
 /* logo
  -------------------------------------------------------------------------------*/
 .logo {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  background: url("/logo-solid.png") center no-repeat;
-  background-size: 40px 40px;
+  height: 36px;
+  background: url("/logo-solid.png") left no-repeat;
+  background-size: 32px 32px;
+  padding-left: 40px;
+  font-family: 'Chelsea';
+  font-size: 24px;
+  color: beige;
   z-index: 1;
   transition: all .2s;
 }
-
 .logo:hover {
   opacity: .8;
 }
@@ -68,4 +69,29 @@ header {
   font-family: 'Gothic';
   font-size: 16px;
   color: beige;
+}
+
+
+/*
+* MEDIA QUERY SP
+*/
+@media screen and (max-width:600px){
+  .gnav-list li {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .gnav-list-link {
+    font-size: 14px;
+  }
+  .logo {
+    height: 26px;
+    line-height: 26px;
+    background-size: 22px 22px;
+    padding-left: 28px;
+    font-size: 16px;
+
+  }
+  .gnav {
+    padding-bottom: 4px;
+  }
 }

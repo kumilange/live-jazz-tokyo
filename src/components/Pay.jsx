@@ -11,7 +11,18 @@ class Pay extends Component {
     return (
       <main className="restrict-width">
         <Elements>
-          <CheckoutForm userProfile={this.props.userProfile} eventID={this.props.event.id} />
+          <CheckoutForm
+            userProfile={this.props.userProfile}
+            eventID={this.props.event.id}
+            creditCardError={this.props.creditCardError}
+            setCreditCardError={this.props.setCreditCardError}
+            nameErrorText={this.props.nameErrorText}
+            addressErrorText={this.props.addressErrorText}
+            emailErrorText={this.props.emailErrorText}
+            setNameErrorText={this.props.setNameErrorText}
+            setAddressErrorText={this.props.setAddressErrorText}
+            setEmailErrorText={this.props.setEmailErrorText}
+          />
         </Elements>
       </main>
     );
