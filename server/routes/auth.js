@@ -41,8 +41,8 @@ router.post('/', async (req, res) => {
     if (user) {
       console.log('EXISTING USER', user);
     } else {
-      user = await db('user')
-        .returning()
+      [ user ] = await db('user')
+        .returning('*')
         .insert({
           name: profile.name,
           email: profile.email,
@@ -51,10 +51,13 @@ router.post('/', async (req, res) => {
     }
 
     res.json({
+      MARTINS_SECRET_SAUCE: 'TASTES LIKE PAPER',
       jwt,
-      name: user.name,
-      email: user.email,
-      id: user.id,
+      userProfile: {
+        name: user.name,
+        email: user.email,
+        id: user.id,
+      }
     });
   } catch (err) {
     console.error('Error retrieving user info from FaceBook', err);

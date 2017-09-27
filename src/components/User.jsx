@@ -9,8 +9,8 @@ import '../styles/User.css';
 
 class User extends Component {
   componentDidMount() {
-    if(this.props.userProfile) {
-      this.props.onComponentDidMount(this.props.userProfile.jwt);
+    if(this.props.jwt) {
+      this.props.onComponentDidMount(this.props.jwt);
     }
   }
 

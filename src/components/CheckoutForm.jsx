@@ -51,7 +51,9 @@ class CheckoutForm extends Component {
       this.props.setEmailErrorText('E-mail address is not valid');
       error = true;
     } else {
+      console.log('PRE-SETEMAIL', this.props.jwt);
       this.props.setEmailErrorText('');
+      console.log('POST-SETEMAIL', this.props.jwt);
     }
 
     if(!error) {
@@ -63,7 +65,7 @@ class CheckoutForm extends Component {
         if(stripeToken) {
           let headers = new Headers();
           headers.append('Content-Type', 'application/json');
-          headers.append('Bearer', this.props.userProfile.jwt);
+          headers.append('Bearer', this.props.jwt);
     
           const res = await (await fetch('/api/charge', {
             method: 'POST',

@@ -32,6 +32,7 @@ class Pay extends Component {
         </Paper>
         <Elements>
           <CheckoutForm
+            jwt={this.props.jwt}
             userProfile={this.props.userProfile}
             eventID={this.props.event.id}
             creditCardError={this.props.creditCardError}

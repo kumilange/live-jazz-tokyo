@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Header from '../components/Header';
 
-import { setUserProfile, logout } from '../actions';
+import { setJWT, setUserProfile, logout } from '../actions';
 
 const mapStateToProps = state => ({
   userProfile: state.userProfile,
@@ -43,12 +43,15 @@ const mapDispatchToProps = (dispatch) => {
     window.hello('facebook');
     // TODO: stop relying on the server to send user's name and email
     // should only receive JWT
-    const userProfile = await postJson('/api/auth', {
+    const response = await postJson('/api/auth', {
       network: 'facebook',
       socialToken,
     });
-    if (userProfile.name) {
-      dispatch(setUserProfile(userProfile));
+    if (response.userProfile.name) {
+      dispatch(setUserProfile(response.userProfile));
+    }
+    if (response.jwt) {
+      dispatch(setJWT(response.jwt));
     }
   });
   return {
@@ -60,8 +63,13 @@ const mapDispatchToProps = (dispatch) => {
         },
       ).then(() => {
         return facebook.api('me');
-      }).then((profile) => {
-        dispatch(setUserProfile(profile));
+      }).then((response) => {
+        if(response.userProfile) {
+          dispatch(setUserProfile(response.userProfile));
+        }
+        if(response.jwt) {
+          dispatch(setJWT(response.jwt));
+        }
       });
     },
     onLogoutButtonClick: () => {
