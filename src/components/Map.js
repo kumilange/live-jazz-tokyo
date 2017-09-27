@@ -3,6 +3,7 @@ import { InfoWindow, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import canUseDOM from 'can-use-dom';
+import Divider from 'material-ui/Divider';
 
 import formatPrice from '../utils/format';
 import fancyMapStyles from '../resources/fancyMapStyles.json';
@@ -39,8 +40,8 @@ const MyMap = withGoogleMap((props) => {
           lat: event.lat,
           lng: event.lng,
         };
-        const svgIconSizeL = { width: '20px', height: '20px' };
-        const svgIconSize = { width: '16px', height: '16px' };
+        const svgIconSizeL = { width: '25px', height: '20px' };
+        const svgIconSize = { width: '25px', height: '16px' };
         return (<Marker
           position={position}
           key={event.id}
@@ -56,6 +57,7 @@ const MyMap = withGoogleMap((props) => {
               <div className="infoWindowInner">
                 <Link to={`/event/${event.id}`}>
                   <h2 className="infoWindowHeading2">{ event.name }</h2>
+                  <Divider style={{ marginTop: 10, marginBottom: 10 }} />
                   <div className="flex vertCenter infoItemWrapper">
                     <UserIcon style={svgIconSizeL} />
                     <h3 className="infoWindowHeading3">{ event.artist }</h3>
@@ -77,7 +79,7 @@ const MyMap = withGoogleMap((props) => {
                         <ClockIcon style={svgIconSize} />
                         <p className="infoWindowSubTtl">{
                           `${(new Date(event.start)).toTimeString().split(':').slice(0, 2)
-                            .join(':')} ~ ${
+                            .join(':')}-${
                             (new Date(event.end)).toTimeString().split(':').slice(0, 2)
                               .join(':')}`}
                         </p>
