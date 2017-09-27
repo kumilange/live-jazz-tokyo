@@ -10,3 +10,12 @@
   font-family: 'Gothic';
   color: beige;
 }
+
+@media screen and (max-width:600px){
+  #footer {
+    height: 40px;
+  }
+  #copyright {
+    font-size: 14px;
+  }
+}
