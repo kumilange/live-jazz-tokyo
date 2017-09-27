@@ -51,7 +51,6 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(setUserProfile(response.userProfile));
     }
     if (response.jwt) {
-      console.log('SETTING JWT TO', response.jwt);
       dispatch(setJWT(response.jwt));
     }
   });
@@ -65,11 +64,10 @@ const mapDispatchToProps = (dispatch) => {
       ).then(() => {
         return facebook.api('me');
       }).then((response) => {
-        if(response.userProfile) {
+        if (response.userProfile) {
           dispatch(setUserProfile(response.userProfile));
         }
-        if(response.jwt) {
-          console.log('SETTING JWT TO', response.jwt);
+        if (response.jwt) {
           dispatch(setJWT(response.jwt));
         }
       });

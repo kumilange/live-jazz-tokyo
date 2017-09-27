@@ -51,9 +51,7 @@ class CheckoutForm extends Component {
       this.props.setEmailErrorText('E-mail address is not valid');
       error = true;
     } else {
-      console.log('PRE-SETEMAIL', this.props.jwt);
       this.props.setEmailErrorText('');
-      console.log('POST-SETEMAIL', this.props.jwt);
     }
 
     if(!error) {

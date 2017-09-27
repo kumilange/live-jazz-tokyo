@@ -41,7 +41,7 @@ router.post('/', async (req, res) => {
     if (user) {
       console.log('EXISTING USER', user);
     } else {
-      [ user ] = await db('user')
+      [user] = await db('user')
         .returning('*')
         .insert({
           name: profile.name,
@@ -57,7 +57,7 @@ router.post('/', async (req, res) => {
         name: user.name,
         email: user.email,
         id: user.id,
-      }
+      },
     });
   } catch (err) {
     console.error('Error retrieving user info from FaceBook', err);
