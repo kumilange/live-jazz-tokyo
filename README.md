@@ -2,6 +2,8 @@
 
 Connecting fans with local jazz musicians.
 
+The easiest way to find local Jazz artists and events around your area.
+
 ## Getting Started
 
 ```
@@ -19,7 +21,7 @@ yarn install
 
 1. Clone
 ```
-git clone 'URL'
+git clone https://github.com/codechrysalis1/live-jazz.git
 ```
 
 2. Install
@@ -41,7 +43,7 @@ yarn lint
 
 ## Deployment
 
-TODO: add heroku CI
+Deployed using Heroku at [https://live-jazz.herokuapp.com/](https://live-jazz.herokuapp.com/)
 
 ## Built With
 
@@ -50,3 +52,8 @@ TODO: add heroku CI
 * [Yarn](https://yarnpkg.com/en/) - Dependency Management
 * [PostgreSQL](https://www.postgresql.org/) - Database
 * [Knex](http://knexjs.org/) - Query Builder
+* [Material UI](http://www.material-ui.com/) - Frontend
+* [Heroku](https://heroku.com/) - Continuous Integration / Continuous Deployment
+* [Redux](https://github.com/reactjs/redux) - State Management
+* [Stripe](https://stripe.com/) - Online Payment
+* [Hello.js](https://adodson.com/hello.js/) - OAuth2
