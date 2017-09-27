@@ -8,7 +8,9 @@ const app = express();
 const events = require('./routes/events');
 const charge = require('./routes/charge');
 const auth = require('./routes/auth');
+const forceSsl = require('force-ssl-heroku');
 
+app.use(forceSsl);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
