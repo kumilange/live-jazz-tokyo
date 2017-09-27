@@ -50,14 +50,17 @@ router.post('/', async (req, res) => {
     .select('id')
     .first();
 
-  const [price] = await db('event')
+  const [{price}] = await db('event')
     .select('price')
     .where('id', eventID);
-  console.log('price', price)
+  
+  if(!price) {
+    res.status(400).json({ status: 'error', message: 'Event not found.' });
+  }
 
   // Charge the user's card:
   stripe.charges.create({
-    amount: 1000,
+    amount: price,
     currency: 'jpy',
     description: 'Example charge',
     source: tokenID,
