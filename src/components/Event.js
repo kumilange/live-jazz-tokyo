@@ -16,30 +16,6 @@ class Event extends Component {
     this.props.onComponentDidMount(this.props.match.params.id);
   }
 
-  async onToken(stripeToken) {
-    const res = await (await fetch('/api/charge', {
-      method: 'POST',
-      body: JSON.stringify({
-        stripeToken,
-        eventID: this.props.match.params.id,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })).json();
-
-    this.eject(res);
-  }
-
-  eject(res) {
-    this.props.onReceiveChargeResponse(res);
-    if (res.OK) {
-      this.props.history.push('/confirmation');
-    } else {
-      window.alert('u dum u duum');
-    }
-  }
-
   render() {
     if (this.props.event) {
       return (
@@ -48,18 +24,18 @@ class Event extends Component {
             <img className="event-image" src={`data:image/png;base64,${this.props.event.image}`} alt="pic" />
           </div>
 
-          <div className="row">
+          <div className="row horiCenter">
             <div className="date flex column center">
               <p className="month">{this.props.event.start.toDateString().split(' ')[1]}</p>
               <p className="day">{this.props.event.start.getDate()}</p>
             </div>
-            <h1 className="title flex center">{ this.props.event.name }</h1>
+            <h2 className="title flex center">{ this.props.event.name }</h2>
           </div>
 
           <Divider />
 
           <div className="event-details-table">
-            <div className="flex center row">
+            <div className="flex vertCenter row">
               <div className="icon"><ClockIcon /></div>
               <p>{
                 `${this.props.event.start.toTimeString().split(':').slice(0, 2).join(':')
@@ -69,27 +45,30 @@ class Event extends Component {
               <div className="grow" />
             </div>
 
-            <div className="flex center row">
+            <div className="flex vertCenter row">
               <div className="icon"><PinIcon /></div>
-              <p>{ this.props.event.venue }</p>
-              <p>{ this.props.event.address }</p>
+              <p className="venue">
+                <span>{ this.props.event.venue }：</span>
+                <span>{ this.props.event.address }</span>
+              </p>
               <div className="grow" />
-              <RaisedButton
-                className="mui-button"
-                label="View Map"
-                onClick={this.props.toggleMap}
-                style={{ width: '100px' }}
-              />
-            </div>
-
-            <div className={this.props.showMap ? 'map-container expanded' : 'map-container'}>
-              <div className="event-map"><EventMap
-                position={{ lat: this.props.event.lat, lng: this.props.event.lng }}
-              />
+              <div>
+                <RaisedButton
+                  className="mui-button"
+                  label="View Map"
+                  onClick={this.props.toggleMap}
+                  style={{ width: '100px' }}
+                />
               </div>
             </div>
 
-            <div className="flex center row">
+            <div className={this.props.showMap ? 'map-container expanded' : 'map-container'}>
+              <div className="event-map">
+                <EventMap position={{ lat: this.props.event.lat, lng: this.props.event.lng }} />
+              </div>
+            </div>
+
+            <div className="flex vertCenter row">
               <div className="icon"><DollarIcon /></div>
               <p>{ formatPrice(this.props.event.price)} Yen</p>
               <div className="grow" />
@@ -132,18 +111,13 @@ Event.propTypes = {
   event: PropTypes.shape(),
   match: PropTypes.shape().isRequired,
   onComponentDidMount: PropTypes.func,
-  history: PropTypes.shape(),
   showMap: PropTypes.bool.isRequired,
   toggleMap: PropTypes.func.isRequired,
-  onReceiveChargeResponse: PropTypes.func,
 };
 
 Event.defaultProps = {
-  userProfile: undefined,
   event: undefined,
-  history: undefined,
   onComponentDidMount: undefined,
-  onReceiveChargeResponse: undefined,
 };
 
 export default Event;

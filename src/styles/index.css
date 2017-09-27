@@ -11,7 +11,7 @@
 .restrict-width {
   width: 800px;
   min-width: 50%;
-  max-width: 95%;
+  max-width: 90%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -21,22 +21,6 @@
 .black { background-color: black; color: beige; }
 
 /***** Button *****/
-/* primaryButton */
-.primaryButton {
-  transition: opacity .4s;
-}
-.primaryButton > button {
-  height: 40px !important;
-  background: #daa520 !important;
-  color: #ffffff !important;
-}
-.primaryButton > button:hover {
-  opacity: .7;
-}
-.primaryButton span {
-  font-size: 16px !important;
-  color: #ffffff !important;
-}
 /* mui-button - material ui */
 .mui-button span {
   text-transform: none !important;
@@ -60,7 +44,7 @@
 main {
   width: 100%;
   height: auto;
-  padding-top: 120px;
+  padding-top: 110px;
   padding-bottom: 40px;
   min-height: calc(100% - 80px);
 }
@@ -76,3 +60,15 @@ main {
 }
 
 .gm-style-cc { display:none; }
+
+
+/*
+* MEDIA QUERY SP
+*/
+@media screen and (max-width:600px){
+  main {
+    padding-top: 90px;
+    padding-bottom: 20px;
+  }
+}
+

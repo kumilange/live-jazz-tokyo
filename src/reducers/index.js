@@ -7,6 +7,7 @@ const initialState = {
   chargeResponse: undefined,
   addEventResponse: undefined,
   userProfile: undefined,
+  transactionHistory: [],
   addEventFields: {
     eventName: '',
     artist: '',
@@ -38,7 +39,6 @@ const reducer = (state = initialState, action) => {
       break;
     case 'SET_EVENT_DETAILS':
       newState = Object.assign({}, state, { eventDetails: action.event });
-      console.log('event details', newState);
       break;
     case 'SET_USER_LOCATION':
       newState = Object.assign({}, state, { userLocation: action.position });
@@ -88,10 +88,13 @@ const reducer = (state = initialState, action) => {
       newState = Object.assign({}, state, { userProfile: action.userProfile });
       break;
     case 'CLEAR_USER_PROFILE':
-      newState = Object.assign({}, state, { userProfile: undefined });
+      newState = Object.assign({}, state, { userProfile: undefined, transactionHistory: [] });
       break;
     case 'SET_SELECTED_TAB':
       newState = Object.assign({}, state, { selectedTab: action.selectedTab });
+      break;
+    case 'SET_TRANSACTION_HISTORY':
+      newState = Object.assign({}, state, { transactionHistory: action.transactions });
       break;
     default:
       console.log('UNKNOWN ACTION', action.type);
