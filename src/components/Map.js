@@ -24,7 +24,7 @@ const geolocation = (
 
 const MyMap = withGoogleMap((props) => {
   return (<GoogleMap
-    defaultZoom={14}
+    defaultZoom={13}
     defaultCenter={DEFAULT_CENTER}
     defaultOptions={{
       streetViewControl: false,
@@ -34,6 +34,7 @@ const MyMap = withGoogleMap((props) => {
     }}
     center={props.userLocation.lat === undefined ? DEFAULT_CENTER : props.userLocation}
   >
+    <div className="mapLable">On Tonight</div>
     {
       props.events.map((event) => {
         const position = {

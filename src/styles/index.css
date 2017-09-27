@@ -42,6 +42,7 @@
 }
 
 main {
+  position: relative;
   width: 100%;
   height: auto;
   padding-top: 110px;
@@ -60,6 +61,22 @@ main {
 }
 
 .gm-style-cc { display:none; }
+
+.mapLable {
+  position: absolute;
+  top: 80px;
+  padding: 2px 10px;
+  margin-top: 10px;
+  margin-left: 10px;
+  background-color: rgba(0, 0, 0, .75);
+  border: 1px solid #ffffff;
+  border-radius: 2px;
+  color: #ffffff;
+  font-family: 'Kaushan Script', cursive;
+  font-size: 18px;
+  text-align: center;
+  z-index: 1;
+}
 
 
 /*
