@@ -5,7 +5,7 @@ const knexConfig = require('../knexfile');
 
 const db = knex(knexConfig);
 const TARGET_EVENT_COUNT = 1000;
-const MILLISECONDS_PER_HOUR = 3600000
+const MILLISECONDS_PER_HOUR = 3600000;
 const JAPAN_TIME_OFFSET = MILLISECONDS_PER_HOUR * 9;
 
 const rndInt = num => Math.floor(Math.random() * num);
@@ -25,18 +25,29 @@ const generateEventName = () => {
     'スタンダードナイト',
   ];
   return events[rndIndex(9, 0)];
-}
+};
 
 exports.seed = () => {
-  const rangeInMonths = 3;
   const promises = [];
   for (let i = 0; i < TARGET_EVENT_COUNT; i += 1) {
     try {
       const name = generateEventName();
-      const utcStartDate = Date.UTC(2017, 8 + rndInt(2), 1 + rndInt(31), 17 + rndInt(3), rndInt(2) * 30)
+      const utcStartDate = Date.UTC(
+        2017,
+        8 + rndInt(2),
+        1 + rndInt(31),
+        17 + rndInt(3),
+        rndInt(2) * 30,
+      );
       const japanStartDate = utcStartDate - JAPAN_TIME_OFFSET;
       let start = new Date(japanStartDate);
-      const utcEndDate = Date.UTC(2017, start.getMonth(), start.getDate(), 20 + rndInt(3), rndInt(2) * 30);
+      const utcEndDate = Date.UTC(
+        2017,
+        start.getMonth(),
+        start.getDate(),
+        20 + rndInt(3),
+        rndInt(2) * 30,
+      );
       const japanEndDate = utcEndDate - JAPAN_TIME_OFFSET;
       let end = new Date(japanEndDate);
       start = Date.parse(start);
