@@ -8,10 +8,7 @@ const Header = (props) => (
   <header className="dark flex">
     <div id="header-inner" className="flex restrict-width">
       <h1 className="flex">
-        <Link to="/" className="logo flex column horiCenter">
-          <span className="logoTtl">Live Jazz</span>
-          <span className="logoSubTtl">Find jazz event in your area</span>
-        </Link>
+        <Link to="/" className="logo">LiveJazz</Link>
       </h1>
       { props.userProfile
         ? <nav className="gnav">
