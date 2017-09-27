@@ -67,7 +67,7 @@ header {
 .gnav-list-link,
 .gnav-list-link:hover {
   font-family: 'Gothic';
-  font-size: 16px;
+  font-size: 15px;
   color: beige;
 }
 
@@ -76,6 +76,9 @@ header {
 * MEDIA QUERY SP
 */
 @media screen and (max-width:600px){
+  header {
+    height: 40px;
+  }
   .gnav-list li {
     margin-left: 5px;
     margin-right: 5px;

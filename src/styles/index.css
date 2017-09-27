@@ -34,6 +34,12 @@
   width: 100% !important;
 }
 
+.link {
+  display: inline-block;
+  color: #2c2c2c;
+  text-decoration: underline;
+}
+
 /*-------------------------------------------------------------------------------
  Index.js
  -------------------------------------------------------------------------------*/
@@ -84,7 +90,15 @@ main {
 */
 @media screen and (max-width:600px){
   main {
-    padding-top: 90px;
+    padding-top: 50px;
     padding-bottom: 20px;
+    min-height: calc(100% - 40px);
+  }
+  #app {
+    height: calc(100% - 40px);
+    padding-top: 40px;
+  }
+  .mapLable {
+    display: none;
   }
 }

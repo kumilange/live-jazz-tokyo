@@ -62,4 +62,10 @@ body {
   background-position: 0 0;
   background: beige;
 }
-a{ color: beige; }
+a{
+  color: beige;
+  transition: opacity .2s;
+}
+a:hover {
+  opacity: .7;
+}
