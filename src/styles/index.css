@@ -42,6 +42,7 @@
 }
 
 main {
+  position: relative;
   width: 100%;
   height: auto;
   padding-top: 110px;
@@ -77,21 +78,31 @@ main {
 /*}*/
 
 .toast {
+  position: absolute;
+  font-family: 'Kaushan Script', cursive;
   position: fixed;
-  top: 85px;
-  left: 100px;
-  width: 120px;
-  height: 30px;
-  color: #2c2c2c;
-  background-color: rgba(255, 255, 255, 1);
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
-  border-radius: 0px 0px 2px 2px;
-  padding-top: 1px;
-  font-weight: bold;
+
+  /*top: 85px;*/
+  /*left: 0;*/
+  /*left: 100px;*/
+  /*width: 120px;*/
+  /*height: 30px;*/
+  color: #ffffff;
+  /*background-color: rgba(255, 255, 255, 1);*/
+  /*box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;*/
+  /*border-radius: 0px 0px 2px 2px;*/
+  /*padding-top: 1px;*/
+  font-size: 18px;
+  /*font-weight: bold;*/
   text-align: center;
   z-index: 1;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  /*margin-top: 5px;*/
+  /*margin-bottom: 5px;*/
+  margin-top: 10px;
+  margin-left: 10px;
+  border: 1px solid #ffffff;
+  padding: 2px 10px;
+  border-radius: 2px;
 }
 
 
