@@ -96,7 +96,7 @@ const reducer = (state = initialState, action) => {
       newState = Object.assign({}, state, {
         jwt: undefined,
         userProfile: undefined,
-        transactionHistory: []
+        transactionHistory: [],
       });
       break;
     case 'SET_SELECTED_TAB':
