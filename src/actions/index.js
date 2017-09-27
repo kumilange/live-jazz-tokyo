@@ -131,6 +131,13 @@ export function setUserProfile(userProfile) {
   };
 }
 
+export function setJWT(jwt) {
+  return {
+    type: 'SET_JWT',
+    jwt,
+  };
+}
+
 export function logout() {
   return {
     type: 'CLEAR_USER_PROFILE',

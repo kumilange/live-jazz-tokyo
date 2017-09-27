@@ -4,6 +4,7 @@ import Pay from '../components/Pay';
 const mapStateToProps = state => ({
   event: state.eventDetails,
   userProfile: state.userProfile,
+  jwt: state.jwt,
   creditCardError: state.creditCardError,
   nameErrorText: state.nameErrorText,
   addressErrorText: state.addressErrorText,
