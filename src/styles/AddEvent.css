@@ -1,4 +1,4 @@
-.addEventButton {
+#add-event .mui-button {
   margin-top: 40px;
 }
 
@@ -16,4 +16,14 @@
 .colPriceDate .inputHalf > div,
 .colTime > div .inputHalf {
   width: 100% !important;
+}
+
+
+/*
+* MEDIA QUERY SP
+*/
+@media screen and (max-width:600px){
+  .inputHalf {
+    width: 100% !important;
+  }
 }

@@ -48,45 +48,49 @@ class CheckoutForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit} className="flex column center">
-        <table id="payment-info-table">
-          <tbody>
-            <tr>
-              <td>Card Holder:</td>
-              <td colSpan="3"><TextField hintText="John Smith" /></td>
-            </tr>
-            <tr>
-              <td>Billing Address:</td>
-              <td colSpan="3"><TextField hintText="123 New Orleans" /></td>
-            </tr>
-            <tr>
-              <td>E-mail:</td>
-              <td colSpan="3"><TextField hintText="test@example.com" /></td>
-            </tr>
-            <tr>
-              <td>Card Number:</td>
-              <td colSpan="3">
-                <div className="underline">
-                  <CardNumberElement style={styleProps} />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>Expiry Date:</td>
-              <td id="expiry-date">
-                <div className="underline">
-                  <CardExpiryElement style={styleProps} />
-                </div>
-              </td>
-              <td id="cvc">CVC:</td>
-              <td>
-                <div className="underline">
-                  <CardCVCElement style={styleProps} />
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <RaisedButton primary label="Confirm Order" type="submit" />
+        <ul id="payment-info-table">
+          <li className="flex">
+            <p className="listTtl">Card Holder:</p>
+            <div className="listItem">
+              <TextField hintText="John Smith" />
+            </div>
+          </li>
+          <li className="flex">
+            <p className="listTtl">Billing Address:</p>
+            <div className="listItem">
+              <TextField hintText="123 New Orleans" />
+            </div>
+          </li>
+          <li className="flex">
+            <p className="listTtl">E-mail:</p>
+            <div className="listItem">
+              <TextField hintText="test@example.com" />
+            </div>
+          </li>
+          <li className="flex">
+            <p className="listTtl">Card Number:</p>
+            <div className="listItem">
+              <div className="underline">
+                <CardNumberElement style={styleProps} />
+              </div>
+            </div>
+          </li>
+          <li className="flex">
+            <p className="listTtl">Expiry Date:</p>
+            <div id="expiry-date" className="listItem">
+              <div className="underline">
+                <CardExpiryElement style={styleProps} />
+              </div>
+            </div>
+            <p id="cvc">CVC:</p>
+            <div className="listItem">
+              <div className="underline">
+                <CardCVCElement style={styleProps} />
+              </div>
+            </div>
+          </li>
+        </ul>
+        <RaisedButton primary className="orderButton" label="Confirm Order" type="submit" />
       </form>
     );
   }

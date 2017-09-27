@@ -13,7 +13,7 @@ const AddEvent = (props) => {
   const failed = !props.addEventResponse.addSuccess
     && props.addEventResponse.addSuccess !== undefined;
   return (
-    <main className="flex column restrict-width grow">
+    <main id="add-event" className="flex column restrict-width grow">
       <TextField
         className="inputHalf name"
         floatingLabelText="Name"
@@ -71,7 +71,8 @@ const AddEvent = (props) => {
         />
       </div>
       <RaisedButton
-        className="addEventButton primaryButton"
+        primary
+        className="mui-button"
         label="Submit"
         onClick={event =>
           props.onFormSubmit(event, props.addEventFields, props.history)
