@@ -1,4 +1,5 @@
 import React from 'react';
+import formatPrice from '../utils/format';
 
 export default (props) => (
   <table id="order-history-table">
@@ -14,7 +15,7 @@ export default (props) => (
             <tr key={ order.id }>
               <td> { order.id } </td>
               <td> { order.title }</td>
-              <td> { order.amount } </td>
+              <td> { formatPrice(order.amount) } yen</td>
             </tr>
           )
         })

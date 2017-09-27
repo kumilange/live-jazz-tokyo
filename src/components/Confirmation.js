@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { CheckIcon } from '../styles/Icons';
+import '../styles/Confirmation.css';
 
 const Confirmation = props => (
   <main className="restrict-width">
@@ -10,10 +12,11 @@ const Confirmation = props => (
       <div className="grow" />
     </div>
     {props.chargeResponse ?
-      <p>
+      <p className="note">
         {`Please save your order number: ${props.chargeResponse.order_id}`}
       </p> :
       null}
+    <Link to={'/'} className="link">トップページへ戻る</Link>
   </main>
 );
 
