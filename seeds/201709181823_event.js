@@ -4,31 +4,52 @@ const knex = require('knex');
 const knexConfig = require('../knexfile');
 
 const db = knex(knexConfig);
-const NUM_OF_PRE_RECORD = 1000;
+const TARGET_EVENT_COUNT = 1000;
+const MILLISECONDS_PER_HOUR = 3600000;
+const JAPAN_TIME_OFFSET = MILLISECONDS_PER_HOUR * 9;
 
 const rndInt = num => Math.floor(Math.random() * num);
 const rndIndex = (max, min) => Math.floor(Math.random() * ((max + 1) - min)) + min;
 
-const events = [
-  'ヴォーカル・セッション',
-  'ビューティフルナイト',
-  'スプレンディッドナイト',
-  'スタイリッシュナイト',
-  'オトナのジャズナイト',
-  'SPセッション',
-  'コケティッシュナイト',
-  'ハートウォーミングナイト',
-  'ゴージャスナイト',
-  'スタンダードナイト',
-];
+const generateEventName = () => {
+  const events = [
+    'ヴォーカル・セッション',
+    'ビューティフルナイト',
+    'スプレンディッドナイト',
+    'スタイリッシュナイト',
+    'オトナのジャズナイト',
+    'SPセッション',
+    'コケティッシュナイト',
+    'ハートウォーミングナイト',
+    'ゴージャスナイト',
+    'スタンダードナイト',
+  ];
+  return events[rndIndex(9, 0)];
+};
 
 exports.seed = () => {
   const promises = [];
-  for (let i = 0; i < NUM_OF_PRE_RECORD; i += 1) {
+  for (let i = 0; i < TARGET_EVENT_COUNT; i += 1) {
     try {
-      const name = events[rndIndex(9, 0)];
-      let start = new Date(2017, 8 + rndInt(2), 1 + rndInt(31), 17 + rndInt(3), rndInt(2) * 30);
-      let end = new Date(2017, start.getMonth(), start.getDate(), 20 + rndInt(3), rndInt(2) * 30);
+      const name = generateEventName();
+      const utcStartDate = Date.UTC(
+        2017,
+        8 + rndInt(2),
+        1 + rndInt(31),
+        17 + rndInt(3),
+        rndInt(2) * 30,
+      );
+      const japanStartDate = utcStartDate - JAPAN_TIME_OFFSET;
+      let start = new Date(japanStartDate);
+      const utcEndDate = Date.UTC(
+        2017,
+        start.getMonth(),
+        start.getDate(),
+        20 + rndInt(3),
+        rndInt(2) * 30,
+      );
+      const japanEndDate = utcEndDate - JAPAN_TIME_OFFSET;
+      let end = new Date(japanEndDate);
       start = Date.parse(start);
       end = Date.parse(end);
 
