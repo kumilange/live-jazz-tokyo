@@ -3,10 +3,11 @@ import { InfoWindow, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import canUseDOM from 'can-use-dom';
+import Divider from 'material-ui/Divider';
 
 import formatPrice from '../utils/format';
 import fancyMapStyles from '../resources/fancyMapStyles.json';
-import { CalendarIcon, ClockIcon, DollarIcon, PinIcon, UserIcon, MarkerIcon, UserLocationIcon } from '../styles/Icons';
+import { CalendarIcon, ClockIcon, YenIcon, PinIcon, UserIcon, MarkerIcon, UserLocationIcon } from '../styles/Icons';
 import '../styles/InfoWindow.css';
 
 const DEFAULT_CENTER = { lat: 35.6857933, lng: 139.7501793 };
@@ -23,7 +24,7 @@ const geolocation = (
 
 const MyMap = withGoogleMap((props) => {
   return (<GoogleMap
-    defaultZoom={14}
+    defaultZoom={13}
     defaultCenter={DEFAULT_CENTER}
     defaultOptions={{
       streetViewControl: false,
@@ -33,14 +34,15 @@ const MyMap = withGoogleMap((props) => {
     }}
     center={props.userLocation.lat === undefined ? DEFAULT_CENTER : props.userLocation}
   >
+    <div className="mapLable">On Tonight</div>
     {
       props.events.map((event) => {
         const position = {
           lat: event.lat,
           lng: event.lng,
         };
-        const svgIconSizeL = { width: '20px', height: '20px' };
-        const svgIconSize = { width: '16px', height: '16px' };
+        const svgIconSizeL = { width: '25px', height: '20px' };
+        const svgIconSize = { width: '25px', height: '16px' };
         return (<Marker
           position={position}
           key={event.id}
@@ -56,6 +58,7 @@ const MyMap = withGoogleMap((props) => {
               <div className="infoWindowInner">
                 <Link to={`/event/${event.id}`}>
                   <h2 className="infoWindowHeading2">{ event.name }</h2>
+                  <Divider style={{ marginTop: 10, marginBottom: 10 }} />
                   <div className="flex vertCenter infoItemWrapper">
                     <UserIcon style={svgIconSizeL} />
                     <h3 className="infoWindowHeading3">{ event.artist }</h3>
@@ -69,7 +72,7 @@ const MyMap = withGoogleMap((props) => {
                       <div className="flex vertCenter">
                         <CalendarIcon style={svgIconSize} />
                         <p className="infoWindowSubTtl">{ (new Date(event.start)).toDateString().split(' ').slice(1, 3)
-                          .join('. ') }</p>
+                          .join('-') }</p>
                       </div>
                     </div>
                     <div className="infoItemWrapper">
@@ -77,7 +80,7 @@ const MyMap = withGoogleMap((props) => {
                         <ClockIcon style={svgIconSize} />
                         <p className="infoWindowSubTtl">{
                           `${(new Date(event.start)).toTimeString().split(':').slice(0, 2)
-                            .join(':')} ~ ${
+                            .join(':')}-${
                             (new Date(event.end)).toTimeString().split(':').slice(0, 2)
                               .join(':')}`}
                         </p>
@@ -85,8 +88,7 @@ const MyMap = withGoogleMap((props) => {
                     </div>
                   </div>
                   <div className="flex vertCenter infoItemWrapper">
-                    {/* TODO change the icon to YEN */}
-                    <DollarIcon style={svgIconSize} />
+                    <YenIcon style={svgIconSize} viewBox="4 4 19 19" />
                     <p className="infoWindowSubTtl">{ formatPrice(event.price) } Yen</p>
                   </div>
                 </Link>

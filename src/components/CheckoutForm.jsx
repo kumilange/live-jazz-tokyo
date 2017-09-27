@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import React, { Component } from 'react';
 import { injectStripe } from 'react-stripe-elements';
 

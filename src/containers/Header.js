@@ -33,7 +33,7 @@ const mapDispatchToProps = (dispatch) => {
   window.hello.init({
     facebook: '120884018612158',
   }, {
-    redirect_uri: 'redirect.html',
+    redirect_uri: '/',
   });
 
   // Register hello callback once, before anything is dispatched
@@ -47,7 +47,9 @@ const mapDispatchToProps = (dispatch) => {
       network: 'facebook',
       socialToken,
     });
-    dispatch(setUserProfile(userProfile));
+    if (userProfile.name) {
+      dispatch(setUserProfile(userProfile));
+    }
   });
   return {
     onLoginButtonClick: () => {
@@ -59,7 +61,7 @@ const mapDispatchToProps = (dispatch) => {
       ).then(() => {
         return facebook.api('me');
       }).then((profile) => {
-        dispatch(profile);
+        dispatch(setUserProfile(profile));
       });
     },
     onLogoutButtonClick: () => {
