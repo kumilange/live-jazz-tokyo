@@ -22,6 +22,8 @@ class Pay extends Component {
             setNameErrorText={this.props.setNameErrorText}
             setAddressErrorText={this.props.setAddressErrorText}
             setEmailErrorText={this.props.setEmailErrorText}
+            setChargeResponse={this.props.setChargeResponse}
+            history={this.props.history}
           />
         </Elements>
       </main>

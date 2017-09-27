@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { CheckIcon } from '../styles/Icons';
 
 const Confirmation = props => (
   <main className="restrict-width">
-    <h2>
-      Your reservation is complete!
-    </h2>
+    <div className="flex center">
+      <CheckIcon style={{ width: 60, height: 60, paddingRight: 10 }} />
+      <h2>Your reservation is complete!</h2>
+      <div className="grow" />
+    </div>
     {props.chargeResponse ?
       <p>
         {`Please save your order number: ${props.chargeResponse.order_id}`}

@@ -30,6 +30,11 @@ const UserIcon = (props) =>
     <path d="M0 0h24v24H0z" fill="none"/>
   </SvgIcon>
 
+const CheckIcon = (props) =>
+  <SvgIcon {...props}>
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="#36BC54"/>
+  </SvgIcon>
+
 const MarkerIcon = {
   path: 'M256,0C139.563,0,45.172,94.406,45.172,210.828S210.875,512,256,512c45.109,0,210.828-184.75,210.828-301.172S372.438,0,256,0z M256,307.594c-53.453,0-96.766-43.328-96.766-96.766c0-53.453,43.313-96.766,96.766-96.766c53.438,0,96.766,43.313,96.766,96.766C352.766,264.266,309.438,307.594,256,307.594z',
   anchor: { x: 0, y: 0 },
@@ -46,4 +51,4 @@ const UserLocationIcon = {
   scale: 0.5,
 };
 
-export { CalendarIcon, ClockIcon, DollarIcon, PinIcon, UserIcon, MarkerIcon, UserLocationIcon };
+export { CalendarIcon, ClockIcon, DollarIcon, PinIcon, UserIcon, CheckIcon, MarkerIcon, UserLocationIcon };

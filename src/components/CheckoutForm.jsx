@@ -72,6 +72,13 @@ class CheckoutForm extends Component {
             }),
             headers,
           })).json();
+
+          if (res.OK) {
+            this.props.setChargeResponse(res);
+            this.props.history.push('/confirmation');
+          } else {
+            this.props.setCreditCardError();
+          }
         } else {
           this.props.setCreditCardError();
         }
