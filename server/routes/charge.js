@@ -28,6 +28,7 @@ router.get('/', async (req, res) => {
       .select(
         'transaction.id as id',
         'event.name as title',
+        'event.id as eventId',
         'transaction.total as amount',
       );
 
