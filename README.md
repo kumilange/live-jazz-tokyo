@@ -54,3 +54,6 @@ Deployed using Heroku at [https://live-jazz.herokuapp.com/](https://live-jazz.he
 * [Knex](http://knexjs.org/) - Query Builder
 * [Material UI](http://www.material-ui.com/) - Frontend
 * [Heroku](https://heroku.com/) - Continuous Integration / Continuous Deployment
+* [Redux](https://github.com/reactjs/redux) - State Management
+* [Stripe](https://stripe.com/) - Online Payment
+* [Hello.js](https://adodson.com/hello.js/) - OAuth2
