@@ -40,6 +40,32 @@
   margin-top: 20px;
 }
 
+.payment-paper {
+  padding: 10px 0;
+  width: 500px;
+  max-width: 100%;
+  margin-bottom: 30px;
+}
+
+.payment-table-row {
+  width: 100%;
+}
+
+.payment-table-cell1 {
+  width: 50%;
+  text-align: center;
+}
+
+.payment-table-cell2 {
+  width: 25%;
+  text-align: center;
+}
+
+.payment-table-cell3 {
+  width: 25%;
+  text-align: center;
+}
+
 /*
 * MEDIA QUERY SP
 */

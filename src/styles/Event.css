@@ -21,6 +21,7 @@
   padding-top: 20px;
 }
 .event-details-table .row {
+  height: 36px;
   margin-top: 10px;
 }
 .event-details-table td:nth-child(1) {
@@ -54,6 +55,8 @@
 
 #event-details .icon {
   margin-right: 10px;
+  display: flex;
+  align-items: center;
 }
 
 #event-details .row {
