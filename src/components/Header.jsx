@@ -18,7 +18,7 @@ const Header = (props) => (
         : <nav className="gnav">
           <ul className="gnav-list flex">
             <li><Link to={''} className="gnav-list-link" onClick={props.onLoginButtonClick}>
-              Log in with <br /> facebook</Link></li>
+              Login with <br /> Facebook</Link></li>
           </ul>
         </nav>
       }
