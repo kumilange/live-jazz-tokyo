@@ -4,7 +4,7 @@ import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
 
 import CheckoutForm from './CheckoutForm';
-
+import formatPrice from '../utils/format';
 import '../styles/Pay.css';
 
 class Pay extends Component {
@@ -15,13 +15,13 @@ class Pay extends Component {
           <div className="flex payment-table-row">
             <div className="payment-table-cell1">Event Name</div>
             <div className="payment-table-cell2">Quantity</div>
-            <div className="payment-table-cell3">Price (Yen)</div>
+            <div className="payment-table-cell3">Price(¥)</div>
           </div>
           <Divider style={{ marginTop: 10, marginBottom: 10 }} />
           <div className="flex payment-table-row">
             <div className="payment-table-cell1">{this.props.event.name}</div>
             <div className="payment-table-cell2">{'x1'}</div>
-            <div className="payment-table-cell3">{this.props.event.price}</div>
+            <div className="payment-table-cell3">{ formatPrice(this.props.event.price) }</div>
           </div>
           <Divider style={{ marginTop: 10, marginBottom: 10, height: 1, backgroundColor: 'black' }} />
           <div className="flex payment-table-row">
