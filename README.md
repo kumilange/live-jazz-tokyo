@@ -19,7 +19,7 @@ yarn install
 
 1. Clone
 ```
-git clone 'URL'
+git clone https://github.com/codechrysalis1/live-jazz.git
 ```
 
 2. Install
@@ -41,7 +41,7 @@ yarn lint
 
 ## Deployment
 
-TODO: add heroku CI
+Deployed using Heroku at [https://live-jazz.herokuapp.com/](https://live-jazz.herokuapp.com/)
 
 ## Built With
 
