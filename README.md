@@ -2,6 +2,8 @@
 
 Connecting fans with local jazz musicians.
 
+The easiest way to find local Jazz artists and events around your area.
+
 ## Getting Started
 
 ```
@@ -50,3 +52,5 @@ Deployed using Heroku at [https://live-jazz.herokuapp.com/](https://live-jazz.he
 * [Yarn](https://yarnpkg.com/en/) - Dependency Management
 * [PostgreSQL](https://www.postgresql.org/) - Database
 * [Knex](http://knexjs.org/) - Query Builder
+* [Material UI](http://www.material-ui.com/) - Frontend
+* [Heroku](https://heroku.com/) - Continuous Integration / Continuous Deployment
