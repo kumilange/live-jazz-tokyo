@@ -47,8 +47,9 @@ const mapDispatchToProps = (dispatch) => {
       network: 'facebook',
       socialToken,
     });
-    if (userProfile.name)
+    if (userProfile.name) {
       dispatch(setUserProfile(userProfile));
+    }
   });
   return {
     onLoginButtonClick: () => {
