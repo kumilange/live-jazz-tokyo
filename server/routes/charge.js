@@ -50,6 +50,11 @@ router.post('/', async (req, res) => {
     .select('id')
     .first();
 
+  const [price] = await db('event')
+    .select('price')
+    .where('id', eventID);
+  console.log('price', price)
+
   // Charge the user's card:
   stripe.charges.create({
     amount: 1000,
