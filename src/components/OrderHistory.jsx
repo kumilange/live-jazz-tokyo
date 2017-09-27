@@ -12,7 +12,6 @@ export default (props) => (
       </tr>
       {
         props.orders.map((order) => {
-          console.log('order', order)
           return (
             <tr key={ order.id }>
               <td> { order.id } </td>
