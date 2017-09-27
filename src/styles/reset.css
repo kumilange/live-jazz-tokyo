@@ -33,8 +33,13 @@ label			{ vertical-align: middle; }
  BASE
  -------------------------------------------------------------------------------*/
 @font-face {
+  font-family: 'Chelsea';
+  src: url('../fonts/Chelsea.ttf');
+}
+
+@font-face {
   font-family: 'Gothic';
-  src: url('../fonts/ITC Avant Garde Gothic LT Extra Light.ttf');
+  src: url('../fonts/ITCAvantGardeGothicLTExtraLight.ttf');
 }
 
 @font-face {
