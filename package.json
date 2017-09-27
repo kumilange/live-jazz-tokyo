@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "yarn build && NODE_ENV=production node ./server/bin/www",
+    "start": "NODE_ENV=production node ./server/bin/www",
     "test": "yarn lint && yarn test:backend && CI=true yarn test:frontend",
     "test:backend": "NODE_ENV=test mocha --recursive server/test --opts server/test/mocha.opts",
     "test:frontend": "react-scripts test --env=jsdom",
@@ -16,7 +16,8 @@
     "lintfix": "eslint . --fix",
     "migrate": "knex migrate:latest --knexfile knexfile.js",
     "rollback": "knex migrate:rollback --knexfile knexfile.js",
-    "seed": "knex seed:run --knexfile knexfile.js"
+    "seed": "knex seed:run --knexfile knexfile.js",
+    "heroku-postbuild": "yarn build"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
