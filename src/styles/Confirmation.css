@@ -1,4 +1,5 @@
 #confirmation .note {
+  margin-left: 60px;
   margin-top: 10px;
 }
 
@@ -11,13 +12,15 @@
   line-height: 1.2;
 }
 
-
 /*
 * MEDIA QUERY SP
 */
 @media screen and (max-width:600px){
   #confirmation .link {
     margin-top: 20px;
-    margin-left: 50px;
+  }
+  .confirmTtl {
+    word-break: normal;
+    font-size: 20px;
   }
 }
