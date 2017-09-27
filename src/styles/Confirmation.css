@@ -1,9 +1,23 @@
-.note {
+#confirmation .note {
   margin-top: 10px;
 }
 
-.link {
-  display: inline-block;
-  color: #2c2c2c;
-  text-decoration: underline;
+#confirmation .link {
+  margin-top: 40px;
+  margin-left: 60px;
+}
+
+.confirmTtl {
+  line-height: 1.2;
+}
+
+
+/*
+* MEDIA QUERY SP
+*/
+@media screen and (max-width:600px){
+  #confirmation .link {
+    margin-top: 20px;
+    margin-left: 50px;
+  }
 }
