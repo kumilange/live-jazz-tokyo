@@ -19,6 +19,10 @@ const initialState = {
     endTime: '',
   },
   selectedTab: 'profile',
+  creditCardError: false,
+  nameErrorText: '',
+  addressErrorText: '',
+  emailErrorText: '',
 };
 
 const reducer = (state = initialState, action) => {
@@ -95,6 +99,18 @@ const reducer = (state = initialState, action) => {
       break;
     case 'SET_TRANSACTION_HISTORY':
       newState = Object.assign({}, state, { transactionHistory: action.transactions });
+      break;
+    case 'SET_CREDIT_CARD_ERROR':
+      newState = Object.assign({}, state, { creditCardError: !state.creditCardError });
+      break;
+    case 'SET_NAME_ERROR_TEXT':
+      newState = Object.assign({}, state, { nameErrorText: action.nameErrorText });
+      break;
+    case 'SET_ADDRESS_ERROR_TEXT':
+      newState = Object.assign({}, state, { addressErrorText: action.addressErrorText });
+      break;
+    case 'SET_EMAIL_ERROR_TEXT':
+      newState = Object.assign({}, state, { emailErrorText: action.emailErrorText });
       break;
     default:
       console.log('UNKNOWN ACTION', action.type);
