@@ -1,5 +1,6 @@
 import React from 'react';
 import formatPrice from '../utils/format';
+import { Link } from 'react-router-dom';
 
 export default (props) => (
   <table id="order-history-table">
@@ -11,10 +12,11 @@ export default (props) => (
       </tr>
       {
         props.orders.map((order) => {
+          console.log('order', order)
           return (
             <tr key={ order.id }>
               <td> { order.id } </td>
-              <td> { order.title }</td>
+              <td> <Link className="link" to={`/event/${order.eventId}`}>{ order.title }</Link></td>
               <td> { formatPrice(order.amount) } yen</td>
             </tr>
           )

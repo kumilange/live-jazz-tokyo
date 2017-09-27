@@ -4,6 +4,6 @@
 
 .link {
   display: inline-block;
-  margin-top: 20px;
   color: #2c2c2c;
+  text-decoration: underline;
 }
