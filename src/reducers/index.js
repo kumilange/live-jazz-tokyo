@@ -19,6 +19,7 @@ const initialState = {
     endTime: '',
   },
   selectedTab: 'profile',
+  creditCardError: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -95,6 +96,9 @@ const reducer = (state = initialState, action) => {
       break;
     case 'SET_TRANSACTION_HISTORY':
       newState = Object.assign({}, state, { transactionHistory: action.transactions });
+      break;
+    case 'SET_CREDIT_CARD_ERROR':
+      newState = Object.assign({}, state, { creditCardError: !state.creditCardError });
       break;
     default:
       console.log('UNKNOWN ACTION', action.type);

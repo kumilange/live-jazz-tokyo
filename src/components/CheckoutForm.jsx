@@ -4,6 +4,7 @@ import { injectStripe } from 'react-stripe-elements';
 import { CardNumberElement, CardExpiryElement, CardCVCElement } from 'react-stripe-elements';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import Dialog from 'material-ui/Dialog';
 
 const styleProps = {
   base: {
@@ -30,22 +31,35 @@ class CheckoutForm extends Component {
     this.props.stripe.createToken({name: 'Jenny Rosen'}).then(async (response) => {
       const stripeToken = response.token;
 
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      headers.append('Bearer', this.props.userProfile.jwt);
+      if(stripeToken) {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('Bearer', this.props.userProfile.jwt);
+  
+        const res = await (await fetch('/api/charge', {
+          method: 'POST',
+          body: JSON.stringify({
+            stripeToken,
+            eventID: this.props.eventID,
+          }),
+          headers,
+        })).json();
+      } else {
+        this.props.setCreditCardError();
+      }
 
-      const res = await (await fetch('/api/charge', {
-        method: 'POST',
-        body: JSON.stringify({
-          stripeToken,
-          eventID: this.props.eventID,
-        }),
-        headers,
-      })).json();
     });
   }
 
   render() {
+    const actions = [
+      <RaisedButton
+        primary
+        label="OK"
+        onClick={this.props.setCreditCardError}
+      />,
+    ];
+
     return (
       <form onSubmit={this.handleSubmit} className="flex column center">
         <ul id="payment-info-table">
@@ -91,6 +105,15 @@ class CheckoutForm extends Component {
           </li>
         </ul>
         <RaisedButton primary className="orderButton" label="Confirm Order" type="submit" />
+        <Dialog
+          title="Error"
+          actions={actions}
+          modal={false}
+          open={this.props.creditCardError}
+          onRequestClose={this.props.setCreditCardError}
+        >
+          Please input a valid credit card.
+        </Dialog>
       </form>
     );
   }
