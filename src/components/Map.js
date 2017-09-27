@@ -88,7 +88,7 @@ const MyMap = withGoogleMap((props) => {
                   </div>
                   <div className="flex vertCenter infoItemWrapper">
                     {/* TODO change the icon to YEN */}
-                    <DollarIcon style={svgIconSize} />
+                    <DollarIcon style={svgIconSize} viewBox="4 4 19 19" />
                     <p className="infoWindowSubTtl">{ formatPrice(event.price) } Yen</p>
                   </div>
                 </Link>
