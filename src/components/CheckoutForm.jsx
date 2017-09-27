@@ -28,7 +28,9 @@ class CheckoutForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    this.props.stripe.createToken({name: 'Jenny Rosen'}).then(async (response) => {
+    this.props.stripe.createToken({
+      name: document.getElementById('cardHolder').value
+    }).then(async (response) => {
       const stripeToken = response.token;
 
       if(stripeToken) {
