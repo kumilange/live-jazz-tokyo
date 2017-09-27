@@ -33,7 +33,7 @@ const mapDispatchToProps = (dispatch) => {
   window.hello.init({
     facebook: '120884018612158',
   }, {
-    redirect_uri: 'redirect.html',
+    redirect_uri: '/',
   });
 
   // Register hello callback once, before anything is dispatched
