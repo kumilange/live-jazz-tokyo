@@ -3,12 +3,12 @@ const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const forceSsl = require('force-ssl-heroku');
 
 const app = express();
 const events = require('./routes/events');
 const charge = require('./routes/charge');
 const auth = require('./routes/auth');
-const forceSsl = require('force-ssl-heroku');
 
 app.use(forceSsl);
 app.use(logger('dev'));
