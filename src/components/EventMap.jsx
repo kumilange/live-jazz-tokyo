@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import fancyMapStyles from '../resources/fancyMapStyles.json';
@@ -42,6 +41,7 @@ class Map extends Component {
 }
 
 Map.propTypes = {
+  position: PropTypes.shape().isRequired,
 };
 
 export default Map;

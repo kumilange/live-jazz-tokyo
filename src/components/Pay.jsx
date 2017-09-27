@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 import { Elements } from 'react-stripe-elements';
 
@@ -18,13 +17,5 @@ class Pay extends Component {
     );
   }
 }
-
-Pay.propTypes = {
-  
-};
-
-Pay.defaultProps = {
-  
-};
 
 export default Pay;
