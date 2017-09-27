@@ -21,22 +21,6 @@
 .black { background-color: black; color: beige; }
 
 /***** Button *****/
-/* primaryButton */
-.primaryButton {
-  transition: opacity .4s;
-}
-.primaryButton > button {
-  height: 40px !important;
-  background: #daa520 !important;
-  color: #ffffff !important;
-}
-.primaryButton > button:hover {
-  opacity: .7;
-}
-.primaryButton span {
-  font-size: 16px !important;
-  color: #ffffff !important;
-}
 /* mui-button - material ui */
 .mui-button span {
   text-transform: none !important;

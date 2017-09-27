@@ -72,7 +72,7 @@ const AddEvent = (props) => {
       </div>
       <RaisedButton
         primary
-        className="mui-button primary"
+        className="mui-button"
         label="Submit"
         onClick={event =>
           props.onFormSubmit(event, props.addEventFields, props.history)

@@ -46,9 +46,9 @@
 @media screen and (max-width:600px) {
   #payment-info-table li {
     flex-direction: column;
-    text-align: left;
     height: auto;
     margin-top: 5px;
+    text-align: left;
   }
   #payment-info-table .listTtl,
   #payment-info-table .listItem,
