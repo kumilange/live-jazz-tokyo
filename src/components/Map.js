@@ -7,7 +7,7 @@ import Divider from 'material-ui/Divider';
 
 import formatPrice from '../utils/format';
 import fancyMapStyles from '../resources/fancyMapStyles.json';
-import { CalendarIcon, ClockIcon, DollarIcon, PinIcon, UserIcon, MarkerIcon, UserLocationIcon } from '../styles/Icons';
+import { CalendarIcon, ClockIcon, YenIcon, PinIcon, UserIcon, MarkerIcon, UserLocationIcon } from '../styles/Icons';
 import '../styles/InfoWindow.css';
 
 const DEFAULT_CENTER = { lat: 35.6857933, lng: 139.7501793 };
@@ -88,8 +88,7 @@ const MyMap = withGoogleMap((props) => {
                     </div>
                   </div>
                   <div className="flex vertCenter infoItemWrapper">
-                    {/* TODO change the icon to YEN */}
-                    <DollarIcon style={svgIconSize} viewBox="4 4 19 19" />
+                    <YenIcon style={svgIconSize} viewBox="4 4 19 19" />
                     <p className="infoWindowSubTtl">{ formatPrice(event.price) } Yen</p>
                   </div>
                 </Link>

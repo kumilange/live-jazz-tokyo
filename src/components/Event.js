@@ -9,7 +9,7 @@ import EventMap from './EventMap';
 
 import formatPrice from '../utils/format';
 import '../styles/Event.css';
-import { ClockIcon, DollarIcon, PinIcon } from '../styles/Icons';
+import { ClockIcon, YenIcon, PinIcon } from '../styles/Icons';
 
 class Event extends Component {
   componentDidMount() {
@@ -69,7 +69,7 @@ class Event extends Component {
             </div>
 
             <div className="flex vertCenter row">
-              <div className="icon"><DollarIcon /></div>
+              <div className="icon"><YenIcon /></div>
               <p>{ formatPrice(this.props.event.price)} Yen</p>
               <div className="grow" />
               <Link to={'/pay'}>

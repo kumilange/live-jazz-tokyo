@@ -14,7 +14,7 @@ const ClockIcon = (props) =>
     <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
   </SvgIcon>
 
-const DollarIcon = (props) =>
+const YenIcon = (props) =>
   <SvgIcon {...props}>
     <path d="M12.011,20v-3.619H8.752v-1.313h3.259v-1.444H8.752v-1.313h2.611L7.895,6h2.779l1.755,3.899 c0.376,0.797,0.606,1.464,0.877,2.153h0.042c0.25-0.646,0.522-1.4,0.877-2.197L16.043,6h2.717l-3.656,6.311h2.59v1.313h-3.28v1.444 h3.28v1.313h-3.28V20H12.011z" />
   </SvgIcon>
@@ -51,4 +51,4 @@ const UserLocationIcon = {
   scale: 0.5,
 };
 
-export { CalendarIcon, ClockIcon, DollarIcon, PinIcon, UserIcon, CheckIcon, MarkerIcon, UserLocationIcon };
+export { CalendarIcon, ClockIcon, YenIcon, PinIcon, UserIcon, CheckIcon, MarkerIcon, UserLocationIcon };
