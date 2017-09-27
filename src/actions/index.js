@@ -137,6 +137,33 @@ export function logout() {
   };
 }
 
+export function setSelectedTab(selectedTab) {
+  return {
+    type: 'SET_SELECTED_TAB',
+    selectedTab,
+  };
+}
+
+export function getTransactionHistory(jwtString) {
+  return async (dispatch) => {
+    try {
+      const headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      headers.append('Bearer', jwtString);
+      const res = await (await fetch('/api/charge', {
+        method: 'GET',
+        headers,
+      })).json();
+      dispatch({
+        type: 'SET_TRANSACTION_HISTORY',
+        transactions: res,
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+}
+
 export function addNewEvent(event, history) {
   return async (dispatch) => {
     try {

@@ -8,11 +8,17 @@ export default (props) => (
         <th>Title</th>
         <th>Amount</th>
       </tr>
-      <tr>
-        <td>12345</td>
-        <td>Mike Sordaro Live</td>
-        <td>3000 Yen</td>
-      </tr>
+      {
+        props.orders.map((order) => {
+          return (
+            <tr key={ order.id }>
+              <td> { order.id } </td>
+              <td> { order.title }</td>
+              <td> { order.amount } </td>
+            </tr>
+          )
+        })
+      }
     </tbody>
   </table>
 );
