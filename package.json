@@ -7,6 +7,7 @@
     "test": "yarn lint && yarn test:backend && CI=true yarn test:frontend",
     "test:backend": "NODE_ENV=test mocha --recursive server/test --opts server/test/mocha.opts",
     "test:frontend": "react-scripts test --env=jsdom",
+    "db:nuke": "dropdb 'livejazz' && createdb 'livejazz' && yarn migrate && yarn seed",
     "backend": "nodemon ./server/bin/www",
     "frontend": "react-scripts start",
     "build": "react-scripts build",
