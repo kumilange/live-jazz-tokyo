@@ -20,7 +20,7 @@ class User extends Component {
         <div id="user" className="flex restrict-width">
           { this.props.userProfile ?
             [
-              <img key='1' id="profile-picture" src="/default-user.jpg" />,
+              <img key='1' id="profile-picture" src="/default-user.jpg" alt="profile" />,
               <div key='2' className="grow">
                 <div id="tabs" className="flex">
                   <div className={ this.props.selectedTab === 'profile' ? 'tab selected' : 'tab' }

@@ -29,6 +29,8 @@ const muiTheme = getMuiTheme({
   fontFamily: 'LogoTypeGothic',
   palette: {
     primary1Color: '#DAA520',
+    primary2Color: '#DAA520',
+    pickerHeaderColor: '#DAA520',
   },
 });
 
