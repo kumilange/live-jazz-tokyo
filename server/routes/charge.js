@@ -44,6 +44,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   const tokenID = req.body.stripeToken.id;
   const eventID = req.body.eventID;
+  console.log('CHARGE JWT', req.headers.bearer);
   const decodedJWT = verifyJwt(req.headers.bearer);
 
   const user = await db('user')

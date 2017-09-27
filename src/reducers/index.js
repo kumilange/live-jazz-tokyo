@@ -7,6 +7,7 @@ const initialState = {
   chargeResponse: undefined,
   addEventResponse: undefined,
   userProfile: undefined,
+  jwt: undefined,
   transactionHistory: [],
   addEventFields: {
     eventName: '',
@@ -92,7 +93,11 @@ const reducer = (state = initialState, action) => {
       newState = Object.assign({}, state, { userProfile: action.userProfile });
       break;
     case 'CLEAR_USER_PROFILE':
-      newState = Object.assign({}, state, { userProfile: undefined, transactionHistory: [] });
+      newState = Object.assign({}, state, {
+        jwt: undefined,
+        userProfile: undefined,
+        transactionHistory: [],
+      });
       break;
     case 'SET_SELECTED_TAB':
       newState = Object.assign({}, state, { selectedTab: action.selectedTab });
@@ -111,6 +116,9 @@ const reducer = (state = initialState, action) => {
       break;
     case 'SET_EMAIL_ERROR_TEXT':
       newState = Object.assign({}, state, { emailErrorText: action.emailErrorText });
+      break;
+    case 'SET_JWT':
+      newState = Object.assign({}, state, { jwt: action.jwt });
       break;
     default:
       console.log('UNKNOWN ACTION', action.type);
