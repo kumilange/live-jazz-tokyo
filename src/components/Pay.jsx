@@ -15,7 +15,7 @@ class Pay extends Component {
           <div className="flex payment-table-row">
             <div className="payment-table-cell1">Event Name</div>
             <div className="payment-table-cell2">Quantity</div>
-            <div className="payment-table-cell3">Price(¥)</div>
+            <div className="payment-table-cell3">Price</div>
           </div>
           <Divider style={{ marginTop: 10, marginBottom: 10 }} />
           <div className="flex payment-table-row">
