@@ -3,6 +3,7 @@ import User from '../components/User';
 import { getTransactionHistory, setSelectedTab } from '../actions';
 
 const mapStateToProps = state => ({
+  jwt: state.jwt,
   selectedTab: state.selectedTab,
   userProfile: state.userProfile,
   transactionHistory: state.transactionHistory,
