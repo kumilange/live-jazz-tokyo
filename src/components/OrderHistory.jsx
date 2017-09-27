@@ -16,7 +16,7 @@ export default (props) => (
             <tr key={ order.id }>
               <td> { order.id } </td>
               <td> <Link className="link" to={`/event/${order.eventId}`}>{ order.title }</Link></td>
-              <td> { formatPrice(order.amount) } yen</td>
+              <td> ￥{ formatPrice(order.amount) } </td>
             </tr>
           )
         })
