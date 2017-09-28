@@ -66,6 +66,16 @@
   text-align: center;
 }
 
+/* react-stripe-elements */
+#card-holder-field,
+#card-holder-field::placeholder,
+#address-field::placeholder,
+#address-field,
+#email-field,
+#email-field::placeholder {
+  font-family: sans-serif !important;
+}
+
 /*
 * MEDIA QUERY SP
 */
