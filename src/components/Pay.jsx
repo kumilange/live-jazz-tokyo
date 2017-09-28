@@ -27,7 +27,7 @@ class Pay extends Component {
           <div className="flex payment-table-row">
             <div className="payment-table-cell1">{'Total:'}</div>
             <div className="payment-table-cell2"></div>
-            <div className="payment-table-cell3">{this.props.event.price}</div>
+            <div className="payment-table-cell3">{ formatPrice(this.props.event.price)}</div>
           </div>
         </Paper>
         <Elements>
