@@ -74,6 +74,7 @@
 #email-field,
 #email-field::placeholder {
   font-family: sans-serif !important;
+  top: -5px;
 }
 
 /*
