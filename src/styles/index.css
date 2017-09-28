@@ -33,6 +33,11 @@
 .inputFull {
   width: 100% !important;
 }
+.inputHalf input,
+.inputFull input {
+  font-family: sans-serif !important;
+  top: -3px;
+}
 
 .link {
   display: inline-block;
@@ -95,7 +100,11 @@ main {
     min-height: calc(100% - 40px);
   }
   #app {
+    width: 100%;
     height: calc(100% - 40px);
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
     padding-top: 40px;
   }
   .mapLable {

@@ -16,6 +16,7 @@
   color: #000000;
 }
 .infoWindowHeading2 {
+  padding-top: 3px;
   font-size: 20px;
   font-weight: 600;
 }

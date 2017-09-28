@@ -93,7 +93,10 @@
 */
 @media screen and (max-width:600px){
   .event-details-table {
-    padding-top: 6px;
+    padding-top: 0;
+  }
+  .event-details-table .row {
+    margin-top: 15px;
   }
   #event-details .date {
     padding: 16px 16px 16px 0px;
