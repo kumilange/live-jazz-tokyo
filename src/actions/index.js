@@ -172,7 +172,6 @@ export function getTransactionHistory(jwtString) {
 }
 
 export function addNewEvent(event, history) {
-  console.log('EVENT', event);
   return async (dispatch) => {
     try {
       const res = await (await fetch('/api/events', {
