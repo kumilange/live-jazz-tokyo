@@ -21,7 +21,9 @@ class Event extends Component {
       return (
         <main className="restrict-width grow" id="event-details">
           <div className="image-box flex center">
-            <img className="event-image" src={`data:image/png;base64,${this.props.event.image}`} alt="pic" />
+            { this.props.event.image ?
+            <img className="event-image" src={`data:image/png;base64,${this.props.event.image}`} alt="pic" /> :
+            <img className="event-image" src="http://static.wixstatic.com/media/89bf03_01eeecd62c844653a4a50fcee305a7ea~mv2.jpg" alt="pic" /> }
           </div>
 
           <div className="row horiCenter">
@@ -97,7 +99,9 @@ class Event extends Component {
             </div>
             <Divider />
             <div className="block">
-              <div>{ this.props.event.description }</div>
+              { this.props.event.description ?
+              <div>{ this.props.event.description }</div> :
+              <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div> }
             </div>
           </Paper>
         </main>
