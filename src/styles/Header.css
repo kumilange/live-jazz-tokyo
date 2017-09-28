@@ -90,11 +90,8 @@ header {
     height: 26px;
     line-height: 26px;
     background-size: 22px 22px;
+    padding-top: 2px;
     padding-left: 28px;
     font-size: 16px;
-
-  }
-  .gnav {
-    padding-bottom: 4px;
   }
 }
