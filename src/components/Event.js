@@ -85,7 +85,7 @@ class Event extends Component {
                     style={{ width: '100px' }}
                   />
                 </Link>
-              : null }
+                : null }
             </div>
           </div>
           <Paper className="pane">
@@ -121,11 +121,13 @@ Event.propTypes = {
   onComponentDidMount: PropTypes.func,
   showMap: PropTypes.bool.isRequired,
   toggleMap: PropTypes.func.isRequired,
+  userProfile: PropTypes.shape(),
 };
 
 Event.defaultProps = {
   event: undefined,
   onComponentDidMount: undefined,
+  userProfile: undefined,
 };
 
 export default Event;
