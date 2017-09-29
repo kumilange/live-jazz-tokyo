@@ -84,15 +84,8 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   console.log(req.body);
 
-  const date = new Date(req.body.date);
   const start = new Date(req.body.startTime);
-  start.setFullYear(date.getFullYear());
-  start.setMonth(date.getMonth());
-  start.setDate(date.getDate());
   const end = new Date(req.body.endTime);
-  end.setFullYear(date.getFullYear());
-  end.setMonth(date.getMonth());
-  end.setDate(date.getDate());
 
   const artistName = req.body.artist;
   const venueName = req.body.venue;
