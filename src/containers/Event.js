@@ -6,6 +6,7 @@ import { getEventDetails } from '../actions';
 const mapStateToProps = state => ({
   event: state.eventDetails,
   showMap: state.showMap,
+  userProfile: state.userProfile,
 });
 
 const mapDispatchToProps = dispatch => ({

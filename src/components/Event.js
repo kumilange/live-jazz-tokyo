@@ -76,14 +76,16 @@ class Event extends Component {
               <div className="icon"><YenIcon /></div>
               <p>{ formatPrice(this.props.event.price)} Yen</p>
               <div className="grow" />
-              <Link to={'/pay'}>
-                <RaisedButton
-                  primary
-                  className="mui-button"
-                  label="Reserve"
-                  style={{ width: '100px' }}
-                />
-              </Link>
+              { this.props.userProfile ?
+                <Link to={'/pay'}>
+                  <RaisedButton
+                    primary
+                    className="mui-button"
+                    label="Reserve"
+                    style={{ width: '100px' }}
+                  />
+                </Link>
+              : null }
             </div>
           </div>
           <Paper className="pane">
