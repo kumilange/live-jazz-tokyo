@@ -27,14 +27,18 @@ const generateEventName = () => {
   return events[rndIndex(9, 0)];
 };
 
+const now = new Date();
+const currentYear = now.getFullYear();
+const currentMonth = now.getMonth() - 1;
+
 exports.seed = () => {
   const promises = [];
   for (let i = 0; i < TARGET_EVENT_COUNT; i += 1) {
     try {
       const name = generateEventName();
       const utcStartDate = Date.UTC(
-        2017,
-        8 + rndInt(2),
+        currentYear,
+        currentMonth + rndInt(2),
         1 + rndInt(31),
         17 + rndInt(3),
         rndInt(2) * 30,
@@ -42,7 +46,7 @@ exports.seed = () => {
       const japanStartDate = utcStartDate - JAPAN_TIME_OFFSET;
       let start = new Date(japanStartDate);
       const utcEndDate = Date.UTC(
-        2017,
+        currentYear,
         start.getMonth(),
         start.getDate(),
         20 + rndInt(3),
