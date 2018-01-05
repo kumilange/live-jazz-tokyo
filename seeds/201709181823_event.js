@@ -27,20 +27,20 @@ const generateEventName = () => {
   return events[rndIndex(9, 0)];
 };
 
-const now = new Date();
-const currentYear = now.getFullYear();
-const currentMonth = now.getMonth() - 1;
 
 exports.seed = () => {
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  const currentMonth = now.getMonth() - 1;
   const promises = [];
   for (let i = 0; i < TARGET_EVENT_COUNT; i += 1) {
     try {
       const name = generateEventName();
       const utcStartDate = Date.UTC(
         currentYear,
-        currentMonth + rndInt(2),
-        1 + rndInt(31),
-        17 + rndInt(3),
+        rndIndex(currentMonth + 1, currentMonth), // TODO Dec to Jan
+        rndIndex(31, 1), // TODO Feb 28th or Sep 30th
+        rndIndex(19, 17),
         rndInt(2) * 30,
       );
       const japanStartDate = utcStartDate - JAPAN_TIME_OFFSET;
@@ -49,7 +49,7 @@ exports.seed = () => {
         currentYear,
         start.getMonth(),
         start.getDate(),
-        20 + rndInt(3),
+        rndIndex(22, 20),
         rndInt(2) * 30,
       );
       const japanEndDate = utcEndDate - JAPAN_TIME_OFFSET;
