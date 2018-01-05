@@ -1,36 +1,13 @@
 /*-------------------------------------------------------------------------------
- COMMON
- -------------------------------------------------------------------------------*/
-
-.flex {
-  display: flex;
-}
-
-.grow {
-  flex-grow: 1;
-}
-
-.column {
-  flex-direction: column;
-}
-
-.center {
-  justify-content: center;
-  align-items: center;
-}
-
-.spaceBetween {
-  justify-content: space-between
-}
-
-.horiCenter {
-  justify-content: center
-}
-
-.vertCenter {
-  align-items: center
-}
-
+COMMON
+-------------------------------------------------------------------------------*/
+.flex { display: flex; }
+.grow { flex-grow: 1; }
+.column { flex-direction: column; }
+.center { justify-content: center; align-items: center; }
+.spaceBetween { justify-content: space-between }
+.horiCenter { justify-content: center }
+.vertCenter { align-items: center }
 .restrict-width {
   width: 800px;
   min-width: 50%;
@@ -38,46 +15,24 @@
   margin-left: auto;
   margin-right: auto;
 }
-
-.blue {
-  color: #2AABC2;
-}
-
-.white {
-  color: #E7E7B9;
-}
-
-.dark {
-  background-color: #252525;
-  color: beige;
-}
-
-.black {
-  background-color: black;
-  color: beige;
-}
-
+.blue { color: #2AABC2; }
+.white { color: #E7E7B9; }
+.dark { background-color: #252525; color: beige; }
+.black { background-color: black; color: beige; }
 
 /***** Button *****/
-
-
 /* mui-button - material ui */
-
 .mui-button span {
   text-transform: none !important;
 }
 
-
 /* TextField - material ui */
-
 .inputHalf {
   width: 50% !important;
 }
-
 .inputFull {
   width: 100% !important;
 }
-
 .inputHalf input,
 .inputFull input {
   font-family: sans-serif !important;
@@ -90,13 +45,10 @@
   text-decoration: underline;
 }
 
-
 /*-------------------------------------------------------------------------------
-  Index.js
-  -------------------------------------------------------------------------------*/
-
-#router,
-#root {
+Index.js
+-------------------------------------------------------------------------------*/
+#router, #root {
   height: 100%;
 }
 
@@ -109,11 +61,9 @@ main {
   min-height: calc(100% - 50px);
 }
 
-
 /*-------------------------------------------------------------------------------
-  App.js
-  -------------------------------------------------------------------------------*/
-
+App.js
+-------------------------------------------------------------------------------*/
 #app {
   /* 50px: footer height*/
   height: calc(100% - 50px);
@@ -121,9 +71,7 @@ main {
   padding-bottom: 0;
 }
 
-.gm-style-cc {
-  display: none;
-}
+.gm-style-cc { display:none; }
 
 .mapLable {
   position: absolute;
@@ -143,10 +91,9 @@ main {
 
 
 /*
- * MEDIA QUERY SP
- */
-
-@media screen and (max-width:600px) {
+* MEDIA QUERY SP
+*/
+@media screen and (max-width:600px){
   main {
     padding-top: 50px;
     padding-bottom: 20px;
