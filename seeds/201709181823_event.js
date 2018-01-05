@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+/* eslint-disable max-len */
 
 const knex = require('knex');
 const knexConfig = require('../knexfile');
@@ -9,7 +10,7 @@ const MILLISECONDS_PER_HOUR = 3600000;
 const JAPAN_TIME_OFFSET = MILLISECONDS_PER_HOUR * 9;
 
 const rndInt = num => Math.floor(Math.random() * num);
-const rndIndex = (max, min) => Math.floor(Math.random() * ((max + 1) - min)) + min;
+const rndIntRange = (max, min) => Math.floor(Math.random() * ((max + 1) - min)) + min;
 
 const generateEventName = () => {
   const events = [
@@ -24,9 +25,45 @@ const generateEventName = () => {
     'ゴージャスナイト',
     'スタンダードナイト',
   ];
-  return events[rndIndex(9, 0)];
+  return events[rndIntRange(9, 0)];
 };
 
+const generateEvent = (name, start, end) => {
+  return {
+    artist_id: rndIntRange(10, 1),
+    venue_id: rndIntRange(10, 1),
+    event_image_id: rndIntRange(10, 1),
+    name,
+    price: (rndInt(7) * 500) + 2000,
+    start,
+    end,
+    desc: `${name}Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`,
+  };
+};
+
+const setUtcStartDate = (year, month) => {
+  return Date.UTC(
+    year,
+    rndIntRange(month + 1, month), // TODO Dec to Jan
+    rndIntRange(31, 1), // TODO Feb 28th or Sep 30th
+    rndIntRange(19, 17),
+    rndInt(2) * 30,
+  );
+};
+
+const setUtcEndDate = (year, startDate) => {
+  return Date.UTC(
+    year,
+    startDate.getMonth(),
+    startDate.getDate(),
+    rndIntRange(22, 20),
+    rndInt(2) * 30,
+  );
+};
+
+const convertJapanTimeDate = (utcStartDate) => {
+  return utcStartDate - JAPAN_TIME_OFFSET;
+};
 
 exports.seed = () => {
   const now = new Date();
@@ -36,37 +73,10 @@ exports.seed = () => {
   for (let i = 0; i < TARGET_EVENT_COUNT; i += 1) {
     try {
       const name = generateEventName();
-      const utcStartDate = Date.UTC(
-        currentYear,
-        rndIndex(currentMonth + 1, currentMonth), // TODO Dec to Jan
-        rndIndex(31, 1), // TODO Feb 28th or Sep 30th
-        rndIndex(19, 17),
-        rndInt(2) * 30,
-      );
-      const japanStartDate = utcStartDate - JAPAN_TIME_OFFSET;
-      let start = new Date(japanStartDate);
-      const utcEndDate = Date.UTC(
-        currentYear,
-        start.getMonth(),
-        start.getDate(),
-        rndIndex(22, 20),
-        rndInt(2) * 30,
-      );
-      const japanEndDate = utcEndDate - JAPAN_TIME_OFFSET;
-      let end = new Date(japanEndDate);
-      start = Date.parse(start);
-      end = Date.parse(end);
-
-      const event = {
-        artist_id: rndIndex(10, 1),
-        venue_id: rndIndex(10, 1),
-        event_image_id: rndIndex(10, 1),
-        name,
-        price: (rndInt(7) * 500) + 2000,
-        start,
-        end,
-        desc: `${name}Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`,
-      };
+      const start = new Date(convertJapanTimeDate(setUtcStartDate(currentYear, currentMonth)));
+      const startParsed = Date.parse(start);
+      const endParsed = Date.parse(new Date(convertJapanTimeDate(setUtcEndDate(currentYear, start))));
+      const event = generateEvent(name, startParsed, endParsed);
       const promise = db('event').insert(event).returning('id');
       promises.push(promise);
     } catch (err) {
