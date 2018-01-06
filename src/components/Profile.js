@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default (props) => (
+export default props => (
   <table id="user-info-table">
     <tbody>
       <tr>

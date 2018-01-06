@@ -26,7 +26,7 @@ class Pay extends Component {
           <Divider style={{ marginTop: 10, marginBottom: 10, height: 1, backgroundColor: 'black' }} />
           <div className="flex payment-table-row">
             <div className="payment-table-cell1">{'Total:'}</div>
-            <div className="payment-table-cell2"></div>
+            <div className="payment-table-cell2" />
             <div className="payment-table-cell3">{ formatPrice(this.props.event.price)}</div>
           </div>
         </Paper>
