@@ -16,20 +16,19 @@ const MyMap = withGoogleMap((props) => {
       streetViewControl: false,
       fullscreenControl: false,
       mapTypeControl: false,
-      styles: fancyMapStyles
+      styles: fancyMapStyles,
     }}
-    center={ props.position === undefined ? DEFAULT_CENTER : props.position }
+    center={props.position === undefined ? DEFAULT_CENTER : props.position}
   >
-    <Marker position={ props.position } icon={ MarkerIcon } />
+    <Marker position={props.position} icon={MarkerIcon} />
   </GoogleMap>
   );
 });
 
 class Map extends Component {
-
   render() {
     return process.env.npm_lifecycle_event === 'test' ? <div /> : <MyMap
-      position={ this.props.position }
+      position={this.props.position}
       containerElement={
         <div style={{ height: '100%' }} />
       }
