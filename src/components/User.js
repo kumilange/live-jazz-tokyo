@@ -26,12 +26,14 @@ class User extends Component {
                   <div
                     className={this.props.selectedTab === 'profile' ? 'tab selected' : 'tab'}
                     onClick={() => this.props.onTabClick('profile')}
+                    role="presentation"
                   >
                     Profile
                   </div>
                   <div
                     className={this.props.selectedTab === 'orderHistory' ? 'tab selected' : 'tab'}
                     onClick={() => this.props.onTabClick('orderHistory')}
+                    role="presentation"
                   >
                     Order History
                   </div>
@@ -55,8 +57,12 @@ class User extends Component {
 }
 
 User.propTypes = {
+  jwt: PropTypes.string.isRequired,
   userProfile: PropTypes.shape(),
+  selectedTab: PropTypes.string.isRequired,
   transactionHistory: PropTypes.arrayOf(Object),
+  onComponentDidMount: PropTypes.func.isRequired,
+  onTabClick: PropTypes.func.isRequired,
 };
 
 User.defaultProps = {

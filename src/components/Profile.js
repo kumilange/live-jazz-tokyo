@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default props => (
+const Profile = props => (
   <table id="user-info-table">
     <tbody>
       <tr>
@@ -18,3 +19,13 @@ export default props => (
     </tbody>
   </table>
 );
+
+Profile.propTypes = {
+  userProfile: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+export default Profile;
