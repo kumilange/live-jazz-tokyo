@@ -1,5 +1,5 @@
-/* eslint-disable no-useless-escape */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { injectStripe, CardNumberElement, CardExpiryElement, CardCVCElement } from 'react-stripe-elements';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -25,6 +25,9 @@ const styleProps = {
 const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 class CheckoutForm extends Component {
+  componentDidMount() {
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
   handleSubmit(event) {
     event.preventDefault();
 
@@ -163,5 +166,23 @@ class CheckoutForm extends Component {
     );
   }
 }
+
+CheckoutForm.propTypes = {
+  stripe: PropTypes.shape({
+    createToken: PropTypes.func.isRequired,
+  }).isRequired,
+  eventID: PropTypes.number.isRequired,
+  jwt: PropTypes.string.isRequired,
+  history: PropTypes.shape().isRequired,
+  nameErrorText: PropTypes.string.isRequired,
+  addressErrorText: PropTypes.string.isRequired,
+  emailErrorText: PropTypes.string.isRequired,
+  creditCardError: PropTypes.bool.isRequired,
+  setNameErrorText: PropTypes.func.isRequired,
+  setAddressErrorText: PropTypes.func.isRequired,
+  setEmailErrorText: PropTypes.func.isRequired,
+  setChargeResponse: PropTypes.func.isRequired,
+  setCreditCardError: PropTypes.func.isRequired,
+};
 
 export default injectStripe(CheckoutForm);

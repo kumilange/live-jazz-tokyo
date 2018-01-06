@@ -6,7 +6,9 @@
     "func-names": ["error", "never"],
     "no-console": "off",
     "arrow-body-style": "off",
-    "class-methods-use-this": "off"
+    "class-methods-use-this": "off",
+    "max-len": "off",
+    "no-useless-escape": "off"
   },
 
   "globals": {

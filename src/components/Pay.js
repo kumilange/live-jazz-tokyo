@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Elements } from 'react-stripe-elements';
 import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
@@ -51,5 +52,21 @@ class Pay extends Component {
     );
   }
 }
+
+Pay.propTypes = {
+  event: PropTypes.shape().isRequired,
+  jwt: PropTypes.string.isRequired,
+  history: PropTypes.shape().isRequired,
+  userProfile: PropTypes.shape().isRequired,
+  nameErrorText: PropTypes.string.isRequired,
+  addressErrorText: PropTypes.string.isRequired,
+  emailErrorText: PropTypes.string.isRequired,
+  creditCardError: PropTypes.bool.isRequired,
+  setNameErrorText: PropTypes.func.isRequired,
+  setAddressErrorText: PropTypes.func.isRequired,
+  setEmailErrorText: PropTypes.func.isRequired,
+  setChargeResponse: PropTypes.func.isRequired,
+  setCreditCardError: PropTypes.func.isRequired,
+};
 
 export default Pay;
