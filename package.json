@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "NODE_ENV=production node ./server/bin/www",
+    "start": "NODE_ENV=production node server",
     "test": "yarn lint && yarn test:backend && CI=true yarn test:frontend",
     "test:backend": "NODE_ENV=test mocha --recursive server/test --opts server/test/mocha.opts",
     "test:frontend": "react-scripts test --env=jsdom",
     "db:nuke": "dropdb 'livejazz' && createdb 'livejazz' && yarn migrate && yarn seed",
-    "backend": "nodemon ./server/bin/www",
+    "backend": "nodemon server",
     "frontend": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
@@ -17,7 +17,8 @@
     "migrate": "knex migrate:latest --knexfile knexfile.js",
     "rollback": "knex migrate:rollback --knexfile knexfile.js",
     "seed": "knex seed:run --knexfile knexfile.js",
-    "heroku-postbuild": "yarn build"
+    "postinstall": "yarn build",
+    "heroku-postbuild": "yarn migrate && yarn seed"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
