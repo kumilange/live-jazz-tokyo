@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import '../styles/Header.css';
 
-const Header = (props) => (
+const Header = props => (
   <header className="dark flex">
     <div id="header-inner" className="flex restrict-width">
       <h1 className="flex">
