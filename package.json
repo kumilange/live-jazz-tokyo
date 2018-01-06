@@ -18,7 +18,7 @@
     "rollback": "knex migrate:rollback --knexfile knexfile.js",
     "seed": "knex seed:run --knexfile knexfile.js",
     "postinstall": "yarn build",
-    "heroku-postbuild": "yarn migrate && yarn seed"
+    "heroku-postbuild": "yarn rollback && yarn migrate && yarn seed"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
