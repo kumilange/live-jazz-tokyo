@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 const fs = require('fs');
 const knex = require('knex');
 const knexConfig = require('../knexfile');

@@ -1,4 +1,4 @@
-const setup = knex =>
+exports.up = knex =>
   knex.schema.createTable('transaction', (t) => {
     t.increments()
       .index();
@@ -13,8 +13,6 @@ const setup = knex =>
       .notNullable();
   });
 
-const rollback = knex =>
+exports.down = knex =>
   knex.schema.dropTable('transaction');
 
-exports.up = setup;
-exports.down = rollback;

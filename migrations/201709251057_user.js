@@ -1,4 +1,4 @@
-const setup = (knex) => {
+exports.up = (knex) => {
   const transaction = [];
   transaction.push(knex.schema.createTable('user', (table) => {
     table.increments().index();
@@ -21,7 +21,7 @@ const setup = (knex) => {
   return Promise.all(transaction);
 };
 
-const rollback = (knex) => {
+exports.down = (knex) => {
   const transaction = [];
   transaction.push(knex.schema.table('artist', (table) => {
     return table.dropColumn('user_id');
@@ -36,6 +36,3 @@ const rollback = (knex) => {
   );
   return Promise.all(transaction);
 };
-
-exports.up = setup;
-exports.down = rollback;
