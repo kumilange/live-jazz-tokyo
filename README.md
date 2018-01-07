@@ -1,6 +1,6 @@
-# Live Jazz
+# Live Jazz Tokyo
 
-Connecting fans with local jazz musicians.
+Connecting fans with local jazz musicians in Tokyo.
 
 The easiest way to find local Jazz artists and events around your area.
 
@@ -21,7 +21,7 @@ yarn install
 
 1. Clone
 ```
-git clone https://github.com/codechrysalis1/live-jazz.git
+git clone https://github.com/kumiko-haraguchi/live-jazz-tokyo.git
 ```
 
 2. Install
@@ -43,17 +43,17 @@ yarn lint
 
 ## Deployment
 
-Deployed using Heroku at [https://live-jazz.herokuapp.com/](https://live-jazz.herokuapp.com/)
+Deployed using Heroku at [https://live-jazz-tokyo.herokuapp.com/](https://live-jazz-tokyo.herokuapp.com/)
 
 ## Built With
 
 * [React](https://facebook.github.io/react/) - Frontend
+* [Redux](https://github.com/reactjs/redux) - State Management
+* [Material UI](http://www.material-ui.com/) - Frontend
 * [Express](https://expressjs.com/) - Backend
-* [Yarn](https://yarnpkg.com/en/) - Dependency Management
 * [PostgreSQL](https://www.postgresql.org/) - Database
 * [Knex](http://knexjs.org/) - Query Builder
-* [Material UI](http://www.material-ui.com/) - Frontend
-* [Heroku](https://heroku.com/) - Continuous Integration / Continuous Deployment
-* [Redux](https://github.com/reactjs/redux) - State Management
 * [Stripe](https://stripe.com/) - Online Payment
 * [Hello.js](https://adodson.com/hello.js/) - OAuth2
+* [Yarn](https://yarnpkg.com/en/) - Dependency Management
+* [Heroku](https://heroku.com/) - Continuous Integration / Continuous Deployment
