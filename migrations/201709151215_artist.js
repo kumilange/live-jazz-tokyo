@@ -1,12 +1,12 @@
-const setup = knex =>
+exports.up = knex =>
   knex.schema.createTable('artist', (t) => {
-    t.increments().index();
-    t.string('name').notNullable().unique();
+    t.increments()
+      .index();
+    t.string('name')
+      .notNullable()
+      .unique();
     t.text('image');
   });
 
-const rollback = knex =>
+exports.down = knex =>
   knex.schema.dropTable('artist');
-
-exports.up = setup;
-exports.down = rollback;
