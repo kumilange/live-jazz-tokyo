@@ -1,6 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable max-len */
-
 const knex = require('knex');
 const knexConfig = require('../knexfile');
 
