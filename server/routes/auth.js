@@ -62,7 +62,6 @@ router.post('/', async (req, res) => {
     const profile = await (await fetch(url)).json();
     console.log('profile', profile);
     const user = await saveNewUser(profile);
-    console.log('user', user);
     const jwt = createJwt(profile);
     console.log('jwt', jwt);
     res.json(formatResponse(jwt, user));

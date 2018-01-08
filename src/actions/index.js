@@ -203,22 +203,22 @@ const postJson = async (url, objToPost) => {
     method: 'POST',
     body: JSON.stringify(objToPost),
   };
-  const response = await (await fetch(url, options)).json();
-  return response;
+  const res = await (await fetch(url, options)).json();
+  return res;
 };
 
 export function addAuthListener() {
   return async (dispatch) => {
     hello.on('auth.login', async (auth) => {
-      const response = await postJson('/api/auth', {
+      const res = await postJson('/api/auth', {
         network: 'facebook',
         socialToken: auth.authResponse.access_token,
       });
-      if (response.userProfile) {
-        dispatch(setUserProfile(response.userProfile));
+      if (res.userProfile) {
+        dispatch(setUserProfile(res.userProfile));
       }
-      if (response.jwt) {
-        dispatch(setJWT(response.jwt));
+      if (res.jwt) {
+        dispatch(setJWT(res.jwt));
       }
     });
   };
