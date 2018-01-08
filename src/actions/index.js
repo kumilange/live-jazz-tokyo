@@ -1,4 +1,5 @@
 import querystring from 'querystring';
+import hello from '../config/hello';
 
 export function initializeEvents() {
   return async (dispatch) => {
@@ -190,6 +191,36 @@ export function addNewEvent(event, history) {
     } catch (err) {
       console.error(err);
     }
+  };
+}
+
+const postJson = async (url, objToPost) => {
+  const options = {
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify(objToPost),
+  };
+  const response = await (await fetch(url, options)).json();
+  return response;
+};
+
+export function addAuthListener() {
+  return async (dispatch) => {
+    hello.on('auth.login', async (auth) => {
+      const response = await postJson('/api/auth', {
+        network: 'facebook',
+        socialToken: auth.authResponse.access_token,
+      });
+      if (response.userProfile) {
+        dispatch(setUserProfile(response.userProfile));
+      }
+      if (response.jwt) {
+        dispatch(setJWT(response.jwt));
+      }
+    });
   };
 }
 
