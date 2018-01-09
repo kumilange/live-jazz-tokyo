@@ -1,22 +1,25 @@
+/* OTHERS */
 const JWT_KEY = process.env.JWT_KEY || 'TEST_KEY';
 const JWT_APP = process.env.JWT_APP || 'TEST_APP';
 const STRIPE_KEY = process.env.STRIPE_KEY || 'sk_test_BQokikJOvBiI2HlWgH4olfQ2';
+
+/* API */
 const RES_STAT = {
   OK: {
     CODE: 200,
-    MESSAGE: 'OK.',
+    MSG: 'OK.',
   },
-  BAD_REQUEST: {
+  BAD_REQ: {
     CODE: 400,
-    MESSAGE: 'Bad Request.',
+    MSG: 'Bad Request.',
   },
   NOT_FOUND: {
     CODE: 404,
-    MESSAGE: 'Not Found.',
+    MSG: 'Not Found.',
   },
-  INTERNAL_SERVER_ERROR: {
+  INTL_SERVER_ERR: {
     CODE: 500,
-    MESSAGE: 'Internal Server Error.',
+    MSG: 'Internal Server Error.',
   },
 };
 

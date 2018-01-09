@@ -69,7 +69,7 @@ router.post('/', async (req, res) => {
     sendRes(res, RES_STAT.OK.CODE, formatResponse(jwt, user));
   } catch (err) {
     console.log('err', err);
-    sendRes(res, RES_STAT.INTERNAL_SERVER_ERROR.CODE, RES_STAT.INTERNAL_SERVER_ERROR.MESSAGE);
+    sendRes(res, RES_STAT.INTL_SERVER_ERR.CODE, RES_STAT.INTL_SERVER_ERR.MSG);
   }
 });
 

@@ -69,7 +69,7 @@ router.get('/', async (req, res) => {
     sendRes(res, RES_STAT.OK.CODE, result);
   } catch (err) {
     console.log('err', err);
-    sendRes(res, RES_STAT.INTERNAL_SERVER_ERROR.CODE, RES_STAT.INTERNAL_SERVER_ERROR.MESSAGE);
+    sendRes(res, RES_STAT.INTL_SERVER_ERR.CODE, RES_STAT.INTL_SERVER_ERR.MSG);
   }
 });
 
@@ -93,7 +93,7 @@ router.post('/', async (req, res) => {
 
   // TODO check proper error handling
   if (!(userID && price)) {
-    sendRes(res, RES_STAT.BAD_REQUEST.CODE, RES_STAT.BAD_REQUEST.MESSAGE);
+    sendRes(res, RES_STAT.BAD_REQ.CODE, RES_STAT.BAD_REQ.MSG);
     return;
   }
 
