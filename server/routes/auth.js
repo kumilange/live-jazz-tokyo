@@ -1,4 +1,4 @@
-const { JWT_KEY, JWT_APP, STAT_TYPE } = require('../config/const');
+const { JWT_KEY, JWT_APP, RES_STAT } = require('../config/const');
 const knexConfig = require('../../knexfile');
 const { sendRes } = require('../utils/');
 
@@ -66,10 +66,10 @@ router.post('/', async (req, res) => {
     const jwt = createJwt(profile);
     console.log('jwt', jwt);
 
-    sendRes(res, STAT_TYPE.OK.CODE, formatResponse(jwt, user));
+    sendRes(res, RES_STAT.OK.CODE, formatResponse(jwt, user));
   } catch (err) {
     console.log('err', err);
-    sendRes(res, STAT_TYPE.INTERNAL_SERVER_ERROR.CODE, STAT_TYPE.INTERNAL_SERVER_ERROR.MESSAGE);
+    sendRes(res, RES_STAT.INTERNAL_SERVER_ERROR.CODE, RES_STAT.INTERNAL_SERVER_ERROR.MESSAGE);
   }
 });
 

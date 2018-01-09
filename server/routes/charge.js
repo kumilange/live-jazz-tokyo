@@ -1,4 +1,4 @@
-const { JWT_KEY, JWT_APP, STRIPE_KEY, STAT_TYPE } = require('../config/const');
+const { JWT_KEY, JWT_APP, STRIPE_KEY, RES_STAT } = require('../config/const');
 const knexConfig = require('../../knexfile');
 const { sendRes } = require('../utils/');
 
@@ -13,6 +13,35 @@ const verifyJwt = (jwt) => {
   return jsonWebToken.verify(jwt, JWT_KEY, {
     issuer: JWT_APP,
   });
+};
+
+const formatArg = (price, tokenID) => {
+  return {
+    amount: price,
+    currency: 'jpy',
+    description: 'Example charge',
+    source: tokenID,
+  };
+};
+
+const handleChargeRes = async (args) => {
+  const { err, charge, userID, eventID } = args;
+  if (err) {
+    return { OK: false };
+  }
+  const [result] = await db('transaction')
+    .returning('id')
+    .insert({
+      event_id: eventID,
+      total: charge.amount,
+      charge_id: charge.id,
+      user_id: userID,
+    });
+  console.log('result', result);
+  return {
+    OK: true,
+    order_id: result,
+  };
 };
 
 router.get('/', async (req, res) => {
@@ -31,24 +60,24 @@ router.get('/', async (req, res) => {
         'transaction.total as amount',
       );
     console.log('result', result);
-
-    sendRes(res, STAT_TYPE.OK.CODE, result);
+    sendRes(res, RES_STAT.OK.CODE, result);
   } catch (err) {
     console.log('err', err);
-    sendRes(res, STAT_TYPE.INTERNAL_SERVER_ERROR.CODE, STAT_TYPE.INTERNAL_SERVER_ERROR.MESSAGE);
+    sendRes(res, RES_STAT.INTERNAL_SERVER_ERROR.CODE, RES_STAT.INTERNAL_SERVER_ERROR.MESSAGE);
   }
 });
 
 router.post('/', async (req, res) => {
-  const tokenID = req.body.stripeToken.id;
-  const eventID = req.body.eventID;
+  const { stripeToken, eventID } = req.body;
   console.log('charge jwt', req.headers.bearer);
   const decodedJWT = verifyJwt(req.headers.bearer);
 
-  const user = await db('user')
+  const userID = (await db('user')
     .where({ email: decodedJWT.email })
     .select('id')
-    .first();
+    .first())
+    .id;
+  console.log('userID', userID);
 
   const { price } = await db('event')
     .select('price')
@@ -56,38 +85,19 @@ router.post('/', async (req, res) => {
     .first();
   console.log('price', price);
 
-  if (!price) {
-    sendRes(res, STAT_TYPE.BAD_REQUEST.CODE, STAT_TYPE.BAD_REQUEST.MESSAGE);
+  if (!(userID && price)) {
+    sendRes(res, RES_STAT.BAD_REQUEST.CODE, RES_STAT.BAD_REQUEST.MESSAGE);
+    return;
   }
 
   // Charge the user's card:
-  stripe.charges.create({
-    amount: price,
-    currency: 'jpy',
-    description: 'Example charge',
-    source: tokenID,
-  }, async (err, charge) => {
-    let response;
-    if (err) {
-      response = {
-        OK: false,
-      };
-    } else {
-      const result = await db('transaction')
-        .returning('id')
-        .insert({
-          event_id: eventID,
-          total: charge.amount,
-          charge_id: charge.id,
-          user_id: user.id,
-        });
-      response = {
-        OK: true,
-        order_id: result[0],
-      };
-    }
-    sendRes(res, STAT_TYPE.OK.CODE, response);
-  });
+  stripe.charges.create(
+    formatArg(price, stripeToken.id),
+    async (err, charge) => {
+      const args = { err, charge, userID, eventID };
+      const response = await handleChargeRes(args);
+      sendRes(res, RES_STAT.OK.CODE, response);
+    });
 });
 
 module.exports = router;
