@@ -1,14 +1,12 @@
+const { JWT_KEY, JWT_APP } = require('../config/const');
+const knexConfig = require('../../knexfile');
+
 const express = require('express');
 const JsonWebToken = require('jsonwebtoken');
-const knex = require('knex');
-const knexConfig = require('../../knexfile');
 const querystring = require('querystring');
+const db = require('knex')(knexConfig);
 
-const db = knex(knexConfig);
 const router = express.Router();
-
-const JWT_KEY = process.env.JWT_KEY || 'TEST_KEY';
-const JWT_APP = process.env.JWT_APP || 'TEST_APP';
 
 const createQueryParam = (socialToken) => {
   const params = {

@@ -19,6 +19,7 @@ import Pay from './containers/Pay';
 import Footer from './components/Footer';
 import Confirmation from './containers/Confirmation';
 import AddEvent from './containers/AddEvent';
+import { STRIPE_API_KEY } from './config/const';
 
 const store = createStore(
   reducer,
@@ -38,7 +39,7 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <MuiThemeProvider muiTheme={muiTheme}>
-        <StripeProvider apiKey="pk_test_6pRNASCoBOKtIshFeQd4XMUh">
+        <StripeProvider apiKey={STRIPE_API_KEY}>
           <div id="router">
             <Header />
             <Route exact path="/" component={App} />

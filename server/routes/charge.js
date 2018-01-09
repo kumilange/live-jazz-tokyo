@@ -1,21 +1,18 @@
-const express = require('express');
-const JsonWebToken = require('jsonwebtoken');
-const stripe = require('stripe')('sk_test_BQokikJOvBiI2HlWgH4olfQ2');
-
-const router = express.Router();
-const knex = require('knex');
+const { JWT_KEY, JWT_APP, STRIPE_KEY } = require('../config/const');
 const knexConfig = require('../../knexfile');
 
-const db = knex(knexConfig);
+const express = require('express');
+const jsonWebToken = require('jsonwebtoken');
+const db = require('knex')(knexConfig);
+const stripe = require('stripe')(STRIPE_KEY);
 
-const JWT_KEY = process.env.JWT_KEY || 'TEST_KEY';
-const JWT_APP = process.env.JWT_APP || 'TEST_APP';
+const router = express.Router();
 
-function verifyJwt(jwtString) {
-  return JsonWebToken.verify(jwtString, JWT_KEY, {
+const verifyJwt = (jwt) => {
+  return jsonWebToken.verify(jwt, JWT_KEY, {
     issuer: JWT_APP,
   });
-}
+};
 
 router.get('/', async (req, res) => {
   try {
