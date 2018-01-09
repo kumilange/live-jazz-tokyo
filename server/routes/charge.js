@@ -15,17 +15,8 @@ const verifyJwt = (jwt) => {
   });
 };
 
-const formatArg = (price, tokenID) => {
-  return {
-    amount: price,
-    currency: 'jpy',
-    description: 'Example charge',
-    source: tokenID,
-  };
-};
-
-const handleChargeRes = async (args) => {
-  const { err, charge, userID, eventID } = args;
+const saveCharge = async (params) => {
+  const { err, charge, userID, eventID } = params;
   if (err) {
     return { OK: false };
   }
@@ -42,6 +33,21 @@ const handleChargeRes = async (args) => {
     OK: true,
     order_id: result,
   };
+};
+
+const handleCharge = (params, cb) => {
+  const { price, stripeToken, userID, eventID } = params;
+  stripe.charges.create({
+    amount: price,
+    currency: 'jpy',
+    description: 'Example charge',
+    source: stripeToken.id,
+  },
+  async (err, charge) => {
+    const result = await saveCharge({ err, charge, userID, eventID });
+    console.log('charge result', result);
+    cb(result);
+  });
 };
 
 router.get('/', async (req, res) => {
@@ -85,19 +91,17 @@ router.post('/', async (req, res) => {
     .first();
   console.log('price', price);
 
+  // TODO check proper error handling
   if (!(userID && price)) {
     sendRes(res, RES_STAT.BAD_REQUEST.CODE, RES_STAT.BAD_REQUEST.MESSAGE);
     return;
   }
 
   // Charge the user's card:
-  stripe.charges.create(
-    formatArg(price, stripeToken.id),
-    async (err, charge) => {
-      const args = { err, charge, userID, eventID };
-      const response = await handleChargeRes(args);
-      sendRes(res, RES_STAT.OK.CODE, response);
-    });
+  const args = { price, stripeToken, userID, eventID };
+  handleCharge(args, (response) => {
+    sendRes(res, RES_STAT.OK.CODE, response);
+  });
 });
 
 module.exports = router;
