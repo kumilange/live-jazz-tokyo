@@ -1,6 +1,6 @@
 const { JWT_KEY, JWT_APP, STRIPE_KEY, RES_STAT } = require('../config/const');
 const knexConfig = require('../../knexfile');
-const { sendRes } = require('../utils/');
+const { sendResponse } = require('../utils/');
 
 const express = require('express');
 const jsonWebToken = require('jsonwebtoken');
@@ -66,10 +66,10 @@ router.get('/', async (req, res) => {
         'transaction.total as amount',
       );
     console.log('result', result);
-    sendRes(res, RES_STAT.OK.CODE, result);
+    sendResponse(res, RES_STAT.OK.CODE, result);
   } catch (err) {
     console.log('err', err);
-    sendRes(res, RES_STAT.INTL_SERVER_ERR.CODE, RES_STAT.INTL_SERVER_ERR.MSG);
+    sendResponse(res, RES_STAT.INTL_SERVER_ERR.CODE, RES_STAT.INTL_SERVER_ERR.MSG);
   }
 });
 
@@ -93,14 +93,14 @@ router.post('/', async (req, res) => {
 
   // TODO check proper error handling
   if (!(userID && price)) {
-    sendRes(res, RES_STAT.BAD_REQ.CODE, RES_STAT.BAD_REQ.MSG);
+    sendResponse(res, RES_STAT.BAD_REQ.CODE, RES_STAT.BAD_REQ.MSG);
     return;
   }
 
   // Charge the user's card:
   const args = { price, stripeToken, userID, eventID };
   handleCharge(args, (response) => {
-    sendRes(res, RES_STAT.OK.CODE, response);
+    sendResponse(res, RES_STAT.OK.CODE, response);
   });
 });
 

@@ -1,6 +1,6 @@
 const { JWT_KEY, JWT_APP, RES_STAT } = require('../config/const');
 const knexConfig = require('../../knexfile');
-const { sendRes } = require('../utils/');
+const { sendResponse } = require('../utils/');
 
 const express = require('express');
 const JsonWebToken = require('jsonwebtoken');
@@ -66,10 +66,10 @@ router.post('/', async (req, res) => {
     const jwt = createJwt(profile);
     console.log('jwt', jwt);
 
-    sendRes(res, RES_STAT.OK.CODE, formatResponse(jwt, user));
+    sendResponse(res, RES_STAT.OK.CODE, formatResponse(jwt, user));
   } catch (err) {
     console.log('err', err);
-    sendRes(res, RES_STAT.INTL_SERVER_ERR.CODE, RES_STAT.INTL_SERVER_ERR.MSG);
+    sendResponse(res, RES_STAT.INTL_SERVER_ERR.CODE, RES_STAT.INTL_SERVER_ERR.MSG);
   }
 });
 
