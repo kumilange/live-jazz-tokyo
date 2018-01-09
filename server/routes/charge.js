@@ -1,5 +1,6 @@
-const { JWT_KEY, JWT_APP, STRIPE_KEY } = require('../config/const');
+const { JWT_KEY, JWT_APP, STRIPE_KEY, STAT_TYPE } = require('../config/const');
 const knexConfig = require('../../knexfile');
+const { sendRes } = require('../utils/');
 
 const express = require('express');
 const jsonWebToken = require('jsonwebtoken');
@@ -16,8 +17,9 @@ const verifyJwt = (jwt) => {
 
 router.get('/', async (req, res) => {
   try {
+    console.log('verified jwt', req.headers.bearer);
     const decodedJWT = verifyJwt(req.headers.bearer);
-    console.log('verified jwt', verifyJwt(req.headers.bearer));
+
     const result = await db('transaction')
       .leftJoin('user', 'transaction.user_id', 'user.id')
       .leftJoin('event', 'transaction.event_id', 'event.id')
@@ -28,20 +30,19 @@ router.get('/', async (req, res) => {
         'event.id as eventId',
         'transaction.total as amount',
       );
+    console.log('result', result);
 
-    console.log(result);
-
-    res.status(200).json(result);
+    sendRes(res, STAT_TYPE.OK.CODE, result);
   } catch (err) {
-    res.status(500);
-    console.log(err);
+    console.log('err', err);
+    sendRes(res, STAT_TYPE.INTERNAL_SERVER_ERROR.CODE, STAT_TYPE.INTERNAL_SERVER_ERROR.MESSAGE);
   }
 });
 
 router.post('/', async (req, res) => {
   const tokenID = req.body.stripeToken.id;
   const eventID = req.body.eventID;
-  console.log('CHARGE JWT', req.headers.bearer);
+  console.log('charge jwt', req.headers.bearer);
   const decodedJWT = verifyJwt(req.headers.bearer);
 
   const user = await db('user')
@@ -49,12 +50,14 @@ router.post('/', async (req, res) => {
     .select('id')
     .first();
 
-  const [{ price }] = await db('event')
+  const { price } = await db('event')
     .select('price')
-    .where('id', eventID);
+    .where('id', eventID)
+    .first();
+  console.log('price', price);
 
   if (!price) {
-    res.status(400).json({ status: 'error', message: 'Event not found.' });
+    sendRes(res, STAT_TYPE.BAD_REQUEST.CODE, STAT_TYPE.BAD_REQUEST.MESSAGE);
   }
 
   // Charge the user's card:
@@ -83,7 +86,7 @@ router.post('/', async (req, res) => {
         order_id: result[0],
       };
     }
-    res.status(200).json(response);
+    sendRes(res, STAT_TYPE.OK.CODE, response);
   });
 });
 

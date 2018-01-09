@@ -1,5 +1,6 @@
-const { JWT_KEY, JWT_APP } = require('../config/const');
+const { JWT_KEY, JWT_APP, STAT_TYPE } = require('../config/const');
 const knexConfig = require('../../knexfile');
+const { sendRes } = require('../utils/');
 
 const express = require('express');
 const JsonWebToken = require('jsonwebtoken');
@@ -22,7 +23,7 @@ const saveNewUser = async (profile) => {
     .first();
 
   if (user) {
-    console.log('EXISTING USER', user);
+    console.log('existing user', user);
   } else {
     [user] = await db('user')
       .returning('*')
@@ -30,7 +31,7 @@ const saveNewUser = async (profile) => {
         name: profile.name,
         email: profile.email,
       });
-    console.log('NEW USER', user);
+    console.log('new user', user);
   }
   return user;
 };
@@ -59,12 +60,16 @@ router.post('/', async (req, res) => {
     const url = `https://graph.facebook.com/me?${query}`;
     const profile = await (await fetch(url)).json();
     console.log('profile', profile);
+    // TODO add error handling for error object from fb graph.
+
     const user = await saveNewUser(profile);
     const jwt = createJwt(profile);
     console.log('jwt', jwt);
-    res.json(formatResponse(jwt, user));
+
+    sendRes(res, STAT_TYPE.OK.CODE, formatResponse(jwt, user));
   } catch (err) {
-    console.error('Error retrieving user info from FaceBook', err);
+    console.log('err', err);
+    sendRes(res, STAT_TYPE.INTERNAL_SERVER_ERROR.CODE, STAT_TYPE.INTERNAL_SERVER_ERROR.MESSAGE);
   }
 });
 
