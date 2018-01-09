@@ -1,14 +1,13 @@
+const { JWT_KEY, JWT_APP, RES_STAT } = require('../config/const');
+const knexConfig = require('../../knexfile');
+const { sendResponse } = require('../utils/');
+
 const express = require('express');
 const JsonWebToken = require('jsonwebtoken');
-const knex = require('knex');
-const knexConfig = require('../../knexfile');
 const querystring = require('querystring');
+const db = require('knex')(knexConfig);
 
-const db = knex(knexConfig);
 const router = express.Router();
-
-const JWT_KEY = process.env.JWT_KEY || 'TEST_KEY';
-const JWT_APP = process.env.JWT_APP || 'TEST_APP';
 
 const createQueryParam = (socialToken) => {
   const params = {
@@ -24,7 +23,7 @@ const saveNewUser = async (profile) => {
     .first();
 
   if (user) {
-    console.log('EXISTING USER', user);
+    console.log('existing user', user);
   } else {
     [user] = await db('user')
       .returning('*')
@@ -32,7 +31,7 @@ const saveNewUser = async (profile) => {
         name: profile.name,
         email: profile.email,
       });
-    console.log('NEW USER', user);
+    console.log('new user', user);
   }
   return user;
 };
@@ -61,12 +60,16 @@ router.post('/', async (req, res) => {
     const url = `https://graph.facebook.com/me?${query}`;
     const profile = await (await fetch(url)).json();
     console.log('profile', profile);
+    // TODO add error handling for error object from fb graph.
+
     const user = await saveNewUser(profile);
     const jwt = createJwt(profile);
     console.log('jwt', jwt);
-    res.json(formatResponse(jwt, user));
+
+    sendResponse(res, RES_STAT.OK.CODE, formatResponse(jwt, user));
   } catch (err) {
-    console.error('Error retrieving user info from FaceBook', err);
+    console.log('err', err);
+    sendResponse(res, RES_STAT.INTL_SERVER_ERR.CODE, RES_STAT.INTL_SERVER_ERR.MSG);
   }
 });
 

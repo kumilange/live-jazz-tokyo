@@ -67,11 +67,11 @@ class CheckoutForm extends Component {
 
           const res = await (await fetch('/api/charge', {
             method: 'POST',
+            headers,
             body: JSON.stringify({
               stripeToken,
               eventID: this.props.eventID,
             }),
-            headers,
           })).json();
 
           if (res.OK) {
