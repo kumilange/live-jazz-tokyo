@@ -18,7 +18,7 @@ class Header extends Component {
           { this.props.userProfile
             ? <nav className="gnav">
               <ul className="gnav-list flex">
-                <li><Link to={'/user'} className="gnav-list-link">{ this.props.userProfile.name }</Link></li>
+                <li><Link to={`/user/${this.props.userProfile.id}`} className="gnav-list-link">{ this.props.userProfile.name }</Link></li>
                 <li><Link to={'/'} className="gnav-list-link" onClick={this.props.onLogoutButtonClick}>Logout</Link></li>
               </ul>
             </nav>
