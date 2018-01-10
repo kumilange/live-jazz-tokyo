@@ -18,22 +18,27 @@ const createQueryParam = (socialToken) => {
 };
 
 const saveNewUser = async (profile) => {
-  let user = await db('user')
-    .where({ email: profile.email })
-    .first();
+  try {
+    let user = await db('user')
+      .where({ email: profile.email })
+      .first();
 
-  if (user) {
-    console.log('existing user', user);
-  } else {
-    [user] = await db('user')
-      .returning('*')
-      .insert({
-        name: profile.name,
-        email: profile.email,
-      });
-    console.log('new user', user);
+    if (user) {
+      console.log('existing user', user);
+    } else {
+      [user] = await db('user')
+        .returning('*')
+        .insert({
+          name: profile.name,
+          email: profile.email,
+        });
+      console.log('new user', user);
+    }
+    return user;
+  } catch (error) {
+    console.log('err', error);
+    return { error };
   }
-  return user;
 };
 
 const createJwt = (profile) => {
@@ -63,9 +68,14 @@ router.post('/', async (req, res) => {
     // TODO add error handling for error object from fb graph.
 
     const user = await saveNewUser(profile);
+    const { error } = user;
+    if (error) {
+      // TODO handle error properly
+      throw new TypeError('Internal Server Error.');
+    }
+
     const jwt = createJwt(profile);
     console.log('jwt', jwt);
-
     sendResponse(res, RES_STAT.OK.CODE, formatResponse(jwt, user));
   } catch (err) {
     console.log('err', err);

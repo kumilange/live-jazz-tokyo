@@ -16,23 +16,25 @@ const verifyJwt = (jwt) => {
 };
 
 const saveCharge = async (params) => {
-  const { err, charge, userID, eventID } = params;
-  if (err) {
-    return { OK: false };
+  try {
+    const { charge, userID, eventID } = params;
+    const [result] = await db('transaction')
+      .returning('id')
+      .insert({
+        event_id: eventID,
+        total: charge.amount,
+        charge_id: charge.id,
+        user_id: userID,
+      });
+    console.log('result', result);
+    return {
+      OK: true,
+      order_id: result,
+    };
+  } catch (error) {
+    console.log('err', error);
+    return { error };
   }
-  const [result] = await db('transaction')
-    .returning('id')
-    .insert({
-      event_id: eventID,
-      total: charge.amount,
-      charge_id: charge.id,
-      user_id: userID,
-    });
-  console.log('result', result);
-  return {
-    OK: true,
-    order_id: result,
-  };
 };
 
 const handleCharge = (params, cb) => {
@@ -44,9 +46,18 @@ const handleCharge = (params, cb) => {
     source: stripeToken.id,
   },
   async (err, charge) => {
-    const result = await saveCharge({ err, charge, userID, eventID });
+    if (err) {
+      cb(null, err);
+      return;
+    }
+    const result = await saveCharge({ charge, userID, eventID });
+    const { error } = result;
     console.log('charge result', result);
-    cb(result);
+    if (error) {
+      cb(null, error);
+      return;
+    }
+    cb(result, null);
   });
 };
 
@@ -74,34 +85,42 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const { stripeToken, eventID } = req.body;
-  console.log('charge jwt', req.headers.bearer);
-  const decodedJWT = verifyJwt(req.headers.bearer);
+  try {
+    const { stripeToken, eventID } = req.body;
+    console.log('charge jwt', req.headers.bearer);
+    const decodedJWT = verifyJwt(req.headers.bearer);
 
-  const userID = (await db('user')
-    .where({ email: decodedJWT.email })
-    .select('id')
-    .first())
-    .id;
-  console.log('userID', userID);
+    const userID = (await db('user')
+      .where({ email: decodedJWT.email })
+      .select('id')
+      .first())
+      .id;
+    console.log('userID', userID);
 
-  const { price } = await db('event')
-    .select('price')
-    .where('id', eventID)
-    .first();
-  console.log('price', price);
+    const { price } = await db('event')
+      .select('price')
+      .where('id', eventID)
+      .first();
+    console.log('price', price);
 
-  // TODO check proper error handling
-  if (!(userID && price)) {
-    sendResponse(res, RES_STAT.BAD_REQ.CODE, RES_STAT.BAD_REQ.MSG);
-    return;
+    // TODO handle errors properly 
+    if (!(userID && price)) {
+      throw new TypeError('Internal Server Error.');
+    }
+
+    // Charge the user's card:
+    const args = { price, stripeToken, userID, eventID };
+    handleCharge(args, (response, err) => {
+      if (err && !err.OK) {
+        // TODO handle error properly 
+        throw new TypeError('Internal Server Error.');
+      }
+      sendResponse(res, RES_STAT.OK.CODE, response);
+    });
+  } catch (err) {
+    console.log('err', err);
+    sendResponse(res, RES_STAT.INTL_SERVER_ERR.CODE, RES_STAT.INTL_SERVER_ERR.MSG);
   }
-
-  // Charge the user's card:
-  const args = { price, stripeToken, userID, eventID };
-  handleCharge(args, (response) => {
-    sendResponse(res, RES_STAT.OK.CODE, response);
-  });
 });
 
 module.exports = router;
