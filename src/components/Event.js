@@ -74,7 +74,7 @@ class Event extends Component {
 
             <div className="flex vertCenter row">
               <div className="icon"><YenIcon /></div>
-              <p>{ formatPrice(this.props.event.price)} Yen</p>
+              <p>{ formatPrice(this.props.event.price)}</p>
               <div className="grow" />
               { this.props.userProfile ?
                 <Link to={'/pay'}>
