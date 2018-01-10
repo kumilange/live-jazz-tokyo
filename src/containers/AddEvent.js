@@ -52,12 +52,12 @@ const mapDispatchToProps = dispatch => ({
   },
   onFormSubmit: (event, addEventFields, history) => {
     event.preventDefault();
-    addEventFields.startTime.setDate(addEventFields.date.getDate());
-    addEventFields.startTime.setMonth(addEventFields.date.getMonth());
-    addEventFields.startTime.setYear(addEventFields.date.getFullYear());
-    addEventFields.endTime.setDate(addEventFields.date.getDate());
-    addEventFields.endTime.setMonth(addEventFields.date.getMonth());
-    addEventFields.endTime.setYear(addEventFields.date.getFullYear());
+    addEventFields.start.setDate(addEventFields.date.getDate());
+    addEventFields.start.setMonth(addEventFields.date.getMonth());
+    addEventFields.start.setYear(addEventFields.date.getFullYear());
+    addEventFields.end.setDate(addEventFields.date.getDate());
+    addEventFields.end.setMonth(addEventFields.date.getMonth());
+    addEventFields.end.setYear(addEventFields.date.getFullYear());
     dispatch(addNewEvent(addEventFields, history));
   },
 });

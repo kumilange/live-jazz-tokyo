@@ -11,13 +11,13 @@ const initialState = {
   transactionHistory: [],
   addEventFields: {
     eventName: '',
-    artist: '',
-    venue: '',
+    artistName: '',
+    venueName: '',
     address: '',
     price: '',
     date: '',
-    startTime: '',
-    endTime: '',
+    start: '',
+    end: '',
   },
   selectedTab: 'profile',
   creditCardError: false,
@@ -56,11 +56,11 @@ const reducer = (state = initialState, action) => {
       newState = Object.assign({}, state, { addEventFields: newAddEventFields });
       break;
     case 'SET_ARTIST_FIELD':
-      newAddEventFields = Object.assign({}, state.addEventFields, { artist: action.value });
+      newAddEventFields = Object.assign({}, state.addEventFields, { artistName: action.value });
       newState = Object.assign({}, state, { addEventFields: newAddEventFields });
       break;
     case 'SET_VENUE_FIELD':
-      newAddEventFields = Object.assign({}, state.addEventFields, { venue: action.value });
+      newAddEventFields = Object.assign({}, state.addEventFields, { venueName: action.value });
       newState = Object.assign({}, state, { addEventFields: newAddEventFields });
       break;
     case 'SET_ADDRESS_FIELD':
@@ -76,11 +76,11 @@ const reducer = (state = initialState, action) => {
       newState = Object.assign({}, state, { addEventFields: newAddEventFields });
       break;
     case 'SET_START_TIME_FIELD':
-      newAddEventFields = Object.assign({}, state.addEventFields, { startTime: action.value });
+      newAddEventFields = Object.assign({}, state.addEventFields, { start: action.value });
       newState = Object.assign({}, state, { addEventFields: newAddEventFields });
       break;
     case 'SET_END_TIME_FIELD':
-      newAddEventFields = Object.assign({}, state.addEventFields, { endTime: action.value });
+      newAddEventFields = Object.assign({}, state.addEventFields, { end: action.value });
       newState = Object.assign({}, state, { addEventFields: newAddEventFields });
       break;
     case 'SET_ADD_EVENT_RESPONSE':
