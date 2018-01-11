@@ -103,8 +103,8 @@ class Event extends Component {
             </div>
             <Divider />
             <div className="block">
-              { this.props.event.description ?
-                <div>{ this.props.event.description }</div> :
+              { this.props.event.desc ?
+                <div>{ this.props.event.desc }</div> :
                 <div>{ fallbackDescription }</div> }
             </div>
           </Paper>
