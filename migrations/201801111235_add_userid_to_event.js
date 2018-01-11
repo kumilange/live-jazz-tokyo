@@ -7,6 +7,6 @@ exports.up = (knex) => {
 
 exports.down = (knex) => {
   return knex.schema.table('event', (t) => {
-    return t.dropColmn('user_id');
+    return t.dropColumn('user_id');
   });
 };
