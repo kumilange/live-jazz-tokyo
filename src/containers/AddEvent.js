@@ -15,6 +15,7 @@ import {
 
 const mapStateToProps = state => ({
   jwt: state.jwt,
+  userProfile: state.userProfile,
   addEventResponse: state.addEventResponse,
   addEventFields: state.addEventFields,
 });
@@ -51,7 +52,7 @@ const mapDispatchToProps = dispatch => ({
   onEndTimeInput: (event, time) => {
     dispatch(setEndTimeField(time));
   },
-  onFormSubmit: (event, addEventFields, history) => {
+  onFormSubmit: (event, addEventFields, userId, history) => {
     event.preventDefault();
     addEventFields.start.setDate(addEventFields.date.getDate());
     addEventFields.start.setMonth(addEventFields.date.getMonth());
@@ -59,7 +60,7 @@ const mapDispatchToProps = dispatch => ({
     addEventFields.end.setDate(addEventFields.date.getDate());
     addEventFields.end.setMonth(addEventFields.date.getMonth());
     addEventFields.end.setYear(addEventFields.date.getFullYear());
-    dispatch(addNewEvent(addEventFields, history));
+    dispatch(addNewEvent(addEventFields, userId, history));
   },
 });
 

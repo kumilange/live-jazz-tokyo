@@ -28,7 +28,7 @@ export function getEventDetails(eventID) {
   return async (dispatch) => {
     try {
       const event = await (await fetch(`/api/events/${eventID}`)).json();
-
+      console.log('event', event);
       event.start = new Date(event.start);
       event.end = new Date(event.end);
 
@@ -172,12 +172,12 @@ export function getTransactionHistory(jwtString) {
   };
 }
 
-export function addNewEvent(event, history) {
+export function addNewEvent(event, userId, history) {
   return async (dispatch) => {
     try {
       const res = await (await fetch('/api/events', {
         method: 'POST',
-        body: JSON.stringify(event),
+        body: JSON.stringify({ ...event, userId }),
         headers: {
           'Content-Type': 'application/json',
         },

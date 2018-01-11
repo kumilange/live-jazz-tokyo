@@ -76,7 +76,7 @@ const AddEvent = (props) => {
         className="mui-button"
         label="Submit"
         onClick={event =>
-          props.onFormSubmit(event, props.addEventFields, props.history)
+          props.onFormSubmit(event, props.addEventFields, props.userProfile.id, props.history)
         }
       />
       { failed ? <p>Submit failed!  Check data and try again.</p> : <div /> }
@@ -86,6 +86,7 @@ const AddEvent = (props) => {
 
 AddEvent.propTypes = {
   jwt: PropTypes.string,
+  userProfile: PropTypes.shape(),
   onFormSubmit: PropTypes.func.isRequired,
   onEventNameInput: PropTypes.func.isRequired,
   onArtistInput: PropTypes.func.isRequired,
@@ -104,6 +105,7 @@ AddEvent.defaultProps = {
   jwt: undefined,
   history: undefined,
   addEventResponse: {},
+  userProfile: {},
 };
 
 export default AddEvent;
