@@ -22,7 +22,7 @@ class User extends Component {
         <div id="user" className="flex restrict-width">
           { this.props.userProfile ?
             [
-              <div key="1" className="flex column center">
+              <div key="1" id="profile-left" className="flex column center">
                 <img id="profile-picture" src="/default-user.jpg" alt="profile" />
                 <Link to={'/addevent'}>
                   <RaisedButton

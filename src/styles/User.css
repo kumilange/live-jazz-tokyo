@@ -18,10 +18,11 @@ th {
   font-size: 17px;
   font-weight: bold;
 }
-
+#profile-left {
+  margin-right: 20px;
+}
 #profile-picture {
   height: 200px;
-  margin-right: 20px;
 }
 
 #tabs {
@@ -60,10 +61,12 @@ th {
   #user {
     flex-direction: column;
   }
+  #profile-left {
+    margin-right: 0;
+  }
   #profile-picture {
     width: 100%;
     height: auto;
-    margin-right: 0;
   }
   #tabs {
    margin-top: 10px;
