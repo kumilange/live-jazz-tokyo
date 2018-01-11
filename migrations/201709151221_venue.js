@@ -12,7 +12,7 @@ exports.up = knex =>
     t.string('address');
     t.string('phone');
     t.integer('capacity');
-    t.text('description');
+    t.text('desc');
     t.text('image');
   });
 

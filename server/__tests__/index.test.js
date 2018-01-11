@@ -201,7 +201,7 @@ describe('EventDetails route /events', () => {
         price: 2,
         start: parseInt(parseFloat(new Date('2017-01-02 19:00').getTime()), 10),
         end: parseInt(parseFloat(new Date('2017-01-02 21:00').getTime()), 10),
-        description: desc[1],
+        desc: desc[1],
       };
 
     // exercise

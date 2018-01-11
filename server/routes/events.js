@@ -22,7 +22,7 @@ const formatEvent = (event) => {
     price,
     start: parseInt(start, 10),
     end: parseInt(end, 10),
-    description: desc,
+    desc,
   };
 };
 
