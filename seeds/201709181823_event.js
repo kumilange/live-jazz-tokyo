@@ -65,15 +65,15 @@ const convertJapanTimeDate = (utcStartDate) => {
 exports.seed = () => {
   const now = new Date();
   const currentYear = now.getFullYear();
-  const currentMonth = now.getMonth() - 1;
+  const currentMonth = now.getMonth();
   const promises = [];
   for (let i = 0; i < TARGET_EVENT_COUNT; i += 1) {
     try {
       const name = generateEventName();
-      const start = new Date(convertJapanTimeDate(setUtcStartDate(currentYear, currentMonth)));
-      const startParsed = Date.parse(start);
-      const endParsed = Date.parse(new Date(convertJapanTimeDate(setUtcEndDate(currentYear, start))));
-      const event = generateEvent(name, startParsed, endParsed);
+      const start = convertJapanTimeDate(setUtcStartDate(currentYear, currentMonth));
+      const startDate = new Date(start);
+      const end = convertJapanTimeDate(setUtcEndDate(currentYear, startDate));
+      const event = generateEvent(name, start, end);
       const promise = db('event').insert(event).returning('id');
       promises.push(promise);
     } catch (err) {
