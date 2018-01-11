@@ -14,6 +14,7 @@ import {
 } from '../actions';
 
 const mapStateToProps = state => ({
+  jwt: state.jwt,
   addEventResponse: state.addEventResponse,
   addEventFields: state.addEventFields,
 });

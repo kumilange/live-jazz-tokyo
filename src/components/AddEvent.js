@@ -10,6 +10,7 @@ import '../styles/AddEvent.css';
 const DateTimeFormat = global.Intl.DateTimeFormat;
 
 const AddEvent = (props) => {
+  if (!props.jwt) props.history.push('/');
   const failed = !props.addEventResponse.addSuccess
     && props.addEventResponse.addSuccess !== undefined;
   return (
@@ -84,6 +85,7 @@ const AddEvent = (props) => {
 };
 
 AddEvent.propTypes = {
+  jwt: PropTypes.string,
   onFormSubmit: PropTypes.func.isRequired,
   onEventNameInput: PropTypes.func.isRequired,
   onArtistInput: PropTypes.func.isRequired,
@@ -99,6 +101,7 @@ AddEvent.propTypes = {
 };
 
 AddEvent.defaultProps = {
+  jwt: undefined,
   history: undefined,
   addEventResponse: {},
 };
