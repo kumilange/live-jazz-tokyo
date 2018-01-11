@@ -1,3 +1,6 @@
+#add-event {
+  padding-top: 50px;
+}
 #add-event .mui-button {
   margin-top: 40px;
 }
@@ -23,6 +26,9 @@
 * MEDIA QUERY SP
 */
 @media screen and (max-width:600px){
+  #add-event {
+    padding-top: 40px;
+  }
   .inputHalf {
     width: 100% !important;
   }
