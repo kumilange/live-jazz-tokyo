@@ -8,6 +8,22 @@ const db = require('knex')(knexConfig);
 
 const router = express.Router();
 
+const formatDate = (date) => {
+  return (new Date(date))
+    .toDateString()
+    .split(' ')
+    .slice(1, 3)
+    .join('-');
+};
+
+const formatTime = (date) => {
+  return (new Date(date))
+    .toTimeString()
+    .split(':')
+    .slice(0, 2)
+    .join(':');
+};
+
 const formatEvent = (event) => {
   const { id, name, artist, venue, address, lat, lng, image, price, start, end, desc } = event;
   return {
@@ -20,8 +36,9 @@ const formatEvent = (event) => {
     lng: parseFloat(lng),
     image,
     price,
-    start: parseInt(start, 10),
-    end: parseInt(end, 10),
+    start: formatTime(parseInt(start, 10)),
+    end: formatTime(parseInt(end, 10)),
+    date: formatDate(parseInt(start, 10)),
     desc,
   };
 };
@@ -87,13 +104,13 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const { start, end, artistName, venueName, address, eventName, price, userId } = req.body;
-    const startDate = new Date(start);
-    const endDate = new Date(end);
+    const startParsed = Date.parse(start);
+    const endParsed = Date.parse(end);
     const event = {
       name: eventName,
       price: parseInt(price, 10),
-      start: startDate.getTime(),
-      end: endDate.getTime(),
+      start: startParsed.getTime(),
+      end: endParsed.getTime(),
       user_id: userId,
     };
 

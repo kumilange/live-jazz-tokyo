@@ -29,8 +29,6 @@ export function getEventDetails(eventID) {
     try {
       const event = await (await fetch(`/api/events/${eventID}`)).json();
       console.log('event', event);
-      event.start = new Date(event.start);
-      event.end = new Date(event.end);
 
       dispatch({
         type: 'SET_EVENT_DETAILS',

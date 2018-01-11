@@ -71,18 +71,13 @@ const MyMap = withGoogleMap((props) => {
                     <div className="infoItemWrapper iconAdj">
                       <div className="flex vertCenter">
                         <CalendarIcon style={svgIconSize} />
-                        <p className="infoWindowSubTtl">{ (new Date(event.start)).toDateString().split(' ').slice(1, 3)
-                          .join('-') }</p>
+                        <p className="infoWindowSubTtl">{ event.date }</p>
                       </div>
                     </div>
                     <div className="infoItemWrapper">
                       <div className="flex vertCenter">
                         <ClockIcon style={svgIconSize} />
-                        <p className="infoWindowSubTtl">{
-                          `${(new Date(event.start)).toTimeString().split(':').slice(0, 2)
-                            .join(':')}-${
-                            (new Date(event.end)).toTimeString().split(':').slice(0, 2)
-                              .join(':')}`}
+                        <p className="infoWindowSubTtl">{ event.start }-{ event.end }
                         </p>
                       </div>
                     </div>
