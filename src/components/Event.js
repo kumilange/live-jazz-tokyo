@@ -18,6 +18,11 @@ class Event extends Component {
     this.props.onComponentDidMount(this.props.match.params.id);
   }
 
+  extractMonthOrDay(strDate, isMonth) {
+    const targetIndex = isMonth ? 0 : 1;
+    return strDate.split('-')[targetIndex];
+  }
+
   render() {
     if (this.props.event) {
       return (
@@ -30,8 +35,8 @@ class Event extends Component {
 
           <div className="row horiCenter">
             <div className="date flex column center">
-              <p className="month">{this.props.event.start.toDateString().split(' ')[1]}</p>
-              <p className="day">{this.props.event.start.getDate()}</p>
+              <p className="month">{this.extractMonthOrDay(this.props.event.date, true)}</p>
+              <p className="day">{this.extractMonthOrDay(this.props.event.date, false)}</p>
             </div>
             <h2 className="title flex center">{ this.props.event.name }</h2>
           </div>
@@ -41,10 +46,7 @@ class Event extends Component {
           <div className="event-details-table">
             <div className="flex vertCenter row">
               <div className="icon"><ClockIcon /></div>
-              <p>{
-                `${this.props.event.start.toTimeString().split(':').slice(0, 2).join(':')
-                } to ${
-                  this.props.event.end.toTimeString().split(':').slice(0, 2).join(':')}`}
+              <p>{ this.props.event.start } to { this.props.event.end }
               </p>
               <div className="grow" />
             </div>
