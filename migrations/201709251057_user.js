@@ -1,21 +1,21 @@
 exports.up = (knex) => {
   const transaction = [];
-  transaction.push(knex.schema.createTable('user', (table) => {
-    table.increments().index();
-    table.string('name');
-    table.string('email');
+  transaction.push(knex.schema.createTable('user', (t) => {
+    t.increments().index();
+    t.string('name');
+    t.string('email');
   }));
-  transaction.push(knex.schema.table('artist', (table) => {
-    return table.integer('user_id')
+  transaction.push(knex.schema.table('artist', (t) => {
+    return t.integer('user_id')
       .references('user.id');
   }));
-  transaction.push(knex.schema.table('transaction', (table) => {
-    return table.integer('user_id')
+  transaction.push(knex.schema.table('transaction', (t) => {
+    return t.integer('user_id')
       .references('user.id')
       .notNullable();
   }));
-  transaction.push(knex.schema.table('venue', (table) => {
-    return table.integer('user_id')
+  transaction.push(knex.schema.table('venue', (t) => {
+    return t.integer('user_id')
       .references('user.id');
   }));
   return Promise.all(transaction);
@@ -23,14 +23,14 @@ exports.up = (knex) => {
 
 exports.down = (knex) => {
   const transaction = [];
-  transaction.push(knex.schema.table('artist', (table) => {
-    return table.dropColumn('user_id');
+  transaction.push(knex.schema.table('artist', (t) => {
+    return t.dropColumn('user_id');
   }));
-  transaction.push(knex.schema.table('transaction', (table) => {
-    return table.dropColumn('user_id');
+  transaction.push(knex.schema.table('transaction', (t) => {
+    return t.dropColumn('user_id');
   }));
-  transaction.push(knex.schema.table('venue', (table) => {
-    return table.dropColumn('user_id');
+  transaction.push(knex.schema.table('venue', (t) => {
+    return t.dropColumn('user_id');
   }));
   transaction.push(knex.schema.dropTable('user'),
   );

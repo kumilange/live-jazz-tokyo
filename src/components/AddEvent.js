@@ -10,6 +10,7 @@ import '../styles/AddEvent.css';
 const DateTimeFormat = global.Intl.DateTimeFormat;
 
 const AddEvent = (props) => {
+  if (!props.jwt) props.history.push('/');
   const failed = !props.addEventResponse.addSuccess
     && props.addEventResponse.addSuccess !== undefined;
   return (
@@ -75,7 +76,7 @@ const AddEvent = (props) => {
         className="mui-button"
         label="Submit"
         onClick={event =>
-          props.onFormSubmit(event, props.addEventFields, props.history)
+          props.onFormSubmit(event, props.addEventFields, props.userProfile.id, props.history)
         }
       />
       { failed ? <p>Submit failed!  Check data and try again.</p> : <div /> }
@@ -84,6 +85,8 @@ const AddEvent = (props) => {
 };
 
 AddEvent.propTypes = {
+  jwt: PropTypes.string,
+  userProfile: PropTypes.shape(),
   onFormSubmit: PropTypes.func.isRequired,
   onEventNameInput: PropTypes.func.isRequired,
   onArtistInput: PropTypes.func.isRequired,
@@ -99,8 +102,10 @@ AddEvent.propTypes = {
 };
 
 AddEvent.defaultProps = {
+  jwt: undefined,
   history: undefined,
   addEventResponse: {},
+  userProfile: {},
 };
 
 export default AddEvent;

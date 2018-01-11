@@ -30,8 +30,8 @@ const formatEvent = (event) => {
 router.get('/', async (req, res) => {
   try {
     const events = (await db('event')
-      .leftJoin('venue', 'event.venue_id', 'venue.id')
-      .leftJoin('artist', 'event.artist_id', 'artist.id')
+      .innerJoin('venue', 'event.venue_id', 'venue.id')
+      .innerJoin('artist', 'event.artist_id', 'artist.id')
       .whereBetween('end', [req.query.start, req.query.end])
       .select(
         'event.id as id',
@@ -55,9 +55,9 @@ router.get('/', async (req, res) => {
 /* GET eventDetails */
 router.get('/:id', async (req, res) => {
   try {
-    let detail = await db('event')
-      .leftJoin('venue', 'event.venue_id', 'venue.id')
-      .leftJoin('artist', 'event.artist_id', 'artist.id')
+    let [detail] = await db('event')
+      .innerJoin('venue', 'event.venue_id', 'venue.id')
+      .innerJoin('artist', 'event.artist_id', 'artist.id')
       .leftJoin('event_img', 'event.event_image_id', 'event_img.id')
       .where('event.id', req.params.id)
       .select(
@@ -73,9 +73,8 @@ router.get('/:id', async (req, res) => {
         'event.start',
         'event.end',
         'event.desc',
-      )
-      .first();
-    console.log('details', detail);
+      );
+    console.log('detail', detail);
     detail = formatEvent(detail);
     sendResponse(res, RES_STAT.OK.CODE, detail);
   } catch (err) {
@@ -87,7 +86,7 @@ router.get('/:id', async (req, res) => {
 /* POST event */
 router.post('/', async (req, res) => {
   try {
-    const { start, end, artistName, venueName, address, eventName, price } = req.body;
+    const { start, end, artistName, venueName, address, eventName, price, userId } = req.body;
     const startDate = new Date(start);
     const endDate = new Date(end);
     const event = {
@@ -95,6 +94,7 @@ router.post('/', async (req, res) => {
       price: parseInt(price, 10),
       start: startDate.getTime(),
       end: endDate.getTime(),
+      user_id: userId,
     };
 
     // set venueID to event
@@ -142,6 +142,7 @@ router.post('/', async (req, res) => {
     const [eventID] = await db('event')
       .insert(event)
       .returning('id');
+    console.log('eventID', eventID);
 
     sendResponse(res, RES_STAT.OK.CODE, { addSuccess: true, eventID });
   } catch (err) {

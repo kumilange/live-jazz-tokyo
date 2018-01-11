@@ -62,8 +62,8 @@ router.get('/', async (req, res) => {
     const decodedJWT = verifyJwt(req.headers.bearer);
 
     const transactions = await db('transaction')
-      .leftJoin('user', 'transaction.user_id', 'user.id')
-      .leftJoin('event', 'transaction.event_id', 'event.id')
+      .innerJoin('user', 'transaction.user_id', 'user.id')
+      .innerJoin('event', 'transaction.event_id', 'event.id')
       .where({ email: decodedJWT.email })
       .select(
         'transaction.id as id',

@@ -17,18 +17,19 @@ class User extends Component {
   }
 
   render() {
+    if (!this.props.jwt) this.props.history.push('/');
     return (
       <main className="flex column center">
         <div id="user" className="flex restrict-width">
           { this.props.userProfile ?
             [
-              <div key="1" id="profile-left" className="flex column center">
+              <div key="1" id="profile-left" className="flex column horiCenter">
                 <img id="profile-picture" src="/default-user.jpg" alt="profile" />
                 <Link to={'/addevent'}>
                   <RaisedButton
                     primary
                     className="mui-button"
-                    label="Add Event"
+                    label="Create Event"
                     style={{ width: '100%', marginTop: '10px' }}
                   />
                 </Link>
@@ -69,17 +70,20 @@ class User extends Component {
 }
 
 User.propTypes = {
-  jwt: PropTypes.string.isRequired,
+  jwt: PropTypes.string,
   userProfile: PropTypes.shape(),
   selectedTab: PropTypes.string.isRequired,
   transactionHistory: PropTypes.arrayOf(Object),
   onComponentDidMount: PropTypes.func.isRequired,
   onTabClick: PropTypes.func.isRequired,
+  history: PropTypes.shape(),
 };
 
 User.defaultProps = {
+  jwt: undefined,
   transactionHistory: [],
   userProfile: undefined,
+  history: undefined,
 };
 
 export default User;
