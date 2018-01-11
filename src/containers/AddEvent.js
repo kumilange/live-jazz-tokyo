@@ -34,12 +34,11 @@ const mapDispatchToProps = dispatch => ({
     dispatch(setAddressField(event));
   },
   onPriceInput: (event, value, oldval) => {
-    if (value !== '' && ((isNaN(parseInt(value, 10)) || isNaN(Number(value))) ||
+    if (!(value !== '' && ((isNaN(parseInt(value, 10)) ||
+      isNaN(Number(value))) ||
       parseInt(value, 10) !== Number(value) ||
       parseInt(value, 10) < 0 ||
-      parseInt(value, 10) === parseInt(oldval, 10))) {
-      event.preventDefault();
-    } else {
+      parseInt(value, 10) === parseInt(oldval, 10)))) {
       dispatch(setPriceField(value));
     }
   },
@@ -53,13 +52,6 @@ const mapDispatchToProps = dispatch => ({
     dispatch(setEndTimeField(time));
   },
   onFormSubmit: (event, addEventFields, userId, history) => {
-    event.preventDefault();
-    addEventFields.start.setDate(addEventFields.date.getDate());
-    addEventFields.start.setMonth(addEventFields.date.getMonth());
-    addEventFields.start.setYear(addEventFields.date.getFullYear());
-    addEventFields.end.setDate(addEventFields.date.getDate());
-    addEventFields.end.setMonth(addEventFields.date.getMonth());
-    addEventFields.end.setYear(addEventFields.date.getFullYear());
     dispatch(addNewEvent(addEventFields, userId, history));
   },
 });
