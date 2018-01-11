@@ -1,8 +1,8 @@
 # Live Jazz Tokyo
 
 Connecting fans with local jazz musicians in Tokyo.
-
 The easiest way to find local Jazz artists and events around your area.
+![2018-01-11 10 32 49](https://user-images.githubusercontent.com/28984604/34804237-d9c31832-f6ba-11e7-87f2-87ed46834459.png)
 
 ## Getting Started
 
