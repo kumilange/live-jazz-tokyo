@@ -30,8 +30,8 @@ const formatEvent = (event) => {
 router.get('/', async (req, res) => {
   try {
     const events = (await db('event')
-      .leftJoin('venue', 'event.venue_id', 'venue.id')
-      .leftJoin('artist', 'event.artist_id', 'artist.id')
+      .innerJoin('venue', 'event.venue_id', 'venue.id')
+      .innerJoin('artist', 'event.artist_id', 'artist.id')
       .whereBetween('end', [req.query.start, req.query.end])
       .select(
         'event.id as id',
@@ -56,9 +56,9 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     let detail = await db('event')
-      .leftJoin('venue', 'event.venue_id', 'venue.id')
-      .leftJoin('artist', 'event.artist_id', 'artist.id')
-      .leftJoin('event_img', 'event.event_image_id', 'event_img.id')
+      .innerJoin('venue', 'event.venue_id', 'venue.id')
+      .innerJoin('artist', 'event.artist_id', 'artist.id')
+      .innerJoin('event_img', 'event.event_image_id', 'event_img.id')
       .where('event.id', req.params.id)
       .select(
         'event.id as id',
