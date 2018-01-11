@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Divider from 'material-ui/Divider';
+import RaisedButton from 'material-ui/RaisedButton';
 
 import Profile from './Profile';
 import OrderHistory from './OrderHistory';
@@ -20,7 +22,17 @@ class User extends Component {
         <div id="user" className="flex restrict-width">
           { this.props.userProfile ?
             [
-              <img key="1" id="profile-picture" src="/default-user.jpg" alt="profile" />,
+              <div key="1" id="profile-left" className="flex column center">
+                <img id="profile-picture" src="/default-user.jpg" alt="profile" />
+                <Link to={'/addevent'}>
+                  <RaisedButton
+                    primary
+                    className="mui-button"
+                    label="Add Event"
+                    style={{ width: '100%', marginTop: '10px' }}
+                  />
+                </Link>
+              </div>,
               <div key="2" className="grow">
                 <div id="tabs" className="flex">
                   <div

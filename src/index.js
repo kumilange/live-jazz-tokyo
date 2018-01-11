@@ -44,7 +44,7 @@ ReactDOM.render(
             <Header />
             <Route exact path="/" component={App} />
             <Route exact path="/event/:id" component={Event} />
-            <Route exact path="/user" component={User} />
+            <Route exact path="/user/:id" component={User} />
             <Route exact path="/pay" component={Pay} />
             <Route exact path="/confirmation" component={Confirmation} />
             <Route exact path="/addevent" component={AddEvent} />

@@ -182,12 +182,18 @@ export function addNewEvent(event, history) {
           'Content-Type': 'application/json',
         },
       })).json();
+      console.log(res);
+
       dispatch({
         type: 'SET_ADD_EVENT_RESPONSE',
         addEventResponse: res,
       });
-      history.push(`/event/${res.eventID}`);
-      console.log(res);
+
+      if (res.addSuccess) {
+        history.push(`/event/${res.eventID}`);
+      } else {
+        history.push('/');
+      }
     } catch (err) {
       console.error(err);
     }

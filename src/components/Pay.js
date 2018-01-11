@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Elements } from 'react-stripe-elements';
 import Paper from 'material-ui/Paper';
@@ -8,9 +8,10 @@ import CheckoutForm from './CheckoutForm';
 import formatPrice from '../utils/format';
 import '../styles/Pay.css';
 
-class Pay extends Component {
-  render() {
-    return (
+const Pay = (props) => {
+  if (!props.jwt) props.history.push('/');
+  return (
+    props.event && props.userProfile ?
       <main className="restrict-width flex column center">
         <Paper className="payment-paper">
           <div className="flex payment-table-row">
@@ -20,44 +21,43 @@ class Pay extends Component {
           </div>
           <Divider style={{ marginTop: 10, marginBottom: 10 }} />
           <div className="flex payment-table-row">
-            <div className="payment-table-cell1">{this.props.event.name}</div>
+            <div className="payment-table-cell1">{props.event.name}</div>
             <div className="payment-table-cell2">{'x1'}</div>
-            <div className="payment-table-cell3">{ formatPrice(this.props.event.price) }</div>
+            <div className="payment-table-cell3">￥{formatPrice(props.event.price)}</div>
           </div>
           <Divider style={{ marginTop: 10, marginBottom: 10, height: 1, backgroundColor: 'black' }} />
           <div className="flex payment-table-row">
             <div className="payment-table-cell1">{'Total:'}</div>
             <div className="payment-table-cell2" />
-            <div className="payment-table-cell3">{ formatPrice(this.props.event.price)}</div>
+            <div className="payment-table-cell3">￥{formatPrice(props.event.price)}</div>
           </div>
         </Paper>
         <Elements>
           <CheckoutForm
-            jwt={this.props.jwt}
-            userProfile={this.props.userProfile}
-            eventID={this.props.event.id}
-            creditCardError={this.props.creditCardError}
-            setCreditCardError={this.props.setCreditCardError}
-            nameErrorText={this.props.nameErrorText}
-            addressErrorText={this.props.addressErrorText}
-            emailErrorText={this.props.emailErrorText}
-            setNameErrorText={this.props.setNameErrorText}
-            setAddressErrorText={this.props.setAddressErrorText}
-            setEmailErrorText={this.props.setEmailErrorText}
-            setChargeResponse={this.props.setChargeResponse}
-            history={this.props.history}
+            jwt={props.jwt}
+            userProfile={props.userProfile}
+            eventID={props.event.id}
+            creditCardError={props.creditCardError}
+            setCreditCardError={props.setCreditCardError}
+            nameErrorText={props.nameErrorText}
+            addressErrorText={props.addressErrorText}
+            emailErrorText={props.emailErrorText}
+            setNameErrorText={props.setNameErrorText}
+            setAddressErrorText={props.setAddressErrorText}
+            setEmailErrorText={props.setEmailErrorText}
+            setChargeResponse={props.setChargeResponse}
+            history={props.history}
           />
         </Elements>
-      </main>
-    );
-  }
-}
+      </main> : null
+  );
+};
 
 Pay.propTypes = {
-  event: PropTypes.shape().isRequired,
-  jwt: PropTypes.string.isRequired,
+  event: PropTypes.shape(),
+  jwt: PropTypes.string,
   history: PropTypes.shape().isRequired,
-  userProfile: PropTypes.shape().isRequired,
+  userProfile: PropTypes.shape(),
   nameErrorText: PropTypes.string.isRequired,
   addressErrorText: PropTypes.string.isRequired,
   emailErrorText: PropTypes.string.isRequired,
@@ -67,6 +67,12 @@ Pay.propTypes = {
   setEmailErrorText: PropTypes.func.isRequired,
   setChargeResponse: PropTypes.func.isRequired,
   setCreditCardError: PropTypes.func.isRequired,
+};
+
+Pay.defaultProps = {
+  event: undefined,
+  jwt: undefined,
+  userProfile: undefined,
 };
 
 export default Pay;
