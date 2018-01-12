@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import formatPrice from '../utils/format';
+import { formatPrice } from '../utils/format';
 
 const OrderHistory = props => (
   <table id="order-history-table">

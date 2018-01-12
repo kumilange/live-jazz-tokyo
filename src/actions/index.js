@@ -19,7 +19,7 @@ export function initializeEvents() {
         data,
       });
     } catch (err) {
-      console.log('err', err);
+      console.error(err);
     }
   };
 }
@@ -28,16 +28,13 @@ export function getEventDetails(eventID) {
   return async (dispatch) => {
     try {
       const event = await (await fetch(`/api/events/${eventID}`)).json();
-      console.log('event', event);
-      event.start = new Date(event.start);
-      event.end = new Date(event.end);
 
       dispatch({
         type: 'SET_EVENT_DETAILS',
         event,
       });
     } catch (err) {
-      console.log('err', err);
+      console.error(err);
     }
   };
 }
@@ -182,7 +179,6 @@ export function addNewEvent(event, userId, history) {
           'Content-Type': 'application/json',
         },
       })).json();
-      console.log(res);
 
       dispatch({
         type: 'SET_ADD_EVENT_RESPONSE',

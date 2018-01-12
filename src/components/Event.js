@@ -7,7 +7,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import EventMap from './EventMap';
 
-import formatPrice from '../utils/format';
+import { formatPrice, formatMonthOrDate, formatTime } from '../utils/format';
 import '../styles/Event.css';
 import { ClockIcon, YenIcon, PinIcon } from '../styles/Icons';
 
@@ -30,8 +30,8 @@ class Event extends Component {
 
           <div className="row horiCenter">
             <div className="date flex column center">
-              <p className="month">{this.props.event.start.toDateString().split(' ')[1]}</p>
-              <p className="day">{this.props.event.start.getDate()}</p>
+              <p className="month">{ formatMonthOrDate(this.props.event.start, true) }</p>
+              <p className="day">{ formatMonthOrDate(this.props.event.start, false) }</p>
             </div>
             <h2 className="title flex center">{ this.props.event.name }</h2>
           </div>
@@ -41,10 +41,8 @@ class Event extends Component {
           <div className="event-details-table">
             <div className="flex vertCenter row">
               <div className="icon"><ClockIcon /></div>
-              <p>{
-                `${this.props.event.start.toTimeString().split(':').slice(0, 2).join(':')
-                } to ${
-                  this.props.event.end.toTimeString().split(':').slice(0, 2).join(':')}`}
+              <p>
+                {`${formatTime(this.props.event.start)} to ${formatTime(this.props.event.end)}`}
               </p>
               <div className="grow" />
             </div>
