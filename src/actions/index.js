@@ -12,7 +12,6 @@ export function initializeEvents() {
         start: now,
         end: now + TWENTY_FOUR_HOURS_IN_MILLISECONDS,
       };
-
       const query = querystring.stringify(params);
       const data = await (await fetch(`/api/events?${query}`)).json();
 
@@ -160,6 +159,7 @@ export function getTransactionHistory(jwtString) {
         method: 'GET',
         headers,
       })).json();
+
       dispatch({
         type: SET_TRANSACTION_HISTORY,
         transactions: res,
