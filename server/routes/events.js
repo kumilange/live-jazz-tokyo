@@ -104,8 +104,8 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const { start, end, artistName, venueName, address, eventName, price, userId } = req.body;
-    const startParsed = Date.parse(start);
-    const endParsed = Date.parse(end);
+    const startParsed = new Date(start);
+    const endParsed = new Date(end);
     const event = {
       name: eventName,
       price: parseInt(price, 10),
