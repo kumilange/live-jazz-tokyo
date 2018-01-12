@@ -1,12 +1,12 @@
 // eslint-disable-line no-console
+const { PORT } = require('./config/const');
+const knexConfig = require('../knexfile');
 require('dotenv').config();
+
 const app = require('./app');
 const knex = require('knex');
-const knexConfig = require('../knexfile');
 
 const db = knex(knexConfig);
-
-const PORT = process.env.PORT || 3001;
 
 /**
  * Run migration and listen on provided port
