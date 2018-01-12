@@ -89,7 +89,6 @@ router.post('/', async (req, res) => {
     const { start, end, artistName, venueName, address, eventName, price, userId } = req.body;
     const startParsed = new Date(start);
     const endParsed = new Date(end);
-    console.log('insert event pot startParsed', startParsed);
     const event = {
       name: eventName,
       price: parseInt(price, 10),
