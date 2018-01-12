@@ -7,7 +7,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import EventMap from './EventMap';
 
-import formatPrice from '../utils/format';
+import { formatPrice, formatMonthOrDate, formatTime } from '../utils/format';
 import '../styles/Event.css';
 import { ClockIcon, YenIcon, PinIcon } from '../styles/Icons';
 
@@ -16,11 +16,6 @@ const fallbackDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing 
 class Event extends Component {
   componentDidMount() {
     this.props.onComponentDidMount(this.props.match.params.id);
-  }
-
-  extractMonthOrDay(strDate, isMonth) {
-    const targetIndex = isMonth ? 0 : 1;
-    return strDate.split('-')[targetIndex];
   }
 
   render() {
@@ -35,8 +30,8 @@ class Event extends Component {
 
           <div className="row horiCenter">
             <div className="date flex column center">
-              <p className="month">{this.extractMonthOrDay(this.props.event.date, true)}</p>
-              <p className="day">{this.extractMonthOrDay(this.props.event.date, false)}</p>
+              <p className="month">{ formatMonthOrDate(this.props.event.start, true) }</p>
+              <p className="day">{ formatMonthOrDate(this.props.event.start, false) }</p>
             </div>
             <h2 className="title flex center">{ this.props.event.name }</h2>
           </div>
@@ -46,7 +41,8 @@ class Event extends Component {
           <div className="event-details-table">
             <div className="flex vertCenter row">
               <div className="icon"><ClockIcon /></div>
-              <p>{ this.props.event.start } to { this.props.event.end }
+              <p>
+                {`${formatTime(this.props.event.start)} to ${formatTime(this.props.event.end)}`}
               </p>
               <div className="grow" />
             </div>

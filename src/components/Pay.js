@@ -5,7 +5,7 @@ import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
 
 import CheckoutForm from './CheckoutForm';
-import formatPrice from '../utils/format';
+import { formatPrice } from '../utils/format';
 import '../styles/Pay.css';
 
 const Pay = (props) => {

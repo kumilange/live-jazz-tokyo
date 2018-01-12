@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import canUseDOM from 'can-use-dom';
 import Divider from 'material-ui/Divider';
 
-import formatPrice from '../utils/format';
+import { formatPrice, formatDate, formatTime } from '../utils/format';
 import fancyMapStyles from '../resources/fancyMapStyles.json';
 import { CalendarIcon, ClockIcon, YenIcon, PinIcon, UserIcon, MarkerIcon, UserLocationIcon } from '../styles/Icons';
 import '../styles/InfoWindow.css';
@@ -71,13 +71,13 @@ const MyMap = withGoogleMap((props) => {
                     <div className="infoItemWrapper iconAdj">
                       <div className="flex vertCenter">
                         <CalendarIcon style={svgIconSize} />
-                        <p className="infoWindowSubTtl">{ event.date }</p>
+                        <p className="infoWindowSubTtl">{ formatDate(event.start) }</p>
                       </div>
                     </div>
                     <div className="infoItemWrapper">
                       <div className="flex vertCenter">
                         <ClockIcon style={svgIconSize} />
-                        <p className="infoWindowSubTtl">{ event.start }-{ event.end }
+                        <p className="infoWindowSubTtl">{ formatTime(event.start) }-{ formatTime(event.end) }
                         </p>
                       </div>
                     </div>
