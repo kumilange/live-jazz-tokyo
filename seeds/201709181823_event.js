@@ -73,6 +73,7 @@ exports.seed = () => {
       const start = convertJapanTimeDate(setUtcStartDate(currentYear, currentMonth));
       const startDate = new Date(start);
       const end = convertJapanTimeDate(setUtcEndDate(currentYear, startDate));
+      console.log('insert seeds startDate', startDate);
       const event = generateEvent(name, start, end);
       const promise = db('event').insert(event).returning('id');
       promises.push(promise);
