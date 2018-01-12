@@ -34,10 +34,10 @@ const mapDispatchToProps = dispatch => ({
     dispatch(setAddressField(event));
   },
   onPriceInput: (event, value, oldval) => {
-    if (!(value !== '' && ((isNaN(parseInt(value, 10)) ||
-      isNaN(Number(value))) ||
-      parseInt(value, 10) !== Number(value) ||
-      parseInt(value, 10) < 0 ||
+    if (!(value !== '' && ((isNaN(parseInt(value, 10)) &&
+      isNaN(Number(value))) &&
+      parseInt(value, 10) !== Number(value) &&
+      parseInt(value, 10) < 0 &&
       parseInt(value, 10) === parseInt(oldval, 10)))) {
       dispatch(setPriceField(value));
     }
