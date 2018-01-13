@@ -8,7 +8,7 @@ import { formatPrice, formatMonthOrDate, formatTime } from '../utils/format';
 import '../styles/Event.css';
 import { ClockIcon, YenIcon, PinIcon } from '../styles/Icons';
 
-const fallbackDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+const FALLBACK_DESC = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
 class Event extends Component {
   componentDidMount() {
@@ -25,7 +25,6 @@ class Event extends Component {
               <img className="event-image" src={`data:image/png;base64,${event.image}`} alt="pic" /> :
               <img className="event-image" src="http://static.wixstatic.com/media/89bf03_01eeecd62c844653a4a50fcee305a7ea~mv2.jpg" alt="pic" /> }
           </div>
-
           <div className="row horiCenter">
             <div className="date flex column center">
               <p className="month">{ formatMonthOrDate(event.start, true) }</p>
@@ -33,9 +32,7 @@ class Event extends Component {
             </div>
             <h2 className="title flex center">{ event.name }</h2>
           </div>
-
           <Divider />
-
           <div className="event-details-table">
             <div className="flex vertCenter row">
               <div className="icon"><ClockIcon /></div>
@@ -44,7 +41,6 @@ class Event extends Component {
               </p>
               <div className="grow" />
             </div>
-
             <div className="flex vertCenter row">
               <div className="icon"><PinIcon /></div>
               <p className="venue">
@@ -61,13 +57,11 @@ class Event extends Component {
                 />
               </div>
             </div>
-
             <div className={showMap ? 'map-container expanded' : 'map-container'}>
               <div className="event-map">
                 <EventMap position={{ lat: event.lat, lng: event.lng }} />
               </div>
             </div>
-
             <div className="flex vertCenter row">
               <div className="icon"><YenIcon /></div>
               <p>{ formatPrice(event.price)}</p>
@@ -101,7 +95,7 @@ class Event extends Component {
             <div className="block">
               { event.desc ?
                 <div>{ event.desc }</div> :
-                <div>{ fallbackDescription }</div> }
+                <div>{ FALLBACK_DESC }</div> }
             </div>
           </Paper>
         </main>
