@@ -13,7 +13,7 @@ const svgIconSize = { width: '25px', height: '16px' };
 
 const MyInfoWindow = props => (
   <div id="infowindow">
-    { props.selectedEvent === props.event ?
+    { props.selectedEvent.id === props.event.id ?
       <InfoWindow
         className="infoWindow"
         onCloseClick={props.onInfoWindowClose}
