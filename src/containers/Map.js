@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import Map from '../components/Map';
 
 import { setSelectedEvent, clearSelectedEvent, setUserLocation } from '../actions';
+import Map from '../components/Map';
 
 const mapStateToProps = state => ({
   events: state.events,

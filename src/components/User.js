@@ -17,11 +17,12 @@ class User extends Component {
   }
 
   render() {
-    if (!this.props.jwt) this.props.history.push('/');
+    const { jwt, history, userProfile, selectedTab, transactionHistory, onTabClick } = this.props;
+    if (!jwt) history.push('/');
     return (
       <main className="flex column center">
         <div id="user" className="flex restrict-width">
-          { this.props.userProfile ?
+          { userProfile ?
             [
               <div key="1" id="profile-left" className="flex column horiCenter">
                 <img id="profile-picture" src="/default-user.jpg" alt="profile" />
@@ -37,24 +38,24 @@ class User extends Component {
               <div key="2" className="grow">
                 <div id="tabs" className="flex">
                   <div
-                    className={this.props.selectedTab === 'profile' ? 'tab selected' : 'tab'}
-                    onClick={() => this.props.onTabClick('profile')}
+                    className={selectedTab === 'profile' ? 'tab selected' : 'tab'}
+                    onClick={() => onTabClick('profile')}
                     role="presentation"
                   >
                     Profile
                   </div>
                   <div
-                    className={this.props.selectedTab === 'orderHistory' ? 'tab selected' : 'tab'}
-                    onClick={() => this.props.onTabClick('orderHistory')}
+                    className={selectedTab === 'orderHistory' ? 'tab selected' : 'tab'}
+                    onClick={() => onTabClick('orderHistory')}
                     role="presentation"
                   >
                     Order History
                   </div>
                 </div>
                 <Divider />
-                { this.props.selectedTab === 'profile' ?
-                  <Profile userProfile={this.props.userProfile} /> :
-                  <OrderHistory orders={this.props.transactionHistory} />
+                { selectedTab === 'profile' ?
+                  <Profile userProfile={userProfile} /> :
+                  <OrderHistory orders={transactionHistory} />
                 }
               </div>,
             ] :

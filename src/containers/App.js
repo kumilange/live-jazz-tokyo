@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import App from '../components/App';
 
 import { initializeEvents } from '../actions';
+import App from '../components/App';
 
 const mapStateToProps = state => ({
   events: state.events,

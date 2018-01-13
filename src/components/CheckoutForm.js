@@ -29,33 +29,34 @@ class CheckoutForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleSubmit(event) {
+    const { stripe, eventID, jwt, history, setNameErrorText, setAddressErrorText, setEmailErrorText, setChargeResponse, setCreditCardError } = this.props;
     event.preventDefault();
 
     let error = false;
     if (document.getElementById('card-holder-field').value === '') {
-      this.props.setNameErrorText('Card holder name is required');
+      setNameErrorText('Card holder name is required');
       error = true;
     } else {
-      this.props.setNameErrorText('');
+      setNameErrorText('');
     }
     if (document.getElementById('address-field').value === '') {
-      this.props.setAddressErrorText('Billing address is required');
+      setAddressErrorText('Billing address is required');
       error = true;
     } else {
-      this.props.setAddressErrorText('');
+      setAddressErrorText('');
     }
     if (document.getElementById('email-field').value === '') {
-      this.props.setEmailErrorText('E-mail address is required');
+      setEmailErrorText('E-mail address is required');
       error = true;
     } else if (!emailRegex.test(document.getElementById('email-field').value)) {
-      this.props.setEmailErrorText('E-mail address is not valid');
+      setEmailErrorText('E-mail address is not valid');
       error = true;
     } else {
-      this.props.setEmailErrorText('');
+      setEmailErrorText('');
     }
 
     if (!error) {
-      this.props.stripe.createToken({
+      stripe.createToken({
         name: document.getElementById('card-holder-field').value,
       }).then(async (response) => {
         const stripeToken = response.token;
@@ -63,36 +64,37 @@ class CheckoutForm extends Component {
         if (stripeToken) {
           const headers = new Headers();
           headers.append('Content-Type', 'application/json');
-          headers.append('Bearer', this.props.jwt);
+          headers.append('Bearer', jwt);
 
           const res = await (await fetch('/api/charge', {
             method: 'POST',
             headers,
             body: JSON.stringify({
               stripeToken,
-              eventID: this.props.eventID,
+              eventID,
             }),
           })).json();
 
           if (res.OK) {
-            this.props.setChargeResponse(res);
-            this.props.history.push('/confirmation');
+            setChargeResponse(res);
+            history.push('/confirmation');
           } else {
-            this.props.setCreditCardError();
+            setCreditCardError();
           }
         } else {
-          this.props.setCreditCardError();
+          setCreditCardError();
         }
       });
     }
   }
 
   render() {
+    const { nameErrorText, addressErrorText, emailErrorText, creditCardError, setCreditCardError } = this.props;
     const actions = [
       <RaisedButton
         primary
         label="OK"
-        onClick={this.props.setCreditCardError}
+        onClick={setCreditCardError}
       />,
     ];
 
@@ -105,7 +107,7 @@ class CheckoutForm extends Component {
               <TextField
                 id="card-holder-field"
                 hintText="John Smith"
-                errorText={this.props.nameErrorText}
+                errorText={nameErrorText}
               />
             </div>
           </li>
@@ -115,7 +117,7 @@ class CheckoutForm extends Component {
               <TextField
                 id="address-field"
                 hintText="123 New Orleans"
-                errorText={this.props.addressErrorText}
+                errorText={addressErrorText}
               />
             </div>
           </li>
@@ -125,7 +127,7 @@ class CheckoutForm extends Component {
               <TextField
                 id="email-field"
                 hintText="test@example.com"
-                errorText={this.props.emailErrorText}
+                errorText={emailErrorText}
               />
             </div>
           </li>
@@ -157,8 +159,8 @@ class CheckoutForm extends Component {
           title="Error"
           actions={actions}
           modal={false}
-          open={this.props.creditCardError}
-          onRequestClose={this.props.setCreditCardError}
+          open={creditCardError}
+          onRequestClose={setCreditCardError}
         >
           Please input a valid credit card.
         </Dialog>

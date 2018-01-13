@@ -4,9 +4,9 @@ import { getTransactionHistory, setSelectedTab } from '../actions';
 
 const mapStateToProps = state => ({
   jwt: state.jwt,
+  transactionHistory: state.transactionHistory,
   selectedTab: state.selectedTab,
   userProfile: state.userProfile,
-  transactionHistory: state.transactionHistory,
 });
 
 const mapDispatchToProps = dispatch => ({

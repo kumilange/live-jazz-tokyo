@@ -1,46 +1,28 @@
 import React, { Component } from 'react';
-import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 import PropTypes from 'prop-types';
+import { Marker } from 'react-google-maps';
 
-import fancyMapStyles from '../resources/fancyMapStyles.json';
+import MyMap from './MyMap';
 import { MarkerIcon } from '../styles/Icons';
 import '../styles/InfoWindow.css';
 
-const DEFAULT_CENTER = { lat: 35.6857933, lng: 139.7501793 };
-
-const MyMap = withGoogleMap((props) => {
-  return (<GoogleMap
-    defaultZoom={14}
-    defaultCenter={DEFAULT_CENTER}
-    defaultOptions={{
-      streetViewControl: false,
-      fullscreenControl: false,
-      mapTypeControl: false,
-      styles: fancyMapStyles,
-    }}
-    center={props.position === undefined ? DEFAULT_CENTER : props.position}
-  >
-    <Marker position={props.position} icon={MarkerIcon} />
-  </GoogleMap>
-  );
-});
-
-class Map extends Component {
+class EventMap extends Component {
   render() {
-    return process.env.npm_lifecycle_event === 'test' ? <div /> : <MyMap
-      position={this.props.position}
-      containerElement={
-        <div style={{ height: '100%' }} />
-      }
-      mapElement={
-        <div style={{ height: '100%' }} />
-      }
-    />;
+    const { position } = this.props;
+    return process.env.npm_lifecycle_event === 'test'
+      ? <div />
+      : <MyMap
+        position={position}
+        containerElement={<div style={{ height: '100%' }} />}
+        mapElement={<div style={{ height: '100%' }} />}
+      >
+        <Marker position={position} icon={MarkerIcon} />
+      </MyMap>;
   }
 }
 
-Map.propTypes = {
+EventMap.propTypes = {
   position: PropTypes.shape().isRequired,
 };
 
-export default Map;
+export default EventMap;

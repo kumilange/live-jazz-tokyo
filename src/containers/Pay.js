@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { SET_CREDIT_CARD_ERROR, SET_NAME_ERROR_TEXT, SET_ADDRESS_ERROR_TEXT, SET_EMAIL_ERROR_TEXT, SET_CHARGE_RESPONSE } from '../config/const';
 import Pay from '../components/Pay';
 
 const mapStateToProps = state => ({
@@ -13,22 +14,22 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   setCreditCardError: () => dispatch({
-    type: 'SET_CREDIT_CARD_ERROR',
+    type: SET_CREDIT_CARD_ERROR,
   }),
   setNameErrorText: nameErrorText => dispatch({
-    type: 'SET_NAME_ERROR_TEXT',
+    type: SET_NAME_ERROR_TEXT,
     nameErrorText,
   }),
   setAddressErrorText: addressErrorText => dispatch({
-    type: 'SET_ADDRESS_ERROR_TEXT',
+    type: SET_ADDRESS_ERROR_TEXT,
     addressErrorText,
   }),
   setEmailErrorText: emailErrorText => dispatch({
-    type: 'SET_EMAIL_ERROR_TEXT',
+    type: SET_EMAIL_ERROR_TEXT,
     emailErrorText,
   }),
   setChargeResponse: chargeResponse => dispatch({
-    type: 'SET_CHARGE_RESPONSE',
+    type: SET_CHARGE_RESPONSE,
     chargeResponse,
   }),
 });

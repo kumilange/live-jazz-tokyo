@@ -9,22 +9,23 @@ class Header extends Component {
     this.props.onComponentDidMount();
   }
   render() {
+    const { userProfile, onLoginButtonClick, onLogoutButtonClick } = this.props;
     return (
       <header className="dark flex">
         <div id="header-inner" className="flex restrict-width">
           <h1 className="flex">
             <Link to="/" className="logo">LiveJazz</Link>
           </h1>
-          { this.props.userProfile
+          { userProfile
             ? <nav className="gnav">
               <ul className="gnav-list flex">
-                <li><Link to={`/user/${this.props.userProfile.id}`} className="gnav-list-link">{ this.props.userProfile.name }</Link></li>
-                <li><Link to={'/'} className="gnav-list-link" onClick={this.props.onLogoutButtonClick}>Logout</Link></li>
+                <li><Link to={`/user/${userProfile.id}`} className="gnav-list-link">{ userProfile.name }</Link></li>
+                <li><Link to={'/'} className="gnav-list-link" onClick={onLogoutButtonClick}>Logout</Link></li>
               </ul>
             </nav>
             : <nav className="gnav">
               <ul className="gnav-list flex">
-                <li><Link to={''} className="gnav-list-link" onClick={this.props.onLoginButtonClick}>
+                <li><Link to={''} className="gnav-list-link" onClick={onLoginButtonClick}>
                   Login with <br /> Facebook</Link></li>
               </ul>
             </nav>

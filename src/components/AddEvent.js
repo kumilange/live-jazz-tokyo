@@ -9,39 +9,39 @@ import '../styles/AddEvent.css';
 
 const DateTimeFormat = global.Intl.DateTimeFormat;
 
-const AddEvent = (props) => {
-  if (!props.jwt) props.history.push('/');
-  const failed = !props.addEventResponse.addSuccess
-    && props.addEventResponse.addSuccess !== undefined;
+const AddEvent = ({ jwt, history, addEventResponse, userProfile, onFormSubmit, onEventNameInput, onArtistInput, onVenueInput, onAddressInput, onPriceInput, onDateInput, onStartTimeInput, onEndTimeInput, addEventFields }) => {
+  if (!jwt) history.push('/');
+  const failed = !addEventResponse.addSuccess
+    && addEventResponse.addSuccess !== undefined;
   return (
     <main id="add-event" className="flex column restrict-width grow">
       <TextField
         className="inputHalf name"
         floatingLabelText="Name"
-        onChange={props.onEventNameInput}
+        onChange={onEventNameInput}
       />
       <TextField
         className="inputHalf artist"
         floatingLabelText="Artist"
-        onChange={props.onArtistInput}
+        onChange={onArtistInput}
       />
       <TextField
         className="inputHalf venue"
         floatingLabelText="Venue"
-        onChange={props.onVenueInput}
+        onChange={onVenueInput}
       />
       <TextField
         className="inputFull address"
         floatingLabelText="Address"
-        onChange={props.onAddressInput}
+        onChange={onAddressInput}
       />
       <div className="colPriceDate">
         <TextField
           className="inputHalf price"
           floatingLabelText="Price"
-          value={props.addEventFields.price}
+          value={addEventFields.price}
           onChange={(event, val) =>
-            props.onPriceInput(event, val, props.addEventFields.price)
+            onPriceInput(event, val, addEventFields.price)
           }
         />
         <DatePicker
@@ -52,7 +52,7 @@ const AddEvent = (props) => {
             month: 'long',
             year: 'numeric',
           }).format}
-          onChange={props.onDateInput}
+          onChange={onDateInput}
         />
       </div>
       <div className="colTime">
@@ -61,14 +61,14 @@ const AddEvent = (props) => {
           floatingLabelText="Opening Time"
           okLabel="OK"
           cancelLabel="Cancel"
-          onChange={props.onStartTimeInput}
+          onChange={onStartTimeInput}
         />
         <TimePicker
           className="inputHalf"
           floatingLabelText="Closing Time"
           okLabel="OK"
           cancelLabel="Cancel"
-          onChange={props.onEndTimeInput}
+          onChange={onEndTimeInput}
         />
       </div>
       <RaisedButton
@@ -76,7 +76,7 @@ const AddEvent = (props) => {
         className="mui-button"
         label="Submit"
         onClick={event =>
-          props.onFormSubmit(event, props.addEventFields, props.userProfile.id, props.history)
+          onFormSubmit(event, addEventFields, userProfile.id, history)
         }
       />
       { failed ? <p>Submit failed!  Check data and try again.</p> : <div /> }

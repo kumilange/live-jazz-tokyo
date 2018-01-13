@@ -51,4 +51,7 @@ const UserLocationIcon = {
   scale: 0.5,
 };
 
-export { CalendarIcon, ClockIcon, YenIcon, PinIcon, UserIcon, CheckIcon, MarkerIcon, UserLocationIcon };
+const svgIconSizeL = { width: '25px', height: '20px' };
+const svgIconSize = { width: '25px', height: '16px' };
+
+export { CalendarIcon, ClockIcon, YenIcon, PinIcon, UserIcon, CheckIcon, MarkerIcon, UserLocationIcon, svgIconSizeL, svgIconSize };
