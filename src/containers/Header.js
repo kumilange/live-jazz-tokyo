@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
-import { addAuthListener, logout } from '../actions';
 import hello from '../config/hello';
+import { addAuthListener, logout } from '../actions';
 import Header from '../components/Header';
 
 const mapStateToProps = state => ({

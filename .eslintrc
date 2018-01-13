@@ -8,7 +8,8 @@
     "arrow-body-style": "off",
     "class-methods-use-this": "off",
     "max-len": "off",
-    "no-useless-escape": "off"
+    "no-useless-escape": "off",
+    "no-alert": "off"
   },
 
   "globals": {
@@ -22,6 +23,7 @@
     "describe": true,
     "navigator": true,
     "URL": true,
-    "fetch": true
+    "fetch": true,
+    "alert": true
   }
 }
