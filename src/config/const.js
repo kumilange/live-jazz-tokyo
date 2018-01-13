@@ -5,7 +5,13 @@ export const FB_AUTH_REDIRECT_URI = process.env.FB_AUTH_REDIRECT_URI || '/';
 /* STRIPE */
 export const STRIPE_API_KEY = process.env.STRIPE_API_KEY || 'pk_test_6pRNASCoBOKtIshFeQd4XMUh';
 
-/* ACTION TYPES */
+/* REACT-GOOGLE-MAP */
+export const DEFAULT_CENTER = {
+  lat: 35.6857933,
+  lng: 139.7501793,
+};
+
+/* REDUX ACTION TYPES */
 // Map
 export const INITIALIZE_EVENT_DATA = 'INITIALIZE_EVENT_DATA';
 export const SET_SELECTED_EVENT = 'SET_SELECTED_EVENT';
