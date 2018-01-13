@@ -8,10 +8,10 @@ import CheckoutForm from './CheckoutForm';
 import { formatPrice } from '../utils/format';
 import '../styles/Pay.css';
 
-const Pay = (props) => {
-  if (!props.jwt) props.history.push('/');
+const Pay = ({ event, jwt, history, userProfile, nameErrorText, addressErrorText, emailErrorText, creditCardError, setNameErrorText, setAddressErrorText, setEmailErrorText, setChargeResponse, setCreditCardError }) => {
+  if (!jwt) history.push('/');
   return (
-    props.event && props.userProfile ?
+    event && userProfile ?
       <main className="restrict-width flex column center">
         <Paper className="payment-paper">
           <div className="flex payment-table-row">
@@ -21,32 +21,32 @@ const Pay = (props) => {
           </div>
           <Divider style={{ marginTop: 10, marginBottom: 10 }} />
           <div className="flex payment-table-row">
-            <div className="payment-table-cell1">{props.event.name}</div>
+            <div className="payment-table-cell1">{event.name}</div>
             <div className="payment-table-cell2">{'x1'}</div>
-            <div className="payment-table-cell3">￥{formatPrice(props.event.price)}</div>
+            <div className="payment-table-cell3">￥{formatPrice(event.price)}</div>
           </div>
           <Divider style={{ marginTop: 10, marginBottom: 10, height: 1, backgroundColor: 'black' }} />
           <div className="flex payment-table-row">
             <div className="payment-table-cell1">{'Total:'}</div>
             <div className="payment-table-cell2" />
-            <div className="payment-table-cell3">￥{formatPrice(props.event.price)}</div>
+            <div className="payment-table-cell3">￥{formatPrice(event.price)}</div>
           </div>
         </Paper>
         <Elements>
           <CheckoutForm
-            jwt={props.jwt}
-            userProfile={props.userProfile}
-            eventID={props.event.id}
-            creditCardError={props.creditCardError}
-            setCreditCardError={props.setCreditCardError}
-            nameErrorText={props.nameErrorText}
-            addressErrorText={props.addressErrorText}
-            emailErrorText={props.emailErrorText}
-            setNameErrorText={props.setNameErrorText}
-            setAddressErrorText={props.setAddressErrorText}
-            setEmailErrorText={props.setEmailErrorText}
-            setChargeResponse={props.setChargeResponse}
-            history={props.history}
+            jwt={jwt}
+            userProfile={userProfile}
+            eventID={event.id}
+            creditCardError={creditCardError}
+            setCreditCardError={setCreditCardError}
+            nameErrorText={nameErrorText}
+            addressErrorText={addressErrorText}
+            emailErrorText={emailErrorText}
+            setNameErrorText={setNameErrorText}
+            setAddressErrorText={setAddressErrorText}
+            setEmailErrorText={setEmailErrorText}
+            setChargeResponse={setChargeResponse}
+            history={history}
           />
         </Elements>
       </main> : null

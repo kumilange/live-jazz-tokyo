@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { CheckIcon } from '../styles/Icons';
 import '../styles/Confirmation.css';
 
-const Confirmation = (props) => {
-  if (!props.jwt) props.history.push('/');
+const Confirmation = ({ jwt, history, chargeResponse }) => {
+  if (!jwt) history.push('/');
   return (
     <main id="confirmation" className="restrict-width">
       <div className="flex center">
@@ -13,9 +13,9 @@ const Confirmation = (props) => {
         <h2 className="confirmationTtl">Your reservation is complete!</h2>
         <div className="grow" />
       </div>
-      {props.chargeResponse ?
+      {chargeResponse ?
         <p className="note">
-          {`Please save your order number: ${props.chargeResponse.order_id}`}
+          {`Please save your order number: ${chargeResponse.order_id}`}
         </p> :
         null}
       <Link to={'/'} className="link">Go back to top</Link>

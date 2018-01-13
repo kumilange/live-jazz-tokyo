@@ -6,9 +6,9 @@ import MyInfoWindow from './MyInfoWindow';
 import { MarkerIcon } from '../styles/Icons';
 import '../styles/InfoWindow.css';
 
-const MyMarkerList = props => (
+const MyMarkerList = ({ events, selectedEvent, onMarkerClick, onInfoWindowClose }) => (
   <div id="markerList">
-    {props.events.map((event) => {
+    {events.map((event) => {
       const position = {
         lat: event.lat,
         lng: event.lng,
@@ -18,12 +18,12 @@ const MyMarkerList = props => (
         key={event.id}
         title={event.event}
         icon={MarkerIcon}
-        onClick={() => props.onMarkerClick(event)}
+        onClick={() => onMarkerClick(event)}
       >
         <MyInfoWindow
           event={event}
-          selectedEvent={props.selectedEvent}
-          onInfoWindowClose={props.onInfoWindowClose}
+          selectedEvent={selectedEvent}
+          onInfoWindowClose={onInfoWindowClose}
         />
       </Marker>);
     })}
@@ -33,6 +33,7 @@ const MyMarkerList = props => (
 MyMarkerList.propTypes = {
   events: PropTypes.arrayOf(PropTypes.object).isRequired,
   selectedEvent: PropTypes.shape().isRequired,
+  onMarkerClick: PropTypes.func.isRequired,
   onInfoWindowClose: PropTypes.func.isRequired,
 };
 

@@ -19,14 +19,15 @@ class Map extends Component {
   }
 
   render() {
+    const { events, selectedEvent, userLocation, onMarkerClick, onInfoWindowClose } = this.props;
     return process.env.npm_lifecycle_event === 'test'
       ? <div />
       : <MyMap
-        events={this.props.events}
-        selectedEvent={this.props.selectedEvent}
-        onMarkerClick={this.props.onMarkerClick}
-        onInfoWindowClose={this.props.onInfoWindowClose}
-        userLocation={this.props.userLocation}
+        events={events}
+        selectedEvent={selectedEvent}
+        onMarkerClick={onMarkerClick}
+        onInfoWindowClose={onInfoWindowClose}
+        userLocation={userLocation}
         containerElement={<div style={{ height: '100%' }} />}
         mapElement={<div style={{ height: '100%' }} />}
       />;

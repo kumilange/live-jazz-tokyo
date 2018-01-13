@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 import PropTypes from 'prop-types';
+import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 
 import fancyMapStyles from '../resources/fancyMapStyles.json';
 import { MarkerIcon } from '../styles/Icons';
@@ -8,7 +8,7 @@ import '../styles/InfoWindow.css';
 
 const DEFAULT_CENTER = { lat: 35.6857933, lng: 139.7501793 };
 
-const MyMap = withGoogleMap((props) => {
+const MyMap = withGoogleMap(({ position }) => {
   return (<GoogleMap
     defaultZoom={14}
     defaultCenter={DEFAULT_CENTER}
@@ -18,9 +18,9 @@ const MyMap = withGoogleMap((props) => {
       mapTypeControl: false,
       styles: fancyMapStyles,
     }}
-    center={props.position === undefined ? DEFAULT_CENTER : props.position}
+    center={position === undefined ? DEFAULT_CENTER : position}
   >
-    <Marker position={props.position} icon={MarkerIcon} />
+    <Marker position={position} icon={MarkerIcon} />
   </GoogleMap>
   );
 });
