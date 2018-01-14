@@ -7,7 +7,7 @@ import { formatPrice } from '../utils/format';
 import CheckoutForm from './CheckoutForm';
 import '../styles/Pay.css';
 
-const Pay = ({ event, jwt, history, userProfile, nameErrorText, addressErrorText, emailErrorText, creditCardError, setNameErrorText, setAddressErrorText, setEmailErrorText, setChargeResponse, setCreditCardError }) => {
+const Pay = ({ event, jwt, history, userProfile, setChargeResponse }) => {
   if (!jwt) history.push('/');
   return (
     event && userProfile ?
@@ -36,14 +36,6 @@ const Pay = ({ event, jwt, history, userProfile, nameErrorText, addressErrorText
             jwt={jwt}
             userProfile={userProfile}
             eventId={event.id}
-            creditCardError={creditCardError}
-            setCreditCardError={setCreditCardError}
-            nameErrorText={nameErrorText}
-            addressErrorText={addressErrorText}
-            emailErrorText={emailErrorText}
-            setNameErrorText={setNameErrorText}
-            setAddressErrorText={setAddressErrorText}
-            setEmailErrorText={setEmailErrorText}
             setChargeResponse={setChargeResponse}
             history={history}
           />
@@ -57,15 +49,7 @@ Pay.propTypes = {
   jwt: PropTypes.string,
   history: PropTypes.shape().isRequired,
   userProfile: PropTypes.shape(),
-  nameErrorText: PropTypes.string.isRequired,
-  addressErrorText: PropTypes.string.isRequired,
-  emailErrorText: PropTypes.string.isRequired,
-  creditCardError: PropTypes.bool.isRequired,
-  setNameErrorText: PropTypes.func.isRequired,
-  setAddressErrorText: PropTypes.func.isRequired,
-  setEmailErrorText: PropTypes.func.isRequired,
   setChargeResponse: PropTypes.func.isRequired,
-  setCreditCardError: PropTypes.func.isRequired,
 };
 
 Pay.defaultProps = {

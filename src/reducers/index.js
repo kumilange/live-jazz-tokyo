@@ -1,4 +1,5 @@
-import { INITIALIZE_EVENT_DATA, SET_SELECTED_EVENT, CLEAR_SELECTED_EVENT, SET_USER_LOCATION, SET_CHARGE_RESPONSE, SET_EVENT_NAME_FIELD, SET_ARTIST_FIELD, SET_VENUE_FIELD, SET_ADDRESS_FIELD, SET_PRICE_FIELD, SET_DATE_FIELD, SET_START_TIME_FIELD, SET_END_TIME_FIELD, SET_ADD_EVENT_RESPONSE, SET_SELECTED_TAB, SET_ORDER_HISTORY, SET_EVENT_DETAILS, SET_USER_PROFILE, CLEAR_USER_PROFILE, SET_JWT, SHOW_MAP, SET_CREDIT_CARD_ERROR, SET_NAME_ERROR_TEXT, SET_ADDRESS_ERROR_TEXT, SET_EMAIL_ERROR_TEXT } from '../config/const';
+import {
+  INITIALIZE_EVENT_DATA, SET_SELECTED_EVENT, CLEAR_SELECTED_EVENT, SET_USER_LOCATION, SET_CHARGE_RESPONSE, SET_EVENT_NAME_FIELD, SET_ARTIST_FIELD, SET_VENUE_FIELD, SET_ADDRESS_FIELD, SET_PRICE_FIELD, SET_DATE_FIELD, SET_START_TIME_FIELD, SET_END_TIME_FIELD, SET_ADD_EVENT_RESPONSE, SET_SELECTED_TAB, SET_ORDER_HISTORY, SET_EVENT_DETAILS, SET_USER_PROFILE, CLEAR_USER_PROFILE, SET_JWT, SHOW_MAP, SET_CREDIT_CARD_ERROR } from '../config/const';
 
 const initialState = {
   events: [],
@@ -23,9 +24,6 @@ const initialState = {
   },
   selectedTab: 'profile',
   creditCardError: false,
-  nameErrorText: '',
-  addressErrorText: '',
-  emailErrorText: '',
 };
 
 const reducer = (state = initialState, action) => {
@@ -109,15 +107,6 @@ const reducer = (state = initialState, action) => {
       break;
     case SET_CREDIT_CARD_ERROR:
       newState = Object.assign({}, state, { creditCardError: !state.creditCardError });
-      break;
-    case SET_NAME_ERROR_TEXT:
-      newState = Object.assign({}, state, { nameErrorText: action.nameErrorText });
-      break;
-    case SET_ADDRESS_ERROR_TEXT:
-      newState = Object.assign({}, state, { addressErrorText: action.addressErrorText });
-      break;
-    case SET_EMAIL_ERROR_TEXT:
-      newState = Object.assign({}, state, { emailErrorText: action.emailErrorText });
       break;
     case SET_JWT:
       newState = Object.assign({}, state, { jwt: action.jwt });

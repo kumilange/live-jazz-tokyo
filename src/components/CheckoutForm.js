@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { injectStripe, CardNumberElement, CardExpiryElement, CardCVCElement } from 'react-stripe-elements';
 import { TextField, RaisedButton, Dialog } from 'material-ui';
 
-const styleProps = {
+const stripeStyle = {
   base: {
     color: 'black',
     '::placeholder': {
-      color: '#ABAB9A',
+      color: '#AAAC98',
     },
     fontSize: '16px',
     lineHeight: '24px',
@@ -20,79 +20,97 @@ const styleProps = {
   },
 };
 // eslint-disable-next-line
-const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 class CheckoutForm extends Component {
+  constructor() {
+    super();
+    this.state = {
+      nameErrorText: '',
+      addressErrorText: '',
+      emailErrorText: '',
+      creditCardError: false,
+    };
+  }
+
   componentDidMount() {
+    this.setCreditCardError = this.setCreditCardError.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleSubmit(event) {
-    const { stripe, eventId, jwt, history, setNameErrorText, setAddressErrorText, setEmailErrorText, setChargeResponse, setCreditCardError } = this.props;
-    event.preventDefault();
 
+  setCreditCardError() {
+    this.setState({ creditCardError: !this.state.creditCardError });
+  }
+
+  validateCardHolder() {
     let error = false;
     if (document.getElementById('card-holder-field').value === '') {
-      setNameErrorText('Card holder name is required');
+      this.setState({ nameErrorText: 'Card holder name is required' });
       error = true;
     } else {
-      setNameErrorText('');
+      this.setState({ nameErrorText: '' });
     }
     if (document.getElementById('address-field').value === '') {
-      setAddressErrorText('Billing address is required');
+      this.setState({ addressErrorText: 'Billing address is required' });
       error = true;
     } else {
-      setAddressErrorText('');
+      this.setState({ addressErrorText: '' });
     }
     if (document.getElementById('email-field').value === '') {
-      setEmailErrorText('E-mail address is required');
+      this.setState({ emailErrorText: 'E-mail address is required' });
       error = true;
-    } else if (!emailRegex.test(document.getElementById('email-field').value)) {
-      setEmailErrorText('E-mail address is not valid');
+    } else if (!EMAIL_REGEX.test(document.getElementById('email-field').value)) {
+      this.setState({ emailErrorText: 'E-mail address is not valid' });
       error = true;
     } else {
-      setEmailErrorText('');
+      this.setState({ emailErrorText: '' });
     }
+    return error;
+  }
 
+  async handleStripeTransaction() {
+    const { stripe, eventId, jwt, history, setChargeResponse } = this.props;
+    const resToken = await stripe.createToken({
+      name: document.getElementById('card-holder-field').value,
+    });
+    const stripeToken = resToken.token;
+
+    if (!stripeToken) {
+      this.setCreditCardError();
+      return;
+    }
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Bearer', jwt);
+    const res = await (await fetch('/api/charge', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({ stripeToken, eventId }),
+    })).json();
+
+    if (res.OK) {
+      setChargeResponse(res);
+      history.push('/confirmation');
+    } else {
+      this.setCreditCardError();
+    }
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const error = this.validateCardHolder();
     if (!error) {
-      stripe.createToken({
-        name: document.getElementById('card-holder-field').value,
-      }).then(async (response) => {
-        const stripeToken = response.token;
-
-        if (stripeToken) {
-          const headers = new Headers();
-          headers.append('Content-Type', 'application/json');
-          headers.append('Bearer', jwt);
-
-          const res = await (await fetch('/api/charge', {
-            method: 'POST',
-            headers,
-            body: JSON.stringify({
-              stripeToken,
-              eventId,
-            }),
-          })).json();
-
-          if (res.OK) {
-            setChargeResponse(res);
-            history.push('/confirmation');
-          } else {
-            setCreditCardError();
-          }
-        } else {
-          setCreditCardError();
-        }
-      });
+      this.handleStripeTransaction();
     }
   }
 
   render() {
-    const { nameErrorText, addressErrorText, emailErrorText, creditCardError, setCreditCardError } = this.props;
+    const { nameErrorText, addressErrorText, emailErrorText, creditCardError } = this.state;
     const actions = [
       <RaisedButton
         primary
         label="OK"
-        onClick={setCreditCardError}
+        onClick={this.setCreditCardError}
       />,
     ];
 
@@ -133,7 +151,7 @@ class CheckoutForm extends Component {
             <p className="listTtl">Card Number:</p>
             <div className="listItem">
               <div className="underline">
-                <CardNumberElement style={styleProps} />
+                <CardNumberElement style={stripeStyle} />
               </div>
             </div>
           </li>
@@ -141,13 +159,13 @@ class CheckoutForm extends Component {
             <p className="listTtl">Expiry Date:</p>
             <div id="expiry-date" className="listItem">
               <div className="underline">
-                <CardExpiryElement style={styleProps} />
+                <CardExpiryElement style={stripeStyle} />
               </div>
             </div>
             <p id="cvc">CVC:</p>
             <div className="listItem">
               <div className="underline">
-                <CardCVCElement style={styleProps} />
+                <CardCVCElement style={stripeStyle} />
               </div>
             </div>
           </li>
@@ -158,7 +176,7 @@ class CheckoutForm extends Component {
           actions={actions}
           modal={false}
           open={creditCardError}
-          onRequestClose={setCreditCardError}
+          onRequestClose={this.setCreditCardError}
         >
           Please input a valid credit card.
         </Dialog>
@@ -174,15 +192,7 @@ CheckoutForm.propTypes = {
   eventId: PropTypes.number.isRequired,
   jwt: PropTypes.string.isRequired,
   history: PropTypes.shape().isRequired,
-  nameErrorText: PropTypes.string.isRequired,
-  addressErrorText: PropTypes.string.isRequired,
-  emailErrorText: PropTypes.string.isRequired,
-  creditCardError: PropTypes.bool.isRequired,
-  setNameErrorText: PropTypes.func.isRequired,
-  setAddressErrorText: PropTypes.func.isRequired,
-  setEmailErrorText: PropTypes.func.isRequired,
   setChargeResponse: PropTypes.func.isRequired,
-  setCreditCardError: PropTypes.func.isRequired,
 };
 
 export default injectStripe(CheckoutForm);

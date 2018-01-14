@@ -65,7 +65,6 @@ main {
 App.js
 -------------------------------------------------------------------------------*/
 #app {
-  /* 50px: footer height*/
   height: calc(100% - 50px);
   padding-top: 50px;
   padding-bottom: 0;
