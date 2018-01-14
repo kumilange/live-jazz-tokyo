@@ -11,17 +11,16 @@ const OrderHistory = props => (
         <th>Title</th>
         <th>Amount</th>
       </tr>
-      {
-        props.orders.map((order) => {
-          return (
-            <tr key={order.id}>
-              <td> { order.id } </td>
-              <td> <Link className="link" to={`/event/${order.eventId}`}>{ order.title }</Link></td>
-              <td> ￥{ formatPrice(order.amount) } </td>
-            </tr>
-          );
-        })
-      }
+      { props.orders.map((order) => {
+        const { id, eventId, title, amount } = order;
+        return (
+          <tr key={id}>
+            <td> { id } </td>
+            <td> <Link className="link" to={`/event/${eventId}`}>{ title }</Link></td>
+            <td> ￥{ formatPrice(amount) } </td>
+          </tr>
+        );
+      })}
     </tbody>
   </table>
 );

@@ -17,52 +17,41 @@ class User extends Component {
   }
 
   render() {
-    const { jwt, history, userProfile, selectedTab, transactionHistory, onTabClick } = this.props;
-    if (!jwt) history.push('/');
+    const { history, userProfile, selectedTab, orders, onTabClick } = this.props;
+    if (!userProfile) history.push('/');
     return (
       <main className="flex column center">
         <div id="user" className="flex restrict-width">
-          { userProfile ?
-            [
-              <div key="1" id="profile-left" className="flex column horiCenter">
-                <img id="profile-picture" src="/default-user.jpg" alt="profile" />
-                <Link to={'/addevent'}>
-                  <RaisedButton
-                    primary
-                    className="mui-button"
-                    label="Create Event"
-                    style={{ width: '100%', marginTop: '10px' }}
-                  />
-                </Link>
-              </div>,
-              <div key="2" className="grow">
-                <div id="tabs" className="flex">
-                  <div
-                    className={selectedTab === 'profile' ? 'tab selected' : 'tab'}
-                    onClick={() => onTabClick('profile')}
-                    role="presentation"
-                  >
-                    Profile
-                  </div>
-                  <div
-                    className={selectedTab === 'orderHistory' ? 'tab selected' : 'tab'}
-                    onClick={() => onTabClick('orderHistory')}
-                    role="presentation"
-                  >
-                    Order History
-                  </div>
-                </div>
-                <Divider />
-                { selectedTab === 'profile' ?
-                  <Profile userProfile={userProfile} /> :
-                  <OrderHistory orders={transactionHistory} />
-                }
-              </div>,
-            ] :
-            <div>
-              Please log in!
+          <div key="1" id="profile-left" className="flex column horiCenter">
+            <img id="profile-picture" src="/default-user.jpg" alt="profile" />
+            <Link to={'/addevent'}>
+              <RaisedButton
+                primary
+                className="mui-button"
+                label="Create Event"
+                style={{ width: '100%', marginTop: '10px' }}
+              />
+            </Link>
+          </div>
+          <div key="2" className="grow">
+            <div id="tabs" className="flex">
+              <div
+                className={selectedTab === 'profile' ? 'tab selected' : 'tab'}
+                onClick={() => onTabClick('profile')}
+                role="presentation"
+              >Profile</div>
+              <div
+                className={selectedTab === 'orderHistory' ? 'tab selected' : 'tab'}
+                onClick={() => onTabClick('orderHistory')}
+                role="presentation"
+              >Order History</div>
             </div>
-          }
+            <Divider />
+            { selectedTab === 'profile' ?
+              <Profile userProfile={userProfile} /> :
+              <OrderHistory orders={orders} />
+            }
+          </div>
         </div>
         <div className="flex grow" />
       </main>
@@ -74,7 +63,7 @@ User.propTypes = {
   jwt: PropTypes.string,
   userProfile: PropTypes.shape(),
   selectedTab: PropTypes.string.isRequired,
-  transactionHistory: PropTypes.arrayOf(Object),
+  orders: PropTypes.arrayOf(Object),
   onComponentDidMount: PropTypes.func.isRequired,
   onTabClick: PropTypes.func.isRequired,
   history: PropTypes.shape(),
@@ -82,7 +71,7 @@ User.propTypes = {
 
 User.defaultProps = {
   jwt: undefined,
-  transactionHistory: [],
+  orders: [],
   userProfile: undefined,
   history: undefined,
 };

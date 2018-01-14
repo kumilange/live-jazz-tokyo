@@ -1,4 +1,4 @@
-import { INITIALIZE_EVENT_DATA, SET_SELECTED_EVENT, CLEAR_SELECTED_EVENT, SET_USER_LOCATION, SET_CHARGE_RESPONSE, SET_EVENT_NAME_FIELD, SET_ARTIST_FIELD, SET_VENUE_FIELD, SET_ADDRESS_FIELD, SET_PRICE_FIELD, SET_DATE_FIELD, SET_START_TIME_FIELD, SET_END_TIME_FIELD, SET_ADD_EVENT_RESPONSE, SET_SELECTED_TAB, SET_TRANSACTION_HISTORY, SET_EVENT_DETAILS, SET_USER_PROFILE, CLEAR_USER_PROFILE, SET_JWT, SHOW_MAP, SET_CREDIT_CARD_ERROR, SET_NAME_ERROR_TEXT, SET_ADDRESS_ERROR_TEXT, SET_EMAIL_ERROR_TEXT } from '../config/const';
+import { INITIALIZE_EVENT_DATA, SET_SELECTED_EVENT, CLEAR_SELECTED_EVENT, SET_USER_LOCATION, SET_CHARGE_RESPONSE, SET_EVENT_NAME_FIELD, SET_ARTIST_FIELD, SET_VENUE_FIELD, SET_ADDRESS_FIELD, SET_PRICE_FIELD, SET_DATE_FIELD, SET_START_TIME_FIELD, SET_END_TIME_FIELD, SET_ADD_EVENT_RESPONSE, SET_SELECTED_TAB, SET_ORDER_HISTORY, SET_EVENT_DETAILS, SET_USER_PROFILE, CLEAR_USER_PROFILE, SET_JWT, SHOW_MAP, SET_CREDIT_CARD_ERROR, SET_NAME_ERROR_TEXT, SET_ADDRESS_ERROR_TEXT, SET_EMAIL_ERROR_TEXT } from '../config/const';
 
 const initialState = {
   events: [],
@@ -10,7 +10,7 @@ const initialState = {
   addEventResponse: undefined,
   userProfile: undefined,
   jwt: undefined,
-  transactionHistory: [],
+  orders: [],
   addEventFields: {
     eventName: '',
     artistName: '',
@@ -98,14 +98,14 @@ const reducer = (state = initialState, action) => {
       newState = Object.assign({}, state, {
         jwt: undefined,
         userProfile: undefined,
-        transactionHistory: [],
+        orders: [],
       });
       break;
     case SET_SELECTED_TAB:
       newState = Object.assign({}, state, { selectedTab: action.selectedTab });
       break;
-    case SET_TRANSACTION_HISTORY:
-      newState = Object.assign({}, state, { transactionHistory: action.transactions });
+    case SET_ORDER_HISTORY:
+      newState = Object.assign({}, state, { orders: action.orders });
       break;
     case SET_CREDIT_CARD_ERROR:
       newState = Object.assign({}, state, { creditCardError: !state.creditCardError });

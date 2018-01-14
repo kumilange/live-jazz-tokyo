@@ -1,6 +1,6 @@
 import querystring from 'querystring';
 import hello from '../config/hello';
-import { INITIALIZE_EVENT_DATA, SET_SELECTED_EVENT, CLEAR_SELECTED_EVENT, SET_USER_LOCATION, SET_CHARGE_RESPONSE, SET_EVENT_NAME_FIELD, SET_ARTIST_FIELD, SET_VENUE_FIELD, SET_ADDRESS_FIELD, SET_PRICE_FIELD, SET_DATE_FIELD, SET_START_TIME_FIELD, SET_END_TIME_FIELD, SET_ADD_EVENT_RESPONSE, SET_SELECTED_TAB, SET_TRANSACTION_HISTORY, SET_EVENT_DETAILS, SET_USER_PROFILE, CLEAR_USER_PROFILE, SET_JWT } from '../config/const';
+import { INITIALIZE_EVENT_DATA, SET_SELECTED_EVENT, CLEAR_SELECTED_EVENT, SET_USER_LOCATION, SET_CHARGE_RESPONSE, SET_EVENT_NAME_FIELD, SET_ARTIST_FIELD, SET_VENUE_FIELD, SET_ADDRESS_FIELD, SET_PRICE_FIELD, SET_DATE_FIELD, SET_START_TIME_FIELD, SET_END_TIME_FIELD, SET_ADD_EVENT_RESPONSE, SET_SELECTED_TAB, SET_ORDER_HISTORY, SET_EVENT_DETAILS, SET_USER_PROFILE, CLEAR_USER_PROFILE, SET_JWT } from '../config/const';
 
 // Map
 export function initializeEvents() {
@@ -149,7 +149,7 @@ export function setSelectedTab(selectedTab) {
     selectedTab,
   };
 }
-export function getTransactionHistory(jwtString) {
+export function getOrderHistory(jwtString) {
   return async (dispatch) => {
     try {
       const headers = new Headers();
@@ -161,8 +161,8 @@ export function getTransactionHistory(jwtString) {
       })).json();
 
       dispatch({
-        type: SET_TRANSACTION_HISTORY,
-        transactions: res,
+        type: SET_ORDER_HISTORY,
+        orders: res,
       });
     } catch (err) {
       console.error(err);
