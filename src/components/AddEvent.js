@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DatePicker from 'material-ui/DatePicker';
-import TimePicker from 'material-ui/TimePicker';
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
+import { DatePicker, TimePicker, TextField, RaisedButton } from 'material-ui';
 
 import '../styles/AddEvent.css';
 

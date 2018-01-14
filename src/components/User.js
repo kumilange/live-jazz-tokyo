@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Divider from 'material-ui/Divider';
-import RaisedButton from 'material-ui/RaisedButton';
+import { Divider, RaisedButton } from 'material-ui';
 
 import Profile from './Profile';
 import OrderHistory from './OrderHistory';

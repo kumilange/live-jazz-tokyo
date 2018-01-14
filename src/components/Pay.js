@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Elements } from 'react-stripe-elements';
-import Paper from 'material-ui/Paper';
-import Divider from 'material-ui/Divider';
+import { Paper, Divider } from 'material-ui';
 
-import CheckoutForm from './CheckoutForm';
 import { formatPrice } from '../utils/format';
+import CheckoutForm from './CheckoutForm';
 import '../styles/Pay.css';
 
 const Pay = ({ event, jwt, history, userProfile, nameErrorText, addressErrorText, emailErrorText, creditCardError, setNameErrorText, setAddressErrorText, setEmailErrorText, setChargeResponse, setCreditCardError }) => {

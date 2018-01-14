@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+
 import { SET_CREDIT_CARD_ERROR, SET_NAME_ERROR_TEXT, SET_ADDRESS_ERROR_TEXT, SET_EMAIL_ERROR_TEXT, SET_CHARGE_RESPONSE } from '../config/const';
 import Pay from '../components/Pay';
 
