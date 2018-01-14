@@ -11,8 +11,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onComponentDidMount: (eventID) => {
-    dispatch(getEventDetails(eventID));
+  onComponentDidMount: (eventId) => {
+    dispatch(getEventDetails(eventId));
   },
   toggleMap: () => {
     dispatch({ type: SHOW_MAP });

@@ -108,7 +108,7 @@ export function addNewEvent(event, userId, history) {
       });
 
       if (res.addSuccess) {
-        history.push(`/event/${res.eventID}`);
+        history.push(`/event/${res.eventId}`);
       } else {
         history.push('/');
       }
@@ -119,10 +119,10 @@ export function addNewEvent(event, userId, history) {
 }
 
 // Event
-export function getEventDetails(eventID) {
+export function getEventDetails(eventId) {
   return async (dispatch) => {
     try {
-      const event = await (await fetch(`/api/events/${eventID}`)).json();
+      const event = await (await fetch(`/api/events/${eventId}`)).json();
 
       dispatch({
         type: SET_EVENT_DETAILS,

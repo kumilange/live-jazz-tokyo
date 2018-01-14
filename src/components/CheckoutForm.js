@@ -29,7 +29,7 @@ class CheckoutForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleSubmit(event) {
-    const { stripe, eventID, jwt, history, setNameErrorText, setAddressErrorText, setEmailErrorText, setChargeResponse, setCreditCardError } = this.props;
+    const { stripe, eventId, jwt, history, setNameErrorText, setAddressErrorText, setEmailErrorText, setChargeResponse, setCreditCardError } = this.props;
     event.preventDefault();
 
     let error = false;
@@ -71,7 +71,7 @@ class CheckoutForm extends Component {
             headers,
             body: JSON.stringify({
               stripeToken,
-              eventID,
+              eventId,
             }),
           })).json();
 
@@ -173,7 +173,7 @@ CheckoutForm.propTypes = {
   stripe: PropTypes.shape({
     createToken: PropTypes.func.isRequired,
   }).isRequired,
-  eventID: PropTypes.number.isRequired,
+  eventId: PropTypes.number.isRequired,
   jwt: PropTypes.string.isRequired,
   history: PropTypes.shape().isRequired,
   nameErrorText: PropTypes.string.isRequired,

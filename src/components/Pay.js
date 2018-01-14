@@ -36,7 +36,7 @@ const Pay = ({ event, jwt, history, userProfile, nameErrorText, addressErrorText
           <CheckoutForm
             jwt={jwt}
             userProfile={userProfile}
-            eventID={event.id}
+            eventId={event.id}
             creditCardError={creditCardError}
             setCreditCardError={setCreditCardError}
             nameErrorText={nameErrorText}
