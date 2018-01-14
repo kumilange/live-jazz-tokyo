@@ -9,14 +9,12 @@ import '../styles/InfoWindow.css';
 const MyMarkerList = ({ events, selectedEvent, onMarkerClick, onInfoWindowClose }) => (
   <div id="markerList">
     {events.map((event) => {
-      const position = {
-        lat: event.lat,
-        lng: event.lng,
-      };
+      const { lat, lng, id, name } = event;
+      const position = { lat, lng };
       return (<Marker
         position={position}
-        key={event.id}
-        title={event.event}
+        key={id}
+        title={name}
         icon={MarkerIcon}
         onClick={() => onMarkerClick(event)}
       >

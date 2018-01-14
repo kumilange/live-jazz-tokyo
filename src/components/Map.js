@@ -23,19 +23,19 @@ class Map extends Component {
 
   render() {
     const { events, selectedEvent, userLocation, onMarkerClick, onInfoWindowClose } = this.props;
-    const commonProps = { events, selectedEvent, onMarkerClick, onInfoWindowClose };
-
     return process.env.npm_lifecycle_event === 'test'
       ? <div />
       : <MyMap
-        {...commonProps}
         position={userLocation}
         containerElement={<div style={{ height: '100%' }} />}
         mapElement={<div style={{ height: '100%' }} />}
       >
         <div className="mapLable">On Tonight</div>
         <MyMarkerList
-          {...commonProps}
+          events={events}
+          selectedEvent={selectedEvent}
+          onMarkerClick={onMarkerClick}
+          onInfoWindowClose={onInfoWindowClose}
         />
         {userLocation.lat ?
           <Marker

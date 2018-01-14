@@ -8,42 +8,42 @@ import { formatPrice, formatDate, formatTime } from '../utils/format';
 import { CalendarIcon, ClockIcon, YenIcon, PinIcon, UserIcon, svgIconSize, svgIconSizeL } from '../styles/Icons';
 import '../styles/InfoWindow.css';
 
-const MyInfoWindow = ({ event, selectedEvent, onInfoWindowClose }) => (<div id="infowindow">
-  { selectedEvent.id === event.id ?
+const MyInfoWindow = ({ event: { id, name, artist, venue, start, end, price }, selectedEvent, onInfoWindowClose }) => (<div id="infowindow">
+  { selectedEvent.id === id ?
     <InfoWindow
       className="infoWindow"
       onCloseClick={onInfoWindowClose}
     >
       <div className="infoWindowInner">
-        <Link to={`/event/${event.id}`}>
-          <h2 className="infoWindowHeading2">{event.name}</h2>
+        <Link to={`/event/${id}`}>
+          <h2 className="infoWindowHeading2">{name}</h2>
           <Divider style={{ marginTop: 10, marginBottom: 10 }} />
           <div className="flex vertCenter infoItemWrapper">
             <UserIcon style={svgIconSizeL} />
-            <h3 className="infoWindowHeading3">{event.artist}</h3>
+            <h3 className="infoWindowHeading3">{artist}</h3>
           </div>
           <div className="flex vertCenter infoItemWrapper">
             <PinIcon style={svgIconSize} />
-            <p className="infoWindowSubTtl">{event.venue}</p>
+            <p className="infoWindowSubTtl">{venue}</p>
           </div>
           <div className="flex">
             <div className="infoItemWrapper iconAdj">
               <div className="flex vertCenter">
                 <CalendarIcon style={svgIconSize} />
-                <p className="infoWindowSubTtl">{formatDate(event.start)}</p>
+                <p className="infoWindowSubTtl">{formatDate(start)}</p>
               </div>
             </div>
             <div className="infoItemWrapper">
               <div className="flex vertCenter">
                 <ClockIcon style={svgIconSize} />
-                <p className="infoWindowSubTtl">{formatTime(event.start)}-{formatTime(event.end)}
+                <p className="infoWindowSubTtl">{formatTime(start)}-{formatTime(end)}
                 </p>
               </div>
             </div>
           </div>
           <div className="flex vertCenter infoItemWrapper">
             <YenIcon style={svgIconSize} viewBox="4 4 19 19" />
-            <p className="infoWindowSubTtl">{formatPrice(event.price)} </p>
+            <p className="infoWindowSubTtl">{formatPrice(price)} </p>
           </div>
         </Link>
       </div>
