@@ -17,63 +17,86 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  let newState;
   switch (action.type) {
     case '@@redux/INIT':
-      newState = state;
-      break;
+      return state;
     case INITIALIZE_EVENT_DATA:
-      newState = Object.assign({}, state, { events: action.data });
-      break;
+      return {
+        ...state,
+        events: action.data,
+      };
     case SET_SELECTED_EVENT:
-      newState = Object.assign({}, state, { selectedEvent: action.event });
-      break;
+      return {
+        ...state,
+        selectedEvent: action.event,
+      };
     case CLEAR_SELECTED_EVENT:
-      newState = Object.assign({}, state, { selectedEvent: {} });
-      break;
+      return {
+        ...state,
+        selectedEvent: {},
+      };
     case SET_EVENT_DETAILS:
-      newState = Object.assign({}, state, { eventDetails: action.event });
-      break;
+      return {
+        ...state,
+        eventDetails: action.event,
+      };
     case SET_USER_LOCATION:
-      newState = Object.assign({}, state, { userLocation: action.position });
-      break;
+      return {
+        ...state,
+        userLocation: action.position,
+      };
     case SET_CHARGE_RESPONSE:
-      newState = Object.assign({}, state, { chargeResponse: action.chargeResponse });
-      break;
+      return {
+        ...state,
+        chargeResponse: action.chargeResponse,
+      };
     case SET_ADD_EVENT_RESPONSE:
-      newState = Object.assign({}, state, { addEventResponse: action.addEventResponse });
-      break;
+      return {
+        ...state,
+        addEventResponse: action.addEventResponse,
+      };
     case SHOW_MAP:
-      newState = Object.assign({}, state, { showMap: !state.showMap });
-      break;
+      return {
+        ...state,
+        showMap: !state.showMap,
+      };
     case SET_USER_PROFILE:
-      newState = Object.assign({}, state, { userProfile: action.userProfile });
-      break;
+      return {
+        ...state,
+        userProfile: action.userProfile,
+      };
     case CLEAR_USER_PROFILE:
-      newState = Object.assign({}, state, {
+      return {
+        ...state,
         jwt: undefined,
         userProfile: undefined,
         orders: [],
-      });
-      break;
+      };
     case SET_SELECTED_TAB:
-      newState = Object.assign({}, state, { selectedTab: action.selectedTab });
-      break;
+      return {
+        ...state,
+        selectedTab: action.selectedTab,
+      };
     case SET_ORDER_HISTORY:
-      newState = Object.assign({}, state, { orders: action.orders });
-      break;
+      return {
+        ...state,
+        orders: action.orders,
+      };
     case SET_CREDIT_CARD_ERROR:
-      newState = Object.assign({}, state, { creditCardError: !state.creditCardError });
-      break;
-    case SET_JWT:
-      newState = Object.assign({}, state, { jwt: action.jwt });
-      break;
+      return {
+        ...state,
+        creditCardError: !state.creditCardError,
+      };
+    case SET_JWT: {
+      return {
+        ...state,
+        jwt: action.jwt,
+      };
+    }
     default:
       console.log('UNKNOWN ACTION', action.type);
-      newState = state;
-      break;
+      return state;
   }
-  return newState;
 };
 
 export default reducer;
