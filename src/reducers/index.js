@@ -1,5 +1,5 @@
 import {
-  INITIALIZE_EVENT_DATA, SET_SELECTED_EVENT, CLEAR_SELECTED_EVENT, SET_USER_LOCATION, SET_CHARGE_RESPONSE, SET_EVENT_NAME_FIELD, SET_ARTIST_FIELD, SET_VENUE_FIELD, SET_ADDRESS_FIELD, SET_PRICE_FIELD, SET_DATE_FIELD, SET_START_TIME_FIELD, SET_END_TIME_FIELD, SET_ADD_EVENT_RESPONSE, SET_SELECTED_TAB, SET_ORDER_HISTORY, SET_EVENT_DETAILS, SET_USER_PROFILE, CLEAR_USER_PROFILE, SET_JWT, SHOW_MAP, SET_CREDIT_CARD_ERROR } from '../config/const';
+  INITIALIZE_EVENT_DATA, SET_SELECTED_EVENT, CLEAR_SELECTED_EVENT, SET_USER_LOCATION, SET_CHARGE_RESPONSE, SET_ADD_EVENT_RESPONSE, SET_SELECTED_TAB, SET_ORDER_HISTORY, SET_EVENT_DETAILS, SET_USER_PROFILE, CLEAR_USER_PROFILE, SET_JWT, SHOW_MAP, SET_CREDIT_CARD_ERROR } from '../config/const';
 
 const initialState = {
   events: [],
@@ -12,23 +12,12 @@ const initialState = {
   userProfile: undefined,
   jwt: undefined,
   orders: [],
-  addEventFields: {
-    eventName: '',
-    artistName: '',
-    venueName: '',
-    address: '',
-    price: '',
-    date: '',
-    start: '',
-    end: '',
-  },
   selectedTab: 'profile',
   creditCardError: false,
 };
 
 const reducer = (state = initialState, action) => {
   let newState;
-  let newAddEventFields;
   switch (action.type) {
     case '@@redux/INIT':
       newState = state;
@@ -50,38 +39,6 @@ const reducer = (state = initialState, action) => {
       break;
     case SET_CHARGE_RESPONSE:
       newState = Object.assign({}, state, { chargeResponse: action.chargeResponse });
-      break;
-    case SET_EVENT_NAME_FIELD:
-      newAddEventFields = Object.assign({}, state.addEventFields, { eventName: action.value });
-      newState = Object.assign({}, state, { addEventFields: newAddEventFields });
-      break;
-    case SET_ARTIST_FIELD:
-      newAddEventFields = Object.assign({}, state.addEventFields, { artistName: action.value });
-      newState = Object.assign({}, state, { addEventFields: newAddEventFields });
-      break;
-    case SET_VENUE_FIELD:
-      newAddEventFields = Object.assign({}, state.addEventFields, { venueName: action.value });
-      newState = Object.assign({}, state, { addEventFields: newAddEventFields });
-      break;
-    case SET_ADDRESS_FIELD:
-      newAddEventFields = Object.assign({}, state.addEventFields, { address: action.value });
-      newState = Object.assign({}, state, { addEventFields: newAddEventFields });
-      break;
-    case SET_DATE_FIELD:
-      newAddEventFields = Object.assign({}, state.addEventFields, { date: action.value });
-      newState = Object.assign({}, state, { addEventFields: newAddEventFields });
-      break;
-    case SET_PRICE_FIELD:
-      newAddEventFields = Object.assign({}, state.addEventFields, { price: action.value });
-      newState = Object.assign({}, state, { addEventFields: newAddEventFields });
-      break;
-    case SET_START_TIME_FIELD:
-      newAddEventFields = Object.assign({}, state.addEventFields, { start: action.value });
-      newState = Object.assign({}, state, { addEventFields: newAddEventFields });
-      break;
-    case SET_END_TIME_FIELD:
-      newAddEventFields = Object.assign({}, state.addEventFields, { end: action.value });
-      newState = Object.assign({}, state, { addEventFields: newAddEventFields });
       break;
     case SET_ADD_EVENT_RESPONSE:
       newState = Object.assign({}, state, { addEventResponse: action.addEventResponse });

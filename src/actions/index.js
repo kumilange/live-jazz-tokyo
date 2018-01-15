@@ -1,6 +1,6 @@
 import querystring from 'querystring';
 import hello from '../config/hello';
-import { INITIALIZE_EVENT_DATA, SET_SELECTED_EVENT, CLEAR_SELECTED_EVENT, SET_USER_LOCATION, SET_CHARGE_RESPONSE, SET_EVENT_NAME_FIELD, SET_ARTIST_FIELD, SET_VENUE_FIELD, SET_ADDRESS_FIELD, SET_PRICE_FIELD, SET_DATE_FIELD, SET_START_TIME_FIELD, SET_END_TIME_FIELD, SET_ADD_EVENT_RESPONSE, SET_SELECTED_TAB, SET_ORDER_HISTORY, SET_EVENT_DETAILS, SET_USER_PROFILE, CLEAR_USER_PROFILE, SET_JWT } from '../config/const';
+import { INITIALIZE_EVENT_DATA, SET_SELECTED_EVENT, CLEAR_SELECTED_EVENT, SET_USER_LOCATION, SET_CHARGE_RESPONSE, SET_ADD_EVENT_RESPONSE, SET_SELECTED_TAB, SET_ORDER_HISTORY, SET_EVENT_DETAILS, SET_USER_PROFILE, CLEAR_USER_PROFILE, SET_JWT } from '../config/const';
 
 // Map
 export function initializeEvents() {
@@ -43,54 +43,6 @@ export function setUserLocation(position) {
 }
 
 // AddEvent
-export function setEventNameField(event) {
-  return {
-    type: SET_EVENT_NAME_FIELD,
-    value: event.target.value,
-  };
-}
-export function setArtistField(event) {
-  return {
-    type: SET_ARTIST_FIELD,
-    value: event.target.value,
-  };
-}
-export function setVenueField(event) {
-  return {
-    type: SET_VENUE_FIELD,
-    value: event.target.value,
-  };
-}
-export function setAddressField(event) {
-  return {
-    type: SET_ADDRESS_FIELD,
-    value: event.target.value,
-  };
-}
-export function setPriceField(value) {
-  return {
-    type: SET_PRICE_FIELD,
-    value,
-  };
-}
-export function setDateField(date) {
-  return {
-    type: SET_DATE_FIELD,
-    value: date,
-  };
-}
-export function setStartTimeField(time) {
-  return {
-    type: SET_START_TIME_FIELD,
-    value: time,
-  };
-}
-export function setEndTimeField(time) {
-  return {
-    type: SET_END_TIME_FIELD,
-    value: time,
-  };
-}
 export function addNewEvent(event, userId, history) {
   return async (dispatch) => {
     try {
