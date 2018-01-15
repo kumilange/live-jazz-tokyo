@@ -14,7 +14,7 @@ class Map extends Component {
       return;
     }
     navigator.geolocation.getCurrentPosition((position) => {
-      this.props.onReceivedUserLocation({
+      this.props.setUserLocation({
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       });
@@ -22,20 +22,20 @@ class Map extends Component {
   }
 
   render() {
-    const { events, selectedEvent, userLocation, onMarkerClick, onInfoWindowClose } = this.props;
-    const commonProps = { events, selectedEvent, onMarkerClick, onInfoWindowClose };
-
+    const { events, selectedEvent, userLocation, setSelectedEvent, clearSelectedEvent } = this.props;
     return process.env.npm_lifecycle_event === 'test'
       ? <div />
       : <MyMap
-        {...commonProps}
         position={userLocation}
         containerElement={<div style={{ height: '100%' }} />}
         mapElement={<div style={{ height: '100%' }} />}
       >
         <div className="mapLable">On Tonight</div>
         <MyMarkerList
-          {...commonProps}
+          events={events}
+          selectedEvent={selectedEvent}
+          setSelectedEvent={setSelectedEvent}
+          clearSelectedEvent={clearSelectedEvent}
         />
         {userLocation.lat ?
           <Marker
@@ -50,9 +50,9 @@ Map.propTypes = {
   events: PropTypes.arrayOf(PropTypes.object).isRequired,
   selectedEvent: PropTypes.shape().isRequired,
   userLocation: PropTypes.shape().isRequired,
-  onMarkerClick: PropTypes.func.isRequired,
-  onInfoWindowClose: PropTypes.func.isRequired,
-  onReceivedUserLocation: PropTypes.func.isRequired,
+  setSelectedEvent: PropTypes.func.isRequired,
+  clearSelectedEvent: PropTypes.func.isRequired,
+  setUserLocation: PropTypes.func.isRequired,
 };
 
 export default Map;

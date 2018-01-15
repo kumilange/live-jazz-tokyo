@@ -97,13 +97,13 @@ router.post('/', async (req, res) => {
       user_id: userId,
     };
 
-    // set venueID to event
-    let [venueID] = await db('venue')
+    // set venueId to event
+    let [venueId] = await db('venue')
       .where({ name: venueName })
       .select('id');
-    console.log('venueID', venueID);
+    console.log('venueId', venueId);
 
-    if (!venueID) {
+    if (!venueId) {
       const response = await (await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}`)).json();
       // error handling for geocode api
       if (response.results.length === 0) {
@@ -112,39 +112,39 @@ router.post('/', async (req, res) => {
         return;
       }
       const { lat, lng } = response.results[0].geometry.location;
-      [venueID] = await db('venue')
+      [venueId] = await db('venue')
         .insert({ name: venueName, address, lat, lng })
         .returning('id');
-      console.log('venueID', venueID);
+      console.log('venueId', venueId);
     } else {
-      venueID = venueID.id;
+      venueId = venueId.id;
     }
-    event.venue_id = venueID;
+    event.venue_id = venueId;
 
-    // set artistID to event
-    let [artistID] = await db('artist')
+    // set artistId to event
+    let [artistId] = await db('artist')
       .where('name', artistName)
       .select('id');
-    console.log('artistID', artistID);
+    console.log('artistId', artistId);
 
-    if (!artistID) {
-      [artistID] = await db('artist')
+    if (!artistId) {
+      [artistId] = await db('artist')
         .insert({ name: artistName })
         .returning('id');
-      console.log('artistID', artistID);
+      console.log('artistId', artistId);
     } else {
-      artistID = artistID.id;
+      artistId = artistId.id;
     }
-    event.artist_id = artistID;
+    event.artist_id = artistId;
 
     // insert event
     console.log('event', event);
-    const [eventID] = await db('event')
+    const [eventId] = await db('event')
       .insert(event)
       .returning('id');
-    console.log('eventID', eventID);
+    console.log('eventId', eventId);
 
-    sendResponse(res, RES_STAT.OK.CODE, { addSuccess: true, eventID });
+    sendResponse(res, RES_STAT.OK.CODE, { addSuccess: true, eventId });
   } catch (err) {
     console.error(err);
     sendResponse(res, res, RES_STAT.INTL_SERVER_ERR.CODE, { addSuccess: false });

@@ -5,8 +5,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import thunk from 'redux-thunk';
 import { StripeProvider } from 'react-stripe-elements';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { MuiThemeProvider, getMuiTheme } from 'material-ui/styles';
 
 import './styles/reset.css';
 import './styles/index.css';

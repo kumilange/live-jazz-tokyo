@@ -6,24 +6,22 @@ import MyInfoWindow from './MyInfoWindow';
 import { MarkerIcon } from '../styles/Icons';
 import '../styles/InfoWindow.css';
 
-const MyMarkerList = ({ events, selectedEvent, onMarkerClick, onInfoWindowClose }) => (
+const MyMarkerList = ({ events, selectedEvent, setSelectedEvent, clearSelectedEvent }) => (
   <div id="markerList">
     {events.map((event) => {
-      const position = {
-        lat: event.lat,
-        lng: event.lng,
-      };
+      const { lat, lng, id, name } = event;
+      const position = { lat, lng };
       return (<Marker
         position={position}
-        key={event.id}
-        title={event.event}
+        key={id}
+        title={name}
         icon={MarkerIcon}
-        onClick={() => onMarkerClick(event)}
+        onClick={() => setSelectedEvent(event)}
       >
         <MyInfoWindow
           event={event}
           selectedEvent={selectedEvent}
-          onInfoWindowClose={onInfoWindowClose}
+          clearSelectedEvent={clearSelectedEvent}
         />
       </Marker>);
     })}
@@ -33,8 +31,8 @@ const MyMarkerList = ({ events, selectedEvent, onMarkerClick, onInfoWindowClose 
 MyMarkerList.propTypes = {
   events: PropTypes.arrayOf(PropTypes.object).isRequired,
   selectedEvent: PropTypes.shape().isRequired,
-  onMarkerClick: PropTypes.func.isRequired,
-  onInfoWindowClose: PropTypes.func.isRequired,
+  setSelectedEvent: PropTypes.func.isRequired,
+  clearSelectedEvent: PropTypes.func.isRequired,
 };
 
 export default MyMarkerList;

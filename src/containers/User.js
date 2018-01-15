@@ -1,21 +1,18 @@
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 import User from '../components/User';
-import { getTransactionHistory, setSelectedTab } from '../actions';
+import { getOrderHistory, setSelectedTab } from '../actions';
 
 const mapStateToProps = state => ({
-  jwt: state.jwt,
-  transactionHistory: state.transactionHistory,
-  selectedTab: state.selectedTab,
-  userProfile: state.userProfile,
+  jwt: state.user.jwt,
+  selectedTab: state.user.selectedTab,
+  userProfile: state.user.userProfile,
+  orders: state.user.orders,
 });
 
-const mapDispatchToProps = dispatch => ({
-  onComponentDidMount: (jwt) => {
-    dispatch(getTransactionHistory(jwt));
-  },
-  onTabClick: (selectedTab) => {
-    dispatch(setSelectedTab(selectedTab));
-  },
-});
+const mapDispatchToProps = dispatch => bindActionCreators({
+  getOrderHistory, setSelectedTab,
+}, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(User);

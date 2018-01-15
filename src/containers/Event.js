@@ -1,22 +1,17 @@
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import Event from '../components/Event';
-import { SHOW_MAP } from '../config/const';
-import { getEventDetails } from '../actions';
+import { getEventDetails, toggleMap } from '../actions';
 
 const mapStateToProps = state => ({
-  event: state.eventDetails,
-  showMap: state.showMap,
-  userProfile: state.userProfile,
+  event: state.event.eventDetails,
+  showMap: state.event.showMap,
+  jwt: state.user.jwt,
 });
 
-const mapDispatchToProps = dispatch => ({
-  onComponentDidMount: (eventID) => {
-    dispatch(getEventDetails(eventID));
-  },
-  toggleMap: () => {
-    dispatch({ type: SHOW_MAP });
-  },
-});
+const mapDispatchToProps = dispatch => bindActionCreators({
+  getEventDetails, toggleMap,
+}, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Event);
