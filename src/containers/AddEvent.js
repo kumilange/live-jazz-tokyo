@@ -4,10 +4,10 @@ import AddEvent from '../components/AddEvent';
 import { addNewEvent } from '../actions';
 
 const mapStateToProps = state => ({
-  jwt: state.jwt,
-  userProfile: state.userProfile,
-  addEventResponse: state.addEventResponse,
-  addEventFields: state.addEventFields,
+  jwt: state.user.jwt,
+  userProfile: state.user.userProfile,
+  addEventResponse: state.event.addEventResponse,
+  addEventFields: state.event.addEventFields,
 });
 
 const mapDispatchToProps = dispatch => ({

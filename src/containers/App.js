@@ -4,7 +4,7 @@ import { initializeEvents } from '../actions';
 import App from '../components/App';
 
 const mapStateToProps = state => ({
-  events: state.events,
+  events: state.event.events,
 });
 
 const mapDispatchToProps = dispatch => ({

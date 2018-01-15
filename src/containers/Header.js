@@ -5,7 +5,7 @@ import { addAuthListener, logout } from '../actions';
 import Header from '../components/Header';
 
 const mapStateToProps = state => ({
-  userProfile: state.userProfile,
+  userProfile: state.user.userProfile,
 });
 
 const mapDispatchToProps = (dispatch) => {

@@ -4,9 +4,9 @@ import { setSelectedEvent, clearSelectedEvent, setUserLocation } from '../action
 import Map from '../components/Map';
 
 const mapStateToProps = state => ({
-  events: state.events,
-  selectedEvent: state.selectedEvent,
-  userLocation: state.userLocation,
+  events: state.event.events,
+  selectedEvent: state.event.selectedEvent,
+  userLocation: state.user.userLocation,
 });
 
 const mapDispatchToProps = dispatch => ({

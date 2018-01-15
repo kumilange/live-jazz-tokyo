@@ -3,10 +3,10 @@ import User from '../components/User';
 import { getOrderHistory, setSelectedTab } from '../actions';
 
 const mapStateToProps = state => ({
-  jwt: state.jwt,
-  orders: state.orders,
-  selectedTab: state.selectedTab,
-  userProfile: state.userProfile,
+  jwt: state.user.jwt,
+  selectedTab: state.user.selectedTab,
+  userProfile: state.user.userProfile,
+  orders: state.user.orders,
 });
 
 const mapDispatchToProps = dispatch => ({

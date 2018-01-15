@@ -4,9 +4,9 @@ import Event from '../components/Event';
 import { getEventDetails, toggleMap } from '../actions';
 
 const mapStateToProps = state => ({
-  event: state.eventDetails,
-  showMap: state.showMap,
-  jwt: state.jwt,
+  event: state.event.eventDetails,
+  showMap: state.event.showMap,
+  jwt: state.user.jwt,
 });
 
 const mapDispatchToProps = dispatch => ({
