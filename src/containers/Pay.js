@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
-import { SET_CHARGE_RESPONSE } from '../config/const';
 import Pay from '../components/Pay';
+import { setChargeResponse } from '../actions';
 
 const mapStateToProps = state => ({
   event: state.eventDetails,
@@ -10,10 +10,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setChargeResponse: chargeResponse => dispatch({
-    type: SET_CHARGE_RESPONSE,
-    chargeResponse,
-  }),
+  setChargeResponse: chargeResponse =>
+    dispatch(setChargeResponse(chargeResponse)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pay);

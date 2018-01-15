@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
 
 import Event from '../components/Event';
-import { SHOW_MAP } from '../config/const';
-import { getEventDetails } from '../actions';
+import { getEventDetails, toggleMap } from '../actions';
 
 const mapStateToProps = state => ({
   event: state.eventDetails,
@@ -15,7 +14,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(getEventDetails(eventId));
   },
   toggleMap: () => {
-    dispatch({ type: SHOW_MAP });
+    dispatch(toggleMap());
   },
 });
 
