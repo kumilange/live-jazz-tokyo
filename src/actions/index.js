@@ -139,6 +139,7 @@ export function setJWT(jwt) {
   };
 }
 export function logout() {
+  hello.logout('facebook');
   return {
     type: CLEAR_USER_PROFILE,
   };

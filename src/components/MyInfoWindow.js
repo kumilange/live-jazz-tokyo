@@ -8,11 +8,11 @@ import { formatPrice, formatDate, formatTime } from '../utils/format';
 import { CalendarIcon, ClockIcon, YenIcon, PinIcon, UserIcon, svgIconSize, svgIconSizeL } from '../styles/Icons';
 import '../styles/InfoWindow.css';
 
-const MyInfoWindow = ({ event: { id, name, artist, venue, start, end, price }, selectedEvent, onInfoWindowClose }) => (<div id="infowindow">
+const MyInfoWindow = ({ event: { id, name, artist, venue, start, end, price }, selectedEvent, clearSelectedEvent }) => (<div id="infowindow">
   { selectedEvent.id === id ?
     <InfoWindow
       className="infoWindow"
-      onCloseClick={onInfoWindowClose}
+      onCloseClick={clearSelectedEvent}
     >
       <div className="infoWindowInner">
         <Link to={`/event/${id}`}>
@@ -54,7 +54,7 @@ const MyInfoWindow = ({ event: { id, name, artist, venue, start, end, price }, s
 MyInfoWindow.propTypes = {
   event: PropTypes.shape().isRequired,
   selectedEvent: PropTypes.shape().isRequired,
-  onInfoWindowClose: PropTypes.func.isRequired,
+  clearSelectedEvent: PropTypes.func.isRequired,
 };
 
 export default MyInfoWindow;

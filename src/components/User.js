@@ -11,12 +11,12 @@ import '../styles/User.css';
 class User extends Component {
   componentDidMount() {
     if (this.props.jwt) {
-      this.props.onComponentDidMount(this.props.jwt);
+      this.props.getOrderHistory(this.props.jwt);
     }
   }
 
   render() {
-    const { history, userProfile, selectedTab, orders, onTabClick } = this.props;
+    const { history, userProfile, selectedTab, orders, setSelectedTab } = this.props;
     if (!userProfile) history.push('/');
     return (
       <main className="flex column center">
@@ -36,12 +36,12 @@ class User extends Component {
             <div id="tabs" className="flex">
               <div
                 className={selectedTab === 'profile' ? 'tab selected' : 'tab'}
-                onClick={() => onTabClick('profile')}
+                onClick={() => setSelectedTab('profile')}
                 role="presentation"
               >Profile</div>
               <div
                 className={selectedTab === 'orderHistory' ? 'tab selected' : 'tab'}
-                onClick={() => onTabClick('orderHistory')}
+                onClick={() => setSelectedTab('orderHistory')}
                 role="presentation"
               >Order History</div>
             </div>
@@ -63,8 +63,8 @@ User.propTypes = {
   userProfile: PropTypes.shape(),
   selectedTab: PropTypes.string.isRequired,
   orders: PropTypes.arrayOf(Object),
-  onComponentDidMount: PropTypes.func.isRequired,
-  onTabClick: PropTypes.func.isRequired,
+  getOrderHistory: PropTypes.func.isRequired,
+  setSelectedTab: PropTypes.func.isRequired,
   history: PropTypes.shape(),
 };
 

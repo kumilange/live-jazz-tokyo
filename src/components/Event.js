@@ -12,7 +12,7 @@ const FALLBACK_DESC = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
 
 class Event extends Component {
   componentDidMount() {
-    this.props.onComponentDidMount(this.props.match.params.id);
+    this.props.getEventDetails(this.props.match.params.id);
   }
 
   render() {
@@ -106,7 +106,7 @@ class Event extends Component {
 Event.propTypes = {
   event: PropTypes.shape(),
   match: PropTypes.shape().isRequired,
-  onComponentDidMount: PropTypes.func.isRequired,
+  getEventDetails: PropTypes.func.isRequired,
   showMap: PropTypes.bool.isRequired,
   toggleMap: PropTypes.func.isRequired,
   jwt: PropTypes.string,

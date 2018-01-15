@@ -45,7 +45,7 @@ class AddEvent extends Component {
   }
 
   render() {
-    const { jwt, history, addEventResponse, userProfile, onFormSubmit } = this.props;
+    const { jwt, history, addEventResponse, userProfile, addNewEvent } = this.props;
     const { addEventFields } = this.state;
     if (!jwt) history.push('/');
     const failed = !addEventResponse.addSuccess && addEventResponse.addSuccess !== undefined;
@@ -77,7 +77,7 @@ class AddEvent extends Component {
             className="inputHalf price"
             floatingLabelText="Price"
             value={addEventFields.price}
-            onChange={event => this.setFormState(this.validatePrice(event.target.value, this.state.addEventFields.price), 'price')}
+            onChange={event => this.setFormState(this.validatePrice(event.target.value, addEventFields.price), 'price')}
           />
           <DatePicker
             className="inputHalf"
@@ -110,9 +110,7 @@ class AddEvent extends Component {
           primary
           className="mui-button"
           label="Submit"
-          onClick={() =>
-            onFormSubmit(addEventFields, userProfile.id, history)
-          }
+          onClick={() => addNewEvent(addEventFields, userProfile.id, history)}
         />
         { failed ? <p>Submit failed!  Check data and try again.</p> : <div /> }
       </main>
@@ -123,7 +121,7 @@ class AddEvent extends Component {
 AddEvent.propTypes = {
   jwt: PropTypes.string,
   userProfile: PropTypes.shape(),
-  onFormSubmit: PropTypes.func.isRequired,
+  addNewEvent: PropTypes.func.isRequired,
   addEventResponse: PropTypes.shape(),
   history: PropTypes.shape(),
 };

@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
-import AddEvent from '../components/AddEvent';
+import { bindActionCreators } from 'redux';
 
 import { addNewEvent } from '../actions';
+import AddEvent from '../components/AddEvent';
+
 
 const mapStateToProps = state => ({
   jwt: state.user.jwt,
@@ -10,10 +12,8 @@ const mapStateToProps = state => ({
   addEventFields: state.event.addEventFields,
 });
 
-const mapDispatchToProps = dispatch => ({
-  onFormSubmit: (addEventFields, userId, history) => {
-    dispatch(addNewEvent(addEventFields, userId, history));
-  },
-});
+const mapDispatchToProps = dispatch => bindActionCreators({
+  addNewEvent,
+}, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddEvent);

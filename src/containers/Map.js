@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import { setSelectedEvent, clearSelectedEvent, setUserLocation } from '../actions';
 import Map from '../components/Map';
@@ -9,17 +10,9 @@ const mapStateToProps = state => ({
   userLocation: state.user.userLocation,
 });
 
-const mapDispatchToProps = dispatch => ({
-  onMarkerClick: (event) => {
-    dispatch(setSelectedEvent(event));
-  },
-  onInfoWindowClose: () => {
-    dispatch(clearSelectedEvent());
-  },
-  onReceivedUserLocation: (position) => {
-    dispatch(setUserLocation(position));
-  },
-});
+const mapDispatchToProps = dispatch => bindActionCreators({
+  setSelectedEvent, clearSelectedEvent, setUserLocation,
+}, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Map);
 

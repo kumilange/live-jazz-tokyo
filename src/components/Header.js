@@ -2,14 +2,22 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import hello from '../config/hello';
 import '../styles/Header.css';
 
 class Header extends Component {
   componentDidMount() {
-    this.props.onComponentDidMount();
+    this.props.addAuthListener();
+    this.loging = this.login.bind(this);
   }
+
+  async login() {
+    await hello('facebook')
+      .login({ scope: 'email' });
+  }
+
   render() {
-    const { userProfile, onLoginButtonClick, onLogoutButtonClick } = this.props;
+    const { userProfile, logout } = this.props;
     return (
       <header className="dark flex">
         <div id="header-inner" className="flex restrict-width">
@@ -20,12 +28,12 @@ class Header extends Component {
             ? <nav className="gnav">
               <ul className="gnav-list flex">
                 <li><Link to={`/user/${userProfile.id}`} className="gnav-list-link">{ userProfile.name }</Link></li>
-                <li><Link to={'/'} className="gnav-list-link" onClick={onLogoutButtonClick}>Logout</Link></li>
+                <li><Link to={'/'} className="gnav-list-link" onClick={logout}>Logout</Link></li>
               </ul>
             </nav>
             : <nav className="gnav">
               <ul className="gnav-list flex">
-                <li><Link to={''} className="gnav-list-link" onClick={onLoginButtonClick}>
+                <li><Link to={''} className="gnav-list-link" onClick={this.login}>
                   Login with <br /> Facebook</Link></li>
               </ul>
             </nav>
@@ -39,9 +47,8 @@ class Header extends Component {
 
 Header.propTypes = {
   userProfile: PropTypes.shape(),
-  onComponentDidMount: PropTypes.func.isRequired,
-  onLogoutButtonClick: PropTypes.func.isRequired,
-  onLoginButtonClick: PropTypes.func.isRequired,
+  addAuthListener: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired,
 };
 
 Header.defaultProps = {

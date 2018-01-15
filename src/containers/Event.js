@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import Event from '../components/Event';
 import { getEventDetails, toggleMap } from '../actions';
@@ -9,13 +10,8 @@ const mapStateToProps = state => ({
   jwt: state.user.jwt,
 });
 
-const mapDispatchToProps = dispatch => ({
-  onComponentDidMount: (eventId) => {
-    dispatch(getEventDetails(eventId));
-  },
-  toggleMap: () => {
-    dispatch(toggleMap());
-  },
-});
+const mapDispatchToProps = dispatch => bindActionCreators({
+  getEventDetails, toggleMap,
+}, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Event);

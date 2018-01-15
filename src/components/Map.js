@@ -14,7 +14,7 @@ class Map extends Component {
       return;
     }
     navigator.geolocation.getCurrentPosition((position) => {
-      this.props.onReceivedUserLocation({
+      this.props.setUserLocation({
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       });
@@ -22,7 +22,7 @@ class Map extends Component {
   }
 
   render() {
-    const { events, selectedEvent, userLocation, onMarkerClick, onInfoWindowClose } = this.props;
+    const { events, selectedEvent, userLocation, setSelectedEvent, clearSelectedEvent } = this.props;
     return process.env.npm_lifecycle_event === 'test'
       ? <div />
       : <MyMap
@@ -34,8 +34,8 @@ class Map extends Component {
         <MyMarkerList
           events={events}
           selectedEvent={selectedEvent}
-          onMarkerClick={onMarkerClick}
-          onInfoWindowClose={onInfoWindowClose}
+          setSelectedEvent={setSelectedEvent}
+          clearSelectedEvent={clearSelectedEvent}
         />
         {userLocation.lat ?
           <Marker
@@ -50,9 +50,9 @@ Map.propTypes = {
   events: PropTypes.arrayOf(PropTypes.object).isRequired,
   selectedEvent: PropTypes.shape().isRequired,
   userLocation: PropTypes.shape().isRequired,
-  onMarkerClick: PropTypes.func.isRequired,
-  onInfoWindowClose: PropTypes.func.isRequired,
-  onReceivedUserLocation: PropTypes.func.isRequired,
+  setSelectedEvent: PropTypes.func.isRequired,
+  clearSelectedEvent: PropTypes.func.isRequired,
+  setUserLocation: PropTypes.func.isRequired,
 };
 
 export default Map;

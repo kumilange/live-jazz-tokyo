@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import Pay from '../components/Pay';
 import { setChargeResponse } from '../actions';
@@ -9,9 +10,8 @@ const mapStateToProps = state => ({
   jwt: state.user.jwt,
 });
 
-const mapDispatchToProps = dispatch => ({
-  setChargeResponse: chargeResponse =>
-    dispatch(setChargeResponse(chargeResponse)),
-});
+const mapDispatchToProps = dispatch => bindActionCreators({
+  setChargeResponse,
+}, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pay);

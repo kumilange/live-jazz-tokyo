@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import hello from '../config/hello';
 import { addAuthListener, logout } from '../actions';
 import Header from '../components/Header';
 
@@ -8,20 +8,8 @@ const mapStateToProps = state => ({
   userProfile: state.user.userProfile,
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onComponentDidMount: () => {
-      dispatch(addAuthListener());
-    },
-    onLoginButtonClick: async () => {
-      hello('facebook')
-        .login({ scope: 'email' });
-    },
-    onLogoutButtonClick: () => {
-      hello.logout('facebook');
-      dispatch(logout());
-    },
-  };
-};
+const mapDispatchToProps = dispatch => bindActionCreators({
+  addAuthListener, logout,
+}, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
