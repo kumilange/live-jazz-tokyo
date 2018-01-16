@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------------
 App
 -------------------------------------------------------------------------------*/
-#app {
+#top {
   height: calc(100% - 50px);
   padding-top: 50px;
   padding-bottom: 0;
@@ -11,7 +11,7 @@ App
 * MEDIA QUERY SP
 */
 @media screen and (max-width:600px){
-  #app {
+  #top {
     width: 100%;
     height: calc(100% - 40px);
     max-width: 100%;

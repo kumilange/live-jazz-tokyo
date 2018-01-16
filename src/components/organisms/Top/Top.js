@@ -23,24 +23,26 @@ class Top extends Component {
     const { events, selectedEvent, userLocation, setSelectedEvent, clearSelectedEvent } = this.props;
     return process.env.npm_lifecycle_event === 'test'
       ? <div />
-      : <Map
-        position={userLocation}
-        containerElement={<div style={{ height: '100%' }} />}
-        mapElement={<div style={{ height: '100%' }} />}
-      >
-        <div className="mapLable">On Tonight</div>
-        <MyMarkerList
-          events={events}
-          selectedEvent={selectedEvent}
-          setSelectedEvent={setSelectedEvent}
-          clearSelectedEvent={clearSelectedEvent}
-        />
-        {userLocation.lat ?
-          <Marker
-            position={userLocation}
-            icon={userLocation}
-          /> : null}
-      </Map>;
+      : <main id="top" className="restrict-width">
+        <Map
+          position={userLocation}
+          containerElement={<div style={{ height: '100%' }} />}
+          mapElement={<div style={{ height: '100%' }} />}
+        >
+          <div className="mapLable">On Tonight</div>
+          <MyMarkerList
+            events={events}
+            selectedEvent={selectedEvent}
+            setSelectedEvent={setSelectedEvent}
+            clearSelectedEvent={clearSelectedEvent}
+          />
+          {userLocation.lat ?
+            <Marker
+              position={userLocation}
+              icon={userLocation}
+            /> : null}
+        </Map>
+      </main>;
   }
 }
 
