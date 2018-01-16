@@ -6,6 +6,7 @@ import { getEventDetails, toggleMap } from '../../actions/index';
 
 const mapStateToProps = state => ({
   event: state.event.eventDetails,
+  isFetching: state.event.isFetching,
   showMap: state.event.showMap,
   jwt: state.user.jwt,
 });

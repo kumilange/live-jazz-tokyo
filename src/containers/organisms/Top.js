@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { setSelectedEvent, clearSelectedEvent, setUserLocation } from '../../actions/index';
+import { initializeEvents, setSelectedEvent, clearSelectedEvent, setUserLocation } from '../../actions/index';
 import Top from '../../components/organisms/Top/Top';
 
 const mapStateToProps = state => ({
@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  setSelectedEvent, clearSelectedEvent, setUserLocation,
+  initializeEvents, setSelectedEvent, clearSelectedEvent, setUserLocation,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Top);

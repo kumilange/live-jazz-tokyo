@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Divider, Paper, RaisedButton } from 'material-ui';
 
 import EventMap from '../../molecules/EventMap/EventMap';
+import Loader from '../../atoms/Loader/Loader';
 import { formatPrice, formatMonthOrDate, formatTime } from '../../../utils/format';
 import './Event.css';
 import { ClockIcon, YenIcon, PinIcon } from '../../atoms/Icon/Icon';
@@ -16,8 +17,9 @@ class Event extends Component {
   }
 
   render() {
-    const { event, toggleMap, showMap } = this.props;
+    const { event, isFetching, toggleMap, showMap } = this.props;
     if (!event) return null;
+    if (isFetching) return <Loader />;
     return (
       <main className="restrict-width grow" id="event-details">
         <div className="image-box flex center">
@@ -105,6 +107,7 @@ class Event extends Component {
 
 Event.propTypes = {
   event: PropTypes.shape(),
+  isFetching: PropTypes.bool.isRequired,
   match: PropTypes.shape().isRequired,
   getEventDetails: PropTypes.func.isRequired,
   showMap: PropTypes.bool.isRequired,
