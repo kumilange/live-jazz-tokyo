@@ -2,7 +2,7 @@ import React from 'react';
 import { expect } from 'chai';
 import { render } from 'enzyme';
 
-import Event from '../components/organisms/Event/Event';
+import Event from '../components/organisms/Event';
 
 xit('should have a reserve button', () => {
   const wrapper = render(<Event

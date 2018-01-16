@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import Pay from '../../components/organisms/Pay/Pay';
+import Pay from '../../components/organisms/Pay/index';
 import { setChargeResponse } from '../../actions/index';
 
 const mapStateToProps = state => ({

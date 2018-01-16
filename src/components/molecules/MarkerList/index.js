@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Marker } from 'react-google-maps';
 
-import MyInfoWindow from '../InfoWindow/InfoWindow';
+import MyInfoWindow from '../InfoWindow';
 import { MarkerIcon } from '../../atoms/Icon/Icon';
 
 const MyMarkerList = ({ events, selectedEvent, setSelectedEvent, clearSelectedEvent }) => (

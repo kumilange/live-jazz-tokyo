@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Marker } from 'react-google-maps';
 
-import Map from '../../molecules/Map/Map';
-import MyMarkerList from '../../molecules/MarkerList/MarkerList';
+import Map from '../../molecules/Map';
+import MyMarkerList from '../../molecules/MarkerList';
 
 class Top extends Component {
   componentDidMount() {
@@ -17,6 +17,7 @@ class Top extends Component {
         lng: position.coords.longitude,
       });
     });
+    this.props.initializeEvents();
   }
 
   render() {
@@ -53,6 +54,7 @@ Top.propTypes = {
   setSelectedEvent: PropTypes.func.isRequired,
   clearSelectedEvent: PropTypes.func.isRequired,
   setUserLocation: PropTypes.func.isRequired,
+  initializeEvents: PropTypes.func.isRequired,
 };
 
 export default Top;

@@ -4,7 +4,7 @@ import { Elements } from 'react-stripe-elements';
 import { Paper, Divider } from 'material-ui';
 
 import { formatPrice } from '../../../utils/format';
-import CheckoutForm from '../../molecules/CheckoutForm/CheckoutForm';
+import CheckoutForm from '../../molecules/CheckoutForm';
 import './Pay.css';
 
 const Pay = ({ event, jwt, history, userProfile, setChargeResponse }) => {

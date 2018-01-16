@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Divider, RaisedButton } from 'material-ui';
 
-import Profile from '../../molecules/Profile/Profile';
-import OrderHistory from '../../molecules/OrderHistory/OrderHistory';
+import Profile from '../../molecules/Profile';
+import OrderHistory from '../../molecules/OrderHistory';
 
 import './User.css';
 

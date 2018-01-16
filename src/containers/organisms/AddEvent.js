@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { addNewEvent } from '../../actions/index';
-import AddEvent from '../../components/organisms/AddEvent/AddEvent';
+import AddEvent from '../../components/organisms/AddEvent/index';
 
 const mapStateToProps = state => ({
   jwt: state.user.jwt,
