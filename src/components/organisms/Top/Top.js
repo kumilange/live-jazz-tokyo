@@ -17,7 +17,6 @@ class Top extends Component {
         lng: position.coords.longitude,
       });
     });
-    this.props.clearEventDetails();
     this.props.initializeEvents();
   }
 
