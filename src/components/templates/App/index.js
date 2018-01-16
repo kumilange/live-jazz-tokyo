@@ -5,7 +5,7 @@ import Header from '../../../containers/organisms/Header';
 import Event from '../../../containers/organisms/Event';
 import User from '../../../containers/organisms/User';
 import Pay from '../../../containers/organisms/Pay';
-import Footer from '../../../components/organisms/Footer/Footer';
+import Footer from '../../organisms/Footer';
 import Confirmation from '../../../containers/organisms/Confirmation';
 import AddEvent from '../../../containers/organisms/AddEvent';
 import Top from '../../../containers/organisms/Top';

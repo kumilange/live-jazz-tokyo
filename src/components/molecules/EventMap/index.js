@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Marker } from 'react-google-maps';
 
-import Map from '../Map/Map';
+import Map from '../Map';
 import { MarkerIcon } from '../../atoms/Icon/Icon';
 
 class EventMap extends Component {

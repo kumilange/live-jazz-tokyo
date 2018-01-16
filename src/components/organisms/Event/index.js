@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Divider, Paper, RaisedButton } from 'material-ui';
 
-import EventMap from '../../molecules/EventMap/EventMap';
+import EventMap from '../../molecules/EventMap';
 import Loader from '../../atoms/Loader';
 import { formatPrice, formatMonthOrDate, formatTime } from '../../../utils/format';
 import './Event.css';

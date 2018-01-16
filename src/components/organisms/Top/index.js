@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Marker } from 'react-google-maps';
 
-import Map from '../../molecules/Map/Map';
-import MyMarkerList from '../../molecules/MarkerList/MarkerList';
+import Map from '../../molecules/Map';
+import MyMarkerList from '../../molecules/MarkerList';
 
 class Top extends Component {
   componentDidMount() {

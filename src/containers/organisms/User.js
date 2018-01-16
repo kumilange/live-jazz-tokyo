@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import User from '../../components/organisms/User/User';
+import User from '../../components/organisms/User/index';
 import { getOrderHistory, setSelectedTab } from '../../actions/index';
 
 const mapStateToProps = state => ({

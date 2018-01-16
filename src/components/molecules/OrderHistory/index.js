@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { formatPrice } from '../../../utils/format';
 import './OrderHistory.css';
 
-const renderOrderList = (orders)=> {
+const renderOrderList = (orders) => {
   return orders.map((order) => {
     const { id, eventId, title, amount } = order;
     return (

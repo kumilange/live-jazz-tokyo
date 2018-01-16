@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { initializeEvents, setSelectedEvent, clearSelectedEvent, setUserLocation } from '../../actions/index';
-import Top from '../../components/organisms/Top/Top';
+import Top from '../../components/organisms/Top/index';
 
 const mapStateToProps = state => ({
   events: state.event.events,

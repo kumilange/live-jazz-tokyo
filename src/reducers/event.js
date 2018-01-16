@@ -31,6 +31,7 @@ const event = (state = initialState, action) => {
       return {
         ...state,
         isFetching: true,
+        showMap: false,
         eventDetails: {},
       };
     case FETCH_EVENT_DETAILS_SUCCESS:
