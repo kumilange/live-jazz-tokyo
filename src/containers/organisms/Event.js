@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import Event from '../../components/organisms/Event/Event';
+import Event from '../../components/organisms/Event';
 import { getEventDetails, toggleMap } from '../../actions/index';
 
 const mapStateToProps = state => ({
