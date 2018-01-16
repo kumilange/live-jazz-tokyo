@@ -86,9 +86,7 @@ export function getEventDetails(eventId) {
   };
 }
 export function clearEventDetails() {
-  return {
-    type: CLEAR_EVENT_DETAILS,
-  };
+  return { type: CLEAR_EVENT_DETAILS };
 }
 export function toggleMap() {
   return { type: SHOW_MAP };
