@@ -1,6 +1,6 @@
 import querystring from 'querystring';
 import hello from '../config/hello';
-import { INITIALIZE_EVENT_DATA, SET_SELECTED_EVENT, CLEAR_SELECTED_EVENT, SET_USER_LOCATION, SET_CHARGE_RESPONSE, SET_ADD_EVENT_RESPONSE, SET_SELECTED_TAB, SET_ORDER_HISTORY, SET_EVENT_DETAILS, CLEAR_EVENT_DETAILS, SHOW_MAP, SET_USER_PROFILE, CLEAR_USER_PROFILE, SET_JWT } from '../config/const';
+import { INITIALIZE_EVENT_DATA, SET_SELECTED_EVENT, CLEAR_SELECTED_EVENT, SET_USER_LOCATION, SET_CHARGE_RESPONSE, SET_ADD_EVENT_RESPONSE, SET_SELECTED_TAB, SET_ORDER_HISTORY, FETCH_EVENT_DETAILS, FETCH_EVENT_DETAILS_SUCCESS, FETCH_EVENT_DETAILS_FAILURE, SHOW_MAP, SET_USER_PROFILE, CLEAR_USER_PROFILE, SET_JWT } from '../config/const';
 
 // Top
 export function initializeEvents() {
@@ -74,19 +74,22 @@ export function addNewEvent(event, userId, history) {
 export function getEventDetails(eventId) {
   return async (dispatch) => {
     try {
+      dispatch({
+        type: FETCH_EVENT_DETAILS,
+      });
       const event = await (await fetch(`/api/events/${eventId}`)).json();
 
       dispatch({
-        type: SET_EVENT_DETAILS,
+        type: FETCH_EVENT_DETAILS_SUCCESS,
         event,
       });
     } catch (err) {
       console.error(err);
+      dispatch({
+        type: FETCH_EVENT_DETAILS_FAILURE,
+      });
     }
   };
-}
-export function clearEventDetails() {
-  return { type: CLEAR_EVENT_DETAILS };
 }
 export function toggleMap() {
   return { type: SHOW_MAP };

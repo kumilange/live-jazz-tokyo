@@ -55,7 +55,6 @@ Top.propTypes = {
   clearSelectedEvent: PropTypes.func.isRequired,
   setUserLocation: PropTypes.func.isRequired,
   initializeEvents: PropTypes.func.isRequired,
-  clearEventDetails: PropTypes.func.isRequired,
 };
 
 export default Top;
