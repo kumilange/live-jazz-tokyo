@@ -1,0 +1,26 @@
+/*-------------------------------------------------------------------------------
+ Pay
+ -------------------------------------------------------------------------------*/
+/* payment
+-------------------------------------------------------------------------------*/
+.payment-paper {
+  padding: 10px 0;
+  width: 500px;
+  max-width: 100%;
+  margin-bottom: 30px;
+}
+.payment-table-row {
+  width: 100%;
+}
+.payment-table-event {
+  width: 50%;
+  text-align: center;
+}
+.payment-table-quantity {
+  width: 25%;
+  text-align: center;
+}
+.payment-table-price {
+  width: 25%;
+  text-align: center;
+}

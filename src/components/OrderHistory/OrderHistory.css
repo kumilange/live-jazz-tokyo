@@ -1,0 +1,39 @@
+/*-------------------------------------------------------------------------------
+ OrderHistory
+ /*-------------------------------------------------------------------------------*!*/
+/* order-history-table
+-------------------------------------------------------------------------------*/
+#order-history-table {
+  width: 100%;
+  margin-top: 10px;
+}
+#order-history-table th {
+  font-size: 17px;
+  font-weight: bold;
+}
+#order-history-table td {
+  text-align: center;
+}
+#order-history-table th, td {
+  padding: 10px;
+}
+
+/*
+* MEDIA QUERY SP
+*/
+@media screen and (max-width:600px){
+  #order-history-table {
+    font-size: 14px;
+  }
+  #order-history-table th {
+    font-size: 16px;
+  }
+  #order-history-table th,
+  #order-history-table td {
+    padding: 5px;
+  }
+  #order-history-table th,
+  #order-history-table td {
+    text-align: center;
+  }
+}

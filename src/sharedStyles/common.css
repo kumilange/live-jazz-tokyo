@@ -1,0 +1,49 @@
+/*-------------------------------------------------------------------------------
+COMMON
+-------------------------------------------------------------------------------*/
+.flex { display: flex; }
+.grow { flex-grow: 1; }
+.column { flex-direction: column; }
+.center { justify-content: center; align-items: center; }
+.spaceBetween { justify-content: space-between }
+.horiCenter { justify-content: center }
+.vertCenter { align-items: center }
+.restrict-width {
+  width: 800px;
+  min-width: 50%;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.blue { color: #2AABC2; }
+.white { color: #E7E7B9; }
+.dark { background-color: #252525; color: beige; }
+.black { background-color: black; color: beige; }
+
+/* mui-button - material ui */
+.mui-button span {
+  text-transform: none !important;
+}
+
+/* TextField - material ui */
+.inputHalf {
+  width: 50% !important;
+}
+.inputFull {
+  width: 100% !important;
+}
+.inputHalf input,
+.inputFull input {
+  font-family: sans-serif !important;
+  top: -3px;
+}
+
+/* link*/
+.link {
+  display: inline-block;
+  color: #2c2c2c;
+  text-decoration: underline;
+}
+
+/* Google-React-Map - auto generated class */
+.gm-style-cc { display:none; }

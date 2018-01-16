@@ -1,0 +1,45 @@
+/*-------------------------------------------------------------------------------
+ Profile
+ -------------------------------------------------------------------------------*/
+/* user-info-table
+-------------------------------------------------------------------------------*/
+#user-info-table {
+  width: 100%;
+  margin-top: 10px;
+}
+#user-info-table th {
+  font-size: 17px;
+  font-weight: bold;
+}
+#user-info-table td:nth-child(1) {
+  width: 30%;
+  padding: 0 15px 0 30px;
+}
+#user-info-table th, td {
+  padding: 10px;
+}
+
+/*
+* MEDIA QUERY SP
+*/
+@media screen and (max-width:600px){
+  #user-info-table {
+    font-size: 14px;
+  }
+  #user-info-table th {
+    font-size: 16px;
+  }
+  #user-info-table th,
+  #user-info-table td {
+    padding: 5px;
+  }
+  #user-info-table td:nth-child(1) {
+    width: 25%;
+    padding: 0 8px;
+    text-align: left;
+  }
+  #user-info-table th,
+  #user-info-table td {
+    text-align: left;
+  }
+}

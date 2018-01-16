@@ -1,0 +1,27 @@
+/*-------------------------------------------------------------------------------
+ Confirmation
+ -------------------------------------------------------------------------------*/
+#confirmation .note {
+  margin-left: 60px;
+  margin-top: 10px;
+}
+#confirmation .link {
+  margin-top: 40px;
+  margin-left: 60px;
+}
+#confirmation .title {
+  line-height: 1.2;
+}
+
+/*
+* MEDIA QUERY SP
+*/
+@media screen and (max-width:600px){
+  #confirmation .link {
+    margin-top: 20px;
+  }
+  #confirmation .title {
+    word-break: normal;
+    font-size: 20px;
+  }
+}

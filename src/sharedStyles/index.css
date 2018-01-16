@@ -1,0 +1,26 @@
+/*-------------------------------------------------------------------------------
+Index.js
+-------------------------------------------------------------------------------*/
+#router, #root {
+  height: 100%;
+}
+
+main {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding-top: 110px;
+  padding-bottom: 40px;
+  min-height: calc(100% - 50px);
+}
+
+/*
+* MEDIA QUERY SP
+*/
+@media screen and (max-width:600px){
+  main {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    min-height: calc(100% - 40px);
+  }
+}

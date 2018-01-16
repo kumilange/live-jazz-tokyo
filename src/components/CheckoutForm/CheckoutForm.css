@@ -1,0 +1,92 @@
+/*-------------------------------------------------------------------------------
+ CheckoutForm
+ -------------------------------------------------------------------------------*/
+/* payment-info-table
+-------------------------------------------------------------------------------*/
+#payment-info-table li {
+  align-items: center;
+  height: 68px;
+}
+#payment-info-table .list-title,
+#payment-info-table .list-item {
+  padding: 10px;
+}
+#payment-info-table .list-title {
+  min-width: 150px;
+  text-align: right;
+}
+#payment-info-table .list-item {
+  width: calc(100% - 150px);
+}
+#payment-info-table td:nth-child(1) {
+  width: 150px;
+  text-align: right;
+}
+
+#payment-info-table .underline {
+  border-bottom: 1px solid #E0E0E0;
+}
+
+#expiry-date {
+  width: 100px;
+}
+
+#cvc {
+  width: 60px;
+  white-space: nowrap;
+  padding: 10px;
+}
+
+.order-button {
+  margin-top: 20px;
+}
+
+/* react-stripe-elements */
+#card-holder-field,
+#card-holder-field::placeholder,
+#address-field::placeholder,
+#address-field,
+#email-field,
+#email-field::placeholder {
+  font-family: sans-serif !important;
+  top: -2px;
+}
+
+/*
+* MEDIA QUERY SP
+*/
+@media screen and (max-width:600px) {
+  #payment-info-table li {
+    flex-direction: column;
+    height: auto;
+    margin-top: 5px;
+    text-align: left;
+  }
+  #card-holder-field,
+  #card-holder-field::placeholder,
+  #address-field::placeholder,
+  #address-field,
+  #email-field,
+  #email-field::placeholder {
+    top: -5px;
+  }
+  #payment-info-table .list-title,
+  #payment-info-table .list-item,
+  #cvc {
+    width: 100%;
+    text-align: left;
+    padding: 0 8px;
+  }
+  #payment-info-table .list-title.adjustment {
+    margin-top: 5px;
+  }
+  #payment-info-table .list-item > div {
+    height: 36px !important;
+  }
+  #payment-info-table .list-item > div.underline {
+    height: 28px !important;
+  }
+  #cvc {
+    margin-top: 10px;
+  }
+}
