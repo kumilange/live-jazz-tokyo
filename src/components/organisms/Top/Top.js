@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Marker } from 'react-google-maps';
 
-import MyMap from '../../molecules/MyMap/MyMap';
+import Map from '../../molecules/Map/Map';
 import MyMarkerList from '../../molecules/MarkerList/MarkerList';
 
-class Map extends Component {
+class Top extends Component {
   componentDidMount() {
     if (!navigator.geolocation) {
       alert('Geolocation is not supported by your browser');
@@ -23,7 +23,7 @@ class Map extends Component {
     const { events, selectedEvent, userLocation, setSelectedEvent, clearSelectedEvent } = this.props;
     return process.env.npm_lifecycle_event === 'test'
       ? <div />
-      : <MyMap
+      : <Map
         position={userLocation}
         containerElement={<div style={{ height: '100%' }} />}
         mapElement={<div style={{ height: '100%' }} />}
@@ -40,11 +40,11 @@ class Map extends Component {
             position={userLocation}
             icon={userLocation}
           /> : null}
-      </MyMap>;
+      </Map>;
   }
 }
 
-Map.propTypes = {
+Top.propTypes = {
   events: PropTypes.arrayOf(PropTypes.object).isRequired,
   selectedEvent: PropTypes.shape().isRequired,
   userLocation: PropTypes.shape().isRequired,
@@ -53,4 +53,4 @@ Map.propTypes = {
   setUserLocation: PropTypes.func.isRequired,
 };
 
-export default Map;
+export default Top;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Map from '../../../containers/organisms/Map';
+import Top from '../../../containers/organisms/Top';
 import './App.css';
 
 class App extends Component {
@@ -12,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <main id="app" className="restrict-width">
-        <Map />
+        <Top />
       </main>
     );
   }

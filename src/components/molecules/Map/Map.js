@@ -5,7 +5,7 @@ import { withGoogleMap, GoogleMap } from 'react-google-maps';
 import { DEFAULT_CENTER } from '../../../config/const';
 import fancyMapStyles from '../../../resources/fancyMapStyles.json';
 
-const MyMap = withGoogleMap(({ position, children }) => (
+const Map = withGoogleMap(({ position, children }) => (
   <GoogleMap
     defaultZoom={13}
     defaultCenter={DEFAULT_CENTER}
@@ -21,8 +21,8 @@ const MyMap = withGoogleMap(({ position, children }) => (
   </GoogleMap>),
 );
 
-MyMap.propTypes = {
+Map.propTypes = {
   position: PropTypes.shape().isRequired,
 };
 
-export default MyMap;
+export default Map;
