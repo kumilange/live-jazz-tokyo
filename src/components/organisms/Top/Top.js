@@ -17,6 +17,8 @@ class Top extends Component {
         lng: position.coords.longitude,
       });
     });
+    this.props.clearEventDetails();
+    this.props.initializeEvents();
   }
 
   render() {
@@ -53,6 +55,8 @@ Top.propTypes = {
   setSelectedEvent: PropTypes.func.isRequired,
   clearSelectedEvent: PropTypes.func.isRequired,
   setUserLocation: PropTypes.func.isRequired,
+  initializeEvents: PropTypes.func.isRequired,
+  clearEventDetails: PropTypes.func.isRequired,
 };
 
 export default Top;

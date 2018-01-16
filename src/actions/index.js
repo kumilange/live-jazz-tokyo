@@ -1,6 +1,6 @@
 import querystring from 'querystring';
 import hello from '../config/hello';
-import { INITIALIZE_EVENT_DATA, SET_SELECTED_EVENT, CLEAR_SELECTED_EVENT, SET_USER_LOCATION, SET_CHARGE_RESPONSE, SET_ADD_EVENT_RESPONSE, SET_SELECTED_TAB, SET_ORDER_HISTORY, SET_EVENT_DETAILS, SHOW_MAP, SET_USER_PROFILE, CLEAR_USER_PROFILE, SET_JWT } from '../config/const';
+import { INITIALIZE_EVENT_DATA, SET_SELECTED_EVENT, CLEAR_SELECTED_EVENT, SET_USER_LOCATION, SET_CHARGE_RESPONSE, SET_ADD_EVENT_RESPONSE, SET_SELECTED_TAB, SET_ORDER_HISTORY, SET_EVENT_DETAILS, CLEAR_EVENT_DETAILS, SHOW_MAP, SET_USER_PROFILE, CLEAR_USER_PROFILE, SET_JWT } from '../config/const';
 
 // Top
 export function initializeEvents() {
@@ -83,6 +83,11 @@ export function getEventDetails(eventId) {
     } catch (err) {
       console.error(err);
     }
+  };
+}
+export function clearEventDetails() {
+  return {
+    type: CLEAR_EVENT_DETAILS,
   };
 }
 export function toggleMap() {

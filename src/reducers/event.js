@@ -1,4 +1,4 @@
-import { INITIALIZE_EVENT_DATA, SET_SELECTED_EVENT, CLEAR_SELECTED_EVENT, SET_ADD_EVENT_RESPONSE, SET_EVENT_DETAILS, SHOW_MAP } from '../config/const';
+import { INITIALIZE_EVENT_DATA, SET_SELECTED_EVENT, CLEAR_SELECTED_EVENT, SET_ADD_EVENT_RESPONSE, SET_EVENT_DETAILS, CLEAR_EVENT_DETAILS, SHOW_MAP } from '../config/const';
 
 const initialState = {
   events: [],
@@ -30,6 +30,11 @@ const event = (state = initialState, action) => {
       return {
         ...state,
         eventDetails: action.event,
+      };
+    case CLEAR_EVENT_DETAILS:
+      return {
+        ...state,
+        eventDetails: undefined,
       };
     case SET_ADD_EVENT_RESPONSE:
       return {
