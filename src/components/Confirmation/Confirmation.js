@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import { CheckIcon } from '../styles/Icons';
-import '../styles/Confirmation.css';
+import { CheckIcon } from '../../styles/Icons';
+import './Confirmation.css';
 
 const Confirmation = ({ jwt, history, chargeResponse }) => {
   if (!jwt) history.push('/');
@@ -11,7 +11,7 @@ const Confirmation = ({ jwt, history, chargeResponse }) => {
     <main id="confirmation" className="restrict-width">
       <div className="flex center">
         <CheckIcon style={{ width: 60, height: 60, paddingRight: 10 }} />
-        <h2 className="confirmationTtl">Your reservation is complete!</h2>
+        <h2 className="title">Your reservation is complete!</h2>
         <div className="grow" />
       </div>
       {chargeResponse ?

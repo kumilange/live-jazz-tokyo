@@ -1,3 +1,6 @@
+/*-------------------------------------------------------------------------------
+ Header
+ -------------------------------------------------------------------------------*/
 header {
   position: fixed;
   top: 0px;
@@ -40,7 +43,6 @@ header {
   line-height: 1.25;
   cursor: pointer;
 }
-
 .gnav-list li:before,
 .gnav-list li:after {
   position: absolute;
@@ -51,14 +53,12 @@ header {
   border-bottom: 1px solid beige;
   transition: all .2s linear;
 }
-
 .gnav-list li:before {
   left: 0;
 }
 .gnav-list li:after {
   right: 0;
 }
-
 .gnav-list li:hover:before,
 .gnav-list li:hover:after {
   width: 50%;
@@ -71,20 +71,12 @@ header {
   color: beige;
 }
 
-
 /*
 * MEDIA QUERY SP
 */
 @media screen and (max-width:600px){
   header {
     height: 40px;
-  }
-  .gnav-list li {
-    margin-left: 5px;
-    margin-right: 5px;
-  }
-  .gnav-list-link {
-    font-size: 14px;
   }
   .logo {
     height: 26px;
@@ -93,5 +85,12 @@ header {
     padding-top: 2px;
     padding-left: 28px;
     font-size: 16px;
+  }
+  .gnav-list li {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .gnav-list-link {
+    font-size: 14px;
   }
 }

@@ -1,0 +1,35 @@
+/*-------------------------------------------------------------------------------
+ AddEvent
+ -------------------------------------------------------------------------------*/
+#add-event {
+  padding-top: 50px;
+}
+
+/* col-price-date & col-time */
+.col-price-date,
+.col-time {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.col-price-date .inputHalf,
+.col-time > div {
+  width: 47% !important; /*manipulate default style of material-ui*/
+}
+.col-price-date .inputHalf > div,
+.col-time > div .inputHalf {
+  width: 100% !important; /*manipulate default style of material-ui*/
+}
+
+
+/*
+* MEDIA QUERY SP
+*/
+@media screen and (max-width:600px){
+  #add-event {
+    padding-top: 40px;
+  }
+  .inputHalf {
+    width: 100% !important;
+  }
+}

@@ -1,51 +1,4 @@
 /*-------------------------------------------------------------------------------
-COMMON
--------------------------------------------------------------------------------*/
-.flex { display: flex; }
-.grow { flex-grow: 1; }
-.column { flex-direction: column; }
-.center { justify-content: center; align-items: center; }
-.spaceBetween { justify-content: space-between }
-.horiCenter { justify-content: center }
-.vertCenter { align-items: center }
-.restrict-width {
-  width: 800px;
-  min-width: 50%;
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-}
-.blue { color: #2AABC2; }
-.white { color: #E7E7B9; }
-.dark { background-color: #252525; color: beige; }
-.black { background-color: black; color: beige; }
-
-/***** Button *****/
-/* mui-button - material ui */
-.mui-button span {
-  text-transform: none !important;
-}
-
-/* TextField - material ui */
-.inputHalf {
-  width: 50% !important;
-}
-.inputFull {
-  width: 100% !important;
-}
-.inputHalf input,
-.inputFull input {
-  font-family: sans-serif !important;
-  top: -3px;
-}
-
-.link {
-  display: inline-block;
-  color: #2c2c2c;
-  text-decoration: underline;
-}
-
-/*-------------------------------------------------------------------------------
 Index.js
 -------------------------------------------------------------------------------*/
 #router, #root {
@@ -61,34 +14,6 @@ main {
   min-height: calc(100% - 50px);
 }
 
-/*-------------------------------------------------------------------------------
-App.js
--------------------------------------------------------------------------------*/
-#app {
-  height: calc(100% - 50px);
-  padding-top: 50px;
-  padding-bottom: 0;
-}
-
-.gm-style-cc { display:none; }
-
-.mapLable {
-  position: absolute;
-  top: 50px;
-  padding: 2px 10px;
-  margin-top: 10px;
-  margin-left: 10px;
-  background-color: rgba(0, 0, 0, .75);
-  border: 1px solid #ffffff;
-  border-radius: 2px;
-  color: #ffffff;
-  font-family: 'Kaushan Script', cursive;
-  font-size: 18px;
-  text-align: center;
-  z-index: 1;
-}
-
-
 /*
 * MEDIA QUERY SP
 */
@@ -97,16 +22,5 @@ App.js
     padding-top: 50px;
     padding-bottom: 20px;
     min-height: calc(100% - 40px);
-  }
-  #app {
-    width: 100%;
-    height: calc(100% - 40px);
-    max-width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-    padding-top: 40px;
-  }
-  .mapLable {
-    display: none;
   }
 }

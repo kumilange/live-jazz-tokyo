@@ -4,7 +4,7 @@ import { withGoogleMap, GoogleMap } from 'react-google-maps';
 
 import { DEFAULT_CENTER } from '../config/const';
 import fancyMapStyles from '../resources/fancyMapStyles.json';
-import '../styles/InfoWindow.css';
+import './InfoWindow/InfoWindow.css';
 
 const MyMap = withGoogleMap(({ position, children }) => (
   <GoogleMap

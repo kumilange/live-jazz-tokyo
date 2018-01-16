@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Marker } from 'react-google-maps';
 
-import MyInfoWindow from './MyInfoWindow';
+import MyInfoWindow from './InfoWindow/MyInfoWindow';
 import { MarkerIcon } from '../styles/Icons';
-import '../styles/InfoWindow.css';
+import './InfoWindow/InfoWindow.css';
 
 const MyMarkerList = ({ events, selectedEvent, setSelectedEvent, clearSelectedEvent }) => (
   <div id="markerList">

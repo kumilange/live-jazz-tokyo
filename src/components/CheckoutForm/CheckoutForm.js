@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { injectStripe, CardNumberElement, CardExpiryElement, CardCVCElement } from 'react-stripe-elements';
 import { TextField, RaisedButton, Dialog } from 'material-ui';
 
+import './CheckoutForm.css';
+
 const stripeStyle = {
   base: {
     color: 'black',
@@ -118,8 +120,8 @@ class CheckoutForm extends Component {
       <form onSubmit={this.handleSubmit} className="flex column center">
         <ul id="payment-info-table">
           <li className="flex">
-            <p className="listTtl">Card Holder:</p>
-            <div className="listItem">
+            <p className="list-title">Card Holder:</p>
+            <div className="list-item">
               <TextField
                 id="card-holder-field"
                 hintText="John Smith"
@@ -128,8 +130,8 @@ class CheckoutForm extends Component {
             </div>
           </li>
           <li className="flex">
-            <p className="listTtl">Billing Address:</p>
-            <div className="listItem">
+            <p className="list-title">Billing Address:</p>
+            <div className="list-item">
               <TextField
                 id="address-field"
                 hintText="123 New Orleans"
@@ -138,8 +140,8 @@ class CheckoutForm extends Component {
             </div>
           </li>
           <li className="flex">
-            <p className="listTtl">E-mail:</p>
-            <div className="listItem">
+            <p className="list-title">E-mail:</p>
+            <div className="list-item">
               <TextField
                 id="email-field"
                 hintText="test@example.com"
@@ -148,29 +150,29 @@ class CheckoutForm extends Component {
             </div>
           </li>
           <li className="flex">
-            <p className="listTtl">Card Number:</p>
-            <div className="listItem">
+            <p className="list-title">Card Number:</p>
+            <div className="list-item">
               <div className="underline">
                 <CardNumberElement style={stripeStyle} />
               </div>
             </div>
           </li>
           <li className="flex">
-            <p className="listTtl">Expiry Date:</p>
-            <div id="expiry-date" className="listItem">
+            <p className="list-title">Expiry Date:</p>
+            <div id="expiry-date" className="list-item">
               <div className="underline">
                 <CardExpiryElement style={stripeStyle} />
               </div>
             </div>
             <p id="cvc">CVC:</p>
-            <div className="listItem">
+            <div className="list-item">
               <div className="underline">
                 <CardCVCElement style={stripeStyle} />
               </div>
             </div>
           </li>
         </ul>
-        <RaisedButton primary className="orderButton" label="Confirm Order" type="submit" />
+        <RaisedButton primary className="order-button" label="Confirm Order" type="submit" />
         <Dialog
           title="Error"
           actions={actions}

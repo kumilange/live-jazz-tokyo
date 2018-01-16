@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { DatePicker, TimePicker, TextField, RaisedButton } from 'material-ui';
 
-import '../styles/AddEvent.css';
+import './AddEvent.css';
 
 const DateTimeFormat = global.Intl.DateTimeFormat;
 
@@ -72,7 +72,7 @@ class AddEvent extends Component {
           floatingLabelText="Address"
           onChange={event => this.setFormState(event.target.value, 'address')}
         />
-        <div className="colPriceDate">
+        <div className="col-price-date">
           <TextField
             className="inputHalf price"
             floatingLabelText="Price"
@@ -90,7 +90,7 @@ class AddEvent extends Component {
             onChange={(event, date) => this.setFormState(date, 'date')}
           />
         </div>
-        <div className="colTime">
+        <div className="col-time">
           <TimePicker
             className="inputHalf"
             floatingLabelText="Opening Time"
@@ -110,6 +110,7 @@ class AddEvent extends Component {
           primary
           className="mui-button"
           label="Submit"
+          style={{ marginTop: '40px' }}
           onClick={() => addNewEvent(addEventFields, userProfile.id, history)}
         />
         { failed ? <p>Submit failed!  Check data and try again.</p> : <div /> }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../styles/Footer.css';
+import './Footer.css';
 
 const Footer = () => (
   <footer id="footer" className="flex column center dark white">

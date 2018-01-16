@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Divider, RaisedButton } from 'material-ui';
 
-import Profile from './Profile';
-import OrderHistory from './OrderHistory';
+import Profile from '../Profile/Profile';
+import OrderHistory from '../OrderHistory/OrderHistory';
 
-import '../styles/User.css';
+import './User.css';
 
 class User extends Component {
   componentDidMount() {

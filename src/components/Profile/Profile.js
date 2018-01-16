@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Profile.css';
 
 const Profile = ({ userProfile: { name, id, email } }) => (
   <table id="user-info-table">

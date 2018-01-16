@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { addNewEvent } from '../actions';
-import AddEvent from '../components/AddEvent';
+import AddEvent from '../components/AddEvent/AddEvent';
 
 
 const mapStateToProps = state => ({

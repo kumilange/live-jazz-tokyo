@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Confirmation from '../components/Confirmation';
+import Confirmation from '../components/Confirmation/Confirmation';
 
 const mapStateToProps = state => ({
   jwt: state.user.jwt,

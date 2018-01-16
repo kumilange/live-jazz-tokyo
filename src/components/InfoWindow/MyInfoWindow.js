@@ -4,9 +4,9 @@ import { InfoWindow } from 'react-google-maps';
 import { Link } from 'react-router-dom';
 import { Divider } from 'material-ui';
 
-import { formatPrice, formatDate, formatTime } from '../utils/format';
-import { CalendarIcon, ClockIcon, YenIcon, PinIcon, UserIcon, svgIconSize, svgIconSizeL } from '../styles/Icons';
-import '../styles/InfoWindow.css';
+import { formatPrice, formatDate, formatTime } from '../../utils/format';
+import { CalendarIcon, ClockIcon, YenIcon, PinIcon, UserIcon, svgIconSize, svgIconSizeL } from '../../styles/Icons';
+import './InfoWindow.css';
 
 const MyInfoWindow = ({ event: { id, name, artist, venue, start, end, price }, selectedEvent, clearSelectedEvent }) => (<div id="infowindow">
   { selectedEvent.id === id ?
@@ -14,36 +14,36 @@ const MyInfoWindow = ({ event: { id, name, artist, venue, start, end, price }, s
       className="infoWindow"
       onCloseClick={clearSelectedEvent}
     >
-      <div className="infoWindowInner">
+      <div className="info-window-inner">
         <Link to={`/event/${id}`}>
-          <h2 className="infoWindowHeading2">{name}</h2>
+          <h2 className="info-window-heading2">{name}</h2>
           <Divider style={{ marginTop: 10, marginBottom: 10 }} />
-          <div className="flex vertCenter infoItemWrapper">
+          <div className="flex vertCenter info-item-wrapper">
             <UserIcon style={svgIconSizeL} />
-            <h3 className="infoWindowHeading3">{artist}</h3>
+            <h3 className="info-window-heading3">{artist}</h3>
           </div>
-          <div className="flex vertCenter infoItemWrapper">
+          <div className="flex vertCenter info-item-wrapper">
             <PinIcon style={svgIconSize} />
-            <p className="infoWindowSubTtl">{venue}</p>
+            <p className="info-window-subttl">{venue}</p>
           </div>
           <div className="flex">
-            <div className="infoItemWrapper iconAdj">
+            <div className="info-item-wrapper icon-adjust">
               <div className="flex vertCenter">
                 <CalendarIcon style={svgIconSize} />
-                <p className="infoWindowSubTtl">{formatDate(start)}</p>
+                <p className="info-window-subttl">{formatDate(start)}</p>
               </div>
             </div>
-            <div className="infoItemWrapper">
+            <div className="info-item-wrapper">
               <div className="flex vertCenter">
                 <ClockIcon style={svgIconSize} />
-                <p className="infoWindowSubTtl">{formatTime(start)}-{formatTime(end)}
+                <p className="info-window-subttl">{formatTime(start)}-{formatTime(end)}
                 </p>
               </div>
             </div>
           </div>
-          <div className="flex vertCenter infoItemWrapper">
+          <div className="flex vertCenter info-item-wrapper">
             <YenIcon style={svgIconSize} viewBox="4 4 19 19" />
-            <p className="infoWindowSubTtl">{formatPrice(price)} </p>
+            <p className="info-window-subttl">{formatPrice(price)} </p>
           </div>
         </Link>
       </div>

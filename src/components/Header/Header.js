@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import hello from '../config/hello';
-import '../styles/Header.css';
+import hello from '../../config/hello';
+import './Header.css';
 
 class Header extends Component {
   componentDidMount() {

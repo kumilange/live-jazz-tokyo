@@ -1,0 +1,50 @@
+/*-------------------------------------------------------------------------------
+ User
+ /*-------------------------------------------------------------------------------*!*/
+#profile-left {
+  margin-right: 20px;
+  margin-bottom: auto;
+}
+#profile-picture {
+  height: 200px;
+}
+
+#tabs {
+  width: 100%;
+}
+.tab {
+  width: 50%;
+  padding: 20px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+}
+.tab.selected {
+  border-bottom: 1px solid black;
+}
+
+/*
+* MEDIA QUERY SP
+*/
+@media screen and (max-width:600px){
+  th {
+    font-size: 16px;
+  }
+  #user {
+    flex-direction: column;
+  }
+  #profile-left {
+    margin-right: 0;
+  }
+  #profile-picture {
+    width: 100%;
+    height: auto;
+  }
+  #tabs {
+   margin-top: 10px;
+  }
+  .tab {
+    padding: 10px;
+  }
+}

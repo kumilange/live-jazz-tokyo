@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { addAuthListener, logout } from '../actions';
-import Header from '../components/Header';
+import Header from '../components/Header/Header';
 
 const mapStateToProps = state => ({
   userProfile: state.user.userProfile,

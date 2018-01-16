@@ -1,28 +1,29 @@
+/*-------------------------------------------------------------------------------
+ CheckoutForm
+ -------------------------------------------------------------------------------*/
+/* payment-info-table
+-------------------------------------------------------------------------------*/
 #payment-info-table li {
   align-items: center;
   height: 68px;
 }
-
-#payment-info-table .listTtl,
-#payment-info-table .listItem {
+#payment-info-table .list-title,
+#payment-info-table .list-item {
   padding: 10px;
 }
-
-#payment-info-table .listTtl {
+#payment-info-table .list-title {
   min-width: 150px;
   text-align: right;
 }
-
-#payment-info-table .listItem {
+#payment-info-table .list-item {
   width: calc(100% - 150px);
 }
-
 #payment-info-table td:nth-child(1) {
   width: 150px;
   text-align: right;
 }
 
-.underline {
+#payment-info-table .underline {
   border-bottom: 1px solid #E0E0E0;
 }
 
@@ -36,34 +37,8 @@
   padding: 10px;
 }
 
-.orderButton {
+.order-button {
   margin-top: 20px;
-}
-
-.payment-paper {
-  padding: 10px 0;
-  width: 500px;
-  max-width: 100%;
-  margin-bottom: 30px;
-}
-
-.payment-table-row {
-  width: 100%;
-}
-
-.payment-table-cell1 {
-  width: 50%;
-  text-align: center;
-}
-
-.payment-table-cell2 {
-  width: 25%;
-  text-align: center;
-}
-
-.payment-table-cell3 {
-  width: 25%;
-  text-align: center;
 }
 
 /* react-stripe-elements */
@@ -95,20 +70,20 @@
   #email-field::placeholder {
     top: -5px;
   }
-  #payment-info-table .listTtl,
-  #payment-info-table .listItem,
+  #payment-info-table .list-title,
+  #payment-info-table .list-item,
   #cvc {
     width: 100%;
     text-align: left;
     padding: 0 8px;
   }
-  #payment-info-table .listTtl.adjustment {
+  #payment-info-table .list-title.adjustment {
     margin-top: 5px;
   }
-  #payment-info-table .listItem > div {
+  #payment-info-table .list-item > div {
     height: 36px !important;
   }
-  #payment-info-table .listItem > div.underline {
+  #payment-info-table .list-item > div.underline {
     height: 28px !important;
   }
   #cvc {

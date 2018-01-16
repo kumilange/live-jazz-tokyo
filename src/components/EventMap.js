@@ -4,7 +4,7 @@ import { Marker } from 'react-google-maps';
 
 import MyMap from './MyMap';
 import { MarkerIcon } from '../styles/Icons';
-import '../styles/InfoWindow.css';
+import './InfoWindow/InfoWindow.css';
 
 class EventMap extends Component {
   render() {

@@ -5,7 +5,7 @@ import { Marker } from 'react-google-maps';
 import MyMap from './MyMap';
 import MyMarkerList from './MyMarkerList';
 
-import '../styles/InfoWindow.css';
+import './InfoWindow/InfoWindow.css';
 
 class Map extends Component {
   componentDidMount() {
