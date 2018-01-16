@@ -2,9 +2,9 @@ import React from 'react';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
 
-import App from '../components/App/App';
+import App from '../components/templates/App/App';
 
 it('renders without crashing', () => {
   const wrapper = shallow(<App initializeEvents={() => {}} />);
-  expect(wrapper.find('#app')).to.have.length(1); // 0
+  expect(wrapper.find('#top')).to.have.length(1); // 0
 });
