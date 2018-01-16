@@ -11,14 +11,14 @@ import './sharedStyles/reset.css';
 import './sharedStyles/common.css';
 import './sharedStyles/index.css';
 import reducer from './reducers';
-import Header from './containers/Header';
-import App from './containers/App';
-import Event from './containers/Event';
-import User from './containers/User';
-import Pay from './containers/Pay';
-import Footer from './components/Footer/Footer';
-import Confirmation from './containers/Confirmation';
-import AddEvent from './containers/AddEvent';
+import Header from './containers/organisms/Header';
+import App from './containers/templates/App';
+import Event from './containers/organisms/Event';
+import User from './containers/organisms/User';
+import Pay from './containers/organisms/Pay';
+import Footer from './components/organisms/Footer/Footer';
+import Confirmation from './containers/organisms/Confirmation';
+import AddEvent from './containers/organisms/AddEvent';
 import { STRIPE_API_KEY } from './config/const';
 
 const store = createStore(
