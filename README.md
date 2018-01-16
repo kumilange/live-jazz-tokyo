@@ -43,6 +43,7 @@ Deployed using Heroku at [https://live-jazz-tokyo.herokuapp.com/](https://live-j
 * [React](https://facebook.github.io/react/) - Frontend
 * [Redux](https://github.com/reactjs/redux) - State Management
 * [Material UI](http://www.material-ui.com/) - Frontend
+* [Atomic Design](http://atomicdesign.bradfrost.com/table-of-contents/) - Component Design
 * [Express](https://expressjs.com/) - Backend
 * [PostgreSQL](https://www.postgresql.org/) - Database
 * [Knex](http://knexjs.org/) - Query Builder
