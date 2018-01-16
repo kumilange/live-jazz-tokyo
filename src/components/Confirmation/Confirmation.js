@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import { CheckIcon } from '../../styles/Icons';
+import { CheckIcon } from '../Icon/Icon';
 import './Confirmation.css';
 
 const Confirmation = ({ jwt, history, chargeResponse }) => {

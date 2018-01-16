@@ -7,9 +7,9 @@ import thunk from 'redux-thunk';
 import { StripeProvider } from 'react-stripe-elements';
 import { MuiThemeProvider, getMuiTheme } from 'material-ui/styles';
 
-import './styles/reset.css';
-import './styles/common.css';
-import './styles/index.css';
+import './sharedStyles/reset.css';
+import './sharedStyles/common.css';
+import './sharedStyles/index.css';
 import reducer from './reducers';
 import Header from './containers/Header';
 import App from './containers/App';

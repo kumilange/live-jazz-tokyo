@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Divider, Paper, RaisedButton } from 'material-ui';
 
-import EventMap from '../EventMap';
+import EventMap from '../EventMap/EventMap';
 import { formatPrice, formatMonthOrDate, formatTime } from '../../utils/format';
 import './Event.css';
-import { ClockIcon, YenIcon, PinIcon } from '../../styles/Icons';
+import { ClockIcon, YenIcon, PinIcon } from '../Icon/Icon';
 
 const FALLBACK_DESC = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 

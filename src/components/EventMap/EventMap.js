@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Marker } from 'react-google-maps';
 
-import MyMap from './MyMap';
-import { MarkerIcon } from '../styles/Icons';
-import './InfoWindow/InfoWindow.css';
+import MyMap from '../MyMap/MyMap';
+import { MarkerIcon } from '../Icon/Icon';
 
 class EventMap extends Component {
   render() {

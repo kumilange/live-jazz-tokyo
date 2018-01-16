@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withGoogleMap, GoogleMap } from 'react-google-maps';
 
-import { DEFAULT_CENTER } from '../config/const';
-import fancyMapStyles from '../resources/fancyMapStyles.json';
-import './InfoWindow/InfoWindow.css';
+import { DEFAULT_CENTER } from '../../config/const';
+import fancyMapStyles from '../../resources/fancyMapStyles.json';
 
 const MyMap = withGoogleMap(({ position, children }) => (
   <GoogleMap

@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Marker } from 'react-google-maps';
 
-import MyMap from './MyMap';
-import MyMarkerList from './MyMarkerList';
-
-import './InfoWindow/InfoWindow.css';
+import MyMap from '../MyMap/MyMap';
+import MyMarkerList from '../MarkerList/MarkerList';
 
 class Map extends Component {
   componentDidMount() {

@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 import { addNewEvent } from '../actions';
 import AddEvent from '../components/AddEvent/AddEvent';
 
-
 const mapStateToProps = state => ({
   jwt: state.user.jwt,
   userProfile: state.user.userProfile,

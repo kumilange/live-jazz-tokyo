@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Divider } from 'material-ui';
 
 import { formatPrice, formatDate, formatTime } from '../../utils/format';
-import { CalendarIcon, ClockIcon, YenIcon, PinIcon, UserIcon, svgIconSize, svgIconSizeL } from '../../styles/Icons';
+import { CalendarIcon, ClockIcon, YenIcon, PinIcon, UserIcon, svgIconSize, svgIconSizeL } from '../Icon/Icon';
 import './InfoWindow.css';
 
 const MyInfoWindow = ({ event: { id, name, artist, venue, start, end, price }, selectedEvent, clearSelectedEvent }) => (<div id="infowindow">
