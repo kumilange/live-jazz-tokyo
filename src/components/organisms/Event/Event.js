@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Divider, Paper, RaisedButton } from 'material-ui';
 
 import EventMap from '../../molecules/EventMap/EventMap';
-import Loader from '../../atoms/Loader/Loader';
+import Loader from '../../atoms/Loader';
 import { formatPrice, formatMonthOrDate, formatTime } from '../../../utils/format';
 import './Event.css';
 import { ClockIcon, YenIcon, PinIcon } from '../../atoms/Icon/Icon';
