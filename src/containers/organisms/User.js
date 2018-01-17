@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import User from '../../components/organisms/User/index';
-import { getOrderHistory, setSelectedTab } from '../../actions/index';
+import User from '../../components/organisms/User';
+import { getOrderHistory, setSelectedTab } from '../../actions';
 
 const mapStateToProps = state => ({
   jwt: state.user.jwt,

@@ -10,7 +10,7 @@ import './sharedStyles/reset.css';
 import './sharedStyles/common.css';
 import './sharedStyles/index.css';
 import reducer from './reducers';
-import App from './components/templates/App/index';
+import App from './components/templates/App';
 import { STRIPE_API_KEY } from './config/const';
 
 const store = createStore(

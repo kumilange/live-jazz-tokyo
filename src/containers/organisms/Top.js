@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { initializeEvents, setSelectedEvent, clearSelectedEvent, setUserLocation } from '../../actions/index';
-import Top from '../../components/organisms/Top/index';
+import { initializeEvents, setSelectedEvent, clearSelectedEvent, setUserLocation } from '../../actions';
+import Top from '../../components/organisms/Top';
 
 const mapStateToProps = state => ({
   events: state.event.events,
