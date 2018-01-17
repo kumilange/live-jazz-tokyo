@@ -31,11 +31,7 @@ const OrderHistory = ({ orders }) => (
 );
 
 OrderHistory.propTypes = {
-  orders: PropTypes.arrayOf(Object),
-};
-
-OrderHistory.defaultProps = {
-  orders: [],
+  orders: PropTypes.arrayOf(Object).isRequired,
 };
 
 export default OrderHistory;
