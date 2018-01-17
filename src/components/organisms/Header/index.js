@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import hello from '../../../config/hello';
 import './Header.css';
+import { isObjectEmpty } from '../../../utils';
 
 class Header extends Component {
   componentDidMount() {
@@ -24,7 +25,7 @@ class Header extends Component {
           <h1 className="flex">
             <Link to="/" className="logo">LiveJazz</Link>
           </h1>
-          { userProfile
+          { !isObjectEmpty(userProfile)
             ? <nav className="gnav">
               <ul className="gnav-list flex">
                 <li><Link to={`/user/${userProfile.id}`} className="gnav-list-link">{ userProfile.name }</Link></li>

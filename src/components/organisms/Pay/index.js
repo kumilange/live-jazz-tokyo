@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Elements } from 'react-stripe-elements';
 import { Paper, Divider } from 'material-ui';
 
-import { formatPrice } from '../../../utils/format';
+import { formatPrice } from '../../../utils';
 import CheckoutForm from '../../molecules/CheckoutForm';
 import './Pay.css';
 

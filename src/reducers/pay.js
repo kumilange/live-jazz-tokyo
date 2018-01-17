@@ -1,7 +1,7 @@
 import { SET_CHARGE_RESPONSE, SET_CREDIT_CARD_ERROR } from '../config/const';
 
 const initialState = {
-  chargeResponse: undefined,
+  chargeResponse: {},
   creditCardError: false,
 };
 

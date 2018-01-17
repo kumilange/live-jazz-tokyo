@@ -5,14 +5,14 @@ import { Divider, Paper, RaisedButton } from 'material-ui';
 
 import EventMap from '../../molecules/EventMap';
 import Loader from '../../atoms/Loader';
-import { formatPrice, formatMonthOrDate, formatTime } from '../../../utils/format';
+import { formatPrice, formatMonthOrDate, formatTime, isObjectEmpty } from '../../../utils';
 import './Event.css';
 import { ClockIcon, YenIcon, PinIcon } from '../../atoms/Icon/Icon';
 
 const FALLBACK_DESC = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
 const Event = ({ event, jwt, isFetching, toggleMap, showMap }) => {
-  if (!event) return null;
+  if (isObjectEmpty(event)) return null;
   if (isFetching) return <Loader />;
   return (
     <main className="restrict-width grow" id="event-details">

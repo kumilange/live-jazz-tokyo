@@ -7,7 +7,7 @@ import './AddEvent.css';
 const DateTimeFormat = global.Intl.DateTimeFormat;
 
 const AddEvent = (props) => {
-  const { jwt, history, addEventResponse, userProfile, addNewEvent, addEventFields, setFormState, validatePrice } = props;
+  const { history, jwt, userProfile, addEventResponse, addEventFields, addNewEvent, setFormState, validatePrice } = props;
   if (!jwt) history.push('/');
   const failed = !addEventResponse.addSuccess && addEventResponse.addSuccess !== undefined;
 

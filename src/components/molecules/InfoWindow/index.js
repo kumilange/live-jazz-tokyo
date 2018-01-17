@@ -4,7 +4,7 @@ import { InfoWindow } from 'react-google-maps';
 import { Link } from 'react-router-dom';
 import { Divider } from 'material-ui';
 
-import { formatPrice, formatDate, formatTime } from '../../../utils/format';
+import { formatPrice, formatDate, formatTime } from '../../../utils';
 import { CalendarIcon, ClockIcon, YenIcon, PinIcon, UserIcon, svgIconSize, svgIconSizeL } from '../../atoms/Icon/Icon';
 import './InfoWindow.css';
 

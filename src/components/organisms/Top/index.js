@@ -4,6 +4,7 @@ import { Marker } from 'react-google-maps';
 
 import Map from '../../molecules/Map';
 import MyMarkerList from '../../molecules/MarkerList';
+import { isObjectEmpty } from '../../../utils';
 
 class Top extends Component {
   componentDidMount() {
@@ -37,7 +38,7 @@ class Top extends Component {
             setSelectedEvent={setSelectedEvent}
             clearSelectedEvent={clearSelectedEvent}
           />
-          {userLocation.lat ?
+          {!isObjectEmpty(userLocation) ?
             <Marker
               position={userLocation}
               icon={userLocation}
