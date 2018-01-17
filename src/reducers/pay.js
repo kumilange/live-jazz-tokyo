@@ -10,7 +10,7 @@ const pay = (state = initialState, action) => {
     case SET_CHARGE_RESPONSE:
       return {
         ...state,
-        chargeResponse: action.chargeResponse,
+        chargeResponse: action.result,
       };
     case SET_CREDIT_CARD_ERROR:
       return {

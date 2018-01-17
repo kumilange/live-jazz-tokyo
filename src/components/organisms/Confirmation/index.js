@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import { isObjectEmpty } from '../../../utils/index';
 import { CheckIcon } from '../../atoms/Icon/Icon';
 import './Confirmation.css';
 
@@ -14,7 +15,7 @@ const Confirmation = ({ jwt, history, chargeResponse }) => {
         <h2 className="title">Your reservation is complete!</h2>
         <div className="grow" />
       </div>
-      {chargeResponse ?
+      {!isObjectEmpty(chargeResponse) ?
         <p className="note">
           {`Please save your order number: ${chargeResponse.order_id}`}
         </p> :
@@ -25,15 +26,9 @@ const Confirmation = ({ jwt, history, chargeResponse }) => {
 };
 
 Confirmation.propTypes = {
-  jwt: PropTypes.string,
-  chargeResponse: PropTypes.shape(),
-  history: PropTypes.shape(),
-};
-
-Confirmation.defaultProps = {
-  jwt: undefined,
-  chargeResponse: undefined,
-  history: undefined,
+  jwt: PropTypes.string.isRequired,
+  chargeResponse: PropTypes.shape().isRequired,
+  history: PropTypes.shape().isRequired,
 };
 
 export default Confirmation;
