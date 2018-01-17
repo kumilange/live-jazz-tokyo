@@ -4,10 +4,9 @@ const initialState = {
   isFetching: false,
   events: [],
   selectedEvent: {},
-  eventDetails: undefined,
+  eventDetails: {},
   showMap: false,
-  addEventFields: {},
-  addEventResponse: undefined,
+  addEventResponse: {},
 };
 
 const event = (state = initialState, action) => {

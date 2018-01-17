@@ -2,7 +2,7 @@ import React from 'react';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
 
-import App from '../components/templates/App/index';
+import App from '../components/templates/App';
 
 it('renders without crashing', () => {
   const wrapper = shallow(<App initializeEvents={() => {}} />);

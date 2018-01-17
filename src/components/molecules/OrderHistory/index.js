@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { formatPrice } from '../../../utils/format';
+import { formatPrice } from '../../../utils';
 import './OrderHistory.css';
 
 const renderOrderList = (orders) => {
-  return orders.map((order) => {
-    const { id, eventId, title, amount } = order;
+  return orders.map(({ id, eventId, title, amount }) => {
     return (
       <tr key={id}>
         <td> { id } </td>
@@ -17,7 +16,7 @@ const renderOrderList = (orders) => {
   });
 };
 
-const OrderHistory = props => (
+const OrderHistory = ({ orders }) => (
   <table id="order-history-table">
     <tbody>
       <tr>
@@ -25,17 +24,13 @@ const OrderHistory = props => (
         <th>Title</th>
         <th>Amount</th>
       </tr>
-      { renderOrderList(props.orders) }
+      { renderOrderList(orders) }
     </tbody>
   </table>
 );
 
 OrderHistory.propTypes = {
-  orders: PropTypes.arrayOf(Object),
-};
-
-OrderHistory.defaultProps = {
-  orders: [],
+  orders: PropTypes.arrayOf(Object).isRequired,
 };
 
 export default OrderHistory;

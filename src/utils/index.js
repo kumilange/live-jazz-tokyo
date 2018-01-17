@@ -25,3 +25,6 @@ export function formatTime(date) {
     .join(':');
 }
 
+export function isObjectEmpty(prop) {
+  return Object.keys(prop).length === 0;
+}

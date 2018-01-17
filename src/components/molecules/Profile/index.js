@@ -22,20 +22,7 @@ const Profile = ({ userProfile: { name, id, email } }) => (
 );
 
 Profile.propTypes = {
-  userProfile: PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-    email: PropTypes.string,
-  }),
-};
-
-Profile.defaultProps = {
-  userProfile: {
-    undefined,
-    id: undefined,
-    name: undefined,
-    email: undefined,
-  },
+  userProfile: PropTypes.shape().isRequired,
 };
 
 export default Profile;

@@ -1,8 +1,8 @@
 import { SET_USER_LOCATION, SET_SELECTED_TAB, SET_ORDER_HISTORY, SET_USER_PROFILE, CLEAR_USER_PROFILE, SET_JWT } from '../config/const';
 
 const initialState = {
-  jwt: undefined,
-  userProfile: undefined,
+  jwt: '',
+  userProfile: {},
   userLocation: {},
   selectedTab: 'profile',
   orders: [],
@@ -18,8 +18,8 @@ const users = (state = initialState, action) => {
     case CLEAR_USER_PROFILE:
       return {
         ...state,
-        jwt: undefined,
-        userProfile: undefined,
+        jwt: '',
+        userProfile: {},
         orders: [],
       };
     case SET_USER_LOCATION:

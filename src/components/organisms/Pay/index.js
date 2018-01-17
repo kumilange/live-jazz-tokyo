@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { Elements } from 'react-stripe-elements';
 import { Paper, Divider } from 'material-ui';
 
-import { formatPrice } from '../../../utils/format';
-import CheckoutForm from '../../molecules/CheckoutForm';
+import { formatPrice, isObjectEmpty } from '../../../utils';
+import CheckoutForm from '../../../containers/molecules/CheckoutForm';
 import './Pay.css';
 
-const Pay = ({ event, jwt, history, userProfile, setChargeResponse }) => {
+const Pay = ({ event, jwt, history, userProfile }) => {
   if (!jwt) history.push('/');
   return (
-    event && userProfile ?
+    !isObjectEmpty(event) && !isObjectEmpty(userProfile) ?
       <main className="restrict-width flex column center">
         <Paper className="payment-paper">
           <div className="flex payment-table-row">
@@ -32,30 +32,17 @@ const Pay = ({ event, jwt, history, userProfile, setChargeResponse }) => {
           </div>
         </Paper>
         <Elements>
-          <CheckoutForm
-            jwt={jwt}
-            userProfile={userProfile}
-            eventId={event.id}
-            setChargeResponse={setChargeResponse}
-            history={history}
-          />
+          <CheckoutForm />
         </Elements>
       </main> : null
   );
 };
 
 Pay.propTypes = {
-  event: PropTypes.shape(),
-  jwt: PropTypes.string,
+  event: PropTypes.shape().isRequired,
+  jwt: PropTypes.string.isRequired,
   history: PropTypes.shape().isRequired,
-  userProfile: PropTypes.shape(),
-  setChargeResponse: PropTypes.func.isRequired,
-};
-
-Pay.defaultProps = {
-  event: undefined,
-  jwt: undefined,
-  userProfile: undefined,
+  userProfile: PropTypes.shape().isRequired,
 };
 
 export default Pay;
