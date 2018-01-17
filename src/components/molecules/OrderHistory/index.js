@@ -17,7 +17,7 @@ const renderOrderList = (orders) => {
   });
 };
 
-const OrderHistory = props => (
+const OrderHistory = ({ orders }) => (
   <table id="order-history-table">
     <tbody>
       <tr>
@@ -25,7 +25,7 @@ const OrderHistory = props => (
         <th>Title</th>
         <th>Amount</th>
       </tr>
-      { renderOrderList(props.orders) }
+      { renderOrderList(orders) }
     </tbody>
   </table>
 );
