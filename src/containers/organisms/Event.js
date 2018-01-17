@@ -26,7 +26,7 @@ EventContainer.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  event: state.event.eventDetails,
+  eventDetails: state.event.eventDetails,
   isFetching: state.event.isFetching,
   showMap: state.event.showMap,
   jwt: state.user.jwt,
