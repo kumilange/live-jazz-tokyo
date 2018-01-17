@@ -5,8 +5,7 @@ import { formatPrice } from '../../../utils';
 import './OrderHistory.css';
 
 const renderOrderList = (orders) => {
-  return orders.map((order) => {
-    const { id, eventId, title, amount } = order;
+  return orders.map(({ id, eventId, title, amount }) => {
     return (
       <tr key={id}>
         <td> { id } </td>
