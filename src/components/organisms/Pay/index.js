@@ -4,7 +4,7 @@ import { Elements } from 'react-stripe-elements';
 import { Paper, Divider } from 'material-ui';
 
 import { formatPrice, isObjectEmpty } from '../../../utils';
-import CheckoutForm from '../../molecules/CheckoutForm';
+import CheckoutForm from '../../../containers/molecules/CheckoutForm';
 import './Pay.css';
 
 const Pay = ({ event, jwt, history, userProfile, setChargeResponse }) => {
@@ -32,13 +32,7 @@ const Pay = ({ event, jwt, history, userProfile, setChargeResponse }) => {
           </div>
         </Paper>
         <Elements>
-          <CheckoutForm
-            jwt={jwt}
-            userProfile={userProfile}
-            eventId={event.id}
-            setChargeResponse={setChargeResponse}
-            history={history}
-          />
+          <CheckoutForm />
         </Elements>
       </main> : null
   );
