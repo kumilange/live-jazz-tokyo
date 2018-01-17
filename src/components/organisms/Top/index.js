@@ -6,8 +6,7 @@ import Map from '../../molecules/Map';
 import MyMarkerList from '../../molecules/MarkerList';
 import { isObjectEmpty } from '../../../utils';
 
-const Top = (props) => {
-  const { events, selectedEvent, userLocation, setSelectedEvent, clearSelectedEvent } = props;
+const Top = ({ events, selectedEvent, userLocation, setSelectedEvent, clearSelectedEvent }) => {
   return process.env.npm_lifecycle_event === 'test'
     ? <div />
     : <main id="top" className="restrict-width">
