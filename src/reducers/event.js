@@ -6,7 +6,6 @@ const initialState = {
   selectedEvent: {},
   eventDetails: undefined,
   showMap: false,
-  addEventFields: {},
   addEventResponse: undefined,
 };
 
