@@ -80,22 +80,14 @@ const AddEvent = (props) => {
 };
 
 AddEvent.propTypes = {
-  jwt: PropTypes.string,
-  history: PropTypes.shape(),
-  userProfile: PropTypes.shape(),
-  addEventFields: PropTypes.shape(),
-  addEventResponse: PropTypes.shape(),
+  jwt: PropTypes.string.isRequired,
+  history: PropTypes.shape().isRequired,
+  userProfile: PropTypes.shape().isRequired,
+  addEventFields: PropTypes.shape().isRequired,
+  addEventResponse: PropTypes.shape().isRequired,
   addNewEvent: PropTypes.func.isRequired,
   setFormState: PropTypes.func.isRequired,
   validatePrice: PropTypes.func.isRequired,
-};
-
-AddEvent.defaultProps = {
-  jwt: undefined,
-  history: undefined,
-  userProfile: {},
-  addEventFields: {},
-  addEventResponse: {},
 };
 
 export default AddEvent;
