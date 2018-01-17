@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { Elements } from 'react-stripe-elements';
 import { Paper, Divider } from 'material-ui';
 
-import { formatPrice } from '../../../utils';
+import { formatPrice, isObjectEmpty } from '../../../utils';
 import CheckoutForm from '../../molecules/CheckoutForm';
 import './Pay.css';
 
 const Pay = ({ event, jwt, history, userProfile, setChargeResponse }) => {
   if (!jwt) history.push('/');
   return (
-    event && userProfile ?
+    !isObjectEmpty(event) && !isObjectEmpty(userProfile) ?
       <main className="restrict-width flex column center">
         <Paper className="payment-paper">
           <div className="flex payment-table-row">
@@ -45,17 +45,11 @@ const Pay = ({ event, jwt, history, userProfile, setChargeResponse }) => {
 };
 
 Pay.propTypes = {
-  event: PropTypes.shape(),
-  jwt: PropTypes.string,
+  event: PropTypes.shape().isRequired,
+  jwt: PropTypes.string.isRequired,
   history: PropTypes.shape().isRequired,
-  userProfile: PropTypes.shape(),
+  userProfile: PropTypes.shape().isRequired,
   setChargeResponse: PropTypes.func.isRequired,
-};
-
-Pay.defaultProps = {
-  event: undefined,
-  jwt: undefined,
-  userProfile: undefined,
 };
 
 export default Pay;
