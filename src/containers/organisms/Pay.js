@@ -1,8 +1,6 @@
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import Pay from '../../components/organisms/Pay';
-import { setChargeResponse } from '../../actions';
 
 const mapStateToProps = state => ({
   event: state.event.eventDetails,
@@ -10,8 +8,4 @@ const mapStateToProps = state => ({
   jwt: state.user.jwt,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  setChargeResponse,
-}, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(Pay);
+export default connect(mapStateToProps, null)(Pay);

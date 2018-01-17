@@ -4,10 +4,10 @@ import { Elements } from 'react-stripe-elements';
 import { Paper, Divider } from 'material-ui';
 
 import { formatPrice, isObjectEmpty } from '../../../utils';
-import CheckoutForm from '../../../containers/molecules/CheckoutForm';
+import CheckoutForm from '../../../containers/molecules/CheckoutFormContainer';
 import './Pay.css';
 
-const Pay = ({ event, jwt, history, userProfile, setChargeResponse }) => {
+const Pay = ({ event, jwt, history, userProfile }) => {
   if (!jwt) history.push('/');
   return (
     !isObjectEmpty(event) && !isObjectEmpty(userProfile) ?
@@ -43,7 +43,6 @@ Pay.propTypes = {
   jwt: PropTypes.string.isRequired,
   history: PropTypes.shape().isRequired,
   userProfile: PropTypes.shape().isRequired,
-  setChargeResponse: PropTypes.func.isRequired,
 };
 
 export default Pay;
