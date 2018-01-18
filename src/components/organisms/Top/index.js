@@ -15,7 +15,7 @@ const Top = ({ events, selectedEvent, userLocation, setSelectedEvent, clearSelec
         containerElement={<div style={{ height: '100%' }} />}
         mapElement={<div style={{ height: '100%' }} />}
       >
-        <div className="mapLable">On Tonight</div>
+        <div className="map-lable">On Tonight</div>
         <MyMarkerList
           events={events}
           selectedEvent={selectedEvent}
