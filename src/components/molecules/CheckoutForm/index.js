@@ -29,7 +29,7 @@ const CheckoutForm = ({ nameErrorText, addressErrorText, emailErrorText, creditC
         open={creditCardError}
         onRequestClose={setCreditCardError}
       >
-          Please input a valid credit card.
+        Please input a valid credit card.
       </Dialog>
     </form>
   );

@@ -6,7 +6,17 @@ const initialState = {
   userLocation: {},
   selectedTab: 'profile',
   orders: [],
+  orderDict: {},
 };
+
+const createOrderDictionary = (orders) => {
+  return orders.reduce((prev, { eventId }) => {
+    const dic = prev;
+    dic[eventId] = true;
+    return dic;
+  }, {});
+};
+
 
 const users = (state = initialState, action) => {
   switch (action.type) {
@@ -21,6 +31,7 @@ const users = (state = initialState, action) => {
         jwt: '',
         userProfile: {},
         orders: [],
+        orderDict: {},
       };
     case SET_USER_LOCATION:
       return {
@@ -36,6 +47,7 @@ const users = (state = initialState, action) => {
       return {
         ...state,
         orders: action.orders,
+        orderDict: createOrderDictionary(action.orders),
       };
     case SET_JWT: {
       return {

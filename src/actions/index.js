@@ -173,7 +173,9 @@ export function addAuthListener() {
         dispatch(setUserProfile(res.userProfile));
       }
       if (res.jwt) {
-        dispatch(setJWT(res.jwt));
+        const { jwt } = res;
+        dispatch(setJWT(jwt));
+        dispatch(getOrderHistory(jwt));
       }
     });
   };
