@@ -5,6 +5,7 @@ import { Marker } from 'react-google-maps';
 import Map from '../../molecules/Map';
 import MyMarkerList from '../../molecules/MarkerList';
 import { isObjectEmpty } from '../../../utils';
+import './Top.css';
 
 const Top = ({ events, selectedEvent, userLocation, setSelectedEvent, clearSelectedEvent }) => {
   return process.env.npm_lifecycle_event === 'test'
