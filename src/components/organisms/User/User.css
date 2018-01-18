@@ -38,8 +38,7 @@
     margin-right: 0;
   }
   #profile-picture {
-    width: 100%;
-    height: auto;
+    display: none;
   }
   #tabs {
    margin-top: 10px;

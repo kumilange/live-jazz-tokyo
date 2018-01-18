@@ -14,7 +14,7 @@ const User = ({ history, userProfile, selectedTab, orders, setSelectedTab }) => 
     <main className="flex column center">
       <div id="user" className="flex restrict-width">
         <div key="1" id="profile-left" className="flex column horiCenter">
-          <img id="profile-picture" src="/default-user.jpg" alt="profile" />
+          <img id="profile-picture" src={userProfile.picture} alt="profile" />
           <Link to={'/addevent'}>
             <RaisedButton
               primary

@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import './Header.css';
 import { isObjectEmpty } from '../../../utils';
+import { SignoutIcon, FacebookIcon } from '../../atoms/Icon/Icon';
+import './Header.css';
 
 const Header = ({ userProfile, login, logout }) => (
   <header className="dark flex">
@@ -13,15 +14,27 @@ const Header = ({ userProfile, login, logout }) => (
       </h1>
       { !isObjectEmpty(userProfile)
         ? <nav className="gnav">
-          <ul className="gnav-list flex">
-            <li><Link to={`/user/${userProfile.id}`} className="gnav-list-link">{ userProfile.name }</Link></li>
-            <li><Link to={'/'} className="gnav-list-link" onClick={logout}>Logout</Link></li>
+          <ul className="gnav-list flex vertCenter">
+            <li>
+              <Link to={`/user/${userProfile.id}`} className="gnav-list-link">
+                <img src={userProfile.picture} className="thumbnail" alt="profile" />
+              </Link>
+            </li>
+            <li>
+              <Link to={'/'} className="gnav-list-link" onClick={logout}>
+                <span className="signout">{SignoutIcon}</span>
+              </Link>
+            </li>
           </ul>
         </nav>
         : <nav className="gnav">
           <ul className="gnav-list flex">
-            <li><Link to={''} className="gnav-list-link" onClick={login}>
-              Login with <br /> Facebook</Link></li>
+            <li>
+              <Link to={''} className="gnav-list-link flex vertCenter" onClick={login}>
+                <span className="facebook">{FacebookIcon}</span>
+                <span>Login with <br /> Facebook</span>
+              </Link>
+            </li>
           </ul>
         </nav>
       }

@@ -15,7 +15,7 @@ class HeaderContainer extends Component {
 
   async login() {
     await hello('facebook')
-      .login({ scope: 'email' });
+      .login();
   }
 
   render() {

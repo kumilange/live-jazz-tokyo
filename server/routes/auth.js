@@ -12,7 +12,7 @@ const router = express.Router();
 const createQueryParam = (socialToken) => {
   const params = {
     access_token: socialToken,
-    fields: 'name, email',
+    fields: 'name, email, picture.type(large)',
   };
   return querystring.stringify(params);
 };
@@ -24,13 +24,14 @@ const createJwt = (profile) => {
   });
 };
 
-const formatResponse = (jwt, user) => {
+const formatResponse = (jwt, picture, user) => {
   return {
     jwt,
     userProfile: {
+      id: user.id,
       name: user.name,
       email: user.email,
-      id: user.id,
+      picture: picture.data.url,
     },
   };
 };
@@ -49,7 +50,7 @@ router.post('/', async (req, res) => {
     }
 
     // get user
-    const { name, email } = profile;
+    const { name, email, picture } = profile;
     let [user] = await db('user')
       .where({ email })
       .select();
@@ -66,7 +67,7 @@ router.post('/', async (req, res) => {
     const jwt = createJwt(profile);
     console.log('jwt', jwt);
 
-    sendResponse(res, RES_STAT.OK.CODE, formatResponse(jwt, user));
+    sendResponse(res, RES_STAT.OK.CODE, formatResponse(jwt, picture, user));
   } catch (err) {
     console.log('err', err);
     sendResponse(res, RES_STAT.INTL_SERVER_ERR.CODE, RES_STAT.INTL_SERVER_ERR.MSG);
