@@ -7,29 +7,25 @@ import { formatPrice, isObjectEmpty } from '../../../utils';
 import CheckoutForm from '../../../containers/molecules/CheckoutForm';
 import './Pay.css';
 
+const renderPayTable = (name, quantity, price) => (
+  <div className="flex payment-table-row">
+    <div className="payment-table-event">{name}</div>
+    <div className="payment-table-quantity">{quantity}</div>
+    <div className="payment-table-price">{price}</div>
+  </div>
+);
+
 const Pay = ({ event, jwt, history, userProfile }) => {
   if (!jwt) history.push('/');
   return (
     !isObjectEmpty(event) && !isObjectEmpty(userProfile) ?
       <main className="restrict-width flex column center">
         <Paper className="payment-paper">
-          <div className="flex payment-table-row">
-            <div className="payment-table-event">Event Name</div>
-            <div className="payment-table-quantity">Quantity</div>
-            <div className="payment-table-price">Price</div>
-          </div>
+          { renderPayTable('Event Name', 'Quantity', 'Price') }
           <Divider style={{ marginTop: 10, marginBottom: 10 }} />
-          <div className="flex payment-table-row">
-            <div className="payment-table-event">{event.name}</div>
-            <div className="payment-table-quantity">{'x1'}</div>
-            <div className="payment-table-price">￥{formatPrice(event.price)}</div>
-          </div>
+          { renderPayTable(event.name, 'x1', `￥${formatPrice(event.price)}`) }
           <Divider style={{ marginTop: 10, marginBottom: 10, height: 1, backgroundColor: 'black' }} />
-          <div className="flex payment-table-row">
-            <div className="payment-table-event">{'Total:'}</div>
-            <div className="payment-table-quantity" />
-            <div className="payment-table-price">￥{formatPrice(event.price)}</div>
-          </div>
+          { renderPayTable('Total:', '', `￥${formatPrice(event.price)}`) }
         </Paper>
         <Elements>
           <CheckoutForm />
