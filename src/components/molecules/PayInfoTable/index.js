@@ -74,7 +74,6 @@ const getSingleListContents = ({ nameErrorText, addressErrorText, emailErrorText
 
 const getMultListContents = () => [
   {
-    no: 1,
     title: <p className="list-title">Expiry Date:</p>,
     item: <div className="list-item">
       <div id="expiry-date" className="underline">
@@ -83,7 +82,6 @@ const getMultListContents = () => [
     </div>,
   },
   {
-    no: 2,
     title: <p id="cvc">CVC:</p>,
     item: <div className="list-item">
       <div className="underline">
