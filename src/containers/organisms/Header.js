@@ -19,10 +19,11 @@ class HeaderContainer extends Component {
   }
 
   render() {
-    return (<Header
-      {...this.props}
-      login={this.login}
-    />);
+    return (
+      <Header
+        {...this.props}
+        login={this.login}
+      />);
   }
 }
 
