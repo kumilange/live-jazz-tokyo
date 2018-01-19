@@ -36,6 +36,9 @@ header {
 
 /* gnav
  -------------------------------------------------------------------------------*/
+.gnav {
+  position: relative; /* adjust tooltip absolute position */
+}
 .gnav-list li {
   display: flex;
   align-items: center;
@@ -45,22 +48,18 @@ header {
   line-height: 1.25;
   cursor: pointer;
 }
+.gnav-list .thumbnail {
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  overflow: hidden;
+}
 
 .gnav-list-link,
 .gnav-list-link:hover {
   font-family: 'Gothic';
   font-size: 15px;
   color: beige;
-}
-.gnav-list-link .thumbnail {
-  width: 30px;
-  height: 30px;
-  border-radius: 4px;
-  overflow: hidden;
-}
-.gnav-list-link .signout {
-  display: inline-block;
-  margin-top: 2px;
 }
 .gnav-list-link .facebook {
   margin-right: 6px;
@@ -81,15 +80,15 @@ header {
     padding-left: 28px;
     font-size: 16px;
   }
+  .gnav-list .thumbnail {
+    width: 26px;
+    height: 26px;
+  }
   .gnav-list li {
     margin-left: 5px;
     margin-right: 5px;
   }
   .gnav-list-link {
     font-size: 13px;
-  }
-  .gnav-list-link .thumbnail {
-    width: 26px;
-    height: 26px;
   }
 }

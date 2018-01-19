@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { isObjectEmpty } from '../../../utils';
-import { SignoutIcon, FacebookIcon } from '../../atoms/Icon/Icon';
+import Tooltip from '../../atoms/Tooltip';
+import { FacebookIcon } from '../../atoms/Icon/Icon';
 import './Header.css';
 
-const Header = ({ userProfile, login, logout }) => (
+const Header = ({ userProfile, isTooltipOpen, login, logout, toggleTooltip }) => (
   <header className="dark flex">
     <div id="header-inner" className="flex restrict-width">
       <h1 className="flex">
@@ -16,16 +17,15 @@ const Header = ({ userProfile, login, logout }) => (
         ? <nav className="gnav">
           <ul className="gnav-list flex vertCenter">
             <li>
-              <Link to={`/user/${userProfile.id}`} className="gnav-list-link">
-                <img src={userProfile.picture} className="thumbnail" alt="profile" />
-              </Link>
-            </li>
-            <li>
-              <Link to={'/'} className="gnav-list-link" onClick={logout}>
-                <span className="signout">{SignoutIcon}</span>
-              </Link>
+              <img role="presentation" src={userProfile.picture} className="thumbnail" alt="profile" onClick={toggleTooltip} />
             </li>
           </ul>
+          <Tooltip
+            userProfile={userProfile}
+            isTooltipOpen={isTooltipOpen}
+            logout={logout}
+            toggleTooltip={toggleTooltip}
+          />
         </nav>
         : <nav className="gnav">
           <ul className="gnav-list flex">
@@ -44,8 +44,10 @@ const Header = ({ userProfile, login, logout }) => (
 
 Header.propTypes = {
   userProfile: PropTypes.shape().isRequired,
+  isTooltipOpen: PropTypes.bool.isRequired,
   login: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
+  toggleTooltip: PropTypes.func.isRequired,
 };
 
 export default Header;
