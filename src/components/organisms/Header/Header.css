@@ -58,7 +58,7 @@ header {
 .gnav-list-link,
 .gnav-list-link:hover {
   font-family: 'Gothic';
-  font-size: 15px;
+  font-size: 14px;
   color: beige;
 }
 .gnav-list-link .facebook {
@@ -75,10 +75,10 @@ header {
   .logo {
     height: 26px;
     line-height: 26px;
-    background-size: 22px 22px;
+    background-size: 26px 26px;
     padding-top: 2px;
-    padding-left: 28px;
-    font-size: 16px;
+    padding-left: 32px;
+    font-size: 17px;
   }
   .gnav-list .thumbnail {
     width: 26px;
