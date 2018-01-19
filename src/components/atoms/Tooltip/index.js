@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 import { CalendarIcon, UserIcon, svgIconSize, SignoutIcon } from '../../atoms/Icon/Icon';
 import './Tooltip.css';
 
-const customIconProp = { width: 25, height: 16, color: '#000000' };
-
 const Tooltip = ({ userProfile, isTooltipOpen, logout, toggleTooltip }) => (
   <div className={isTooltipOpen ? 'tooltip open' : 'tooltip'}>
     <ul>
@@ -24,7 +22,7 @@ const Tooltip = ({ userProfile, isTooltipOpen, logout, toggleTooltip }) => (
       </li>
       <li className="flex vertCenter">
         <Link to={''} className="tooltip-link">
-          <span className="signout">{SignoutIcon(customIconProp)}</span>
+          <span className="signout">{SignoutIcon}</span>
           <span
             role="presentation"
             onClick={(e) => { e.preventDefault(); logout(); }}
