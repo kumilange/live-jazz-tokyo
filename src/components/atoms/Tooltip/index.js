@@ -6,8 +6,8 @@ import { CalendarIcon, UserIcon, svgIconSize, SignoutIcon } from '../../atoms/Ic
 import './Tooltip.css';
 
 const handleMultiHandlers = (toggleTooltip, logout) => {
-  toggleTooltip();
   logout();
+  toggleTooltip();
 };
 
 const Tooltip = ({ userProfile, isTooltipOpen, logout, toggleTooltip }) => (
