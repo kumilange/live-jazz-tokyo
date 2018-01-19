@@ -1,0 +1,52 @@
+/*-------------------------------------------------------------------------------
+ Tooltip
+ -------------------------------------------------------------------------------*/
+.tooltip {
+  display: none;
+  position: absolute;
+  top: 43px;
+  right: 3px;
+  width: 150px;
+  height: auto;
+  padding: 10px;
+  color: #000000;
+  border-radius: 2px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+}
+.tooltip.open {
+  display: block;
+}
+.tooltip:after {
+  content: "";
+  position: absolute;
+  top: -8px;
+  right: 9px;
+  border-width: 0 9px 9px;
+  border-style: solid;
+  border-color: white transparent;
+  display: block;
+  width: 0;
+}
+.tooltip li + li {
+  margin-top: 5px;
+}
+
+.tooltip-link {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  color: #000000;
+  font-size: 14px;
+}
+
+
+/*
+* MEDIA QUERY SP
+*/
+@media screen and (max-width:600px){
+  .tooltip {
+    top: 37px;
+    right: 0px;
+  }
+}
