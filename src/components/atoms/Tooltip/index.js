@@ -29,10 +29,10 @@ const Tooltip = ({ userProfile, isTooltipOpen, logout, toggleTooltip }) => (
         <Link to={''} className="tooltip-link">
           <span className="signout">{SignoutIcon}</span>
           <span
+            className="logout"
             role="presentation"
             onClick={() => handleMultiHandlers(logout, toggleTooltip)}
-          >Logout
-          </span>
+          >Logout</span>
         </Link>
       </li>
     </ul>

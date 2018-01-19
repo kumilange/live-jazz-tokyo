@@ -40,6 +40,12 @@
   font-size: 14px;
 }
 
+.tooltip .logout {
+  display: inline-block;
+  width: calc(100% - 35px);
+  height: 100%;
+}
+
 
 /*
 * MEDIA QUERY SP
