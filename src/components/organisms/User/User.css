@@ -14,7 +14,7 @@
 }
 .tab {
   width: 50%;
-  padding: 20px;
+  padding: 0 20px 20px 20px;
   text-align: center;
   font-weight: bold;
   font-size: 18px;
@@ -38,8 +38,7 @@
     margin-right: 0;
   }
   #profile-picture {
-    width: 100%;
-    height: auto;
+    display: none;
   }
   #tabs {
    margin-top: 10px;

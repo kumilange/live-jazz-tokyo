@@ -12,7 +12,7 @@ const EventMap = ({ position }) => (process.env.npm_lifecycle_event === 'test'
     containerElement={<div style={{ height: '100%' }} />}
     mapElement={<div style={{ height: '100%' }} />}
   >
-    <Marker position={position} icon={MarkerIcon} />
+    <Marker position={position} icon={MarkerIcon(false)} />
   </Map>);
 
 EventMap.propTypes = {

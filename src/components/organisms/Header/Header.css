@@ -36,39 +36,33 @@ header {
 
 /* gnav
  -------------------------------------------------------------------------------*/
+.gnav {
+  position: relative; /* adjust tooltip absolute position */
+}
 .gnav-list li {
+  display: flex;
+  align-items: center;
   position: relative;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 6px;
+  margin-right: 6px;
   line-height: 1.25;
   cursor: pointer;
 }
-.gnav-list li:before,
-.gnav-list li:after {
-  position: absolute;
-  display: block;
-  content: '';
-  width: 0;
-  bottom: 0;
-  border-bottom: 1px solid beige;
-  transition: all .2s linear;
-}
-.gnav-list li:before {
-  left: 0;
-}
-.gnav-list li:after {
-  right: 0;
-}
-.gnav-list li:hover:before,
-.gnav-list li:hover:after {
-  width: 50%;
+.gnav-list .thumbnail {
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  overflow: hidden;
 }
 
 .gnav-list-link,
 .gnav-list-link:hover {
   font-family: 'Gothic';
-  font-size: 15px;
+  font-size: 14px;
   color: beige;
+}
+.gnav-list-link .facebook {
+  margin-right: 6px;
 }
 
 /*
@@ -81,16 +75,20 @@ header {
   .logo {
     height: 26px;
     line-height: 26px;
-    background-size: 22px 22px;
+    background-size: 26px 26px;
     padding-top: 2px;
-    padding-left: 28px;
-    font-size: 16px;
+    padding-left: 32px;
+    font-size: 17px;
+  }
+  .gnav-list .thumbnail {
+    width: 26px;
+    height: 26px;
   }
   .gnav-list li {
     margin-left: 5px;
     margin-right: 5px;
   }
   .gnav-list-link {
-    font-size: 14px;
+    font-size: 13px;
   }
 }

@@ -7,10 +7,6 @@ import User from '../../components/organisms/User';
 import { getOrderHistory, setSelectedTab } from '../../actions';
 
 class UserContainer extends Component {
-  componentDidMount() {
-    if (this.props.jwt) this.props.getOrderHistory(this.props.jwt);
-  }
-
   render() {
     return (
       <User {...this.props} />
@@ -20,7 +16,6 @@ class UserContainer extends Component {
 
 UserContainer.propTypes = {
   jwt: PropTypes.string.isRequired,
-  getOrderHistory: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({

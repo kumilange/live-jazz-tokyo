@@ -7,7 +7,7 @@ import EventMap from '../../molecules/EventMap';
 import Loader from '../../atoms/Loader';
 import { formatPrice, formatMonthOrDate, formatTime, isObjectEmpty } from '../../../utils';
 import './Event.css';
-import { ClockIcon, YenIcon, PinIcon } from '../../atoms/Icon/Icon';
+import { ClockIcon, YenIcon, PinIcon, UserIcon } from '../../atoms/Icon/Icon';
 
 const FALLBACK_DESC = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
@@ -31,11 +31,16 @@ const Event = ({ eventDetails, jwt, isFetching, toggleMap, showMap }) => {
       <Divider />
       <div className="event-details-table">
         <div className="flex vertCenter row">
-          <div className="icon"><ClockIcon /></div>
-          <p>
-            {`${formatTime(eventDetails.start)} to ${formatTime(eventDetails.end)}`}
-          </p>
-          <div className="grow" />
+          <div className="artist flex">
+            <div className="icon"><UserIcon /></div>
+            <p>{eventDetails.artist}</p>
+          </div>
+          <div className="time flex">
+            <div className="icon"><ClockIcon /></div>
+            <p>
+              {`${formatTime(eventDetails.start)} to ${formatTime(eventDetails.end)}`}
+            </p>
+          </div>
         </div>
         <div className="flex vertCenter row">
           <div className="icon"><PinIcon /></div>
@@ -74,15 +79,6 @@ const Event = ({ eventDetails, jwt, isFetching, toggleMap, showMap }) => {
             : null }
         </div>
       </div>
-      <Paper className="pane">
-        <div className="block">
-          <h3>Artist</h3>
-        </div>
-        <Divider />
-        <div className="block">
-          <p>{ eventDetails.artist }</p>
-        </div>
-      </Paper>
       <Paper className="pane">
         <div className="block">
           <h3>Details</h3>

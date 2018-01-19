@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
 import { injectStripe } from 'react-stripe-elements';
 
-import { setChargeResponse } from '../../actions';
+import { setChargeResponse, getOrderHistory, clearSelectedEvent } from '../../actions';
 import CheckoutForm from '../../components/molecules/CheckoutForm';
 
 // eslint-disable-next-line
@@ -53,8 +53,9 @@ class CheckoutFormContainer extends Component {
     return error;
   }
 
+  /* eslint-disable no-shadow */
   async handleStripeTransaction() {
-    const { stripe, eventId, jwt, history } = this.props;
+    const { stripe, eventId, jwt, history, setChargeResponse, getOrderHistory, clearSelectedEvent } = this.props;
     const resToken = await stripe.createToken({
       name: document.getElementById('card-holder-field').value,
     });
@@ -75,6 +76,8 @@ class CheckoutFormContainer extends Component {
 
     if (res.OK) {
       setChargeResponse(res);
+      getOrderHistory(jwt);
+      clearSelectedEvent();
       history.push('/confirmation');
     } else {
       this.setCreditCardError();
@@ -107,7 +110,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispath => bindActionCreators({
-  setChargeResponse,
+  setChargeResponse, getOrderHistory, clearSelectedEvent,
 }, dispath);
 
 const container = connect(mapStateToProps, mapDispatchToProps)(CheckoutFormContainer);

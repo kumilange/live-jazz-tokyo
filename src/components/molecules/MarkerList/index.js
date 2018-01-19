@@ -5,7 +5,7 @@ import { Marker } from 'react-google-maps';
 import MyInfoWindow from '../InfoWindow';
 import { MarkerIcon } from '../../atoms/Icon/Icon';
 
-const MyMarkerList = ({ events, selectedEvent, setSelectedEvent, clearSelectedEvent }) => (
+const MyMarkerList = ({ events, selectedEvent, orderDict, setSelectedEvent, clearSelectedEvent }) => (
   <div id="markerList">
     {events.map((event) => {
       const { lat, lng, id, name } = event;
@@ -14,7 +14,7 @@ const MyMarkerList = ({ events, selectedEvent, setSelectedEvent, clearSelectedEv
         position={position}
         key={id}
         title={name}
-        icon={MarkerIcon}
+        icon={orderDict[id] ? MarkerIcon(true) : MarkerIcon(false)}
         onClick={() => setSelectedEvent(event)}
       >
         <MyInfoWindow
@@ -30,6 +30,7 @@ const MyMarkerList = ({ events, selectedEvent, setSelectedEvent, clearSelectedEv
 MyMarkerList.propTypes = {
   events: PropTypes.arrayOf(PropTypes.object).isRequired,
   selectedEvent: PropTypes.shape().isRequired,
+  orderDict: PropTypes.shape().isRequired,
   setSelectedEvent: PropTypes.func.isRequired,
   clearSelectedEvent: PropTypes.func.isRequired,
 };

@@ -7,7 +7,7 @@ import MyMarkerList from '../../molecules/MarkerList';
 import { isObjectEmpty } from '../../../utils';
 import './Top.css';
 
-const Top = ({ events, selectedEvent, userLocation, setSelectedEvent, clearSelectedEvent }) => {
+const Top = ({ events, selectedEvent, userLocation, orderDict, setSelectedEvent, clearSelectedEvent }) => {
   return process.env.npm_lifecycle_event === 'test'
     ? <div />
     : <main id="top" className="restrict-width">
@@ -20,6 +20,7 @@ const Top = ({ events, selectedEvent, userLocation, setSelectedEvent, clearSelec
         <MyMarkerList
           events={events}
           selectedEvent={selectedEvent}
+          orderDict={orderDict}
           setSelectedEvent={setSelectedEvent}
           clearSelectedEvent={clearSelectedEvent}
         />
@@ -35,6 +36,7 @@ const Top = ({ events, selectedEvent, userLocation, setSelectedEvent, clearSelec
 Top.propTypes = {
   events: PropTypes.arrayOf(PropTypes.object).isRequired,
   selectedEvent: PropTypes.shape().isRequired,
+  orderDict: PropTypes.shape().isRequired,
   userLocation: PropTypes.shape().isRequired,
   setSelectedEvent: PropTypes.func.isRequired,
   clearSelectedEvent: PropTypes.func.isRequired,

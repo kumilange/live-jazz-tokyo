@@ -37,6 +37,7 @@ const mapStateToProps = state => ({
   events: state.event.events,
   selectedEvent: state.event.selectedEvent,
   userLocation: state.user.userLocation,
+  orderDict: state.user.orderDict,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

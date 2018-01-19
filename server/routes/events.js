@@ -8,8 +8,7 @@ const db = require('knex')(knexConfig);
 
 const router = express.Router();
 
-const formatEvent = (event) => {
-  const { id, name, artist, venue, address, lat, lng, image, price, start, end, desc } = event;
+const formatEvent = ({ id, name, artist, venue, address, lat, lng, image, price, start, end, desc }) => {
   return {
     id,
     name,
