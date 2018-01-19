@@ -8,9 +8,16 @@ import { addAuthListener, logout } from '../../actions';
 import Header from '../../components/organisms/Header';
 
 class HeaderContainer extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isTooltipOpen: false,
+    };
+    this.login = this.login.bind(this);
+    this.toggleTooltip = this.toggleTooltip.bind(this);
+  }
   componentDidMount() {
     this.props.addAuthListener();
-    this.login = this.login.bind(this);
   }
 
   async login() {
@@ -18,11 +25,19 @@ class HeaderContainer extends Component {
       .login();
   }
 
+  toggleTooltip() {
+    this.setState({
+      isTooltipOpen: !this.state.isTooltipOpen,
+    });
+  }
+
   render() {
     return (
       <Header
         {...this.props}
+        isTooltipOpen={this.state.isTooltipOpen}
         login={this.login}
+        toggleTooltip={this.toggleTooltip}
       />);
   }
 }
