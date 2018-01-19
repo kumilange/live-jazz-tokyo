@@ -5,6 +5,11 @@ import { Link } from 'react-router-dom';
 import { CalendarIcon, UserIcon, svgIconSize, SignoutIcon } from '../../atoms/Icon/Icon';
 import './Tooltip.css';
 
+const handleMultiHandlers = (toggleTooltip, logout) => {
+  toggleTooltip();
+  logout();
+};
+
 const Tooltip = ({ userProfile, isTooltipOpen, logout, toggleTooltip }) => (
   <div className={isTooltipOpen ? 'tooltip open' : 'tooltip'}>
     <ul>
@@ -25,7 +30,7 @@ const Tooltip = ({ userProfile, isTooltipOpen, logout, toggleTooltip }) => (
           <span className="signout">{SignoutIcon}</span>
           <span
             role="presentation"
-            onClick={(e) => { e.preventDefault(); logout(); }}
+            onClick={() => handleMultiHandlers(toggleTooltip, logout)}
           >Logout
           </span>
         </Link>
