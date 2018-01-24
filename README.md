@@ -9,37 +9,37 @@ How come finding local jazz events and booking one is so difficult in Tokyo? Thi
 
 - node > 8.0.0
 - yarn
+- PostgreSQL
 
-### Installing
-
-1. Clone
+### 1. Installing
 ```
 git clone https://github.com/kumiko-haraguchi/live-jazz-tokyo.git
-```
-
-2. Install
-```
+cd live-jazz-tokyo
 yarn install
 ```
 
-## Running the tests
-
+### 2. Create DB & Run migration & Seed dummy data
 ```
-yarn test
-```
-
-### Coding style tests
-
-```
-yarn lint
+psql
+# CREATE DATABASE livejazz
+yarn migrate
+yarn seed
 ```
 
-## Deployment
+### 3. Running Dev & API servers
+```
+yarn frontend
+yarn backend
+```
+=> You'll see the map!🗺💃
 
-Deployed using Heroku at [https://live-jazz-tokyo.herokuapp.com/](https://live-jazz-tokyo.herokuapp.com/)
+### How to book a ticket with a fake credit account?
+Put `4242 4242 4242 4242` for Card Number
+![2018-01-25 0 50 47](https://user-images.githubusercontent.com/28984604/35341818-e54e9a14-0169-11e8-906d-6e48a1d8c711.png)
+
+=> You can book a (fake) event!!!🎉 
 
 ## Built With
-
 * [React](https://facebook.github.io/react/) - Frontend
 * [Redux](https://github.com/reactjs/redux) - State Management
 * [Material UI](http://www.material-ui.com/) - Frontend
