@@ -22,6 +22,8 @@ yarn install
 ```
 psql
 # CREATE DATABASE livejazz
+# \c livejazz
+
 yarn migrate
 yarn seed
 ```
@@ -33,7 +35,7 @@ yarn backend
 ```
 => You'll see the map!🗺💃
 
-### How to book a ticket with a fake credit account?
+### How do I book a ticket with a fake credit account?
 Put `4242 4242 4242 4242` for Card Number
 ![2018-01-25 0 50 47](https://user-images.githubusercontent.com/28984604/35341818-e54e9a14-0169-11e8-906d-6e48a1d8c711.png)
 
