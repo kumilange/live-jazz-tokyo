@@ -5,7 +5,7 @@
   "scripts": {
     "start": "NODE_ENV=production node server",
     "test": "yarn lint && yarn test:backend && CI=true yarn test:frontend",
-    "test:backend": "NODE_ENV=test mocha --recursive server/test --opts server/test/mocha.opts",
+    "test:backend": "NODE_ENV=test mocha --recursive server/__tests__ --opts server/__tests__/mocha.opts",
     "test:frontend": "react-scripts test --env=jsdom",
     "db:nuke": "dropdb 'livejazz' && createdb 'livejazz' && yarn migrate && yarn seed",
     "backend": "nodemon server",
