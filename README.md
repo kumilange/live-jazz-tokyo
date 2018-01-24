@@ -1,4 +1,4 @@
-# Live Jazz Tokyo
+# Live Jazz Tokyo ![rsz_1rsz_1rsz_1rsz_4logo](https://user-images.githubusercontent.com/28984604/35333415-01adbab8-0152-11e8-9f4a-ec45e55cab9d.png)
 
 Connecting fans with local jazz musicians in Tokyo.
 The easiest way to find local Jazz artists and events around your area.
