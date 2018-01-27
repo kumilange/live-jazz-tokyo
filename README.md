@@ -18,7 +18,7 @@ cd live-jazz-tokyo
 yarn install
 ```
 
-### 2. Create DB & Run migration & Seed dummy data
+### 2. Creating DB & Running migration & Seeding dummy data
 ```
 psql
 # CREATE DATABASE livejazz
