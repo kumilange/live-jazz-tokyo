@@ -33,7 +33,7 @@ yarn seed
 yarn frontend
 yarn backend
 ```
-=> You'll see the map!🗺💃
+=> You'll see the map on http://localhost:3000! 🗺💃
 
 ### How do I book a ticket with a fake credit account?
 Put `4242 4242 4242 4242` for Card Number
