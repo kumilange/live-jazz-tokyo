@@ -24,11 +24,11 @@ const App = () => (
           <div id="app">
             <Header />
             <Route exact path="/" component={Top} />
-            <Route exact path="/event/:id" component={Event} />
-            <Route exact path="/user/:id" component={User} />
-            <Route exact path="/pay" component={Pay} />
-            <Route exact path="/confirmation" component={Confirmation} />
-            <Route exact path="/addevent" component={AddEvent} />
+            <Route path="/event/:id" component={Event} />
+            <Route path="/user/:id" component={User} />
+            <Route path="/pay" component={Pay} />
+            <Route path="/confirmation" component={Confirmation} />
+            <Route path="/addevent" component={AddEvent} />
             <Footer />
           </div>
         </CSSTransition>
